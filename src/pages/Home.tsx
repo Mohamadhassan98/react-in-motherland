@@ -1,5 +1,6 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
+import {t} from "i18n-js";
 
 const styles = StyleSheet.create({
     container: {
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
 export default function () {
     return (
         <View style={styles.container}>
-            <Text>Open up App.tsx to start working on your app!</Text>
+            <Text>{t("messenger")}</Text>
         </View>
     );
 }

@@ -10,6 +10,7 @@ import {StyleProvider} from "native-base";
 const Stack = createStackNavigator();
 
 export default function App() {
+    // initLocalizations();
     return (
         <StyleProvider style={getTheme(material as any)}>
             <NavigationContainer>
