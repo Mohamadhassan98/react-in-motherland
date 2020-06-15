@@ -1,5 +1,7 @@
-import {MessageProps} from "./MessageProps";
-export interface ChannelMessageProps extends MessageProps{
-    profileImage : string,
-    profileUsername : string
+export interface ChannelMessageProps {
+    date: string,
+    message?: string,
+    media?: string,
+    profileImage: string,
+    profileUsername: string
 }

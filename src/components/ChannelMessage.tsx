@@ -1,24 +1,54 @@
 import React from "react";
-import {Container, Header, Content, Card, CardItem, Body, Text, Footer, FooterTab, Button, Icon} from "native-base";
+import {Image, StyleSheet} from "react-native";
+import {Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body} from "native-base";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
+import CommonColor from "../../native-base-theme/variables/commonColor";
 
-export default function({message, type, seen, media,
-                            profileImage, profileUsername}: ChannelMessageProps) {
+const styles = StyleSheet.create({
+    channelMessageCardItem: {
+        backgroundColor: CommonColor.inverseTextColor,
+    },
+
+    username: {
+        color: CommonColor.brandLight,
+    },
+    channelMessageText: {
+        color: CommonColor.textColor,
+    }
+});
+export default function({
+                            message, media,
+                            profileImage, profileUsername, date,
+                        }: ChannelMessageProps) {
     return (
         <Container>
             <Header/>
             <Content>
                 <Card>
-                    <CardItem header>
-                        {/*<Text>NativeBase</Text>*/}
+                    <CardItem>
+                        <Left>
+                            <Thumbnail source={{uri: profileImage}}/>
+                            <Body>
+                                <Text style={styles.username}>{profileUsername}</Text>
+                                <Text note>{date}</Text>
+                            </Body>
+                        </Left>
+                    </CardItem>
+                    <CardItem cardBody style={styles.channelMessageCardItem}>
+                        <Text style={styles.channelMessageText}>{message}</Text>
+                        <Image source={{uri: media}} style={{height: 200, width: undefined, flex: 1}}/>
                     </CardItem>
                     <CardItem>
+                        <Left>
+                            <Button transparent>
+                                <Icon active name='md-heart'/>
+                            </Button>
+                        </Left>
                         <Body>
-                            <Text>//Your text here</Text>
+                            <Button transparent>
+                                <Icon active name='md-chatbox'/>
+                            </Button>
                         </Body>
-                    </CardItem>
-                    <CardItem footer>
-                        {/*<Text>GeekyAnts</Text>*/}
                     </CardItem>
                 </Card>
             </Content>
