@@ -1,0 +1,95 @@
+{
+    "env": {
+        "es2020": true
+    },
+    "extends": [
+        "react-app"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": ["react", "react-native", "@typescript-eslint"],
+    "rules": {
+        "for-direction": "warn",
+        "no-cond-assign": [
+            "error",
+            "always"
+        ],
+        "no-dupe-args": "error",
+        "no-dupe-else-if": "warn",
+        "no-dupe-keys": "error",
+        "no-duplicate-case": "warn",
+        "no-empty": [
+            "warn",
+            {
+                "allowEmptyCatch": true
+            }
+        ],
+        "no-extra-parens": [
+            "warn",
+            "all",
+            {
+                "ignoreJSX": "all"
+            }
+        ],
+        "no-obj-calls": "error",
+        "no-sparse-arrays": "error",
+        "no-template-curly-in-string": "warn",
+        "no-unexpected-multiline": "error",
+        "no-unreachable": "warn",
+        "valid-typeof": "error",
+        "consistent-return": "error",
+        "curly": "warn",
+        "default-case": "warn",
+        "default-case-last": "error",
+        "default-param-last": "warn",
+        "no-case-declarations": "error",
+        "no-empty-function": "warn",
+        "no-empty-pattern": "warn",
+        "no-fallthrough": "warn",
+        "no-floating-decimal": "warn",
+        "no-multi-spaces": "warn",
+        "no-self-compare": "warn",
+        "semi": [
+            "warn",
+            "always"
+        ],
+        "semi-spacing": [
+            "warn",
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "semi-style": "warn",
+        "arrow-parens": "warn",
+        "prefer-template": "warn",
+        "prefer-destructuring": "warn",
+        "react/jsx-curly-brace-presence": [
+            "warn",
+            {
+                "props": "never",
+                "children": "never"
+            }
+        ],
+        "react/jsx-key": [
+            "warn",
+            {
+                "checkFragmentShorthand": true
+            }
+        ],
+        "react/boolean-prop-naming": "warn",
+        "react/prefer-stateless-function": "warn",
+        "react-native/no-unused-styles": "warn",
+        "react-native/no-color-literals": "warn",
+        "react-native/no-inline-styles": "warn",
+        "react-native/split-platform-components": "warn",
+        "react-native/no-single-element-style-arrays": "warn",
+        "react-native/sort-styles": "warn"
+    }
+}
