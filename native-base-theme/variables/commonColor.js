@@ -125,7 +125,7 @@ export default {
     checkboxTickColor: "#fff",
 
     // Color
-    brandPrimary: platform === PLATFORM.IOS ? "#007aff" : "#3F51B5",
+    brandPrimary: "#E9446A",
     brandInfo: "#62B1F6",
     brandSuccess: "#5cb85c",
     brandDanger: "#d9534f",
@@ -159,7 +159,7 @@ export default {
 
     // Footer
     footerHeight: 55,
-    footerDefaultBg: platform === PLATFORM.IOS ? "#F8F8F8" : "#3F51B5",
+    footerDefaultBg: "#F8F8F8",
     footerPaddingBottom: 0,
 
     // FooterTab
@@ -168,7 +168,7 @@ export default {
     activeTab: platform === PLATFORM.IOS ? "#007aff" : "#fff",
     sTabBarActiveTextColor: "#007aff",
     tabBarActiveTextColor: platform === PLATFORM.IOS ? "#2874F0" : "#fff",
-    tabActiveBgColor: platform === PLATFORM.IOS ? "#cde1f9" : "#3F51B5",
+    tabActiveBgColor: platform === PLATFORM.IOS ? "#cde1f9" : "#E9446A",
 
     // Header
     toolbarBtnColor: platform === PLATFORM.IOS ? "#007aff" : "#fff",

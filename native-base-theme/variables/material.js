@@ -120,7 +120,7 @@ export default {
     checkboxTickColor: "#fff",
 
     // Color
-    brandPrimary: "#3F51B5",
+    brandPrimary: "#E9446A",
     brandInfo: "#62B1F6",
     brandSuccess: "#5cb85c",
     brandDanger: "#d9534f",
@@ -154,7 +154,7 @@ export default {
 
     // Footer
     footerHeight: 55,
-    footerDefaultBg: "#3F51B5",
+    footerDefaultBg: "#F8F8F8",
     footerPaddingBottom: 0,
 
     // FooterTab
@@ -163,7 +163,7 @@ export default {
     activeTab: "#fff",
     sTabBarActiveTextColor: "#007aff",
     tabBarActiveTextColor: "#fff",
-    tabActiveBgColor: "#3F51B5",
+    tabActiveBgColor: "#E9446A",
 
     // Header
     toolbarBtnColor: "#fff",
