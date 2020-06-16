@@ -6,24 +6,23 @@ import CommonColor from "../../native-base-theme/variables/commonColor";
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
-    messageCardItemSend: {
-        backgroundColor : CommonColor.brandPrimary
-    },
     messageCardItemReceive: {
         backgroundColor : CommonColor.brandInfo
     },
-
+    messageCardItemSend: {
+        backgroundColor : CommonColor.brandPrimary
+    },
     messageSeen :{
         color : CommonColor.brandPrimary
-    },
-    messageUnseen: {
-        color: CommonColor.brandLight
     },
     messageTextReceive : {
         color : CommonColor.textColor
     },
     messageTextSend : {
         color : CommonColor.inverseTextColor
+    },
+    messageUnseen: {
+        color: CommonColor.brandLight
     }
 });
 

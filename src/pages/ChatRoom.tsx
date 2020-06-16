@@ -14,7 +14,7 @@ export default function () {
     return (
         <MainPageLayout active={0}>
             <View style={styles.container}>
-                <Text>{t("messenger")}</Text>
+                <Text>{t("chat room")}</Text>
             </View>
         </MainPageLayout>
     );

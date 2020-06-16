@@ -8,12 +8,18 @@ export default function initStrings() {
             settings: "settings",
             explore: "explore",
             personalPage: "personal page",
+            messageBoxPlaceHolder : "Write your message here",
+            online : "online",
+            offline : "offline",
         },
         fa: {
             messenger: "پیام رسان",
             settings: "تنظیمات",
             explore: "کاوش",
             personalPage: "صفحه شخصی",
+            messageBoxPlaceHolder : "پیام خود را وارد کنید",
+            online : "بر خط",
+            offline : "آفلاین"
         },
     };
 
