@@ -7,7 +7,7 @@ import material from "./native-base-theme/variables/material";
 import {StyleProvider} from "native-base";
 import initStrings from "./src/values/strings";
 import ExplorePostsPage from "./src/pages/ExplorePostsPage";
-import ChatRoom from "./src/pages/ChatRoom";
+import Massenger from "./src/pages/MassengerPage";
 const Stack = createStackNavigator();
 initStrings();
 
@@ -21,7 +21,7 @@ export default function App() {
                         options={{
                             headerShown: false,
                         }}
-                        component={ChatRoom}
+                        component={Massenger}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
