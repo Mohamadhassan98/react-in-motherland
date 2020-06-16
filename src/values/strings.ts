@@ -15,6 +15,10 @@ export default function initStrings() {
             allPosts: "All Posts",
             channelPosts: "Channel Posts",
             pages: "Pages",
+            you: "You",
+            posts: "Posts",
+            following: "following",
+            followers: "followers",
         },
         fa: {
             messenger: "پیام رسان",
@@ -26,6 +30,10 @@ export default function initStrings() {
             allPosts: `تمامی پست${zwnj}ها`,
             channelPosts: `پست کانال${zwnj}ها`,
             pages: "صفحات",
+            you: "شما",
+            posts: `پست${zwnj}ها`,
+            following: "دنبال شوندگان",
+            followers: "دنبال کنندگان",
         },
     };
 

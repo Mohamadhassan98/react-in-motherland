@@ -12,6 +12,9 @@ const Styles = StyleSheet.create({
     button: {
         height: 75,
     },
+    container: {
+        backgroundColor: commonColor.inverseTextColor,
+    },
     footer: {
         backgroundColor: commonColor.footerDefaultBg,
         height: 75,
@@ -28,7 +31,7 @@ const Styles = StyleSheet.create({
 
 export default function ({children, active}: {children: React.ReactElement[]; active: number}) {
     return (
-        <Container style={{backgroundColor: "#FFFFFF"}}>
+        <Container style={Styles.container}>
             {children}
             <Footer style={Styles.footer}>
                 <FooterTab style={Styles.footer}>

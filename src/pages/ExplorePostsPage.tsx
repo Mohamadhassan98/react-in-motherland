@@ -9,6 +9,9 @@ import {StyleSheet} from "react-native";
 import CommonColors from "../../native-base-theme/variables/commonColor";
 
 const styles = StyleSheet.create({
+    activeTab: {
+        backgroundColor: CommonColors.brandPrimary,
+    },
     tabs: {
         backgroundColor: "rgba(233, 68, 106, 0.85)",
     },
@@ -24,12 +27,12 @@ export default function () {
                 <ExploreHeader />
             </MainHeader>
             <Tabs tabBarUnderlineStyle={styles.underline} tabBarActiveTextColor={CommonColors.inverseTextColor}>
-                <Tab heading={t("allPosts")} tabStyle={styles.tabs}>
+                <Tab heading={t("allPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
                         <ExplorePosts />
                     </Content>
                 </Tab>
-                <Tab heading={t("pages")} tabStyle={styles.tabs}>
+                <Tab heading={t("pages")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
                         <ExplorePosts />
                     </Content>
