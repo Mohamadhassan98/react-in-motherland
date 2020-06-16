@@ -1,8 +1,9 @@
 export interface MessageProps {
     date :string,
     message :string,
-    seen : boolean,
+    seen ?: boolean,
     type : "send" | "receive" ,
-    media ?: string
+    media ?: string,
+    showDate ?: boolean
 
 }

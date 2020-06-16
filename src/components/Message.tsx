@@ -7,52 +7,65 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     messageCardItemReceive: {
-        backgroundColor : CommonColor.brandInfo
+        backgroundColor: CommonColor.brandInfo,
+        maxWidth: 300,
     },
     messageCardItemSend: {
-        backgroundColor : CommonColor.brandPrimary
+        backgroundColor: CommonColor.brandPrimary,
+        maxWidth: 300,
     },
-    messageSeen :{
-        color : CommonColor.brandPrimary
+    messageSeen: {
+        color: CommonColor.brandPrimary,
     },
-    messageTextReceive : {
-        color : CommonColor.textColor
+    messageTextReceive: {
+        color: CommonColor.textColor,
     },
-    messageTextSend : {
-        color : CommonColor.inverseTextColor
+    messageTextSend: {
+        color: CommonColor.inverseTextColor,
     },
     messageUnseen: {
-        color: CommonColor.brandLight
-    }
+        color: CommonColor.brandLight,
+    },
+    sentMessage: {
+        alignSelf: "flex-end",
+    },
+    receivedMessage: {
+        alignSelf: "flex-start",
+    },
+    sentRow: {
+        alignItems: "flex-end",
+    },
+    receivedRow: {
+        alignItems: "flex-start",
+    },
 });
 
-export default function({message, type, seen, date}: MessageProps) {
+export default function({message, type, seen, date, showDate}: MessageProps) {
     return (
-        <Container>
-            <Header/>
-            <Grid>
-                <Row>
-                    <Content>
-                        <Card>
-                            <CardItem style={type==="send" ?styles.messageCardItemSend : styles.messageCardItemReceive}>
-                                <Body>
-                                    <Text style={type==="send" ? styles.messageTextSend : styles.messageTextReceive}>{message}</Text>
-                                </Body>
-                            </CardItem>
-                        </Card>
-                    </Content>
-                </Row>
-                <Row>
+        <Grid style={type === "send" ? styles.sentMessage : styles.receivedMessage}>
+            <Row>
+                <Card>
+                    <CardItem style={type === "send" ? styles.messageCardItemSend : styles.messageCardItemReceive}>
+                        <Body>
+                            <Text style={type === "send" ? styles.messageTextSend : styles.messageTextReceive}>{message}</Text>
+                        </Body>
+                    </CardItem>
+                </Card>
+            </Row>
+            <Row style={type === "send" ? styles.sentRow : styles.receivedRow}>
+                {type === "send" && showDate && (
                     <Col style={{height: 50, width: 50}}>
                         <Icon name='md-checkmark-done' style={seen ? styles.messageSeen : styles.messageUnseen}/>
                     </Col>
+                )}
+                {showDate && (
                     <Col style={{height: 50, width: 50}}>
-                        <Text>
-                            {date}
-                        </Text>
-                    </Col>
-                </Row>
-            </Grid>
-        </Container>
+                    <Text>
+                        {date}
+                    </Text>
+                </Col>
+                )}
+            </Row>
+        </Grid>
     );
 }
