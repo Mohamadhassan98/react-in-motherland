@@ -1,6 +1,8 @@
 import i18n from "i18n-js";
 import * as Localization from "expo-localization";
 
+export const zwnj = "‌";
+
 export default function initStrings() {
     i18n.translations = {
         en: {
@@ -8,18 +10,22 @@ export default function initStrings() {
             settings: "settings",
             explore: "explore",
             personalPage: "personal page",
-            messageBoxPlaceHolder : "Write your message here",
-            online : "online",
-            offline : "offline",
+            appName: "app-name",
+            chats: "chats",
+            allPosts: "All Posts",
+            channelPosts: "Channel Posts",
+            pages: "Pages",
         },
         fa: {
             messenger: "پیام رسان",
             settings: "تنظیمات",
             explore: "کاوش",
             personalPage: "صفحه شخصی",
-            messageBoxPlaceHolder : "پیام خود را وارد کنید",
-            online : "بر خط",
-            offline : "آفلاین"
+            appName: "نام برنامه",
+            chats: "مکالمات",
+            allPosts: `تمامی پست${zwnj}ها`,
+            channelPosts: `پست کانال${zwnj}ها`,
+            pages: "صفحات",
         },
     };
 
