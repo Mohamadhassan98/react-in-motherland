@@ -243,7 +243,7 @@ export default {
     inverseSpinnerColor: "#1A191B",
 
     // Tab
-    tabDefaultBg: "#3F51B5",
+    tabDefaultBg: "#FFF",
     topTabBarTextColor: "#b3c7f9",
     topTabBarActiveTextColor: "#fff",
     topTabBarBorderColor: "#fff",

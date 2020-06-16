@@ -17,18 +17,18 @@ const Styles = StyleSheet.create({
         height: 75,
     },
     icon: {
-        color: commonColor.iconStyle,
+        color: commonColor.textColor,
     },
     textStyle: {
-        color: commonColor.iconStyle,
+        color: commonColor.textColor,
         paddingLeft: 0,
         paddingRight: 0,
     },
 });
 
-export default function ({children, active}: {children: React.ReactElement; active: number}) {
+export default function ({children, active}: {children: React.ReactElement[]; active: number}) {
     return (
-        <Container>
+        <Container style={{backgroundColor: "#FFFFFF"}}>
             {children}
             <Footer style={Styles.footer}>
                 <FooterTab style={Styles.footer}>
