@@ -7,30 +7,39 @@ import {MessageProps} from "./types/MessageProps";
 import {t} from "i18n-js";
 
 const styles = StyleSheet.create({
-    sendMessageIcon: {
-        backgroundColor: CommonColor.brandPrimary,
-        color : CommonColor.inverseTextColor,
+    sendMediaIcon: {
+        color: CommonColor.brandInfo,
     },
+
+    sendMessageButton: {
+        backgroundColor: CommonColor.brandPrimary,
+    },
+
+    sendMessageIcon: {
+        color: CommonColor.inverseTextColor,
+    },
+
 
 });
 
 export default function() {
     return (
-        <Container>
-            <Header/>
             <Grid>
                 <Col style={{height: 50, width: 50}}>
-                    <Icon name='add-outline'/>
+                    <Button>
+                        <Icon name='md-add'/>
+                    </Button>
                 </Col>
                 <Col style={{height: 50, width: 50}}>
                     <Text>
                         {t("messageBoxPlaceHolder")}
                     </Text>
                 </Col>
-                <Col style={{height: 50, width: 50}}>
-                    <Icon name='SendIcon' type='MaterialIcons' style={styles.sendMessageIcon}/>
+                <Col style={{height: 50, width: 60}}>
+                    <Button style={styles.sendMessageButton}>
+                        <Icon name='SendIcon' type='MaterialIcons' style={styles.sendMessageIcon}/>
+                    </Button>
                 </Col>
             </Grid>
-        </Container>
     );
 }
