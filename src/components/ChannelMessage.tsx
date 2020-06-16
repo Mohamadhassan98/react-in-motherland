@@ -2,18 +2,17 @@ import React from "react";
 import {Image, StyleSheet} from "react-native";
 import {Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body} from "native-base";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
-import CommonColor from "../../native-base-theme/variables/commonColor";
+import commonColor from "../../native-base-theme/variables/commonColor";
 
 const styles = StyleSheet.create({
     channelMessageCardItem: {
-        backgroundColor: CommonColor.inverseTextColor,
-    },
-
-    username: {
-        color: CommonColor.brandLight,
+        backgroundColor: commonColor.inverseTextColor,
     },
     channelMessageText: {
-        color: CommonColor.textColor,
+        color: commonColor.textColor,
+    },
+    username: {
+        color: commonColor.brandLight,
     }
 });
 export default function({
