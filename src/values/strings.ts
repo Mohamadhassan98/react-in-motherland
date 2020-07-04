@@ -19,6 +19,7 @@ export default function initStrings() {
             posts: "Posts",
             following: "following",
             followers: "followers",
+            messageBoxPlaceHolder: "Write your message here...",
         },
         fa: {
             messenger: "پیام رسان",
@@ -34,6 +35,7 @@ export default function initStrings() {
             posts: `پست${zwnj}ها`,
             following: "دنبال شوندگان",
             followers: "دنبال کنندگان",
+            messageBoxPlaceHolder: "پیام خود را وارد کنید...",
         },
     };
 

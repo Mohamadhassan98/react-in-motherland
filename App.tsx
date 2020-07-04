@@ -6,7 +6,7 @@ import getTheme from "./native-base-theme/components";
 import material from "./native-base-theme/variables/material";
 import {StyleProvider} from "native-base";
 import initStrings from "./src/values/strings";
-import Home from "./src/pages/Home";
+import ExplorePostsPage from "./src/pages/ExplorePostsPage";
 
 const Stack = createStackNavigator();
 initStrings();
@@ -21,7 +21,7 @@ export default function App() {
                         options={{
                             headerShown: false,
                         }}
-                        component={Home}
+                        component={ExplorePostsPage}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

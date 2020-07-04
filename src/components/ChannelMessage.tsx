@@ -1,56 +1,64 @@
 import React from "react";
-import {Image, StyleSheet} from "react-native";
-import {Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body} from "native-base";
+import {StyleSheet} from "react-native";
+import {Body, Button, Card, CardItem, Grid, Icon, Left, Row, Text, Thumbnail} from "native-base";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
 import commonColor from "../../native-base-theme/variables/commonColor";
 
 const styles = StyleSheet.create({
-    channelMessageCardItem: {
-        backgroundColor: commonColor.inverseTextColor,
+    bodyGrid: {
+        width: "100%",
     },
-    channelMessageText: {
-        color: commonColor.textColor,
+    bottomIcons: {
+        fontSize: 30,
+    },
+    cardBody: {
+        height: 200,
+    },
+    mediaImage: {
+        borderRadius: 5,
+        flex: 1,
+        height: 130,
+    },
+    padding: {
+        paddingEnd: 13,
+        paddingStart: 60,
     },
     username: {
         color: commonColor.brandLight,
-    }
+    },
 });
-export default function({
-                            message, media,
-                            profileImage, profileUsername, date,
-                        }: ChannelMessageProps) {
+export default function ({message, media, profileImage, profileUsername, date}: ChannelMessageProps) {
     return (
-        <Container>
-            <Header/>
-            <Content>
-                <Card>
-                    <CardItem>
-                        <Left>
-                            <Thumbnail source={{uri: profileImage}}/>
-                            <Body>
-                                <Text style={styles.username}>{profileUsername}</Text>
-                                <Text note>{date}</Text>
-                            </Body>
-                        </Left>
-                    </CardItem>
-                    <CardItem cardBody style={styles.channelMessageCardItem}>
-                        <Text style={styles.channelMessageText}>{message}</Text>
-                        <Image source={{uri: media}} style={{height: 200, width: undefined, flex: 1}}/>
-                    </CardItem>
-                    <CardItem>
-                        <Left>
-                            <Button transparent>
-                                <Icon active name='md-heart'/>
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Button transparent>
-                                <Icon active name='md-chatbox'/>
-                            </Button>
-                        </Body>
-                    </CardItem>
-                </Card>
-            </Content>
-        </Container>
+        <Card style={styles.bodyGrid}>
+            <CardItem>
+                <Left>
+                    <Thumbnail source={{uri: profileImage}} />
+                    <Body>
+                        <Text style={styles.username}>{profileUsername}</Text>
+                        <Text note>{date}</Text>
+                    </Body>
+                </Left>
+            </CardItem>
+            <CardItem style={styles.padding}>
+                <Grid>
+                    <Row>
+                        <Text>{message}</Text>
+                    </Row>
+                    <Row>
+                        <Thumbnail square source={{uri: media}} style={styles.mediaImage} />
+                    </Row>
+                </Grid>
+            </CardItem>
+            <CardItem style={styles.padding}>
+                <Left>
+                    <Button transparent>
+                        <Icon active name='md-heart' style={styles.bottomIcons} />
+                    </Button>
+                    <Button transparent>
+                        <Icon active name='message' type='Entypo' style={styles.bottomIcons} />
+                    </Button>
+                </Left>
+            </CardItem>
+        </Card>
     );
 }

@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 
 export default function () {
     return (
-        <MainPageLayout active={0}>
+        <MainPageLayout active={2}>
             <MainHeader size='collapsed'>
                 <PersonalPageHeader />
             </MainHeader>

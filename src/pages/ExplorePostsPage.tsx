@@ -7,6 +7,7 @@ import {t} from "i18n-js";
 import ExplorePosts from "../components/ExplorePosts";
 import {StyleSheet} from "react-native";
 import CommonColors from "../../native-base-theme/variables/commonColor";
+import ExploreChannels from "../components/ExploreChannels";
 
 const styles = StyleSheet.create({
     activeTab: {
@@ -30,6 +31,11 @@ export default function () {
                 <Tab heading={t("allPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
                         <ExplorePosts />
+                    </Content>
+                </Tab>
+                <Tab heading={t("channelPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
+                    <Content>
+                        <ExploreChannels />
                     </Content>
                 </Tab>
                 <Tab heading={t("pages")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>

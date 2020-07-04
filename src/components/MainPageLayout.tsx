@@ -36,25 +36,14 @@ export default function ({children, active}: {children: React.ReactElement[]; ac
             <Footer style={Styles.footer}>
                 <FooterTab style={Styles.footer}>
                     <Button
-                        // active={active === 0}
                         vertical
-                        style={active === 0 ? Styles.activeButton : Styles.button}
+                        style={active === 3 ? Styles.activeButton : Styles.button}
                         textStyle={Styles.textStyle}
                     >
-                        <Icon name='md-settings' type='Ionicons' style={Styles.icon} />
-                        <Text style={Styles.textStyle}>{t("settings")}</Text>
+                        <Icon name='chat' type='MaterialIcons' style={Styles.icon} />
+                        <Text style={Styles.textStyle}>{t("messenger")}</Text>
                     </Button>
                     <Button
-                        // active={active === 1}
-                        vertical
-                        style={active === 1 ? Styles.activeButton : Styles.button}
-                        textStyle={Styles.textStyle}
-                    >
-                        <Icon name='explore' type='MaterialIcons' style={Styles.icon} />
-                        <Text style={Styles.textStyle}>{t("explore")}</Text>
-                    </Button>
-                    <Button
-                        // active={active === 2}
                         vertical
                         style={active === 2 ? Styles.activeButton : Styles.button}
                         textStyle={Styles.textStyle}
@@ -63,13 +52,20 @@ export default function ({children, active}: {children: React.ReactElement[]; ac
                         <Text style={Styles.textStyle}>{t("personalPage")}</Text>
                     </Button>
                     <Button
-                        // active={active === 3}
                         vertical
-                        style={active === 3 ? Styles.activeButton : Styles.button}
+                        style={active === 1 ? Styles.activeButton : Styles.button}
                         textStyle={Styles.textStyle}
                     >
-                        <Icon name='chat' type='MaterialIcons' style={Styles.icon} />
-                        <Text style={Styles.textStyle}>{t("messenger")}</Text>
+                        <Icon name='explore' type='MaterialIcons' style={Styles.icon} />
+                        <Text style={Styles.textStyle}>{t("explore")}</Text>
+                    </Button>
+                    <Button
+                        vertical
+                        style={active === 0 ? Styles.activeButton : Styles.button}
+                        textStyle={Styles.textStyle}
+                    >
+                        <Icon name='md-settings' type='Ionicons' style={Styles.icon} />
+                        <Text style={Styles.textStyle}>{t("settings")}</Text>
                     </Button>
                 </FooterTab>
             </Footer>

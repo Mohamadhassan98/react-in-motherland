@@ -1,45 +1,75 @@
 import React from "react";
-import {Image, StyleSheet} from "react-native";
-import {Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body} from "native-base";
+import {StyleSheet} from "react-native";
+import {Button, Icon, Input, Item} from "native-base";
 import CommonColor from "../../native-base-theme/variables/commonColor";
-import {Col, Row, Grid} from "react-native-easy-grid";
-import {MessageProps} from "./types/MessageProps";
+import {Col, Grid} from "react-native-easy-grid";
 import {t} from "i18n-js";
 
 const styles = StyleSheet.create({
-    sendMediaIcon: {
-        color: CommonColor.brandInfo,
+    addButton: {
+        paddingBottom: 0,
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingTop: 0,
     },
-
+    addCol: {
+        alignItems: "center",
+        justifyContent: "center",
+        width: 30,
+    },
+    addIcon: {
+        color: "rgba(22, 31, 61, 0.5)",
+        marginLeft: 0,
+        marginRight: 0,
+    },
+    grid: {
+        alignItems: "center",
+        justifyContent: "space-around",
+        paddingLeft: 7,
+        paddingRight: 7,
+        width: "100%",
+    },
+    input: {
+        height: 36,
+        marginRight: 6,
+    },
+    sendCol: {
+        height: 40,
+        paddingLeft: 0,
+        paddingRight: 0,
+        width: 40,
+    },
     sendMessageButton: {
+        alignItems: "center",
         backgroundColor: CommonColor.brandPrimary,
+        borderRadius: 50,
+        height: 40,
+        justifyContent: "center",
+        width: 40,
     },
-
     sendMessageIcon: {
         color: CommonColor.inverseTextColor,
+        marginLeft: 0,
+        marginRight: 0,
     },
-
-
 });
 
-export default function() {
+export default function () {
     return (
-            <Grid>
-                <Col style={{height: 50, width: 50}}>
-                    <Button>
-                        <Icon name='md-add'/>
-                    </Button>
-                </Col>
-                <Col style={{height: 50, width: 50}}>
-                    <Text>
-                        {t("messageBoxPlaceHolder")}
-                    </Text>
-                </Col>
-                <Col style={{height: 50, width: 60}}>
-                    <Button style={styles.sendMessageButton}>
-                        <Icon name='SendIcon' type='MaterialIcons' style={styles.sendMessageIcon}/>
-                    </Button>
-                </Col>
-            </Grid>
+        <Grid style={styles.grid}>
+            <Col style={styles.addCol}>
+                <Icon name='md-add' style={styles.addIcon} />
+            </Col>
+            <Col>
+                <Item rounded style={styles.input}>
+                    <Input placeholder={t("messageBoxPlaceHolder")} />
+                </Item>
+            </Col>
+            <Col style={styles.sendCol}>
+                <Button style={styles.sendMessageButton}>
+                    <Icon name='send' type='MaterialIcons' style={styles.sendMessageIcon} />
+                </Button>
+            </Col>
+        </Grid>
     );
 }
