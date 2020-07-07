@@ -20,6 +20,13 @@ export default function initStrings() {
             following: "following",
             followers: "followers",
             messageBoxPlaceHolder: "Write your message here...",
+            colorSettings: "Color Settings",
+            primary: "primary",
+            secondary: "secondary",
+            save: "save",
+            chosenColor: "chosen color:",
+            chooseOneOfThese: "Choose one of these colors:",
+            orCustomizeIt: "Or customize it...",
         },
         fa: {
             messenger: "پیام رسان",
@@ -36,6 +43,11 @@ export default function initStrings() {
             following: "دنبال شوندگان",
             followers: "دنبال کنندگان",
             messageBoxPlaceHolder: "پیام خود را وارد کنید...",
+            colorSettings: "تنظیمات رنگ",
+            save: "ذخیره",
+            chosenColor: "رنگ انتخابی:",
+            chooseOneOfThese: "یکی از رنگ های زیر را انتخاب کنید.",
+            orCustomizeIt: "یا به سلیقه خود تغییر دهید...",
         },
     };
 

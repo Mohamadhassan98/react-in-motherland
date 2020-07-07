@@ -27,7 +27,7 @@ export default function ({
     hasTabs,
 }: {
     size: "collapsed" | "expanded";
-    children: React.ReactElement;
+    children: React.ReactElement | React.ReactElement[];
     hasTabs?: boolean;
 }) {
     return (

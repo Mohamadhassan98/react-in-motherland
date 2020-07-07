@@ -5,7 +5,7 @@ import ExplorePosts from "./ExplorePosts";
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
-    root: {
+    primary: {
         height: 250,
     },
     title: {
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 export default function () {
     return (
-        <View style={styles.root}>
+        <View style={styles.primary}>
             <Row style={styles.title}>
                 <Text>{t("posts")}</Text>
             </Row>

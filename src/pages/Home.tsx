@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         backgroundColor: CommonColors.brandSecondary,
         marginBottom: 50,
     },
-    root: {
+    primary: {
         height: "100%",
     },
 });
@@ -30,7 +30,7 @@ export default function () {
             <MainHeader size='collapsed'>
                 <PersonalPageHeader />
             </MainHeader>
-            <Content scrollEnabled={false} style={styles.root}>
+            <Content scrollEnabled={false} style={styles.primary}>
                 <PersonalUserInfo />
                 <PersonalPageBio bio="I'm the dumbest U.S president ever." />
                 <PersonalPageRecommends
