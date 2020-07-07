@@ -1,13 +1,13 @@
 import React from "react";
 import {Body, Button, Container, Content, Left, Right, Text, View} from "native-base";
 import * as Localization from "expo-localization";
-import Forward from "../../assets/ForwardIcon";
-import Back from "../../assets/BackIcon";
+import Forward from "../../assets/icons/ForwardIcon";
+import Back from "../../assets/icons/BackIcon";
 import {t} from "i18n-js";
 import MainHeader from "../components/MainHeader";
 import ColorPalette from "react-native-color-palette";
-import usePalette from "../values/palette";
-import Icons8CheckmarkIcon from "../../assets/CheckmarkIcon";
+import useTheme from "../values/theme";
+import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
 import {StyleSheet} from "react-native";
 import commonColor from "../../native-base-theme/variables/commonColor";
 import {fromHsv, TriangleColorPicker} from "react-native-color-picker";
@@ -46,11 +46,11 @@ const materialColors = [
 ];
 
 export default function ({color}: {color: "primary" | "secondary"}) {
-    const palette = usePalette();
+    const palette = useTheme();
     const [selectedColor, setSelectedColor] = React.useState(palette[color]);
     const [loaded, setLoaded] = React.useState(false);
     loadAsync({
-        Roboto_medium: require("../../assets/fonts/Roboto-Medium.ttf"),
+        Roboto_medium: require("../../assets/fonts/english-fonts/Roboto-Medium.ttf"),
     }).then(() => setLoaded(true));
     if (!loaded) {
         return (

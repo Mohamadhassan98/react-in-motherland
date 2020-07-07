@@ -2,11 +2,11 @@ import React from "react";
 import {Body, Container, Content, Left, List, Right, Text, View} from "native-base";
 import MainHeader from "../components/MainHeader";
 import * as Localization from "expo-localization";
-import Forward from "../../assets/ForwardIcon";
-import Back from "../../assets/BackIcon";
+import Forward from "../../assets/icons/ForwardIcon";
+import Back from "../../assets/icons/BackIcon";
 import {t} from "i18n-js";
 import SettingItem from "../components/SettingItem";
-import MenuVerticalIcon from "../../assets/MenuVerticalIcon";
+import MenuVerticalIcon from "../../assets/icons/MenuVerticalIcon";
 import makeStyles from "../utils/makeStyles";
 
 const useStyles = makeStyles((palette) => ({

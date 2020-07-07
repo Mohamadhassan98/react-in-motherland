@@ -4,7 +4,6 @@ import MainHeader from "../components/MainHeader";
 import {StyleSheet} from "react-native";
 import MessengerHeader from "../components/MessengerHeader";
 import {Body, Container, Content, Header, Left, List, ListItem, Right, Text, Thumbnail, View} from "native-base";
-
 const styles = StyleSheet.create({
     List: {
         flex: 1,
