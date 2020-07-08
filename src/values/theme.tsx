@@ -53,16 +53,16 @@ const ThemeContext = React.createContext<ThemeContextShape>({
     },
     font: {
         header: {
-            rtl: fontTypes.english,
-            ltr: fontTypes.persian,
+            ltr: fontTypes.english,
+            rtl: fontTypes.persian,
         },
         body: {
-            rtl: fontTypes.english,
-            ltr: fontTypes.persian,
+            ltr: fontTypes.english,
+            rtl: fontTypes.persian,
         },
         footer: {
-            rtl: fontTypes.english,
-            ltr: fontTypes.persian,
+            ltr: fontTypes.english,
+            rtl: fontTypes.persian,
         },
     },
 });
@@ -104,16 +104,16 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
     };
     const font = {
         header: {
-            rtl: fontTypes.english,
-            ltr: fontTypes.persian,
+            ltr: fontTypes.english,
+            rtl: fontTypes.persian,
         },
         body: {
-            rtl: fontTypes.english,
-            ltr: fontTypes.persian,
+            ltr: fontTypes.english,
+            rtl: fontTypes.persian,
         },
         footer: {
-            rtl: fontTypes.english,
-            ltr: fontTypes.persian,
+            ltr: fontTypes.english,
+            rtl: fontTypes.persian,
         },
     };
     if (!loaded) {

@@ -46,8 +46,8 @@ const materialColors = [
 ];
 
 export default function ({color}: {color: "primary" | "secondary"}) {
-    const palette = useTheme();
-    const [selectedColor, setSelectedColor] = React.useState(palette[color]);
+    const theme = useTheme();
+    const [selectedColor, setSelectedColor] = React.useState(theme.palette[color]);
     const [loaded, setLoaded] = React.useState(false);
     loadAsync({
         Roboto_medium: require("../../assets/fonts/english-fonts/Roboto-Medium.ttf"),
@@ -70,11 +70,11 @@ export default function ({color}: {color: "primary" | "secondary"}) {
                     <Button
                         transparent
                         onPress={() => {
-                            if (selectedColor !== palette[color]) {
+                            if (selectedColor !== theme.palette[color]) {
                                 if (color === "primary") {
-                                    palette.setPrimary(selectedColor);
+                                    theme.palette.setPrimary(selectedColor);
                                 } else {
-                                    palette.setSecondary(selectedColor);
+                                    theme.palette.setSecondary(selectedColor);
                                 }
                             }
                         }}
@@ -95,8 +95,8 @@ export default function ({color}: {color: "primary" | "secondary"}) {
                 <TriangleColorPicker
                     onColorChange={(color) => setSelectedColor(fromHsv(color))}
                     color={selectedColor}
-                    defaultColor={palette[color]}
-                    oldColor={palette[color]}
+                    defaultColor={theme.palette[color]}
+                    oldColor={theme.palette[color]}
                     onOldColorSelected={(oldColor) => setSelectedColor(oldColor)}
                     onColorSelected={(selectedColor1) => setSelectedColor(selectedColor1)}
                     style={styles.colorPicker}

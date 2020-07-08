@@ -8,6 +8,7 @@ import initStrings from "./src/values/strings";
 import {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import ChangeColorSimple from "./src/pages/ChangeColorSimple";
+import InputBoxEditProfile from "./src/components/InputBoxEditProfile";
 const Stack = createStackNavigator();
 initStrings();
 
@@ -22,9 +23,8 @@ export default function App() {
                             options={{
                                 headerShown: false,
                             }}
-                        >
-                            {(props) => <ChangeColorSimple {...props} color='primary' />}
-                        </Stack.Screen>
+                            component={InputBoxEditProfile}
+                        />
                     </Stack.Navigator>
                 </NavigationContainer>
             </ThemeProvider>

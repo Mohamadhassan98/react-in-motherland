@@ -9,15 +9,15 @@ import SettingItem from "../components/SettingItem";
 import MenuVerticalIcon from "../../assets/icons/MenuVerticalIcon";
 import makeStyles from "../utils/makeStyles";
 
-const useStyles = makeStyles((palette) => ({
+const useStyles = makeStyles((theme) => ({
     primary: {
-        backgroundColor: palette.primary,
+        backgroundColor: theme.palette.primary,
         borderRadius: 20,
         height: 20,
         width: 20,
     },
     secondary: {
-        backgroundColor: palette.secondary,
+        backgroundColor: theme.palette.secondary,
         borderRadius: 20,
         height: 20,
         width: 20,
