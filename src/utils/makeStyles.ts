@@ -8,7 +8,7 @@ type input<T> = (
 
 export default function makeStyles<T extends NamedStyles<T> | NamedStyles<any>>(input: input<T>) {
     return () => {
-        const anotherTheme = useTheme();
-        return input(anotherTheme);
+        const theme = useTheme();
+        return input(theme);
     };
 }

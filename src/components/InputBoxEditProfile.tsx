@@ -1,11 +1,11 @@
 import React from "react";
-import {Container, Header, Content, Input, Card} from "native-base";
-import {inputBoxEditProfileProps} from "./types/InputBoxEditProfileProps";
+import {Card, Container, Content, Header, Input} from "native-base";
 import makeStyles from "../utils/makeStyles";
+
 const useStyles = makeStyles((theme) => ({
     textStyle: {
         backgroundColor: theme.palette.primary,
-        fontFamily: theme.font.body.rtl.bold,
+        fontFamily: theme.font.Body,
         height: "100%",
         width: "100%",
     },

@@ -12,31 +12,40 @@ export interface Palette {
 }
 
 export interface FontTypes {
-    normal: string;
-    bold: string;
-    light: string;
-    medium: string;
-    thin: string;
-    italic: string;
-    boldItalic: string;
-    lightItalic: string;
-    mediumItalic: string;
-    thinItalic: string;
+    normal: FontLocalization;
+    bold: FontLocalization;
+    light: FontLocalization;
+    medium: FontLocalization;
+    thin: FontLocalization;
+    italic: FontLocalization;
+    boldItalic: FontLocalization;
+    lightItalic: FontLocalization;
+    mediumItalic: FontLocalization;
+    thinItalic: FontLocalization;
+    Normal: string;
+    Bold: string;
+    Light: string;
+    Medium: string;
+    Thin: string;
+    Italic: string;
+    BoldItalic: string;
+    LightItalic: string;
+    MediumItalic: string;
+    ThinItalic: string;
+}
+
+export interface FontLocalization {
+    rtl: string;
+    ltr: string;
 }
 
 export interface Font {
-    header: {
-        rtl: FontTypes;
-        ltr: FontTypes;
-    };
-    body: {
-        rtl: FontTypes;
-        ltr: FontTypes;
-    };
-    footer: {
-        rtl: FontTypes;
-        ltr: FontTypes;
-    };
+    header: FontTypes;
+    body: FontTypes;
+    footer: FontTypes;
+    Header: string;
+    Body: string;
+    Footer: string;
 }
 
 export interface ThemeContextShape {
@@ -52,18 +61,12 @@ const ThemeContext = React.createContext<ThemeContextShape>({
         setSecondary: () => {},
     },
     font: {
-        header: {
-            ltr: fontTypes.english,
-            rtl: fontTypes.persian,
-        },
-        body: {
-            ltr: fontTypes.english,
-            rtl: fontTypes.persian,
-        },
-        footer: {
-            ltr: fontTypes.english,
-            rtl: fontTypes.persian,
-        },
+        Body: fontTypes.Normal,
+        body: fontTypes,
+        Footer: fontTypes.Normal,
+        footer: fontTypes,
+        Header: fontTypes.Normal,
+        header: fontTypes
     },
 });
 
@@ -103,18 +106,12 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
         setSecondary: setSecond,
     };
     const font = {
-        header: {
-            ltr: fontTypes.english,
-            rtl: fontTypes.persian,
-        },
-        body: {
-            ltr: fontTypes.english,
-            rtl: fontTypes.persian,
-        },
-        footer: {
-            ltr: fontTypes.english,
-            rtl: fontTypes.persian,
-        },
+        Body: fontTypes.Normal,
+        body: fontTypes,
+        Footer: fontTypes.Normal,
+        footer: fontTypes,
+        Header: fontTypes.Normal,
+        header: fontTypes
     };
     if (!loaded) {
         return null;
