@@ -1,22 +1,35 @@
 import React from "react";
-import {StyleSheet} from "react-native";
 import {Avatar} from "react-native-elements";
-import {Container} from "native-base";
 import {AvatarProps} from "./types/AvatarProps";
-const style = StyleSheet.create({
-    avatarStyle: {},
-});
-export default function ({profileImage, size}: AvatarProps) {
+import icon from "../../assets/icons/icons8-google-images-48.png";
+import {getMaterialColor} from "../values/materialColors";
+import {Toast} from "native-base";
+import {ToastAndroid} from "react-native";
+export default function ({profileImage, size, showAccessory, visibleName}: AvatarProps) {
     return (
-        <Container>
-            <Avatar
-                size={size}
-                source={{
-                    uri: profileImage,
-                }}
-                rounded
-                showAccessory
-            />
-        </Container>
+        <Avatar
+            size={size}
+            source={
+                profileImage
+                    ? {
+                          uri: profileImage,
+                      }
+                    : undefined
+            }
+            rounded
+            showAccessory={showAccessory}
+            onAccessoryPress={() => {
+                ToastAndroid.show("test2", ToastAndroid.LONG);
+            }}
+            accessory={{source: icon, backgroundColor: "#0000ff"}}
+            title={visibleName
+                .split(" ")
+                .map((value) => value.charAt(0))
+                .join("")
+                .slice(0, 2)
+                .toUpperCase()}
+            titleStyle={{color: "#ffffff"}}
+            containerStyle={{backgroundColor: getMaterialColor(visibleName.length)}}
+        />
     );
 }

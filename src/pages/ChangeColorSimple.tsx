@@ -12,6 +12,7 @@ import {StyleSheet} from "react-native";
 import commonColor from "../../native-base-theme/variables/commonColor";
 import {fromHsv, TriangleColorPicker} from "react-native-color-picker";
 import {loadAsync} from "expo-font";
+import {materialColors} from "../values/materialColors";
 
 const styles = StyleSheet.create({
     buttonText: {
@@ -22,28 +23,6 @@ const styles = StyleSheet.create({
         height: 300,
     },
 });
-
-const materialColors = [
-    "#F44336",
-    "#E91E63",
-    "#9C27B0",
-    "#673AB7",
-    "#3F51B5",
-    "#2196F3",
-    "#03A9F4",
-    "#00BCD4",
-    "#009688",
-    "#4CAF50",
-    "#8BC34A",
-    "#CDDC39",
-    "#FFEB3B",
-    "#FFC107",
-    "#FF9800",
-    "#FF5722",
-    "#795548",
-    "#9E9E9E",
-    "#607D8B",
-];
 
 export default function ({color}: {color: "primary" | "secondary"}) {
     const theme = useTheme();

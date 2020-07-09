@@ -1,3 +1,3 @@
-export interface inputBoxEditProfileProps {
+export interface InputBoxEditProfileProps {
     placeHolderMsg: string;
 }

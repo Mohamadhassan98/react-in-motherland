@@ -8,7 +8,6 @@ import {t} from "i18n-js";
 import SettingItem from "../components/SettingItem";
 import MenuVerticalIcon from "../../assets/icons/MenuVerticalIcon";
 import makeStyles from "../utils/makeStyles";
-
 const useStyles = makeStyles((theme) => ({
     primary: {
         backgroundColor: theme.palette.primary,
