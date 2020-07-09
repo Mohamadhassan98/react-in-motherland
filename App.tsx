@@ -7,8 +7,9 @@ import {StyleProvider} from "native-base";
 import initStrings from "./src/values/strings";
 import {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
-import ChangeColorSimple from "./src/pages/ChangeColorSimple";
-import InputBoxEditProfile from "./src/components/InputBoxEditProfile";
+import ExplorePostsPage from "./src/pages/ExplorePostsPage";
+import {TourGuideProvider} from "rn-tourguide";
+
 const Stack = createStackNavigator();
 initStrings();
 
@@ -16,17 +17,19 @@ export default function App() {
     return (
         <StyleProvider style={getTheme(platform as any)}>
             <ThemeProvider>
-                <NavigationContainer>
-                    <Stack.Navigator>
-                        <Stack.Screen
-                            name='HomePage'
-                            options={{
-                                headerShown: false,
-                            }}
-                            component={InputBoxEditProfile}
-                        />
-                    </Stack.Navigator>
-                </NavigationContainer>
+                <TourGuideProvider>
+                    <NavigationContainer>
+                        <Stack.Navigator>
+                            <Stack.Screen
+                                name='HomePage'
+                                options={{
+                                    headerShown: false,
+                                }}
+                                component={ExplorePostsPage}
+                            />
+                        </Stack.Navigator>
+                    </NavigationContainer>
+                </TourGuideProvider>
             </ThemeProvider>
         </StyleProvider>
     );
