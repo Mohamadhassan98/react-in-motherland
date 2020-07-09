@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
     },
     cardStyle: {
-        backgroundColor: theme.palette.primary,
+        // borderColor: "#fcfcfc",
         borderRadius: 15,
         height: 60,
     },

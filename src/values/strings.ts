@@ -27,7 +27,7 @@ export default function initStrings() {
             chosenColor: "chosen color:",
             chooseOneOfThese: "Choose one of these colors:",
             orCustomizeIt: "Or customize it...",
-            editProfile: "edit profile",
+            editProfile: "Edit Profile",
         },
         fa: {
             messenger: "پیام رسان",

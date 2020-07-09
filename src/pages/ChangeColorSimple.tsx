@@ -1,5 +1,5 @@
 import React from "react";
-import {Body, Button, Container, Content, Left, Right, Text} from "native-base";
+import {Body, Button, Container, Content, Left, Right, Text, View} from "native-base";
 import * as Localization from "expo-localization";
 import Forward from "../../assets/icons/ForwardIcon";
 import Back from "../../assets/icons/BackIcon";
@@ -8,8 +8,6 @@ import MainHeader from "../components/MainHeader";
 import ColorPalette from "react-native-color-palette";
 import useTheme from "../values/theme";
 import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
-import {StyleSheet} from "react-native";
-import commonColor from "../../native-base-theme/variables/commonColor";
 import {fromHsv, TriangleColorPicker} from "react-native-color-picker";
 import {loadAsync} from "expo-font";
 import {materialColors} from "../values/materialColors";
@@ -23,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         flex: 1,
         height: 300,
     },
-});
+}));
 
 export default function ({color}: {color: "primary" | "secondary"}) {
     const styles = useStyles();
