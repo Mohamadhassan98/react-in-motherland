@@ -1,5 +1,5 @@
 import React from "react";
-import {Body, Button, Container, Content, Left, Right, Text, View} from "native-base";
+import {Body, Button, Container, Content, Left, Right, Text} from "native-base";
 import * as Localization from "expo-localization";
 import Forward from "../../assets/icons/ForwardIcon";
 import Back from "../../assets/icons/BackIcon";
@@ -13,10 +13,11 @@ import commonColor from "../../native-base-theme/variables/commonColor";
 import {fromHsv, TriangleColorPicker} from "react-native-color-picker";
 import {loadAsync} from "expo-font";
 import {materialColors} from "../values/materialColors";
+import makeStyles from "../utils/makeStyles";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     buttonText: {
-        color: commonColor.textColor,
+        color: theme.palette.textPrimary,
     },
     colorPicker: {
         flex: 1,
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
 });
 
 export default function ({color}: {color: "primary" | "secondary"}) {
+    const styles = useStyles();
     const theme = useTheme();
     const [selectedColor, setSelectedColor] = React.useState(theme.palette[color]);
     const [loaded, setLoaded] = React.useState(false);

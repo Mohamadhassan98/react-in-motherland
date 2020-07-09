@@ -1,14 +1,15 @@
 import * as Font from "expo-font";
 import {
+    RobotoMedium,
+    SegoeUI,
+    SegoeUIBold,
+    SegoeUIBoldItalic,
+    SegoeUIItalic,
     Shabnam,
     ShabnamBold,
     ShabnamLight,
     ShabnamMedium,
     ShabnamThin,
-    SegoeUI,
-    SegoeUIBoldItalic,
-    SegoeUIBold,
-    SegoeUIItalic,
 } from "./FontsAddress";
 
 export function loader() {
@@ -23,5 +24,6 @@ export function loader() {
         SegoeUIBoldItalic,
         SegoeUIBold,
         SegoeUIItalic,
+        Roboto_medium: RobotoMedium
     });
 }

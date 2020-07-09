@@ -8,6 +8,9 @@ import initStrings from "./src/values/strings";
 import {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import EditProfile from "./src/pages/EditProfile";
+import ExplorePostsPage from "./src/pages/ExplorePostsPage";
+import {TourGuideProvider} from "rn-tourguide";
+
 const Stack = createStackNavigator();
 initStrings();
 

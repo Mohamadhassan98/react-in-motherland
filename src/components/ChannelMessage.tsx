@@ -11,9 +11,6 @@ const styles = StyleSheet.create({
     bottomIcons: {
         fontSize: 30,
     },
-    cardBody: {
-        height: 200,
-    },
     mediaImage: {
         borderRadius: 5,
         flex: 1,

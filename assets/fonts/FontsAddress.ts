@@ -8,3 +8,5 @@ export {default as SegoeUI} from "./english-fonts/Segoe-UI.ttf";
 export {default as SegoeUIBold} from "./english-fonts/Segoe-UI-Bold.ttf";
 export {default as SegoeUIBoldItalic} from "./english-fonts/Segoe-UI-Bold-Italic.ttf";
 export {default as SegoeUIItalic} from "./english-fonts/Segoe-UI-Italic.ttf";
+
+export {default as RobotoMedium} from "./english-fonts/Roboto-Medium.ttf";

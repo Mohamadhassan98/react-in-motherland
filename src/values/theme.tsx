@@ -7,6 +7,8 @@ import fontTypes from "../../assets/fonts/FontTypes";
 export interface Palette {
     primary: string;
     secondary: string;
+    textPrimary: string;
+    textSecondary: string;
     setPrimary: (value: string) => void;
     setSecondary: (value: string) => void;
 }
@@ -59,6 +61,8 @@ const ThemeContext = React.createContext<ThemeContextShape>({
         secondary: "#F12345",
         setPrimary: () => {},
         setSecondary: () => {},
+        textPrimary: "#000000",
+        textSecondary: "#FFFFFF",
     },
     font: {
         Body: fontTypes.Normal,
@@ -66,7 +70,7 @@ const ThemeContext = React.createContext<ThemeContextShape>({
         Footer: fontTypes.Normal,
         footer: fontTypes,
         Header: fontTypes.Normal,
-        header: fontTypes
+        header: fontTypes,
     },
 });
 
@@ -104,6 +108,8 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
         secondary: secondary,
         setPrimary: setPrime,
         setSecondary: setSecond,
+        textPrimary: "#000000",
+        textSecondary: "#FFFFFF",
     };
     const font = {
         Body: fontTypes.Normal,
@@ -111,7 +117,7 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
         Footer: fontTypes.Normal,
         footer: fontTypes,
         Header: fontTypes.Normal,
-        header: fontTypes
+        header: fontTypes,
     };
     if (!loaded) {
         return null;
