@@ -3,6 +3,7 @@ import {View} from "native-base";
 import {StyleSheet} from "react-native";
 import ChannelMessage from "./ChannelMessage";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
+import {t} from "i18n-js";
 
 const styles = StyleSheet.create({
     grid: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
 
 export default function () {
     const messages = new Array<ChannelMessageProps>(5).fill({
-        date: "today 03:24 PM",
+        date: t("_todayChannelPost"),
         message:
             "What is the loop of Creation? How is there something from nothing? In spite of the fact that it is impossible to prove that anythin….",
         profileImage:

@@ -14,7 +14,6 @@ import {
 
 export function loader() {
     return Font.loadAsync({
-        // Load a font `Montserrat` from a static resource
         Shabnam,
         ShabnamBold,
         ShabnamLight,
@@ -24,6 +23,6 @@ export function loader() {
         SegoeUIBoldItalic,
         SegoeUIBold,
         SegoeUIItalic,
-        Roboto_medium: RobotoMedium
+        Roboto_medium: RobotoMedium,
     });
 }

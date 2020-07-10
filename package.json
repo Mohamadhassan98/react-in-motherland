@@ -31,7 +31,8 @@
     "react-native-svg": "11.0.1",
     "react-native-web": "~0.11.7",
     "rn-tourguide": "^2.4.1",
-    "expo-image-picker": "~8.1.0"
+    "expo-image-picker": "~8.1.0",
+    "expo-notifications": "~0.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -42,6 +43,7 @@
     "@typescript-eslint/parser": "latest",
     "babel-eslint": "latest",
     "babel-preset-expo": "~8.1.0",
+    "color": "^3.1.2",
     "eslint": "latest",
     "eslint-config-react-app": "latest",
     "eslint-config-react-native": "^4.1.0",

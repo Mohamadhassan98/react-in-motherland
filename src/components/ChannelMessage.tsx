@@ -1,15 +1,22 @@
 import React from "react";
 import {StyleSheet} from "react-native";
-import {Body, Button, Card, CardItem, Grid, Icon, Left, Row, Text, Thumbnail} from "native-base";
+import {Body, Button, Card, CardItem, Grid, Left, Row, Text, Thumbnail} from "native-base";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
 import commonColor from "../../native-base-theme/variables/commonColor";
+import * as Localization from "expo-localization";
+import Icons8LoveIcon from "../../assets/icons/LoveIcon";
+import Icons8CommentsIcon from "../../assets/icons/CommentsIcon";
 
 const styles = StyleSheet.create({
+    body: {
+        textAlign: "justify",
+    },
     bodyGrid: {
         width: "100%",
     },
     bottomIcons: {
-        fontSize: 30,
+        height: 40,
+        width: 40,
     },
     mediaImage: {
         borderRadius: 5,
@@ -22,6 +29,7 @@ const styles = StyleSheet.create({
     },
     username: {
         color: commonColor.brandLight,
+        textAlign: !Localization.isRTL ? "right" : "left",
     },
 });
 export default function ({message, media, profileImage, profileUsername, date}: ChannelMessageProps) {
@@ -39,7 +47,7 @@ export default function ({message, media, profileImage, profileUsername, date}: 
             <CardItem style={styles.padding}>
                 <Grid>
                     <Row>
-                        <Text>{message}</Text>
+                        <Text style={styles.body}>{message}</Text>
                     </Row>
                     <Row>
                         <Thumbnail square source={{uri: media}} style={styles.mediaImage} />
@@ -49,10 +57,10 @@ export default function ({message, media, profileImage, profileUsername, date}: 
             <CardItem style={styles.padding}>
                 <Left>
                     <Button transparent>
-                        <Icon active name='md-heart' style={styles.bottomIcons} />
+                        <Icons8LoveIcon style={styles.bottomIcons} />
                     </Button>
                     <Button transparent>
-                        <Icon active name='message' type='Entypo' style={styles.bottomIcons} />
+                        <Icons8CommentsIcon style={styles.bottomIcons} />
                     </Button>
                 </Left>
             </CardItem>
