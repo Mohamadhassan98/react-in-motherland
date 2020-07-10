@@ -1,31 +1,29 @@
 import React from "react";
-import {Card, Container, Content, Header, Input} from "native-base";
+import {Card, Content, Input} from "native-base";
 import makeStyles from "../utils/makeStyles";
+import {InputBoxEditProfileProps} from "./types/InputBoxEditProfileProps";
 
 const useStyles = makeStyles((theme) => ({
     textStyle: {
-        backgroundColor: theme.palette.Primary,
         fontFamily: theme.font.Body,
         height: "100%",
         width: "100%",
     },
+    cardStyle: {
+        // borderColor: "#fcfcfc",
+        borderRadius: 15,
+        height: 60,
+    },
 }));
-export default function () {
+
+export default function ({placeHolderMsg}: InputBoxEditProfileProps) {
     const styles = useStyles();
     return (
-        <Container>
-            <Header />
-            <Content>
-                <Card
-                    style={{
-                        borderRadius: 15,
-                        height: 60,
-                    }}
-                >
-                    <Input placeholder='سلاممممم' style={styles.textStyle} />
-                    {/*</CardItem>*/}
-                </Card>
-            </Content>
-        </Container>
+        <Content>
+            <Card style={styles.cardStyle}>
+                <Input placeholder={placeHolderMsg} style={styles.textStyle} />
+                {/*</CardItem>*/}
+            </Card>
+        </Content>
     );
 }

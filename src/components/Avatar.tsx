@@ -1,22 +1,34 @@
 import React from "react";
-import {StyleSheet} from "react-native";
 import {Avatar} from "react-native-elements";
-import {Container} from "native-base";
 import {AvatarProps} from "./types/AvatarProps";
-const style = StyleSheet.create({
-    avatarStyle: {},
-});
-export default function ({profileImage, size}: AvatarProps) {
+import icon from "../../assets/icons/icons8-google-images-48.png";
+import {getMaterialColor} from "../values/materialColors";
+import {ToastAndroid} from "react-native";
+import useMediaPicker from "../utils/useMediaPicker";
+export default function ({profileImage, size, showAccessory, visibleName}: AvatarProps) {
+    const imagePicker = useMediaPicker("gallery", "All");
     return (
-        <Container>
-            <Avatar
-                size={size}
-                source={{
-                    uri: profileImage,
-                }}
-                rounded
-                showAccessory
-            />
-        </Container>
+        <Avatar
+            size={size}
+            source={
+                profileImage
+                    ? {
+                          uri: imagePicker.result || profileImage,
+                      }
+                    : undefined
+            }
+            rounded
+            showAccessory={showAccessory}
+            onAccessoryPress={imagePicker.select}
+            accessory={{source: icon, backgroundColor: "#0000ff"}}
+            title={visibleName
+                .split(" ")
+                .map((value) => value.charAt(0))
+                .join("")
+                .slice(0, 2)
+                .toUpperCase()}
+            titleStyle={{color: "#ffffff"}}
+            containerStyle={{backgroundColor: getMaterialColor(visibleName.length)}}
+        />
     );
 }

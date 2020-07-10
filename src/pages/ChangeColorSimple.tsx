@@ -1,5 +1,5 @@
 import React from "react";
-import {Body, Button, Container, Content, Left, Right, Text} from "native-base";
+import {Body, Button, Container, Content, Left, Right, Text, View} from "native-base";
 import * as Localization from "expo-localization";
 import Forward from "../../assets/icons/ForwardIcon";
 import Back from "../../assets/icons/BackIcon";
@@ -9,6 +9,8 @@ import ColorPalette from "react-native-color-palette";
 import useTheme from "../values/theme";
 import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
 import {fromHsv, TriangleColorPicker} from "react-native-color-picker";
+import {loadAsync} from "expo-font";
+import {materialColors} from "../values/materialColors";
 import makeStyles from "../utils/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,32 +23,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const materialColors = [
-    "#F44336",
-    "#E91E63",
-    "#9C27B0",
-    "#673AB7",
-    "#3F51B5",
-    "#2196F3",
-    "#03A9F4",
-    "#00BCD4",
-    "#009688",
-    "#4CAF50",
-    "#8BC34A",
-    "#CDDC39",
-    "#FFEB3B",
-    "#FFC107",
-    "#FF9800",
-    "#FF5722",
-    "#795548",
-    "#9E9E9E",
-    "#607D8B",
-];
-
 export default function ({color}: {color: "primary" | "secondary"}) {
     const styles = useStyles();
     const theme = useTheme();
     const [selectedColor, setSelectedColor] = React.useState(theme.palette[color]);
+    const [loaded, setLoaded] = React.useState(false);
+    loadAsync({
+        Roboto_medium: require("../../assets/fonts/english-fonts/Roboto-Medium.ttf"),
+    }).then(() => setLoaded(true));
+    if (!loaded) {
+        return (
+            <View>
+                <Text>Loading fonts...</Text>
+            </View>
+        );
+    }
     return (
         <Container>
             <MainHeader size='collapsed'>

@@ -33,6 +33,7 @@ export default function initStrings(locale: string) {
             english: "English",
             persian: "فارسی",
             systemDefault: "System default",
+            editProfile: "Edit Profile",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -54,6 +55,7 @@ export default function initStrings(locale: string) {
             chosenColor: "رنگ انتخابی:",
             chooseOneOfThese: `یکی از رنگ${zwnj}های زیر را انتخاب کنید.`,
             orCustomizeIt: "یا به سلیقه خود تغییر دهید...",
+            editProfile: "وبرایش پروفایل",
             search: "جستجو",
             searchForTagsNamesAndContent: `جستجو برای اشخاص، برچسب${zwnj}ها و محتوا...`,
             _todayChannelPost: "امروز 03:24 بعد از ظهر",
