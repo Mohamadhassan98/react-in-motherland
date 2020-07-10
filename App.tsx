@@ -5,18 +5,17 @@ import {createStackNavigator} from "@react-navigation/stack";
 import getTheme from "./native-base-theme/components";
 import {StyleProvider} from "native-base";
 import initStrings from "./src/values/strings";
-import {ThemeProvider} from "./src/values/theme";
+import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
-import ExplorePostsPage from "./src/pages/ExplorePostsPage";
 import {TourGuideProvider} from "rn-tourguide";
+import LanguageSettings from "./src/pages/LanguageSettings";
 
 const Stack = createStackNavigator();
-initStrings();
 
 export default function App() {
     return (
-        <StyleProvider style={getTheme(platform as any)}>
-            <ThemeProvider>
+        <ThemeProvider>
+            <ThemeConsumer>
                 <TourGuideProvider>
                     <NavigationContainer>
                         <Stack.Navigator>
@@ -25,12 +24,20 @@ export default function App() {
                                 options={{
                                     headerShown: false,
                                 }}
-                                component={ExplorePostsPage}
+                                component={LanguageSettings}
                             />
                         </Stack.Navigator>
                     </NavigationContainer>
                 </TourGuideProvider>
-            </ThemeProvider>
-        </StyleProvider>
+            </ThemeConsumer>
+        </ThemeProvider>
     );
 }
+
+const ThemeConsumer = ({children}: {children: React.ReactElement}) => {
+    const theme = useTheme();
+    initStrings(theme.localize.language);
+    const rtl = getTheme(platform("fa") as any);
+    const ltr = getTheme(platform("en") as any);
+    return <StyleProvider style={theme.localize.language === "fa" ? rtl : ltr}>{children}</StyleProvider>;
+};

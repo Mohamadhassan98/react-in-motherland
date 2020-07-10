@@ -1,14 +1,14 @@
 import React from "react";
 import {Grid, Header, Row, Text} from "native-base";
 import {t} from "i18n-js";
-import {StyleSheet} from "react-native";
+import {StyleSheet, ViewStyle} from "react-native";
 import CommonColor from "../../native-base-theme/variables/commonColor";
 
 const styles = StyleSheet.create({
     gridRow: {
         alignItems: "center",
         backgroundColor: CommonColor.inverseTextColor,
-        height: 50,
+        minHeight: 50,
     },
     headerExpanded: {
         alignItems: "center",
@@ -25,13 +25,18 @@ export default function ({
     size,
     children,
     hasTabs,
+    style,
 }: {
     size: "collapsed" | "expanded";
     children: React.ReactElement | React.ReactElement[];
     hasTabs?: boolean;
+    style?: ViewStyle;
 }) {
     return (
-        <Header hasTabs={hasTabs} style={size === "expanded" ? [styles.headerExpanded] : [styles.gridRow]}>
+        <Header
+            hasTabs={hasTabs}
+            style={size === "expanded" ? [styles.headerExpanded, style] : [styles.gridRow, style]}
+        >
             <Grid>
                 {size === "expanded" && (
                     <Row style={styles.gridRow}>

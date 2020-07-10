@@ -4,7 +4,7 @@ import makeStyles from "../utils/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
     textStyle: {
-        backgroundColor: theme.palette.primary,
+        backgroundColor: theme.palette.Primary,
         fontFamily: theme.font.Body,
         height: "100%",
         width: "100%",

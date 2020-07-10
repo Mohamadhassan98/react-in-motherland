@@ -1,23 +1,20 @@
 import React from "react";
-import {Body, Container, Content, Left, List, Right, Text, View} from "native-base";
+import {Container, Content, List, View} from "native-base";
 import MainHeader from "../components/MainHeader";
-import * as Localization from "expo-localization";
-import Forward from "../../assets/icons/ForwardIcon";
-import Back from "../../assets/icons/BackIcon";
-import {t} from "i18n-js";
 import SettingItem from "../components/SettingItem";
 import MenuVerticalIcon from "../../assets/icons/MenuVerticalIcon";
 import makeStyles from "../utils/makeStyles";
+import SimpleHeader from "../components/SimpleHeader";
 
 const useStyles = makeStyles((theme) => ({
     primary: {
-        backgroundColor: theme.palette.primary,
+        backgroundColor: theme.palette.Primary,
         borderRadius: 20,
         height: 20,
         width: 20,
     },
     secondary: {
-        backgroundColor: theme.palette.secondary,
+        backgroundColor: theme.palette.Secondary,
         borderRadius: 20,
         height: 20,
         width: 20,
@@ -29,13 +26,7 @@ export default function () {
     return (
         <Container>
             <MainHeader size='collapsed'>
-                <Left>{Localization.isRTL ? <Forward /> : <Back />}</Left>
-                <Body>
-                    <Text>{t("colorSettings")}</Text>
-                </Body>
-                <Right>
-                    <MenuVerticalIcon />
-                </Right>
+                <SimpleHeader title='colorSettings' rightAdornment={<MenuVerticalIcon />} />
             </MainHeader>
             <Content>
                 <List>
