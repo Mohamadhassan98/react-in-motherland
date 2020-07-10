@@ -26,16 +26,19 @@ export default function ({
     children,
     hasTabs,
     style,
+    noShadow,
 }: {
     size: "collapsed" | "expanded";
     children: React.ReactElement | React.ReactElement[];
     hasTabs?: boolean;
     style?: ViewStyle;
+    noShadow?: boolean;
 }) {
     return (
         <Header
             hasTabs={hasTabs}
             style={size === "expanded" ? [styles.headerExpanded, style] : [styles.gridRow, style]}
+            noShadow={noShadow}
         >
             <Grid>
                 {size === "expanded" && (

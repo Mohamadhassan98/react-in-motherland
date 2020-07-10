@@ -9,6 +9,7 @@ import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import {TourGuideProvider} from "rn-tourguide";
 import LanguageSettings from "./src/pages/LanguageSettings";
+import EditProfile from "./src/pages/EditProfile";
 
 const Stack = createStackNavigator();
 
@@ -24,7 +25,7 @@ export default function App() {
                                 options={{
                                     headerShown: false,
                                 }}
-                                component={LanguageSettings}
+                                component={EditProfile}
                             />
                         </Stack.Navigator>
                     </NavigationContainer>

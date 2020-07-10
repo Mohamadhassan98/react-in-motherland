@@ -10,16 +10,18 @@ import {t} from "i18n-js";
 import DatePicker from "../components/DatePicker";
 import Avatar from "../components/Avatar";
 import useMediaPicker from "../utils/useMediaPicker";
+import MainHeader from "../components/MainHeader";
 
 const useStyles = makeStyles((theme) => ({
     avatarStyle: {
         marginTop: 20,
+        marginBottom: 20,
         alignItems: "center",
     },
     inputBoxEditProfileStyle: {
         // flex: 1,
-        marginBottom: 20,
-        marginTop: 40,
+        marginBottom: 10,
+        marginTop: 10,
         marginStart: 40,
         marginEnd: 40,
     },
@@ -27,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#FFFFFF",
     },
     dateStyle: {
-        marginBottom: 20,
-        marginTop: 40,
+        marginBottom: 10,
+        marginTop: 10,
         marginStart: 40,
         marginEnd: 40,
     },
@@ -52,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     saveButtonStyleCard: {
         borderRadius: 15,
         height: 60,
-        backgroundColor: theme.palette.primary,
+        backgroundColor: theme.palette.Primary,
         padding: "5%",
     },
     saveButtonTextStyle: {
@@ -81,7 +83,7 @@ export default function () {
     return (
         <Root>
             <Container style={{backgroundColor: "#FFFFFF"}}>
-                <Header style={styles.headerStyle} noShadow>
+                <MainHeader noShadow={true} size='collapsed'>
                     {/*<Content>*/}
                     <Left style={{flex: 1, alignItems: "flex-start"}}>
                         <Button style={styles.forwardBackIconStyle} icon transparent>
@@ -92,7 +94,7 @@ export default function () {
                         <Text style={styles.headerTextStyle}>{t("editProfile")} </Text>
                     </Body>
                     <Right style={{flex: 1}} />
-                </Header>
+                </MainHeader>
                 <Content>
                     <Grid>
                         <Row>
