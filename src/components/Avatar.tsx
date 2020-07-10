@@ -5,21 +5,20 @@ import icon from "../../assets/icons/icons8-google-images-48.png";
 import {getMaterialColor} from "../values/materialColors";
 import {ToastAndroid} from "react-native";
 import useMediaPicker from "../utils/useMediaPicker";
-export default function ({profileImage, size, showAccessory, visibleName}: AvatarProps) {
-    const imagePicker = useMediaPicker("gallery", "All");
+export default function ({profileImage, size, showAccessory, visibleName, onAccessoryPress}: AvatarProps) {
     return (
         <Avatar
             size={size}
             source={
                 profileImage
                     ? {
-                          uri: imagePicker.result || profileImage,
+                          uri: profileImage,
                       }
                     : undefined
             }
             rounded
             showAccessory={showAccessory}
-            onAccessoryPress={imagePicker.select}
+            onAccessoryPress={onAccessoryPress}
             accessory={{source: icon, backgroundColor: "#0000ff"}}
             title={visibleName
                 .split(" ")

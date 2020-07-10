@@ -1,13 +1,16 @@
-import React from "react";
-import {Body, Button, Container, Content, Header, Left, Text} from "native-base";
-import EditAvatar from "../components/EditAvatar";
+import React, {useState} from "react";
+import {ActionSheet, Body, Button, Card, Container, Content, Header, Left, Right, Root, Text} from "native-base";
 import makeStyles from "../utils/makeStyles";
-import {Col, Row, Grid} from "react-native-easy-grid";
+import {Col, Grid, Row} from "react-native-easy-grid";
 import InputBoxEditProfile from "../components/InputBoxEditProfile";
 import Icons8BackIcon from "../../assets/icons/BackIcon";
 import * as Localization from "expo-localization";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 import {t} from "i18n-js";
+import DatePicker from "../components/DatePicker";
+import Avatar from "../components/Avatar";
+import useMediaPicker from "../utils/useMediaPicker";
+
 const useStyles = makeStyles((theme) => ({
     avatarStyle: {
         marginTop: 20,
@@ -21,51 +24,146 @@ const useStyles = makeStyles((theme) => ({
         marginEnd: 40,
     },
     headerStyle: {
-        borderColor: "#FFFFFF",
         backgroundColor: "#FFFFFF",
     },
+    dateStyle: {
+        marginBottom: 20,
+        marginTop: 40,
+        marginStart: 40,
+        marginEnd: 40,
+    },
     forwardBackIconStyle: {
-        borderWidth: 0,
-        borderBottomWidth: 0,
+        // borderWidth: 0,
+        // borderBottomWidth: 0,
+        // flex: 1,
         backgroundColor: "#FFFFFF",
     },
     headerTextStyle: {
         fontFamily: theme.font.Body,
-        fontSize: 400,
+        fontSize: 20,
+    },
+    saveButtonStyleCol: {
+        marginBottom: 20,
+        marginTop: 40,
+        marginStart: 40,
+        marginEnd: 40,
+        height: 60,
+    },
+    saveButtonStyleCard: {
+        borderRadius: 15,
+        height: 60,
+        backgroundColor: theme.palette.primary,
+        padding: "5%",
+    },
+    saveButtonTextStyle: {
+        alignSelf: "center",
+        color: "#FFFFFF",
+        justifyContent: "center",
+        fontFamily: theme.font.Body,
+        fontSize: 20,
     },
 }));
 export default function () {
     const styles = useStyles();
+    const [profileImage, setProfileImage] = useState<string | undefined>();
+    const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
+    const {result, select} = useMediaPicker(cameraOrGallery || "gallery");
+    React.useEffect(() => {
+        setProfileImage(result);
+    }, [result]);
+
+    React.useEffect(() => {
+        if (cameraOrGallery) {
+            select().then(() => setCameraOrGallery(undefined));
+        }
+    }, [cameraOrGallery, select]);
+
     return (
-        <Container style={{backgroundColor: "#FFFFFF"}}>
-            <Header style={styles.headerStyle} noShadow>
-                <Left>
-                    <Button style={styles.forwardBackIconStyle} icon>
-                        {Localization.isRTL ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
-                    </Button>
-                </Left>
-                <Body style={styles.headerTextStyle}>
-                    <Text style={{fontWeight: "400"}}>{t("editProfile")} </Text>
-                </Body>
-            </Header>
-            <Content>
-                <Grid>
-                    <Row>
-                        <Col style={styles.avatarStyle}>
-                            <EditAvatar
-                                visibleName='Mohammad hassan Ebrahimi'
-                                size={100}
-                                profileImage='https://www.click2houston.com/resizer/hvJQ35-cEfZff8k5iehqeMw96rk=/1600x1066/smart/filters:format(jpeg):strip_exif(true):strip_icc(true):no_upscale(true):quality(65)/arc-anglerfish-arc2-prod-gmg.s3.amazonaws.com/public/B3XUSO65RNFTZGE6H3CWXZI5CQ.jpg'
-                            />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col style={styles.inputBoxEditProfileStyle}>
-                            <InputBoxEditProfile placeHolderMsg='helllloooo'></InputBoxEditProfile>
-                        </Col>
-                    </Row>
-                </Grid>
-            </Content>
-        </Container>
+        <Root>
+            <Container style={{backgroundColor: "#FFFFFF"}}>
+                <Header style={styles.headerStyle} noShadow>
+                    {/*<Content>*/}
+                    <Left style={{flex: 1, alignItems: "flex-start"}}>
+                        <Button style={styles.forwardBackIconStyle} icon transparent>
+                            {Localization.isRTL ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+                        </Button>
+                    </Left>
+                    <Body style={{flex: 1, alignItems: "center"}}>
+                        <Text style={styles.headerTextStyle}>{t("editProfile")} </Text>
+                    </Body>
+                    <Right style={{flex: 1}} />
+                </Header>
+                <Content>
+                    <Grid>
+                        <Row>
+                            <Col style={styles.avatarStyle}>
+                                <Avatar
+                                    visibleName='Mohammad hassan Ebrahimi'
+                                    size={100}
+                                    profileImage={profileImage}
+                                    showAccessory
+                                    onAccessoryPress={() => {
+                                        ActionSheet.show(
+                                            {
+                                                options: profileImage
+                                                    ? ["Camera", "Gallery", "delete"]
+                                                    : ["Camera", "Gallery"],
+                                            },
+                                            (index) => {
+                                                console.log(index);
+                                                switch (index) {
+                                                    case 0: {
+                                                        setCameraOrGallery("camera");
+                                                        break;
+                                                    }
+                                                    case 1: {
+                                                        setCameraOrGallery("gallery");
+                                                        break;
+                                                    }
+                                                    case 2: {
+                                                        setProfileImage(undefined);
+                                                        break;
+                                                    }
+                                                    default:
+                                                        break;
+                                                }
+                                            }
+                                        );
+                                    }}
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col style={styles.inputBoxEditProfileStyle}>
+                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col style={styles.dateStyle}>
+                                <DatePicker />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col style={styles.inputBoxEditProfileStyle}>
+                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col style={styles.inputBoxEditProfileStyle}>
+                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col style={styles.saveButtonStyleCol}>
+                                <Card style={styles.saveButtonStyleCard}>
+                                    <Text style={styles.saveButtonTextStyle}>Save</Text>
+                                    <Button transparent />
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Grid>
+                </Content>
+            </Container>
+        </Root>
     );
 }

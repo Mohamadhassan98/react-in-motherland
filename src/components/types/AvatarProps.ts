@@ -3,4 +3,5 @@ export interface AvatarProps {
     size?: "small" | "medium" | "large" | "xlarge" | number;
     showAccessory?: boolean;
     visibleName: string;
+    onAccessoryPress?: () => void;
 }

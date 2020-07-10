@@ -8,9 +8,10 @@ import initStrings from "./src/values/strings";
 import {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import {TourGuideProvider} from "rn-tourguide";
-import Test from "./src/components/Test";
+import DatePicker from "./src/components/DatePicker";
 import InputBoxEditProfile from "./src/components/InputBoxEditProfile";
 import EditProfile from "./src/pages/EditProfile";
+import CameraOrGallery from "./src/components/CameraOrGallery";
 
 const Stack = createStackNavigator();
 initStrings();
