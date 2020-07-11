@@ -1,17 +1,14 @@
 import React from "react";
-import {Body, Button, Container, Content, Left, Right, Text, View} from "native-base";
-import * as Localization from "expo-localization";
-import Forward from "../../assets/icons/ForwardIcon";
-import Back from "../../assets/icons/BackIcon";
+import {Button, Container, Content, Text} from "native-base";
 import {t} from "i18n-js";
 import MainHeader from "../components/MainHeader";
 import ColorPalette from "react-native-color-palette";
 import useTheme from "../values/theme";
 import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
 import {fromHsv, TriangleColorPicker} from "react-native-color-picker";
-import {loadAsync} from "expo-font";
 import {materialColors} from "../values/materialColors";
 import makeStyles from "../utils/makeStyles";
+import SimpleHeader from "../components/SimpleHeader";
 
 const useStyles = makeStyles((theme) => ({
     buttonText: {
@@ -23,44 +20,32 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({color}: {color: "primary" | "secondary"}) {
+export default function ({color}: {color: "Primary" | "Secondary"}) {
     const styles = useStyles();
     const theme = useTheme();
     const [selectedColor, setSelectedColor] = React.useState(theme.palette[color]);
-    const [loaded, setLoaded] = React.useState(false);
-    loadAsync({
-        Roboto_medium: require("../../assets/fonts/english-fonts/Roboto-Medium.ttf"),
-    }).then(() => setLoaded(true));
-    if (!loaded) {
-        return (
-            <View>
-                <Text>Loading fonts...</Text>
-            </View>
-        );
-    }
     return (
         <Container>
             <MainHeader size='collapsed'>
-                <Left>{Localization.isRTL ? <Forward /> : <Back />}</Left>
-                <Body>
-                    <Text>{t("primary")}</Text>
-                </Body>
-                <Right>
-                    <Button
-                        transparent
-                        onPress={() => {
-                            if (selectedColor !== theme.palette[color]) {
-                                if (color === "primary") {
-                                    theme.palette.setPrimary(selectedColor);
-                                } else {
-                                    theme.palette.setSecondary(selectedColor);
+                <SimpleHeader
+                    title={color}
+                    rightAdornment={
+                        <Button
+                            transparent
+                            onPress={() => {
+                                if (selectedColor !== theme.palette[color]) {
+                                    if (color === "Primary") {
+                                        theme.palette.setPrimary(selectedColor);
+                                    } else {
+                                        theme.palette.setSecondary(selectedColor);
+                                    }
                                 }
-                            }
-                        }}
-                    >
-                        <Text style={styles.buttonText}>{t("save")}</Text>
-                    </Button>
-                </Right>
+                            }}
+                        >
+                            <Text style={styles.buttonText}>{t("save")}</Text>
+                        </Button>
+                    }
+                />
             </MainHeader>
             <Content>
                 <ColorPalette

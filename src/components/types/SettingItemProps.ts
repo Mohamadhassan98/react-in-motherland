@@ -5,4 +5,5 @@ export interface SettingItemProps {
     scope: string;
     rightAdornment?: React.ReactElement;
     onClick?: (event: GestureResponderEvent) => void;
+    selected?: boolean;
 }

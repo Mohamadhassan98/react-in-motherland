@@ -4,6 +4,7 @@ import CommonColor from "../../native-base-theme/variables/commonColor";
 import {loader} from "../../assets/fonts/Loader";
 import fontTypes from "../../assets/fonts/FontTypes";
 import * as Localization from "expo-localization";
+import initStrings from "./strings";
 
 export interface Palette {
     Primary: string;
@@ -18,7 +19,8 @@ export interface Palette {
 
 export interface Localize {
     language: string;
-    setLanguage: (language: string | null) => void;
+    setLanguage: (language: string | null) => Promise<void>;
+    isSystemDefault: boolean;
 }
 
 export interface ColorTypes {
@@ -90,7 +92,8 @@ const ThemeContext = React.createContext<ThemeContextShape>({
     },
     localize: {
         language: "fa",
-        setLanguage: () => {},
+        setLanguage: async () => {},
+        isSystemDefault: true,
     },
 });
 
@@ -113,13 +116,16 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
         AsyncStorage.getItem("language").then((value) => {
             if (!value) {
                 setLanguage(Localization.isRTL ? "fa" : "en");
+                initStrings(Localization.isRTL ? "fa" : "en");
                 AsyncStorage.setItem("language", "default");
                 return;
             }
             if (value !== "default") {
                 setLanguage(value);
+                initStrings(value);
             } else {
                 setLanguage(null);
+                initStrings(Localization.isRTL ? "fa" : "en");
             }
         });
         loader().then(() => {
@@ -136,17 +142,12 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
     const setSecond = (value: string) => {
         AsyncStorage.setItem("secondary", value).then(() => setSecondary(value));
     };
-    const setLocale = (value: string | null) => {
-        AsyncStorage.setItem("language", value ? value : "default").then(() =>
-            setLanguage(value !== "default" ? value : null)
-        );
+    const setLocale = async (value: string | null) => {
+        initStrings(value ? value : Localization.isRTL ? "fa" : "en");
+        await AsyncStorage.setItem("language", value ? value : "default");
+        I18nManager.allowRTL((!!value && value === "fa") || (!value && Localization.isRTL));
+        I18nManager.forceRTL((!!value && value === "fa") || (!value && Localization.isRTL));
     };
-    React.useEffect(() => {
-        // I18nManager.allowRTL(language ? language === "fa" : Localization.isRTL);
-        // I18nManager.forceRTL(language ? language === "fa" : Localization.isRTL);
-        I18nManager.allowRTL(true);
-        I18nManager.forceRTL(true);
-    }, []);
     const palette = {
         Primary: primary,
         Secondary: secondary,
@@ -174,6 +175,7 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
     const localize = {
         language: language ? language : Localization.isRTL ? "fa" : "en",
         setLanguage: setLocale,
+        isSystemDefault: !language,
     };
     if (!loaded) {
         return null;

@@ -10,9 +10,9 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function ({scope, rightAdornment, onClick}: SettingItemProps) {
+export default function ({scope, rightAdornment, onClick, selected}: SettingItemProps) {
     return (
-        <ListItem button onPress={onClick} style={styles.item}>
+        <ListItem button onPress={onClick} style={styles.item} selected={selected}>
             <Left>
                 <Text>{t(scope)}</Text>
             </Left>

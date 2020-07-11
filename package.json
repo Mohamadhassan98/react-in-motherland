@@ -15,7 +15,10 @@
     "@react-navigation/stack": "^5.5.1",
     "expo": "~37.0.3",
     "expo-font": "~8.1.0",
+    "expo-image-picker": "~8.1.0",
     "expo-localization": "~8.1.0",
+    "expo-notifications": "~0.1.1",
+    "fiction-expo-restart": "^1.0.4",
     "i18n-js": "^3.7.0",
     "native-base": "^2.13.12",
     "react": "~16.9.0",
@@ -30,9 +33,7 @@
     "react-native-screens": "~2.2.0",
     "react-native-svg": "11.0.1",
     "react-native-web": "~0.11.7",
-    "rn-tourguide": "^2.4.1",
-    "expo-image-picker": "~8.1.0",
-    "expo-notifications": "~0.1.1"
+    "rn-tourguide": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

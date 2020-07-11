@@ -34,6 +34,11 @@ export default function initStrings(locale: string) {
             persian: "فارسی",
             systemDefault: "System default",
             editProfile: "Edit Profile",
+            languageChange: "Language change",
+            languageChanged:
+                "Language changed. For styles and configurations to change correctly, a restart is required",
+            restartNow: "Restart now",
+            later: "Later",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -63,6 +68,10 @@ export default function initStrings(locale: string) {
             persian: "فارسی",
             systemDefault: "پیش فرض دستگاه",
             language: "زبان",
+            languageChange: "تغییر زبان",
+            languageChanged: "زبان تغییر کرد. برای تغییر صحیح تنظیمات و ظاهر، شروع مجدد نیاز است.",
+            restartNow: "الان شروع مجدد کن.",
+            later: "باشه بعداً",
         },
     };
 
