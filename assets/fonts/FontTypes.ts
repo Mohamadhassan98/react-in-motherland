@@ -1,6 +1,4 @@
-import * as Localization from "expo-localization";
-
-export default {
+export default (locale: string) => ({
     // normal: string;
     // bold: string;
     // light: string;
@@ -12,16 +10,16 @@ export default {
     // lightItalic: string;
     // mediumItalic: string;
     // thinItalic: string;
-    Normal: Localization.isRTL ? "Shabnam" : "SegoeUI",
-    Bold: Localization.isRTL ? "ShabnamBold" : "SegoeUIBold",
-    Light: Localization.isRTL ? "ShabnamLight" : "SegoeUI",
-    Medium: Localization.isRTL ? "ShabnamMedium" : "SegoeUI",
-    Thin: Localization.isRTL ? "ShabnamThin" : "SegoeUI",
-    Italic: Localization.isRTL ? "Shabnam" : "SegoeUIItalic",
-    BoldItalic: Localization.isRTL ? "Shabnam" : "SegoeUIBoldItalic",
-    LightItalic: Localization.isRTL ? "Shabnam" : "SegoeUI",
-    MediumItalic: Localization.isRTL ? "Shabnam" : "SegoeUI",
-    ThinItalic: Localization.isRTL ? "Shabnam" : "SegoeUI",
+    Normal: locale === "fa" ? "Shabnam" : "SegoeUI",
+    Bold: locale === "fa" ? "ShabnamBold" : "SegoeUIBold",
+    Light: locale === "fa" ? "ShabnamLight" : "SegoeUI",
+    Medium: locale === "fa" ? "ShabnamMedium" : "SegoeUI",
+    Thin: locale === "fa" ? "ShabnamThin" : "SegoeUI",
+    Italic: locale === "fa" ? "Shabnam" : "SegoeUIItalic",
+    BoldItalic: locale === "fa" ? "Shabnam" : "SegoeUIBoldItalic",
+    LightItalic: locale === "fa" ? "Shabnam" : "SegoeUI",
+    MediumItalic: locale === "fa" ? "Shabnam" : "SegoeUI",
+    ThinItalic: locale === "fa" ? "Shabnam" : "SegoeUI",
     normal: {
         rtl: "Shabnam",
         ltr: "SegoeUI",
@@ -62,4 +60,4 @@ export default {
         rtl: "Shabnam",
         ltr: "SegoeUI",
     },
-};
+});
