@@ -39,6 +39,13 @@ export default function initStrings(locale: string) {
                 "Language changed. For styles and configurations to change correctly, a restart is required",
             restartNow: "Restart now",
             later: "Later",
+            Recent: "Recent",
+            People: "People",
+            lastSeenRecently: "last seen recently",
+            privateChannel: "private channel",
+            publicChannel: "public channel",
+            members: " members ",
+            newMessage: "New Message",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -72,6 +79,13 @@ export default function initStrings(locale: string) {
             languageChanged: "زبان تغییر کرد. برای تغییر صحیح تنظیمات و ظاهر، شروع مجدد نیاز است.",
             restartNow: "الان شروع مجدد کن.",
             later: "باشه بعداً",
+            Recent: "اخیرا",
+            People: "افراد",
+            lastSeenRecently: "آخرین بازدید اخیرا ",
+            privateChannel: "کانال خصوصی",
+            publicChannel: "کانال عمومی",
+            members: " عضو ",
+            newMessage: "پیام جدید",
         },
     };
 
@@ -79,3 +93,274 @@ export default function initStrings(locale: string) {
 
     i18n.fallbacks = true;
 }
+export let chatList = [
+    {
+        FirstName: "zahra",
+        LastName: "kamali",
+        message: "سلام زهرا خوبی ؟ چه خبر؟؟؟؟ ؟؟؟ ؟؟ ؟؟؟",
+        notification: 5,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        time: "3:43 pm",
+        id: 1,
+    },
+    {
+        FirstName: "behnaz",
+        LastName: "gh",
+        message: "hello zahra :))))))))))) )))))))))))))",
+        notification: "",
+        mute: true,
+        img: require("../../assets/avatar.jpg"),
+        time: "3:43 pm",
+        id: 2,
+    },
+    {
+        FirstName: "faezeh joon",
+        LastName: "",
+        message: "سلام؟خوبی ",
+        notification: 150,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        time: "3:43 pm",
+        id: 3,
+    },
+    {
+        FirstName: "ali",
+        LastName: "",
+        message: "سلام؟؟؟؟؟  سلام سلام سلام سلام سلام ",
+        notification: 150,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        time: "3:43 pm",
+        id: 4,
+    },
+    {
+        FirstName: "ali",
+        LastName: "",
+        message: "سلام؟؟؟؟؟  سلام سلام سلام سلام سلام ",
+        notification: 150,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        time: "3:45 pm",
+        id: 5,
+    },
+    {
+        FirstName: "ali",
+        LastName: "",
+        message: "سلام؟؟؟؟؟  سلام سلام سلام سلام سلام ",
+        notification: 150,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        time: "3:43 pm",
+        id: 6,
+    },
+    {
+        FirstName: "ali",
+        LastName: "",
+        message: "سلام؟؟؟؟؟  سلام سلام سلام سلام سلام ",
+        notification: 150,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        time: "3:43 pm",
+        id: 7,
+    },
+    {
+        FirstName: "ali",
+        LastName: "",
+        message: "سلام؟؟؟؟؟  سلام سلام سلام سلام سلام ",
+        notification: 150,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        time: "3:43 pm",
+        id: 8,
+    },
+    {
+        FirstName: "ali",
+        LastName: "",
+        message: "سلام؟؟؟؟؟  سلام سلام سلام سلام سلام ",
+        notification: "",
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        time: "4:00 pm",
+        id: 9,
+    },
+];
+export let Recent = [
+    {
+        FirstName: "zahra",
+        LastName: "kamali",
+        Description: "lastSeenRecently",
+        notification: 5,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        id: 1,
+    },
+    {
+        FirstName: "behnaz",
+        LastName: "",
+        Description: "lastSeenRecently",
+        notification: 5,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        id: 2,
+    },
+    {
+        FirstName: "ui",
+        LastName: "",
+        Description: "privateChannel",
+        notification: 5,
+        mute: true,
+        img: require("../../assets/avatar.jpg"),
+        id: 3,
+    },
+    {
+        FirstName: "تعامل انسان و کامپیوتر",
+        LastName: "",
+        Description: "publicChannel",
+        notification: 5,
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        id: 4,
+    },
+    {
+        FirstName: "elham",
+        LastName: "",
+        Description: "lastSeenRecently",
+        notification: "",
+        mute: false,
+        img: require("../../assets/avatar.jpg"),
+        id: 5,
+    },
+    {
+        FirstName: "دورهمی",
+        LastName: "",
+        Description: "members",
+        numberOfMembers: "12",
+        notification: "4",
+        mute: true,
+        img: require("../../assets/avatar.jpg"),
+        id: 6,
+    },
+];
+export let contactListA = [
+    {
+        FirstName: "abas",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 1,
+    },
+    {
+        FirstName: "ahmad",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 2,
+    },
+    {
+        FirstName: "ahmad",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 3,
+    },
+    {
+        FirstName: "ali",
+        LastName: "ahmadi",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 4,
+    },
+    {
+        FirstName: "ali",
+        LastName: "kamali",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 5,
+    },
+    {
+        FirstName: "arezoo",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 6,
+    },
+    {
+        FirstName: "azar",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 7,
+    },
+];
+
+export let contactListB = [
+    {
+        FirstName: "baba",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 8,
+    },
+    {
+        FirstName: "baran",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 9,
+    },
+];
+
+export let contactListF = [
+    {
+        FirstName: "faezeh joon",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 10,
+    },
+    {
+        FirstName: "fatemeh",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 11,
+    },
+];
+
+export let contactListH = [
+    {
+        FirstName: "hamid",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 12,
+    },
+];
+
+export let contactListFaAlef = [
+    {
+        FirstName: "الهام",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 13,
+    },
+];
+
+export let contactListFaBe = [
+    {
+        FirstName: "باران",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 14,
+    },
+    {
+        FirstName: "بهار",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 15,
+    },
+];

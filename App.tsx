@@ -8,7 +8,10 @@ import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import {TourGuideProvider} from "rn-tourguide";
 import LanguageSettings from "./src/pages/LanguageSettings";
-
+import SearchInMessenger from "./src/pages/SearchInMessenger";
+import addContact from "./src/pages/addContact";
+import NewMessage from "./src/pages/NewMessage";
+import MessengerPage from "./src/pages/MessengerPage";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -23,7 +26,7 @@ export default function App() {
                                 options={{
                                     headerShown: false,
                                 }}
-                                component={LanguageSettings}
+                                component={addContact}
                             />
                         </Stack.Navigator>
                     </NavigationContainer>
