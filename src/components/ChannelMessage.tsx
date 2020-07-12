@@ -1,13 +1,12 @@
 import React from "react";
-import {StyleSheet} from "react-native";
 import {Body, Button, Card, CardItem, Grid, Left, Row, Text, Thumbnail} from "native-base";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
 import commonColor from "../../native-base-theme/variables/commonColor";
-import * as Localization from "expo-localization";
 import Icons8LoveIcon from "../../assets/icons/LoveIcon";
 import Icons8CommentsIcon from "../../assets/icons/CommentsIcon";
+import makeStyles from "../utils/makeStyles";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
     body: {
         textAlign: "justify",
     },
@@ -29,10 +28,12 @@ const styles = StyleSheet.create({
     },
     username: {
         color: commonColor.brandLight,
-        textAlign: !Localization.isRTL ? "right" : "left",
+        textAlign: "left",
     },
-});
+}));
+
 export default function ({message, media, profileImage, profileUsername, date}: ChannelMessageProps) {
+    const styles = useStyles();
     return (
         <Card style={styles.bodyGrid}>
             <CardItem>
