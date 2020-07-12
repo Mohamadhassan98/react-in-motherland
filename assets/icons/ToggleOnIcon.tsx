@@ -6,7 +6,7 @@ import {SvgIconProps} from "./SvgIconProps";
 function ToggleOnIcon({style}: SvgIconProps) {
     return (
         <SvgIcon style={style}>
-            <Svg viewBox='-281 373 48 48'>
+            <Svg viewBox='-281 373 48 48' width='100%' height='100%'>
                 <Path
                     fill='#8bc34a'
                     d='M-270 408h26c6 0 11-4.9 11-11 0-6-4.9-11-11-11h-26c-6 0-11 4.9-11 11s4.9 11 11 11z'

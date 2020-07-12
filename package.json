@@ -39,8 +39,7 @@
     "react-native-screens": "~2.2.0",
     "react-native-svg": "11.0.1",
     "react-native-web": "~0.11.7",
-    "rn-tourguide": "^2.4.1",
-    "expo-asset": "~8.1.5"
+    "rn-tourguide": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
