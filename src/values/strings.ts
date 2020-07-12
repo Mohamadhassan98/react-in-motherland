@@ -39,6 +39,8 @@ export default function initStrings(locale: string) {
                 "Language changed. For styles and configurations to change correctly, a restart is required",
             restartNow: "Restart now",
             later: "Later",
+            memorySettings: "Memory Settings",
+            privacyAndSecurity: "Privacy And Security",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -72,6 +74,8 @@ export default function initStrings(locale: string) {
             languageChanged: "زبان تغییر کرد. برای تغییر صحیح تنظیمات و ظاهر، شروع مجدد نیاز است.",
             restartNow: "الان شروع مجدد کن.",
             later: "باشه بعداً",
+            memorySettings: "تنظیمات حافظه",
+            privacyAndSecurity: "حریم خصوصی و امنیت",
         },
     };
 
