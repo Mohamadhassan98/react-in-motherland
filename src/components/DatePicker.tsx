@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Container, Header, Content, DatePicker, Text, Button, View, Card, Left, Right, Body} from "native-base";
+import React from "react";
+import {Content, DatePicker, Text, Button, View, Card} from "native-base";
 import Icons8CalendarIcon from "../../assets/icons/CalendarIcon";
 export default function () {
     const [chosenDate, setChosenDate] = React.useState<Date>(new Date());
@@ -35,7 +35,9 @@ export default function () {
                     style={{height: "100%", width: "100%", paddingStart: 10, paddingEnd: 10}}
                 >
                     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-                        <Text style={{flexGrow: 1, display: "flex"}}>{chosenDate.toString().substr(4, 12)}</Text>
+                        <Text style={{flexGrow: 1, display: "flex", opacity: 0.3, textAlign: "left"}}>
+                            {chosenDate.toString().substr(4, 12)}
+                        </Text>
                         <Icons8CalendarIcon style={{height: 48, width: 48, display: "flex"}} />
                     </View>
                 </Button>

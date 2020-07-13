@@ -4,13 +4,13 @@ import makeStyles from "../utils/makeStyles";
 import {Col, Grid, Row} from "react-native-easy-grid";
 import InputBoxEditProfile from "../components/InputBoxEditProfile";
 import Icons8BackIcon from "../../assets/icons/BackIcon";
-import * as Localization from "expo-localization";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 import {t} from "i18n-js";
 import DatePicker from "../components/DatePicker";
 import Avatar from "../components/Avatar";
 import useMediaPicker from "../utils/useMediaPicker";
 import MainHeader from "../components/MainHeader";
+import useTheme from "../values/theme";
 
 const useStyles = makeStyles((theme) => ({
     avatarStyle: {
@@ -80,6 +80,8 @@ export default function () {
         }
     }, [cameraOrGallery, select]);
 
+    const theme = useTheme();
+
     return (
         <Root>
             <Container style={{backgroundColor: "#FFFFFF"}}>
@@ -87,7 +89,7 @@ export default function () {
                     {/*<Content>*/}
                     <Left style={{flex: 1, alignItems: "flex-start"}}>
                         <Button style={styles.forwardBackIconStyle} icon transparent>
-                            {Localization.isRTL ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+                            {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
                         </Button>
                     </Left>
                     <Body style={{flex: 1, alignItems: "center"}}>
@@ -137,7 +139,7 @@ export default function () {
                         </Row>
                         <Row>
                             <Col style={styles.inputBoxEditProfileStyle}>
-                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                                <InputBoxEditProfile placeHolderMsg={t("insertName")} />
                             </Col>
                         </Row>
                         <Row>
@@ -147,18 +149,18 @@ export default function () {
                         </Row>
                         <Row>
                             <Col style={styles.inputBoxEditProfileStyle}>
-                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                                <InputBoxEditProfile placeHolderMsg={t("insertBio")} />
                             </Col>
                         </Row>
                         <Row>
                             <Col style={styles.inputBoxEditProfileStyle}>
-                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                                <InputBoxEditProfile placeHolderMsg={t("insertUsername")} />
                             </Col>
                         </Row>
                         <Row>
                             <Col style={styles.saveButtonStyleCol}>
                                 <Card style={styles.saveButtonStyleCard}>
-                                    <Text style={styles.saveButtonTextStyle}>Save</Text>
+                                    <Text style={styles.saveButtonTextStyle}>{t("Save")}</Text>
                                     <Button transparent />
                                 </Card>
                             </Col>

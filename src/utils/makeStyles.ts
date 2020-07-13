@@ -1,14 +1,19 @@
-import useTheme, {Palette, ThemeContextShape} from "../values/theme";
+import useTheme, {Font, Localize, Palette} from "../values/theme";
 import {ImageStyle, TextStyle, ViewStyle} from "react-native";
 
 type NamedStyles<T> = {[P in keyof T]: ViewStyle | TextStyle | ImageStyle};
-type input<T> = (
-    theme: Omit<ThemeContextShape, "palette"> & {palette: Omit<Palette, "setPrimary" | "setSecondary">}
-) => NamedStyles<T>;
 
-export default function makeStyles<T extends NamedStyles<T> | NamedStyles<any>>(input: input<T>) {
+type paletteInput = Omit<Palette, "setPrimary" | "setSecondary">;
+
+type localizationInput = Omit<Localize, "setLanguage">;
+
+type fontInput = Font;
+
+type input<T> = (theme: {palette: paletteInput; localize: localizationInput; font: fontInput}) => NamedStyles<T> | T;
+
+export default function makeStyles<T extends NamedStyles<T> | NamedStyles<any>>(input: input<T>): () => T {
     return () => {
         const theme = useTheme();
-        return input(theme);
+        return input(theme) as T;
     };
 }
