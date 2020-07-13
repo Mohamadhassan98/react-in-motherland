@@ -47,6 +47,10 @@ export default function initStrings(locale: string) {
             viewAll: "view all",
             writeComment: "Write comment...",
             _justNow: "just now",
+            next: "next",
+            skip: "skip",
+            previous: "previous",
+            finish: "finish",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -88,6 +92,10 @@ export default function initStrings(locale: string) {
             viewAll: "نمایش همه",
             writeComment: "افزودن نظر...",
             _justNow: "همین الان",
+            next: "بعدی",
+            skip: "رد شدن",
+            previous: "قبلی",
+            finish: "اتمام",
         },
     };
 

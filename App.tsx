@@ -6,8 +6,7 @@ import getTheme from "./native-base-theme/components";
 import {StyleProvider} from "native-base";
 import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
-import {TourGuideProvider} from "rn-tourguide";
-import PostPage from "./src/pages/PostPage";
+import ExplorePostsPage from "./src/pages/ExplorePostsPage";
 
 const Stack = createStackNavigator();
 
@@ -15,19 +14,17 @@ export default function App() {
     return (
         <ThemeProvider>
             <ThemeConsumer>
-                <TourGuideProvider>
-                    <NavigationContainer>
-                        <Stack.Navigator>
-                            <Stack.Screen
-                                name='HomePage'
-                                options={{
-                                    headerShown: false,
-                                }}
-                                component={PostPage}
-                            />
-                        </Stack.Navigator>
-                    </NavigationContainer>
-                </TourGuideProvider>
+                <NavigationContainer>
+                    <Stack.Navigator>
+                        <Stack.Screen
+                            name='HomePage'
+                            options={{
+                                headerShown: false,
+                            }}
+                            component={ExplorePostsPage}
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
             </ThemeConsumer>
         </ThemeProvider>
     );
