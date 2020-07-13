@@ -1,5 +1,6 @@
 import React from "react";
-import {View, TouchableOpacity, Image, Text, Dimensions} from "react-native";
+import {TouchableOpacity, Image, Text, Dimensions} from "react-native";
+import {View} from "native-base";
 import {materialColors} from "../values/materialColors";
 import BackIcon from "../../assets/icons/BackIcon";
 const {width} = Dimensions.get("window");
@@ -9,7 +10,7 @@ export default (props: {onBackPressed?: () => void; onUserPressed: () => void; T
         <View
             style={{
                 width: width,
-                flex: 2,
+                flex: 0.75,
                 backgroundColor: materialColors[21],
             }}
         >
