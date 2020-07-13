@@ -13,6 +13,7 @@ import addContact from "./src/pages/addContact";
 import NewMessage from "./src/pages/NewMessage";
 import MessengerPage from "./src/pages/MessengerPage";
 import SearchInContacts from "./src/pages/SearchInContacts";
+import NewGroupAddPeople from "./src/pages/NewGroupAddPeople";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -27,7 +28,7 @@ export default function App() {
                             options={{
                                 headerShown: false,
                             }}
-                            component={NewMessage}
+                            component={NewGroupAddPeople}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>

@@ -75,6 +75,7 @@ export default function initStrings(locale: string) {
             previous: "previous",
             finish: "finish",
             NoResultsFound: "No results found",
+            newGroup: "New Group",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -144,6 +145,7 @@ export default function initStrings(locale: string) {
             Save: "ذحیره",
             Date: "تاریح",
             NoResultsFound: "نتیجه ای یافت نشد",
+            newGroup: "گروه جدید",
         },
     };
 
