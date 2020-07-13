@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: theme.font.Body,
         height: "100%",
         width: "100%",
+        opacity: 0.3,
     },
     cardStyle: {
         // borderColor: "#fcfcfc",

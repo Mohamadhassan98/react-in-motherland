@@ -9,6 +9,7 @@ import ExploreChannels from "../components/ExploreChannels";
 import SimpleHeader from "../components/SimpleHeader";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import makeStyles from "../utils/makeStyles";
+import {copilot} from "react-native-copilot";
 
 const useStyles = makeStyles((theme) => ({
     activeTab: {
@@ -25,10 +26,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+function ExplorePostsPage({
+    start,
+    copilotEvents,
+}: {
+    start: () => void;
+    copilotEvents?: {
+        on: (handlerName: string, callback: (step?: number) => void) => void;
+        off: (handlerName: string) => void;
+    };
+}) {
     const styles = useStyles();
     return (
-        <MainPageLayout active={1}>
+        <MainPageLayout active={1} start={start} copilotEvents={copilotEvents}>
             <MainHeader hasTabs size='collapsed'>
                 <SimpleHeader title='explore' rightAdornment={<Icons8SearchIcon />} />
             </MainHeader>
@@ -56,3 +66,10 @@ export default function () {
         </MainPageLayout>
     );
 }
+
+export default copilot({
+    animated: true,
+    overlay: "svg",
+    androidStatusBarVisible: true,
+    labels: {previous: t("previous"), next: t("next"), skip: t("skip"), finish: t("finish")},
+})(ExplorePostsPage as any);

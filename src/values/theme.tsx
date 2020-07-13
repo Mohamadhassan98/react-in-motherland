@@ -83,12 +83,12 @@ const ThemeContext = React.createContext<ThemeContextShape>({
         textSecondary: "#FFFFFF",
     },
     font: {
-        Body: fontTypes.Normal,
-        body: fontTypes,
-        Footer: fontTypes.Normal,
-        footer: fontTypes,
-        Header: fontTypes.Normal,
-        header: fontTypes,
+        Body: fontTypes("fa").Normal,
+        body: fontTypes("fa"),
+        Footer: fontTypes("fa").Normal,
+        footer: fontTypes("fa"),
+        Header: fontTypes("fa").Normal,
+        header: fontTypes("fa"),
     },
     localize: {
         language: "fa",
@@ -165,12 +165,12 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
         textSecondary: "#FFFFFF",
     };
     const font = {
-        Body: fontTypes.Normal,
-        body: fontTypes,
-        Footer: fontTypes.Normal,
-        footer: fontTypes,
-        Header: fontTypes.Normal,
-        header: fontTypes,
+        Body: fontTypes(language ? language : Localization.isRTL ? "fa" : "en").Normal,
+        body: fontTypes(language ? language : Localization.isRTL ? "fa" : "en"),
+        Footer: fontTypes(language ? language : Localization.isRTL ? "fa" : "en").Normal,
+        footer: fontTypes(language ? language : Localization.isRTL ? "fa" : "en"),
+        Header: fontTypes(language ? language : Localization.isRTL ? "fa" : "en").Normal,
+        header: fontTypes(language ? language : Localization.isRTL ? "fa" : "en"),
     };
     const localize = {
         language: language ? language : Localization.isRTL ? "fa" : "en",
