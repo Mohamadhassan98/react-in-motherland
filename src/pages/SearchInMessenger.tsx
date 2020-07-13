@@ -20,6 +20,7 @@ import {
 } from "native-base";
 import {t} from "i18n-js";
 import {Recent, peopleList} from "../values/strings";
+import SimpleHeader from "../components/SimpleHeader";
 
 const styles = StyleSheet.create({
     Info: {

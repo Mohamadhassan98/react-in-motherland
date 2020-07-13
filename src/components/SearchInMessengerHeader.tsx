@@ -1,34 +1,50 @@
-import React from "react";
-import {Col, Icon, Text,Input} from "native-base";
+import React, {useState} from "react";
+import {Col, Icon, Text, Input} from "native-base";
 import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
+    backIcon: {
+        flex: 2,
+    },
     closeColumn: {
         flex: 2,
     },
-    backIcon: {
-        flex: 2,
+    closeIcon: {
+        alignSelf: "center",
     },
     searchColumn: {
         flexGrow: 8,
     },
-    closeIcon:{
-        alignSelf:'center',
-    }
 });
 
 export default function () {
+    const [Stext, setStext] = useState("");
+
     return (
         <>
-            <Col style={styles.closeColumn}>
-                <Icon name='md-close' style={styles.closeIcon}/>
-            </Col>
-            <Col style={styles.searchColumn}>
-                <Input  placeholder={t("search")}/>
-            </Col>
             <Col style={styles.backIcon}>
                 <Icon name='md-arrow-back' />
+            </Col>
+            <Col style={styles.searchColumn}>
+                <Input
+                    value={Stext}
+                    placeholder={t("search")}
+                    onChangeText={(event) => {
+                        setStext(event);
+                    }}
+                />
+            </Col>
+            <Col style={styles.closeColumn}>
+                {Stext !== "" && (
+                    <Icon
+                        style={styles.closeIcon}
+                        name='md-close'
+                        onPress={() => {
+                            setStext("");
+                        }}
+                    />
+                )}
             </Col>
         </>
     );
