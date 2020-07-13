@@ -10,6 +10,7 @@ import {TourGuideProvider} from "rn-tourguide";
 
 // pages
 import NewPost from "./src/pages/NewPost";
+import Notifications from "./src/pages/Notification";
 
 const Stack = createStackNavigator<NavigationPages>();
 
@@ -19,14 +20,9 @@ export default function App() {
             <ThemeConsumer>
                 <TourGuideProvider>
                     <NavigationContainer>
-                        <Stack.Navigator>
-                            <Stack.Screen
-                                name='NewPost'
-                                options={{
-                                    headerShown: false,
-                                }}
-                                component={NewPost}
-                            />
+                        <Stack.Navigator initialRouteName='Notifications'>
+                            <Stack.Screen name='NewPost' component={NewPost} />
+                            <Stack.Screen name='Notifications' component={Notifications} />
                         </Stack.Navigator>
                     </NavigationContainer>
                 </TourGuideProvider>

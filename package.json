@@ -40,6 +40,7 @@
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
     "react-native-svg": "11.0.1",
+    "react-native-vector-icons": "^7.0.0",
     "react-native-web": "~0.11.7",
     "rn-tourguide": "^2.4.1"
   },
