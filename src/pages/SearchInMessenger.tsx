@@ -251,6 +251,7 @@ export default function SearchInMessenger() {
                     </>
                 ) : (
                     <>
+                        {/*نتیجه ی سرچ*/}
                         <View style={styles.listItem}>
                             <View style={styles.avatar}>
                                 <Thumbnail source={require("../../assets/img_avatar2.png")} />
