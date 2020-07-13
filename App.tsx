@@ -7,6 +7,9 @@ import {StyleProvider} from "native-base";
 import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import ExplorePostsPage from "./src/pages/ExplorePostsPage";
+import SearchInMessenger from "./src/pages/SearchInMessenger";
+import addContact from "./src/pages/addContact";
+import NewMessage from "./src/pages/NewMessage";
 
 const Stack = createStackNavigator();
 
@@ -21,7 +24,7 @@ export default function App() {
                             options={{
                                 headerShown: false,
                             }}
-                            component={ExplorePostsPage}
+                            component={NewMessage}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
