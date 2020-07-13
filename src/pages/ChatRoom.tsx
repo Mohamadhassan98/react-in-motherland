@@ -1,31 +1,51 @@
-import React from "react";
+import React, {useState} from "react";
 import {Body, Container, Content, Footer} from "native-base";
 import Message from "../components/Message";
 import ChatRoomHeader from "../components/ChatRoomHeader";
 import SendMessageBox from "../components/SendMessageBox";
 import MainHeader from "../components/MainHeader";
+import {t} from "i18n-js";
+import {MessageProps} from "../components/types/MessageProps";
+import CommentCard from "../components/CommentCard";
 
 export default function () {
+    const initMessages: MessageProps[] = new Array(5).fill({
+        message: "سلام به روی ماهت",
+        type: "receive",
+        date: "10 : 32 AM",
+        showDate: true,
+    },);
+    const [messages, setMessages] = React.useState(initMessages);
     return (
         <Container>
-            {/*<MainHeader size='collapsed'>*/}
-            {/*    <ChatRoomHeader*/}
-            {/*        profileImage='https://static.independent.co.uk/s3fs-public/thumbnails/image/2020/06/15/20/donald-trump-cabinet-room-white-house.jpg'*/}
-            {/*        profileUsername='donald trump'*/}
-            {/*        status='online'*/}
-            {/*    />*/}
-            {/*</MainHeader>*/}
+            <MainHeader size='collapsed'>
+                <ChatRoomHeader
+                    profileImage='https://static.independent.co.uk/s3fs-public/thumbnails/image/2020/06/15/20/donald-trump-cabinet-room-white-house.jpg'
+                    profileUsername='donald trump'
+                    status='online'
+                />
+            </MainHeader>
             <Content>
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' showDate />
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' />
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' />
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' />
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' showDate />
+                {messages.map((value, index) => (
+                    <Message {...value} key={index} />
+                ))}
             </Content>
-
-            {/*<Footer>*/}
-            {/*    <SendMessageBox />*/}
-            {/*</Footer>*/}
+            <Footer style={{backgroundColor: "transparent"}}>
+                <SendMessageBox
+                    onSubmit={(message) => {
+                        setMessages((prevState) => [
+                            ...prevState,
+                            {
+                                message: message,
+                                date: "justNow",
+                                type: "send",
+                                showDate: true,
+                                seen: false,
+                            },
+                        ]);
+                    }}
+                />
+            </Footer>
         </Container>
     );
 }

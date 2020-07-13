@@ -7,6 +7,8 @@ import {StyleProvider} from "native-base";
 import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import ExplorePostsPage from "./src/pages/ExplorePostsPage";
+import ChatRoom from "./src/pages/ChatRoom";
+import LanguageSettings from "./src/pages/LanguageSettings";
 
 const Stack = createStackNavigator();
 
@@ -21,7 +23,7 @@ export default function App() {
                             options={{
                                 headerShown: false,
                             }}
-                            component={ExplorePostsPage}
+                            component={ChatRoom}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>

@@ -2,8 +2,10 @@ import React from "react";
 import {Path, Svg} from "react-native-svg";
 import {SvgIconProps} from "./SvgIconProps";
 import SvgIcon from "./SvgIcon";
+import useTheme from "../../src/values/theme";
 
 function Icons8SentIcon({style}: SvgIconProps) {
+    const theme = useTheme();
     return (
         <SvgIcon style={style}>
             <Svg width='100%' height='100%' viewBox='0 0 48 48'>

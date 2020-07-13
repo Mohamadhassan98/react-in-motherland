@@ -122,6 +122,7 @@ export default function initStrings(locale: string) {
             finish: "اتمام",
             Save: "ذحیره",
             Date: "تاریح",
+            online: "آنلاین",
         },
     };
 
