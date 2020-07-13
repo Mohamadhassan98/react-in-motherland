@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
 import {StyleSheet} from "react-native";
-import MessengerHeader from "../components/MessengerHeader";
+import AddContactHeader from "../components/addContactHeader";
 import {Container, Fab, Icon, View, Form, Item, Input, Label} from "native-base";
 import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-intl-phone-input";
 import Avatar from "../components/Avatar";
@@ -37,7 +37,7 @@ export default function addContact() {
     return (
         <MainPageLayout active={3}>
             <MainHeader size='collapsed'>
-                <MessengerHeader />
+                <AddContactHeader />
             </MainHeader>
             {/* Rest of code here */}
             <Container>

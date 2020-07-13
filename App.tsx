@@ -26,7 +26,7 @@ export default function App() {
                                 options={{
                                     headerShown: false,
                                 }}
-                                component={addContact}
+                                component={SearchInMessenger}
                             />
                         </Stack.Navigator>
                     </NavigationContainer>

@@ -71,7 +71,7 @@ export default function NewMessage() {
                     {contactListA.map((item, index) => (
                         <View style={styles.listItem}>
                             <View style={styles.Alphabet}>
-                                {index == 0 ? <Text style={styles.Alphabet}>A</Text> : <></>}
+                                {index === 0 ? <Text style={styles.Alphabet}>A</Text> : <></>}
                             </View>
                             <View style={styles.avatar}>
                                 <Thumbnail source={item.img} />
