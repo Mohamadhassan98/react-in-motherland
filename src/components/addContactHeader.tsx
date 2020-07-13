@@ -8,9 +8,9 @@ const styles = StyleSheet.create({
         flex: 2,
     },
     iconColumn: {
+        alignItems: "flex-end",
         flex: 2,
-        alignItems:'flex-end',
-        right:'10%'
+        right: "8%",
     },
     titleColumn: {
         flexGrow: 8,
@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
 export default function () {
     return (
         <>
-            <Col style={styles.emptyColumn} />
+            <Col style={styles.emptyColumn}>
+                <Icon name='md-arrow-back' />
+            </Col>
             <Col style={styles.titleColumn}>
-                <Text style={styles.titleTextAlign}>{t("chats")}</Text>
+                <Text style={styles.titleTextAlign}>{t("addContact")}</Text>
             </Col>
-            <Col style={styles.iconColumn}>
-                <Icon name='md-search' />
-            </Col>
+            <Col style={styles.iconColumn}></Col>
         </>
     );
 }

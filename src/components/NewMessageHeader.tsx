@@ -18,14 +18,22 @@ const styles = StyleSheet.create({
     titleTextAlign: {
         textAlign: "center",
     },
+    backColumn: {
+        flex: 2,
+    },
+    backIcon:{
+        alignSelf:'center',
+    }
 });
 
 export default function () {
     return (
         <>
-            <Col style={styles.emptyColumn} />
+            <Col style={styles.backColumn}>
+                <Icon name='md-arrow-round-back' style={styles.backIcon}/>
+            </Col>
             <Col style={styles.titleColumn}>
-                <Text style={styles.titleTextAlign}>{t("chats")}</Text>
+                <Text style={styles.titleTextAlign}>{t("newMessage")}</Text>
             </Col>
             <Col style={styles.iconColumn}>
                 <Icon name='md-search' />
