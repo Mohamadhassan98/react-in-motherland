@@ -1,15 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import {StyleSheet} from "react-native";
-import {Body, Button, Card, CardItem, Grid, Left, Row, Text, Thumbnail} from "native-base";
+import {Body, Button, Card, CardItem, Col, Grid, Left, Right, Row, Text, Thumbnail} from "native-base";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
 import commonColor from "../../native-base-theme/variables/commonColor";
 import * as Localization from "expo-localization";
-import Icons8LoveIcon from "../../assets/icons/LoveIcon";
+import FilledIcons8LoveIcon from "../../assets/icons/FilledLoveIcon";
 import Icons8CommentsIcon from "../../assets/icons/CommentsIcon";
+import useTheme from "../values/theme";
+import Icons8LoveIcon from "../../assets/icons/LoveIcon";
+import makeStyles from "../utils/makeStyles";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     body: {
-        textAlign: "justify",
+        paddingBottom: 10,
+        textAlign: "left",
     },
     bodyGrid: {
         width: "100%",
@@ -17,6 +21,10 @@ const styles = StyleSheet.create({
     bottomIcons: {
         height: 40,
         width: 40,
+    },
+    icon: {
+        paddingLeft: 17,
+        paddingRight: 17,
     },
     mediaImage: {
         borderRadius: 5,
@@ -27,22 +35,47 @@ const styles = StyleSheet.create({
         paddingEnd: 13,
         paddingStart: 60,
     },
+    row: {
+        //     alignSelf: theme.localize.language === "fa" ? "flex-end" : "flex-start",
+    },
     username: {
         color: commonColor.brandLight,
-        textAlign: !Localization.isRTL ? "right" : "left",
+        textAlign: "left",
     },
-});
-export default function ({message, media, profileImage, profileUsername, date}: ChannelMessageProps) {
+}));
+
+export default function ({message, media, profileImage, profileUsername, date, isLiked}: ChannelMessageProps) {
+    const styles = useStyles();
+    const {
+        localize: {language},
+    } = useTheme();
+    const [liked, setLiked] = useState<boolean>(isLiked);
     return (
         <Card style={styles.bodyGrid}>
             <CardItem>
-                <Left>
-                    <Thumbnail source={{uri: profileImage}} />
-                    <Body>
-                        <Text style={styles.username}>{profileUsername}</Text>
-                        <Text note>{date}</Text>
-                    </Body>
-                </Left>
+                {language === "fa" ? (
+                    <Left>
+                        <Thumbnail source={{uri: profileImage}} />
+                        <Body>
+                            <Text style={styles.username}>{profileUsername}</Text>
+                            <Text note>{date}</Text>
+                        </Body>
+                    </Left>
+                ) : (
+                    // <Right>
+                    //     <Thumbnail source={{uri: profileImage}}/>
+                    //     <Body>
+                    //         <Text style={styles.username}>{profileUsername}</Text>
+                    //         <Text note >{date}</Text>
+                    //     </Body>
+                    // </Right>
+                    <Grid>
+                        <Row>
+                            <Text style={styles.username}>{profileUsername}</Text>
+                            <Thumbnail source={{uri: profileImage}} />
+                        </Row>
+                    </Grid>
+                )}
             </CardItem>
             <CardItem style={styles.padding}>
                 <Grid>
@@ -50,19 +83,25 @@ export default function ({message, media, profileImage, profileUsername, date}: 
                         <Text style={styles.body}>{message}</Text>
                     </Row>
                     <Row>
-                        <Thumbnail square source={{uri: media}} style={styles.mediaImage} />
+                        <Thumbnail square source={{uri: media}} />
                     </Row>
                 </Grid>
             </CardItem>
-            <CardItem style={styles.padding}>
-                <Left>
-                    <Button transparent>
-                        <Icons8LoveIcon style={styles.bottomIcons} />
-                    </Button>
-                    <Button transparent>
-                        <Icons8CommentsIcon style={styles.bottomIcons} />
-                    </Button>
-                </Left>
+            <CardItem style={styles.icon}>
+                <Grid>
+                    <Row style={styles.row}>
+                        <Button transparent onPress={() => setLiked(!liked)}>
+                            {liked ? (
+                                <FilledIcons8LoveIcon style={styles.bottomIcons} />
+                            ) : (
+                                <Icons8LoveIcon style={styles.bottomIcons} />
+                            )}
+                        </Button>
+                        <Button transparent>
+                            <Icons8CommentsIcon style={styles.bottomIcons} />
+                        </Button>
+                    </Row>
+                </Grid>
             </CardItem>
         </Card>
     );

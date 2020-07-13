@@ -3,5 +3,6 @@ export interface ChannelMessageProps {
     message?: string,
     media?: string,
     profileImage: string,
-    profileUsername: string
+    profileUsername: string,
+    isLiked:boolean,
 }
