@@ -7,24 +7,22 @@ import {StyleProvider} from "native-base";
 import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import ExplorePostsPage from "./src/pages/ExplorePostsPage";
-import SearchInMessenger from "./src/pages/SearchInMessenger";
-import addContact from "./src/pages/addContact";
-import NewMessage from "./src/pages/NewMessage";
+import {RootStackParamList} from "./src/values/Routing";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
     return (
         <ThemeProvider>
             <ThemeConsumer>
                 <NavigationContainer>
-                    <Stack.Navigator>
+                    <Stack.Navigator initialRouteName='ExplorePostsPage'>
                         <Stack.Screen
-                            name='HomePage'
+                            name='Settings'
                             options={{
                                 headerShown: false,
                             }}
-                            component={NewMessage}
+                            component={ExplorePostsPage}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>

@@ -1,6 +1,6 @@
 import {SimpleUser} from "../../components/types/AvatarProps";
 
-export type PostPage = {
+export type PostPageProps = {
     datePublished: string;
     postMediaUri: string;
     postCaption: string;

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {ActionSheet, Body, Button, Card, Container, Content, Header, Left, Right, Root, Text} from "native-base";
+import {ActionSheet, Body, Button, Card, Container, Content, Left, Right, Root, Text} from "native-base";
 import makeStyles from "../utils/makeStyles";
 import {Col, Grid, Row} from "react-native-easy-grid";
 import InputBoxEditProfile from "../components/InputBoxEditProfile";
@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
     },
     inputBoxEditProfileStyle: {
-        // flex: 1,
         marginBottom: 10,
         marginTop: 10,
         marginStart: 40,
@@ -35,9 +34,6 @@ const useStyles = makeStyles((theme) => ({
         marginEnd: 40,
     },
     forwardBackIconStyle: {
-        // borderWidth: 0,
-        // borderBottomWidth: 0,
-        // flex: 1,
         backgroundColor: "#FFFFFF",
     },
     headerTextStyle: {
@@ -65,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 20,
     },
 }));
+
 export default function () {
     const styles = useStyles();
     const [profileImage, setProfileImage] = useState<string | undefined>();
