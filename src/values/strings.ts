@@ -48,6 +48,7 @@ export default function initStrings(locale: string) {
             newMessage: "New Message",
             addContact: "Add Contact",
             recent: "Recent",
+            messages: "Messages",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -90,6 +91,7 @@ export default function initStrings(locale: string) {
             newMessage: "پیام جدید",
             addContact: "افزودن مخاطب جدید",
             recent: "اخیرا",
+            messages: "پیام ها",
         },
     };
 

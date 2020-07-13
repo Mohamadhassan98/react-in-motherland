@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function () {
+export default function (props: {setSearchText: (text: string) => void}) {
     const [Stext, setStext] = useState("");
 
     return (
@@ -32,16 +32,18 @@ export default function () {
                     placeholder={t("search")}
                     onChangeText={(event) => {
                         setStext(event);
+                        props.setSearchText(event);
                     }}
                 />
             </Col>
             <Col style={styles.closeColumn}>
-                {Stext !== "" && (
+                {Stext.length > 0 && (
                     <Icon
                         style={styles.closeIcon}
                         name='md-close'
                         onPress={() => {
                             setStext("");
+                            props.setSearchText("");
                         }}
                     />
                 )}
