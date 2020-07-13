@@ -27,7 +27,7 @@ export default function App() {
                             options={{
                                 headerShown: false,
                             }}
-                            component={SearchInContacts}
+                            component={NewMessage}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
