@@ -9,6 +9,7 @@ import {fromHsv, TriangleColorPicker} from "react-native-color-picker";
 import {materialColors} from "../values/materialColors";
 import makeStyles from "../utils/makeStyles";
 import SimpleHeader from "../components/SimpleHeader";
+import {ChangeColorSimpleProps} from "./types/ChangeColorSimpleProps";
 
 const useStyles = makeStyles((theme) => ({
     buttonText: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({color}: {color: "Primary" | "Secondary"}) {
+export default function ({color}: ChangeColorSimpleProps) {
     const styles = useStyles();
     const theme = useTheme();
     const [selectedColor, setSelectedColor] = React.useState(theme.palette[color]);

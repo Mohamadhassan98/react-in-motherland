@@ -45,6 +45,106 @@ const useStyles = makeStyles((theme) => ({
 
 const CopilotView = walkthroughable(View);
 
+const SimpleFooter = ({active}: {active: number}) => {
+    const styles = useStyles();
+    return (
+        <Footer style={styles.footer}>
+            <FooterTab style={styles.footer}>
+                <View style={styles.buttonContainer}>
+                    <Button
+                        vertical
+                        style={active === 3 ? styles.activeButton : styles.button}
+                        textStyle={styles.textStyle}
+                    >
+                        <Icons8MessagingIcon style={styles.icon} />
+                    </Button>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <Button
+                        vertical
+                        style={active === 2 ? styles.activeButton : styles.button}
+                        textStyle={styles.textStyle}
+                    >
+                        <Icons8CaretakerIcon style={styles.icon} />
+                    </Button>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <Button
+                        vertical
+                        style={active === 1 ? styles.activeButton : styles.button}
+                        textStyle={styles.textStyle}
+                    >
+                        <Icons8TelescopeIcon style={styles.icon} />
+                    </Button>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <Button
+                        vertical
+                        style={active === 0 ? styles.activeButton : styles.button}
+                        textStyle={styles.textStyle}
+                    >
+                        <Icons8SettingsIcon style={styles.icon} />
+                    </Button>
+                </View>
+            </FooterTab>
+        </Footer>
+    );
+};
+
+const TourFooter = ({active}: {active: number}) => {
+    const styles = useStyles();
+    return (
+        <Footer style={styles.footer}>
+            <FooterTab style={styles.footer}>
+                <CopilotStep name='Messenger' order={1} text='Messenger is awful'>
+                    <CopilotView style={styles.buttonContainer}>
+                        <Button
+                            vertical
+                            style={active === 3 ? styles.activeButton : styles.button}
+                            textStyle={styles.textStyle}
+                        >
+                            <Icons8MessagingIcon style={styles.icon} />
+                        </Button>
+                    </CopilotView>
+                </CopilotStep>
+                <CopilotStep text='HomePage is amazing' name='HomePage' order={2}>
+                    <CopilotView style={styles.buttonContainer}>
+                        <Button
+                            vertical
+                            style={active === 2 ? styles.activeButton : styles.button}
+                            textStyle={styles.textStyle}
+                        >
+                            <Icons8CaretakerIcon style={styles.icon} />
+                        </Button>
+                    </CopilotView>
+                </CopilotStep>
+                <CopilotStep name='Explore' order={3} text='Nothing to say about Explore'>
+                    <CopilotView style={styles.buttonContainer}>
+                        <Button
+                            vertical
+                            style={active === 1 ? styles.activeButton : styles.button}
+                            textStyle={styles.textStyle}
+                        >
+                            <Icons8TelescopeIcon style={styles.icon} />
+                        </Button>
+                    </CopilotView>
+                </CopilotStep>
+                <CopilotStep name='Settings' order={4} text='Setting is famous'>
+                    <CopilotView style={styles.buttonContainer}>
+                        <Button
+                            vertical
+                            style={active === 0 ? styles.activeButton : styles.button}
+                            textStyle={styles.textStyle}
+                        >
+                            <Icons8SettingsIcon style={styles.icon} />
+                        </Button>
+                    </CopilotView>
+                </CopilotStep>
+            </FooterTab>
+        </Footer>
+    );
+};
+
 export default function ({
     children,
     active,
@@ -78,54 +178,7 @@ export default function ({
     return (
         <Container style={styles.container}>
             {children}
-            <Footer style={styles.footer}>
-                <FooterTab style={styles.footer}>
-                    <CopilotStep name='Messenger' order={1} text='Messenger is awful'>
-                        <CopilotView style={styles.buttonContainer}>
-                            <Button
-                                vertical
-                                style={active === 3 ? styles.activeButton : styles.button}
-                                textStyle={styles.textStyle}
-                            >
-                                <Icons8MessagingIcon style={styles.icon} />
-                            </Button>
-                        </CopilotView>
-                    </CopilotStep>
-                    <CopilotStep text='HomePage is amazing' name='HomePage' order={2}>
-                        <CopilotView style={styles.buttonContainer}>
-                            <Button
-                                vertical
-                                style={active === 2 ? styles.activeButton : styles.button}
-                                textStyle={styles.textStyle}
-                            >
-                                <Icons8CaretakerIcon style={styles.icon} />
-                            </Button>
-                        </CopilotView>
-                    </CopilotStep>
-                    <CopilotStep name='Explore' order={3} text='Nothing to say about Explore'>
-                        <CopilotView style={styles.buttonContainer}>
-                            <Button
-                                vertical
-                                style={active === 1 ? styles.activeButton : styles.button}
-                                textStyle={styles.textStyle}
-                            >
-                                <Icons8TelescopeIcon style={styles.icon} />
-                            </Button>
-                        </CopilotView>
-                    </CopilotStep>
-                    <CopilotStep name='Settings' order={4} text='Setting is famous'>
-                        <CopilotView style={styles.buttonContainer}>
-                            <Button
-                                vertical
-                                style={active === 0 ? styles.activeButton : styles.button}
-                                textStyle={styles.textStyle}
-                            >
-                                <Icons8SettingsIcon style={styles.icon} />
-                            </Button>
-                        </CopilotView>
-                    </CopilotStep>
-                </FooterTab>
-            </Footer>
+            {start ? <TourFooter active={active} /> : <SimpleFooter active={active} />}
         </Container>
     );
 }

@@ -7,7 +7,7 @@ import Menu, {MenuItem} from "react-native-material-menu";
 import {t} from "i18n-js";
 import Icons8MenuIcon from "../../assets/icons/MenuIcon";
 import Avatar from "../components/Avatar";
-import {PostPage} from "./types/PostPage";
+import {PostPageProps} from "./types/PostPageProps";
 import Icons8LoveIcon from "../../assets/icons/LoveIcon";
 import {CommentProps} from "../components/types/CommentProps";
 import CommentCard from "../components/CommentCard";
@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function (props: PostPage) {
+export default function (props: PostPageProps) {
     const menu = React.useRef<Menu | null>(null);
     const trump =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg";

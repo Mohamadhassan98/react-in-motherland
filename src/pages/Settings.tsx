@@ -1,16 +1,16 @@
 import React, {useState} from "react";
-import {Body, Button, Content, Left, List, ListItem, Right, Text, View} from "native-base";
+import {Body, Button, Content, Left, List, ListItem, Right, Text} from "native-base";
 import MainHeader from "../components/MainHeader";
 import SettingItem from "../components/SettingItem";
 import makeStyles from "../utils/makeStyles";
 import MainPageLayout from "../components/MainPageLayout";
-import * as Localization from "expo-localization";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 import Icons8BackIcon from "../../assets/icons/BackIcon";
 import {t} from "i18n-js";
 import useTheme from "../values/theme";
 import Icons8ToggleOffIcon from "../../assets/icons/ToggleOffIcon";
 import ToggleOnIcon from "../../assets/icons/ToggleOnIcon";
+
 const useStyles = makeStyles((theme) => ({
     primary: {
         backgroundColor: theme.palette.Primary,
@@ -25,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
         width: 20,
     },
     forwardBackIconStyle: {
-        // borderWidth: 0,
-        // borderBottomWidth: 0,
-        // flex: 1,
         backgroundColor: "#FFFFFF",
     },
     headerTextStyle: {
@@ -38,27 +35,40 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: theme.font.Body,
         fontSize: 12,
     },
+    flex: {
+        flex: 1,
+    },
+    itemsStart: {
+        alignItems: "flex-start",
+    },
+    itemsCenter: {
+        alignItems: "center",
+    },
+    icons: {
+        width: 48,
+        height: 48,
+    },
 }));
 
 export default function () {
     const styles = useStyles();
     const theme = useTheme();
-    const [showPostsByPopularity, setShowPostsByPopularity] = useState<boolean>(false);
-    const [optimizeImagesToSaveDate, setOptimizeImagesToSaveDate] = useState<boolean>(false);
-    const [privateAccount, setPrivateAccount] = useState<boolean>(false);
-    const [allowSaving, setAllowSaving] = useState<boolean>(false);
+    const [showPostsByPopularity, setShowPostsByPopularity] = useState(false);
+    const [optimizeImagesToSaveDate, setOptimizeImagesToSaveDate] = useState(false);
+    const [privateAccount, setPrivateAccount] = useState(false);
+    const [allowSaving, setAllowSaving] = useState(false);
     return (
         <MainPageLayout active={0}>
             <MainHeader size='collapsed'>
-                <Left style={{flex: 1, alignItems: "flex-start"}}>
+                <Left style={[styles.flex, styles.itemsStart]}>
                     <Button style={styles.forwardBackIconStyle} icon transparent>
                         {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
                     </Button>
                 </Left>
-                <Body style={{flex: 1, alignItems: "center"}}>
+                <Body style={[styles.flex, styles.itemsCenter]}>
                     <Text style={styles.headerTextStyle}>{t("settings")} </Text>
                 </Body>
-                <Right style={{flex: 1}} />
+                <Right style={styles.flex} />
             </MainHeader>
             <Content>
                 <List>
@@ -77,9 +87,9 @@ export default function () {
                                 }}
                             >
                                 {showPostsByPopularity ? (
-                                    <Icons8ToggleOffIcon style={{width: 48, height: 48}} />
+                                    <Icons8ToggleOffIcon style={styles.icons} />
                                 ) : (
-                                    <ToggleOnIcon style={{width: 48, height: 48}} />
+                                    <ToggleOnIcon style={styles.icons} />
                                 )}
                             </Button>
                         }
@@ -94,9 +104,9 @@ export default function () {
                                 }}
                             >
                                 {optimizeImagesToSaveDate ? (
-                                    <Icons8ToggleOffIcon style={{width: 48, height: 48}} />
+                                    <Icons8ToggleOffIcon style={styles.icons} />
                                 ) : (
-                                    <ToggleOnIcon style={{width: 48, height: 48}} />
+                                    <ToggleOnIcon style={styles.icons} />
                                 )}
                             </Button>
                         }
@@ -125,9 +135,9 @@ export default function () {
                                 }}
                             >
                                 {privateAccount ? (
-                                    <Icons8ToggleOffIcon style={{width: 48, height: 48}} />
+                                    <Icons8ToggleOffIcon style={styles.icons} />
                                 ) : (
-                                    <ToggleOnIcon style={{width: 48, height: 48}} />
+                                    <ToggleOnIcon style={styles.icons} />
                                 )}
                             </Button>
                         }
@@ -143,9 +153,9 @@ export default function () {
                                 }}
                             >
                                 {allowSaving ? (
-                                    <Icons8ToggleOffIcon style={{width: 48, height: 48}} />
+                                    <Icons8ToggleOffIcon style={styles.icons} />
                                 ) : (
-                                    <ToggleOnIcon style={{width: 48, height: 48}} />
+                                    <ToggleOnIcon style={styles.icons} />
                                 )}
                             </Button>
                         }
