@@ -6,26 +6,30 @@ import getTheme from "./native-base-theme/components";
 import {StyleProvider} from "native-base";
 import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
-import ExplorePostsPage from "./src/pages/ExplorePostsPage";
-import {RootStackParamList} from "./src/values/Routing";
+import {TourGuideProvider} from "rn-tourguide";
 
-const Stack = createStackNavigator<RootStackParamList>();
+// pages
+import NewPost from "./src/pages/NewPost";
+
+const Stack = createStackNavigator<NavigationPages>();
 
 export default function App() {
     return (
         <ThemeProvider>
             <ThemeConsumer>
-                <NavigationContainer>
-                    <Stack.Navigator initialRouteName='ExplorePostsPage'>
-                        <Stack.Screen
-                            name='Settings'
-                            options={{
-                                headerShown: false,
-                            }}
-                            component={ExplorePostsPage}
-                        />
-                    </Stack.Navigator>
-                </NavigationContainer>
+                <TourGuideProvider>
+                    <NavigationContainer>
+                        <Stack.Navigator>
+                            <Stack.Screen
+                                name='NewPost'
+                                options={{
+                                    headerShown: false,
+                                }}
+                                component={NewPost}
+                            />
+                        </Stack.Navigator>
+                    </NavigationContainer>
+                </TourGuideProvider>
             </ThemeConsumer>
         </ThemeProvider>
     );

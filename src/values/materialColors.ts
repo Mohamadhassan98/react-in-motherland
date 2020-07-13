@@ -18,6 +18,10 @@ export const materialColors = [
     "#795548",
     "#9E9E9E",
     "#607D8B",
+    "#888888",
+    "#FFFFFF",
+    "#ea2e38",
+    "#4f4f4f",
 ];
 
 export function getMaterialColor(selector: number) {
