@@ -7,12 +7,11 @@ import {StyleProvider} from "native-base";
 import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import {TourGuideProvider} from "rn-tourguide";
-import PostPage from "./src/pages/PostPage";
-import EditProfile from "./src/pages/EditProfile";
-import LanguageSettings from "./src/pages/LanguageSettings";
-import Settings from "./src/pages/Settings";
 
-const Stack = createStackNavigator();
+// pages
+import NewPost from "./src/pages/NewPost";
+
+const Stack = createStackNavigator<NavigationPages>();
 
 export default function App() {
     return (
@@ -22,11 +21,11 @@ export default function App() {
                     <NavigationContainer>
                         <Stack.Navigator>
                             <Stack.Screen
-                                name='HomePage'
+                                name='NewPost'
                                 options={{
                                     headerShown: false,
                                 }}
-                                component={Settings}
+                                component={NewPost}
                             />
                         </Stack.Navigator>
                     </NavigationContainer>

@@ -60,6 +60,7 @@ export default function initStrings(locale: string) {
             Save: "Save",
             Date: "Date",
             _justNow: "just now",
+            "What's in your mind?": "What's in your mind?",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -114,6 +115,7 @@ export default function initStrings(locale: string) {
             _justNow: "همین الان",
             Save: "ذحیره",
             Date: "تاریح",
+            "What's in your mind?": "چ چیزی در ذهن دارید؟",
         },
     };
 
