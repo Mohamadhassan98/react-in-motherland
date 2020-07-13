@@ -8,6 +8,11 @@ import useTheme, {ThemeProvider} from "./src/values/theme";
 import platform from "./native-base-theme/variables/platform";
 import ExplorePostsPage from "./src/pages/ExplorePostsPage";
 import {RootStackParamList} from "./src/values/Routing";
+import SearchInMessenger from "./src/pages/SearchInMessenger";
+import addContact from "./src/pages/addContact";
+import NewMessage from "./src/pages/NewMessage";
+import MessengerPage from "./src/pages/MessengerPage";
+import SearchInContacts from "./src/pages/SearchInContacts";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -22,7 +27,7 @@ export default function App() {
                             options={{
                                 headerShown: false,
                             }}
-                            component={ExplorePostsPage}
+                            component={SearchInContacts}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>

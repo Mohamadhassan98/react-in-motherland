@@ -74,6 +74,7 @@ export default function initStrings(locale: string) {
             skip: "skip",
             previous: "previous",
             finish: "finish",
+            NoResultsFound: "No results found",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -142,6 +143,7 @@ export default function initStrings(locale: string) {
             finish: "اتمام",
             Save: "ذحیره",
             Date: "تاریح",
+            NoResultsFound: "نتیجه ای یافت نشد",
         },
     };
 
