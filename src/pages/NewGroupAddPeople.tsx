@@ -1,32 +1,14 @@
 import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {StyleSheet} from "react-native";
+import {TouchableOpacity, ScrollView, StyleSheet, TouchableWithoutFeedback} from "react-native";
 import NewMessageHeader from "../components/NewMessageHeader";
 import {Container, Content, Button, Thumbnail, Text, View, Fab, Icon} from "native-base";
-import {
-    contactListA,
-    contactListB,
-    contactListF,
-    contactListH,
-    contactListFaAlef,
-    contactListFaBe,
-} from "../values/strings";
-import {t} from "i18n-js";
+import {contactList} from "../values/strings";
+import {l, t} from "i18n-js";
 import NewGroupAddPeopleHeader from "../components/NewGroupAddPeopleHeader";
 
 const styles = StyleSheet.create({
-    Alphabet: {
-        alignContent: "center",
-        alignItems: "center",
-        //backgroundColor: "red",
-        display: "flex",
-        fontSize: 30,
-        justifyContent: "center",
-        marginBottom: "1.8%",
-        textAlign: "center",
-        width: "22%",
-    },
     FAB: {
         backgroundColor: "#81e38f",
     },
@@ -37,7 +19,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         marginLeft: "2%",
-        width: "55%",
+        width: "78%",
     },
     InfoR: {
         borderBottomWidth: 1,
@@ -51,6 +33,38 @@ const styles = StyleSheet.create({
     avatar: {
         width: "15%",
     },
+    choose: {
+        alignItems: "center",
+        backgroundColor: "#3aba07",
+        borderColor: "white",
+        borderRadius: 25,
+        borderWidth: 1,
+        display: "flex",
+        end: "1%",
+        height: 20,
+        justifyContent: "center",
+        position: "absolute",
+        top: "65%",
+        width: 20,
+    },
+    chooseIcone: {
+        color: "#fff",
+        fontSize: 20,
+    },
+    chooseM: {
+        backgroundColor: "#f9f9f9",
+        display: "flex",
+        flexDirection: "row",
+        // height: 30,
+        //marginBottom: "2%",
+        //marginTop: "2%",
+        width: "100%",
+    },
+    chooseText: {
+        marginBottom: "2%",
+        marginStart: "5%",
+        marginTop: "2%",
+    },
     listItem: {
         alignItems: "flex-end",
         display: "flex",
@@ -59,6 +73,30 @@ const styles = StyleSheet.create({
         //marginBottom: "3%",
         width: "100%",
         marginTop: "2%",
+    },
+    people: {
+        alignItems: "center",
+        // backgroundColor: "red",
+        display: "flex",
+        width: 80,
+    },
+    remove: {
+        alignItems: "center",
+        backgroundColor: "#3aba07",
+        borderColor: "white",
+        borderRadius: 25,
+        borderWidth: 1,
+        display: "flex",
+        end: "10%",
+        height: 20,
+        justifyContent: "center",
+        position: "absolute",
+        top: "50%",
+        width: 20,
+    },
+    removeIcone: {
+        color: "#fff",
+        fontSize: 20,
     },
     result: {
         display: "flex",
@@ -80,6 +118,7 @@ const styles = StyleSheet.create({
 export default function NewMessage() {
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
+    const [List, setList] = useState(contactList);
     return (
         <MainPageLayout active={3}>
             <MainHeader size='collapsed'>
@@ -87,7 +126,70 @@ export default function NewMessage() {
             </MainHeader>
             {/* Rest of code here */}
             <Container>
-                <Content></Content>
+                <Content>
+                    <ScrollView horizontal={true}>
+                        {List.map(
+                            (item, index) =>
+                                item.choose === true && (
+                                    <View style={styles.people}>
+                                        <Thumbnail source={item.img} />
+                                        <Text style={{marginTop: "5%", fontSize: 13}}>{item.FirstName}</Text>
+                                        <View style={styles.remove}>
+                                            <Icon
+                                                name='md-close'
+                                                style={styles.removeIcone}
+                                                onPress={() =>
+                                                    setList((prev) =>
+                                                        prev.map((value1, index1) =>
+                                                            index1 !== index
+                                                                ? value1
+                                                                : {...value1, choose: !value1.choose}
+                                                        )
+                                                    )
+                                                }
+                                            />
+                                        </View>
+                                    </View>
+                                )
+                        )}
+                    </ScrollView>
+                    <View style={{width: "100%", height: 10}} />
+                    <View style={styles.chooseM}>
+                        <Text style={styles.chooseText}>{t("chooseMembers")}</Text>
+                    </View>
+
+                    {List.map((item, index) => (
+                        <TouchableWithoutFeedback
+                            key={item.id}
+                            onPress={() =>
+                                setList((prev) =>
+                                    prev.map((value1, index1) =>
+                                        index1 !== index ? value1 : {...value1, choose: !value1.choose}
+                                    )
+                                )
+                            }
+                        >
+                            <View style={styles.listItem} key={item.id}>
+                                <View style={styles.avatar}>
+                                    <Thumbnail source={item.img} />
+
+                                    {item.choose === true && (
+                                        <View style={styles.choose}>
+                                            <Icon name='md-checkmark' style={styles.chooseIcone} />
+                                        </View>
+                                    )}
+                                </View>
+
+                                <View style={styles.Info}>
+                                    <Text style={styles.text}>{`${item.FirstName} ${item.LastName}`}</Text>
+                                    <Text note style={styles.textLastSeen}>
+                                        {t(item.LastSeen)}
+                                    </Text>
+                                </View>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    ))}
+                </Content>
             </Container>
         </MainPageLayout>
     );

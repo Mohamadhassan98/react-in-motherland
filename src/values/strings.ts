@@ -76,6 +76,7 @@ export default function initStrings(locale: string) {
             finish: "finish",
             NoResultsFound: "No results found",
             newGroup: "New Group",
+            chooseMembers: "Choose members",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -146,6 +147,7 @@ export default function initStrings(locale: string) {
             Date: "تاریح",
             NoResultsFound: "نتیجه ای یافت نشد",
             newGroup: "گروه جدید",
+            chooseMembers: "اعضا را انتخاب کنید",
         },
     };
 
@@ -518,5 +520,63 @@ export let peopleList = [
         mute: true,
         messageNumber: 3,
         id: 6,
+    },
+];
+export let contactList = [
+    {
+        FirstName: "باران",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 1,
+        choose: false,
+    },
+    {
+        FirstName: "zahra",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/img_avatar2.png"),
+        id: 2,
+        choose: false,
+    },
+    {
+        FirstName: "behnaz",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 3,
+        choose: false,
+    },
+    {
+        FirstName: "maman",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 4,
+        choose: false,
+    },
+    {
+        FirstName: "baba",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 5,
+        choose: false,
+    },
+    {
+        FirstName: "faezeh",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/avatar.jpg"),
+        id: 6,
+        choose: false,
+    },
+    {
+        FirstName: "sara",
+        LastName: "",
+        LastSeen: "lastSeenRecently",
+        img: require("../../assets/img_avatar2.png"),
+        id: 7,
+        choose: false,
     },
 ];
