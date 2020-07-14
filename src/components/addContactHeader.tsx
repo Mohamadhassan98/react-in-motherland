@@ -57,7 +57,7 @@ export default function () {
                 {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
             </Col>
             <Col style={styles.titleColumn}>
-                <Text style={styles.titleTextAlign}>{t("newMessage")}</Text>
+                <Text style={styles.titleTextAlign}>{t("addContact")}</Text>
             </Col>
             <Col style={styles.iconColumn}></Col>
         </>

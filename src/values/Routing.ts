@@ -14,6 +14,7 @@ import {HomeProps} from "../pages/types/HomeProps";
 import {LoginProps} from "../pages/types/LoginProps";
 import {AddContactProps} from "../pages/types/AddContactProps";
 import {NewMessageProps} from "../pages/types/NewMessageProps";
+import {MessengerPageProps} from "../pages/types/MessengerPageProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -31,6 +32,7 @@ export type RootStackParamList = {
     Login: LoginProps;
     AddContact: AddContactProps;
     NewMessage: NewMessageProps;
+    MessengerPage: MessengerPageProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;

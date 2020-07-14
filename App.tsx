@@ -19,6 +19,7 @@ import EditProfile from "./src/pages/EditProfile";
 import Login from "./src/pages/Login";
 import addContact from "./src/pages/addContact";
 import NewMessage from "./src/pages/NewMessage";
+import MessengerPage from "./src/pages/MessengerPage";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -28,7 +29,7 @@ export default function App() {
             <ThemeConsumer>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName='AddContact'
+                        initialRouteName='NewMessage'
                         screenOptions={{headerShown: false, gestureDirection: "horizontal"}}
                     >
                         <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
@@ -40,6 +41,7 @@ export default function App() {
                         <Stack.Screen name='Login' component={Login} />
                         <Stack.Screen name='AddContact' component={addContact} />
                         <Stack.Screen name='NewMessage' component={NewMessage} />
+                        <Stack.Screen name='MessengerPage' component={MessengerPage} />
                         <Stack.Screen
                             name='PostPage'
                             component={PostPage}
