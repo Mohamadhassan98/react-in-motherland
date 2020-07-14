@@ -3,6 +3,7 @@ import {Content, Row, Text, View} from "native-base";
 import {t} from "i18n-js";
 import ExplorePosts from "./ExplorePosts";
 import {StyleSheet} from "react-native";
+import {PersonalPagePostsProps} from "./types/PersonalPagePostsProps";
 
 const styles = StyleSheet.create({
     primary: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function () {
+export default function ({navigation}: PersonalPagePostsProps) {
     return (
         <View style={styles.primary}>
             <Row style={styles.title}>
@@ -21,7 +22,7 @@ export default function () {
             </Row>
             <Row>
                 <Content>
-                    <ExplorePosts />
+                    <ExplorePosts navigation={navigation} />
                 </Content>
             </Row>
         </View>

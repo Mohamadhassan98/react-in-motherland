@@ -9,6 +9,7 @@ import CommonColors from "../../native-base-theme/variables/commonColor";
 import ExplorePosts from "../components/ExplorePosts";
 import ExploreChannels from "../components/ExploreChannels";
 import makeStyles from "../utils/makeStyles";
+import {StackNavigator} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     activeTab: {
@@ -35,14 +36,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+export default function ({navigation}: StackNavigator<"ExploreSearch">) {
     const styles = useStyles();
     return (
-        <MainPageLayout active={1}>
+        <MainPageLayout active={1} navigation={navigation}>
             <MainHeader size='collapsed' hasTabs style={styles.header}>
                 <Grid>
                     <Row>
-                        <SimpleHeader title='search' />
+                        <SimpleHeader title='search' navigation={navigation} />
                     </Row>
                     <Row>
                         <Item underline style={styles.search}>
@@ -64,7 +65,7 @@ export default function () {
                 </Tab>
                 <Tab heading={t("pages")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
-                        <ExplorePosts />
+                        <ExplorePosts navigation={navigation} />
                     </Content>
                 </Tab>
             </Tabs>

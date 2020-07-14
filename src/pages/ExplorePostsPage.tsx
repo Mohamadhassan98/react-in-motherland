@@ -1,7 +1,7 @@
 import React from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {Content, Tab, Tabs} from "native-base";
+import {Content, Tab, Tabs, Button} from "native-base";
 import {t} from "i18n-js";
 import ExplorePosts from "../components/ExplorePosts";
 import CommonColors from "../../native-base-theme/variables/commonColor";
@@ -10,6 +10,8 @@ import SimpleHeader from "../components/SimpleHeader";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import makeStyles from "../utils/makeStyles";
 import {copilot} from "react-native-copilot";
+import {StackNavigator} from "../values/Routing";
+import {CopilotTypes} from "../components/types/copilotTypes";
 
 const useStyles = makeStyles((theme) => ({
     activeTab: {
@@ -26,21 +28,26 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ExplorePostsPage({
-    start,
-    copilotEvents,
-}: {
-    start: () => void;
-    copilotEvents?: {
-        on: (handlerName: string, callback: (step?: number) => void) => void;
-        off: (handlerName: string) => void;
-    };
-}) {
+function ExplorePostsPage({navigation, start, copilotEvents}: StackNavigator<"ExplorePostsPage"> & CopilotTypes) {
     const styles = useStyles();
     return (
-        <MainPageLayout active={1} start={start} copilotEvents={copilotEvents}>
+        <MainPageLayout active={1} navigation={navigation} copilotEvents={copilotEvents} start={start}>
             <MainHeader hasTabs size='collapsed'>
-                <SimpleHeader title='explore' rightAdornment={<Icons8SearchIcon />} />
+                <SimpleHeader
+                    title='explore'
+                    rightAdornment={
+                        <Button
+                            transparent
+                            onPress={() => {
+                                navigation.navigate("ExploreSearch");
+                            }}
+                        >
+                            <Icons8SearchIcon />
+                        </Button>
+                    }
+                    hideBack
+                    navigation={navigation}
+                />
             </MainHeader>
             <Tabs
                 tabContainerStyle={styles.tabContainer}
@@ -49,7 +56,7 @@ function ExplorePostsPage({
             >
                 <Tab heading={t("allPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
-                        <ExplorePosts />
+                        <ExplorePosts navigation={navigation} />
                     </Content>
                 </Tab>
                 <Tab heading={t("channelPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
@@ -59,7 +66,7 @@ function ExplorePostsPage({
                 </Tab>
                 <Tab heading={t("pages")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
-                        <ExplorePosts />
+                        <ExplorePosts navigation={navigation} />
                     </Content>
                 </Tab>
             </Tabs>
