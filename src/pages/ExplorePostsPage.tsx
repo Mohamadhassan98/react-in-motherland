@@ -11,6 +11,7 @@ import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import makeStyles from "../utils/makeStyles";
 import {copilot} from "react-native-copilot";
 import {StackNavigator} from "../values/Routing";
+import {CopilotTypes} from "../components/types/copilotTypes";
 
 const useStyles = makeStyles((theme) => ({
     activeTab: {
@@ -27,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ExplorePostsPage({navigation}: StackNavigator<"ExplorePostsPage">) {
+function ExplorePostsPage({navigation, start, copilotEvents}: StackNavigator<"ExplorePostsPage"> & CopilotTypes) {
     const styles = useStyles();
     return (
-        <MainPageLayout active={1} navigation={navigation}>
+        <MainPageLayout active={1} navigation={navigation} copilotEvents={copilotEvents} start={start}>
             <MainHeader hasTabs size='collapsed'>
                 <SimpleHeader title='explore' rightAdornment={<Icons8SearchIcon />} hideBack navigation={navigation} />
             </MainHeader>

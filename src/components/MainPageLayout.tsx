@@ -57,56 +57,54 @@ const SimpleFooter = ({
 }) => {
     const styles = useStyles();
     return (
-        <Footer style={styles.footer}>
-            <FooterTab style={styles.footer}>
-                <View style={styles.buttonContainer}>
-                    <Button
-                        vertical
-                        style={active === 3 ? styles.activeButton : styles.button}
-                        textStyle={styles.textStyle}
-                    >
-                        <Icons8MessagingIcon style={styles.icon} />
-                    </Button>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <Button
-                        vertical
-                        style={active === 2 ? styles.activeButton : styles.button}
-                        textStyle={styles.textStyle}
-                    >
-                        <Icons8CaretakerIcon style={styles.icon} />
-                    </Button>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <Button
-                        vertical
-                        style={active === 1 ? styles.activeButton : styles.button}
-                        textStyle={styles.textStyle}
-                        onPress={() => {
-                            if (active !== 1) {
-                                navigation.replace("ExplorePostsPage");
-                            }
-                        }}
-                    >
-                        <Icons8TelescopeIcon style={styles.icon} />
-                    </Button>
-                </View>
-                <View style={styles.buttonContainer}>
-                    <Button
-                        vertical
-                        style={active === 0 ? styles.activeButton : styles.button}
-                        textStyle={styles.textStyle}
-                        onPress={() => {
-                            if (active !== 0) {
-                                navigation.replace("Settings");
-                            }
-                        }}
-                    >
-                        <Icons8SettingsIcon style={styles.icon} />
-                    </Button>
-                </View>
-            </FooterTab>
-        </Footer>
+        <>
+            <View style={styles.buttonContainer}>
+                <Button
+                    vertical
+                    style={active === 3 ? styles.activeButton : styles.button}
+                    textStyle={styles.textStyle}
+                >
+                    <Icons8MessagingIcon style={styles.icon} />
+                </Button>
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button
+                    vertical
+                    style={active === 2 ? styles.activeButton : styles.button}
+                    textStyle={styles.textStyle}
+                >
+                    <Icons8CaretakerIcon style={styles.icon} />
+                </Button>
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button
+                    vertical
+                    style={active === 1 ? styles.activeButton : styles.button}
+                    textStyle={styles.textStyle}
+                    onPress={() => {
+                        if (active !== 1) {
+                            navigation.replace("ExplorePostsPage");
+                        }
+                    }}
+                >
+                    <Icons8TelescopeIcon style={styles.icon} />
+                </Button>
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button
+                    vertical
+                    style={active === 0 ? styles.activeButton : styles.button}
+                    textStyle={styles.textStyle}
+                    onPress={() => {
+                        if (active !== 0) {
+                            navigation.replace("Settings");
+                        }
+                    }}
+                >
+                    <Icons8SettingsIcon style={styles.icon} />
+                </Button>
+            </View>
+        </>
     );
 };
 
@@ -119,74 +117,72 @@ const TourFooter = ({
 }) => {
     const styles = useStyles();
     return (
-        <Footer style={styles.footer}>
-            <FooterTab style={styles.footer}>
-                <CopilotStep name='Messenger' order={1} text='Messenger is awful'>
-                    <CopilotView style={styles.buttonContainer}>
-                        <Button
-                            vertical
-                            style={active === 3 ? styles.activeButton : styles.button}
-                            textStyle={styles.textStyle}
-                            onPress={() => {
-                                if (active !== 3) {
-                                    // navigateTo()
-                                }
-                            }}
-                        >
-                            <Icons8MessagingIcon style={styles.icon} />
-                        </Button>
-                    </CopilotView>
-                </CopilotStep>
-                <CopilotStep text='HomePage is amazing' name='HomePage' order={2}>
-                    <CopilotView style={styles.buttonContainer}>
-                        <Button
-                            vertical
-                            style={active === 2 ? styles.activeButton : styles.button}
-                            textStyle={styles.textStyle}
-                            onPress={() => {
-                                if (active !== 2) {
-                                    //    navigateTo()
-                                }
-                            }}
-                        >
-                            <Icons8CaretakerIcon style={styles.icon} />
-                        </Button>
-                    </CopilotView>
-                </CopilotStep>
-                <CopilotStep name='Explore' order={3} text='Nothing to say about Explore'>
-                    <CopilotView style={styles.buttonContainer}>
-                        <Button
-                            vertical
-                            style={active === 1 ? styles.activeButton : styles.button}
-                            textStyle={styles.textStyle}
-                            onPress={() => {
-                                if (active !== 1) {
-                                    navigation.replace("ExplorePostsPage");
-                                }
-                            }}
-                        >
-                            <Icons8TelescopeIcon style={styles.icon} />
-                        </Button>
-                    </CopilotView>
-                </CopilotStep>
-                <CopilotStep name='Settings' order={4} text='Setting is famous'>
-                    <CopilotView style={styles.buttonContainer}>
-                        <Button
-                            vertical
-                            style={active === 0 ? styles.activeButton : styles.button}
-                            textStyle={styles.textStyle}
-                            onPress={() => {
-                                if (active !== 0) {
-                                    navigation.replace("Settings");
-                                }
-                            }}
-                        >
-                            <Icons8SettingsIcon style={styles.icon} />
-                        </Button>
-                    </CopilotView>
-                </CopilotStep>
-            </FooterTab>
-        </Footer>
+        <>
+            <CopilotStep name='Messenger' order={1} text='Messenger is awful'>
+                <CopilotView style={styles.buttonContainer}>
+                    <Button
+                        vertical
+                        style={active === 3 ? styles.activeButton : styles.button}
+                        textStyle={styles.textStyle}
+                        onPress={() => {
+                            if (active !== 3) {
+                                // navigateTo()
+                            }
+                        }}
+                    >
+                        <Icons8MessagingIcon style={styles.icon} />
+                    </Button>
+                </CopilotView>
+            </CopilotStep>
+            <CopilotStep text='HomePage is amazing' name='HomePage' order={2}>
+                <CopilotView style={styles.buttonContainer}>
+                    <Button
+                        vertical
+                        style={active === 2 ? styles.activeButton : styles.button}
+                        textStyle={styles.textStyle}
+                        onPress={() => {
+                            if (active !== 2) {
+                                //    navigateTo()
+                            }
+                        }}
+                    >
+                        <Icons8CaretakerIcon style={styles.icon} />
+                    </Button>
+                </CopilotView>
+            </CopilotStep>
+            <CopilotStep name='Explore' order={3} text='Nothing to say about Explore'>
+                <CopilotView style={styles.buttonContainer}>
+                    <Button
+                        vertical
+                        style={active === 1 ? styles.activeButton : styles.button}
+                        textStyle={styles.textStyle}
+                        onPress={() => {
+                            if (active !== 1) {
+                                navigation.replace("ExplorePostsPage");
+                            }
+                        }}
+                    >
+                        <Icons8TelescopeIcon style={styles.icon} />
+                    </Button>
+                </CopilotView>
+            </CopilotStep>
+            <CopilotStep name='Settings' order={4} text='Setting is famous'>
+                <CopilotView style={styles.buttonContainer}>
+                    <Button
+                        vertical
+                        style={active === 0 ? styles.activeButton : styles.button}
+                        textStyle={styles.textStyle}
+                        onPress={() => {
+                            if (active !== 0) {
+                                navigation.replace("Settings");
+                            }
+                        }}
+                    >
+                        <Icons8SettingsIcon style={styles.icon} />
+                    </Button>
+                </CopilotView>
+            </CopilotStep>
+        </>
     );
 };
 
@@ -210,11 +206,15 @@ export default function ({children, active, start, copilotEvents, navigation}: M
     return (
         <Container style={styles.container}>
             {children}
-            {start ? (
-                <TourFooter active={active} navigation={navigation} />
-            ) : (
-                <SimpleFooter active={active} navigation={navigation} />
-            )}
+            <Footer style={styles.footer}>
+                <FooterTab style={styles.footer}>
+                    {start ? (
+                        <TourFooter active={active} navigation={navigation} />
+                    ) : (
+                        <SimpleFooter active={active} navigation={navigation} />
+                    )}
+                </FooterTab>
+            </Footer>
         </Container>
     );
 }
