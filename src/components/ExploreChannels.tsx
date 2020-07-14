@@ -21,6 +21,7 @@ export default function () {
             "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg",
         profileUsername: "Donald Trump",
         media: "https://www.animalfactsencyclopedia.com/images/animalextremeclose-up-racoon.jpg",
+        isLiked:false
     });
     return (
         <View style={styles.grid}>

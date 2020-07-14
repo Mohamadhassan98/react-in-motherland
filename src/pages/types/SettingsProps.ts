@@ -1,1 +1,1 @@
-export interface SettingsProps {}
+export type SettingsProps = undefined;

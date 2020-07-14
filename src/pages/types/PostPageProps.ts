@@ -6,5 +6,5 @@ export type PostPageProps = {
     postCaption: string;
     likes: number;
     shares: number;
-    comments: (SimpleUser & {datePublished: string})[];
+    comments: (SimpleUser & {datePublished: string; body: string})[];
 } & SimpleUser;

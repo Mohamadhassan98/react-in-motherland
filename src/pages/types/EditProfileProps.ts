@@ -1,1 +1,1 @@
-export interface EditProfileProps {}
+export type EditProfileProps = undefined;

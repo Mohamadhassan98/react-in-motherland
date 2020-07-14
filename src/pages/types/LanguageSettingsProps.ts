@@ -1,1 +1,1 @@
-export interface LanguageSettingsProps {}
+export type LanguageSettingsProps = undefined;

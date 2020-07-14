@@ -23,6 +23,7 @@ export default function initStrings(locale: string) {
             primary: "primary",
             secondary: "secondary",
             save: "save",
+            resetToDefault: "Reset to default",
             chosenColor: "chosen color:",
             chooseOneOfThese: "Choose one of these colors:",
             orCustomizeIt: "Or customize it...",
@@ -54,6 +55,7 @@ export default function initStrings(locale: string) {
             messages: "Messages",
             generalSettings: "General Settings",
             privacyAndSecurity: "Privacy And Security",
+            languageSettings: "Language settings",
             optimizeImageToSaveData: "Optimize Image To Save Data",
             showPostsByPopularity: "Show Posts By Popularity",
             privateAccount: "Private Account",
@@ -70,6 +72,9 @@ export default function initStrings(locale: string) {
             Save: "Save",
             Date: "Date",
             _justNow: "just now",
+            _tenMinutesAgo: "10 mins ago",
+            _3MinutesAgo: "3 mins ago",
+            "What's in your mind?": "What's in your mind?",
             next: "next",
             skip: "skip",
             previous: "previous",
@@ -83,6 +88,7 @@ export default function initStrings(locale: string) {
             lastName: "Last name",
             description: "Description",
             groupName: "Group name",
+            login: "login",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -101,13 +107,14 @@ export default function initStrings(locale: string) {
             messageBoxPlaceHolder: "پیام خود را وارد کنید...",
             colorSettings: "تنظیمات رنگ",
             save: "ذخیره",
+            resetToDefault: "بازگشت به مقدار پیش فرض",
             chosenColor: "رنگ انتخابی:",
             chooseOneOfThese: `یکی از رنگ${zwnj}های زیر را انتخاب کنید.`,
             orCustomizeIt: "یا به سلیقه خود تغییر دهید...",
             editProfile: "ویرایش پروفایل",
             insertName: "نام خود را اینجا وارد نمایید",
             insertBio: "بیو را اینجا وارد نمایید",
-            insertUsername: "یوزنیم خود را اینجا وارد نمایید",
+            insertUsername: "نام کاربری خود را اینجا وارد نمایید",
             search: "جستجو",
             searchForTagsNamesAndContent: `جستجو برای اشخاص، برچسب${zwnj}ها و محتوا...`,
             _todayChannelPost: "امروز 03:24 بعد از ظهر",
@@ -119,6 +126,7 @@ export default function initStrings(locale: string) {
             languageChanged: "زبان تغییر کرد. برای تغییر صحیح تنظیمات و ظاهر، شروع مجدد نیاز است.",
             restartNow: "الان شروع مجدد کن.",
             later: "باشه بعداً",
+            login: "ورود",
             Recent: "اخیرا",
             People: "افراد",
             lastSeenRecently: "آخرین بازدید اخیرا ",
@@ -130,13 +138,14 @@ export default function initStrings(locale: string) {
             recent: "اخیرا",
             messages: "پیام ها",
             generalSettings: "تنظیمات عمومی",
+            languageSettings: "تنظیمات زبان",
             privacyAndSecurity: "حریم خصوصی و امنیت",
             showPostsByPopularity: "نمایش پست بر اساس محبوبیت",
             optimizeImageToSaveData: "بهینه سازی تصویر برای ذخیره داده ها",
             privateAccount: "حساب خصوصی",
             privateAccountNote: "دیگران برای دنبال کردن شما نیاز به اجازه دارند",
             allowSaving: "اجازه ی ذخیره سازی",
-            allowSavingNote: "دیگران می توانند پست های شما را ذحیره کنند",
+            allowSavingNote: "دیگران می توانند پست های شما را ذخیره کنند",
             post: "پست",
             report: "گزارش",
             reportedSuccessfully: "با موفقیت گزارش شد. ممنونیم.",
@@ -145,11 +154,9 @@ export default function initStrings(locale: string) {
             viewAll: "نمایش همه",
             writeComment: "افزودن نظر...",
             _justNow: "همین الان",
-            next: "بعدی",
-            skip: "رد شدن",
-            previous: "قبلی",
-            finish: "اتمام",
-            Save: "ذحیره",
+            _tenMinutesAgo: "10 دقیقه پیش",
+            _3MinutesAgo: "3 دقیقه پیش",
+            Save: "ذخیره",
             Date: "تاریح",
             NoResultsFound: "نتیجه ای یافت نشد",
             newGroup: "گروه جدید",
@@ -160,6 +167,12 @@ export default function initStrings(locale: string) {
             lastName: "نام خانوادگی",
             description: "توضیحات",
             groupName: "نام گروه",
+            next: "بعدی",
+            skip: "رد شدن",
+            previous: "قبلی",
+            finish: "اتمام",
+            "What's in your mind?": "چ چیزی در ذهن دارید؟",
+            online: "آنلاین",
         },
     };
 
@@ -167,6 +180,7 @@ export default function initStrings(locale: string) {
 
     i18n.fallbacks = true;
 }
+
 export let chatList = [
     {
         FirstName: "zahra",
@@ -356,6 +370,7 @@ export let Recent = [
         id: 10,
     },
 ];
+
 export let contactListA = [
     {
         FirstName: "abas",
@@ -478,6 +493,7 @@ export let contactListFaBe = [
         id: 15,
     },
 ];
+
 export let peopleList = [
     {
         firstName: "zahra",

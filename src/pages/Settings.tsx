@@ -10,6 +10,7 @@ import {t} from "i18n-js";
 import useTheme from "../values/theme";
 import Icons8ToggleOffIcon from "../../assets/icons/ToggleOffIcon";
 import ToggleOnIcon from "../../assets/icons/ToggleOnIcon";
+import {StackNavigator} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     primary: {
@@ -50,21 +51,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+export default function ({navigation}: StackNavigator<"Settings">) {
     const styles = useStyles();
     const theme = useTheme();
     const [showPostsByPopularity, setShowPostsByPopularity] = useState(false);
-    const [optimizeImagesToSaveDate, setOptimizeImagesToSaveDate] = useState(false);
-    const [privateAccount, setPrivateAccount] = useState(false);
+    const [optimizeImagesToSaveDate, setOptimizeImagesToSaveDate] = useState(true);
+    const [privateAccount, setPrivateAccount] = useState(true);
     const [allowSaving, setAllowSaving] = useState(false);
     return (
-        <MainPageLayout active={0}>
+        <MainPageLayout active={0} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <Left style={[styles.flex, styles.itemsStart]}>
-                    <Button style={styles.forwardBackIconStyle} icon transparent>
-                        {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
-                    </Button>
-                </Left>
+                <Left style={[styles.flex, styles.itemsStart]}></Left>
                 <Body style={[styles.flex, styles.itemsCenter]}>
                     <Text style={styles.headerTextStyle}>{t("settings")} </Text>
                 </Body>
@@ -78,46 +75,51 @@ export default function () {
                         </Left>
                     </ListItem>
                     <SettingItem
+                        onClick={() => {
+                            navigation.navigate("EditProfile");
+                        }}
+                        scope='editProfile'
+                        rightAdornment={theme.localize.language === "fa" ? <Icons8BackIcon /> : <Icons8ForwardIcon />}
+                    />
+                    <SettingItem
                         scope='showPostsByPopularity'
+                        onClick={() => {
+                            setShowPostsByPopularity((prevState) => !prevState);
+                        }}
                         rightAdornment={
-                            <Button
-                                transparent
-                                onPress={() => {
-                                    setShowPostsByPopularity((prevState) => !prevState);
-                                }}
-                            >
-                                {showPostsByPopularity ? (
-                                    <Icons8ToggleOffIcon style={styles.icons} />
-                                ) : (
-                                    <ToggleOnIcon style={styles.icons} />
-                                )}
-                            </Button>
+                            showPostsByPopularity ? (
+                                <Icons8ToggleOffIcon style={styles.icons} />
+                            ) : (
+                                <ToggleOnIcon style={styles.icons} />
+                            )
                         }
                     />
                     <SettingItem
                         scope='optimizeImageToSaveData'
+                        onClick={() => {
+                            setOptimizeImagesToSaveDate((prevState) => !prevState);
+                        }}
                         rightAdornment={
-                            <Button
-                                transparent
-                                onPress={() => {
-                                    setOptimizeImagesToSaveDate((prevState) => !prevState);
-                                }}
-                            >
-                                {optimizeImagesToSaveDate ? (
-                                    <Icons8ToggleOffIcon style={styles.icons} />
-                                ) : (
-                                    <ToggleOnIcon style={styles.icons} />
-                                )}
-                            </Button>
+                            optimizeImagesToSaveDate ? (
+                                <Icons8ToggleOffIcon style={styles.icons} />
+                            ) : (
+                                <ToggleOnIcon style={styles.icons} />
+                            )
                         }
                     />
                     <SettingItem
+                        scope='languageSettings'
+                        onClick={() => {
+                            navigation.navigate("LanguageSettings");
+                        }}
+                        rightAdornment={theme.localize.language === "fa" ? <Icons8BackIcon /> : <Icons8ForwardIcon />}
+                    />
+                    <SettingItem
                         scope='colorSettings'
-                        rightAdornment={
-                            <Button transparent onPress={() => {}}>
-                                {theme.localize.language === "fa" ? <Icons8BackIcon /> : <Icons8ForwardIcon />}
-                            </Button>
-                        }
+                        onClick={() => {
+                            navigation.navigate("ChangeColorSettings");
+                        }}
+                        rightAdornment={theme.localize.language === "fa" ? <Icons8BackIcon /> : <Icons8ForwardIcon />}
                     />
                     <ListItem itemDivider>
                         <Left>
@@ -127,37 +129,29 @@ export default function () {
                     <SettingItem
                         scope='privateAccount'
                         note='privateAccountNote'
+                        onClick={() => {
+                            setPrivateAccount((prevState) => !prevState);
+                        }}
                         rightAdornment={
-                            <Button
-                                transparent
-                                onPress={() => {
-                                    setPrivateAccount((prevState) => !prevState);
-                                }}
-                            >
-                                {privateAccount ? (
-                                    <Icons8ToggleOffIcon style={styles.icons} />
-                                ) : (
-                                    <ToggleOnIcon style={styles.icons} />
-                                )}
-                            </Button>
+                            privateAccount ? (
+                                <Icons8ToggleOffIcon style={styles.icons} />
+                            ) : (
+                                <ToggleOnIcon style={styles.icons} />
+                            )
                         }
                     />
                     <SettingItem
                         scope='allowSaving'
                         note='allowSavingNote'
+                        onClick={() => {
+                            setAllowSaving((prevState) => !prevState);
+                        }}
                         rightAdornment={
-                            <Button
-                                transparent
-                                onPress={() => {
-                                    setAllowSaving((prevState) => !prevState);
-                                }}
-                            >
-                                {allowSaving ? (
-                                    <Icons8ToggleOffIcon style={styles.icons} />
-                                ) : (
-                                    <ToggleOnIcon style={styles.icons} />
-                                )}
-                            </Button>
+                            allowSaving ? (
+                                <Icons8ToggleOffIcon style={styles.icons} />
+                            ) : (
+                                <ToggleOnIcon style={styles.icons} />
+                            )
                         }
                     />
                 </List>

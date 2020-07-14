@@ -1,11 +1,16 @@
-import React from "react";
-import {StyleSheet} from "react-native";
+import React, {useState} from "react";
+import {StyleSheet, TextInputProps} from "react-native";
 import {Button, Icon, Input, Item} from "native-base";
 import CommonColor from "../../native-base-theme/variables/commonColor";
 import {Col, Grid} from "react-native-easy-grid";
 import {t} from "i18n-js";
+import useTheme from "../values/theme";
+import makeStyles from "../utils/makeStyles";
+import Icons8SentIcon from "../../assets/icons/SentIcon";
+import {CommentProps} from "./types/CommentProps";
+import {MessageProps} from "./types/MessageProps";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     addButton: {
         paddingBottom: 0,
         paddingLeft: 0,
@@ -33,6 +38,11 @@ const styles = StyleSheet.create({
         height: 36,
         marginRight: 6,
     },
+    inputFont: {
+        fontFamily: theme.font.Body,
+        fontSize: 15,
+    },
+
     sendCol: {
         height: 40,
         paddingLeft: 0,
@@ -41,7 +51,7 @@ const styles = StyleSheet.create({
     },
     sendMessageButton: {
         alignItems: "center",
-        backgroundColor: CommonColor.brandPrimary,
+        backgroundColor: "#FFFFFF",
         borderRadius: 50,
         height: 40,
         justifyContent: "center",
@@ -52,22 +62,37 @@ const styles = StyleSheet.create({
         marginLeft: 0,
         marginRight: 0,
     },
-});
+    sentIcon: {
+        transform: [{scaleX: theme.localize.language === "fa" ? -1 : 1}],
+        width: 40,
+        height: 40,
+    },
+}));
 
-export default function () {
+export default function ({onSubmit}: {onSubmit: (comment: string) => void}) {
+    const styles = useStyles();
+    const [message, setMessage] = useState("");
     return (
         <Grid style={styles.grid}>
-            <Col style={styles.addCol}>
-                <Icon name='md-add' style={styles.addIcon} />
-            </Col>
             <Col>
                 <Item rounded style={styles.input}>
-                    <Input placeholder={t("messageBoxPlaceHolder")} />
+                    <Input
+                        value={message}
+                        onChangeText={(text) => setMessage(text)}
+                        placeholder={t("messageBoxPlaceHolder")}
+                        style={styles.inputFont}
+                    />
                 </Item>
             </Col>
             <Col style={styles.sendCol}>
-                <Button style={styles.sendMessageButton}>
-                    <Icon name='send' type='MaterialIcons' style={styles.sendMessageIcon} />
+                <Button
+                    transparent
+                    onPress={() => {
+                        onSubmit(message);
+                        setMessage("");
+                    }}
+                >
+                    <Icons8SentIcon style={styles.sentIcon} />
                 </Button>
             </Col>
         </Grid>

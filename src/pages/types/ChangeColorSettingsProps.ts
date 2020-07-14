@@ -1,1 +1,1 @@
-export interface ChangeColorSettingsProps {}
+export type ChangeColorSettingsProps = undefined;
