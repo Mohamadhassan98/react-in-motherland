@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        marginBottom: "10%",
+        marginBottom: "5%",
         marginTop: "10%",
     },
     containerStyle: {

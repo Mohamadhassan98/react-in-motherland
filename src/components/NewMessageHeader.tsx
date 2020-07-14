@@ -1,9 +1,15 @@
 import React, {useState} from "react";
-import {Col, Icon, Input, Text} from "native-base";
+import {Button, Col, Icon, Input, Text} from "native-base";
 import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
+import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
+import Icons8BackIcon from "../../assets/icons/BackIcon";
+import useTheme from "../values/theme";
+import makeStyles from "../utils/makeStyles";
+import Icons8SearchIcon from "../../assets/icons/SearchIcon";
+import DeleteIcon from "../../assets/icons/DeleteIcon";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     backColumn: {
         flex: 2,
     },
@@ -15,61 +21,72 @@ const styles = StyleSheet.create({
         flex: 2,
         right: "10%",
     },
-    closeIcon: {
-        alignSelf: "flex-end",
-    },
+    closeIcon: {},
     emptyColumn: {
         flex: 2,
     },
     iconColumn: {
-        alignItems: "flex-end",
-        flex: 2,
-        right: "10%",
+        flex: 1,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
     },
     searchColumn: {
         flexGrow: 8,
     },
     titleColumn: {
         flexGrow: 8,
+        justifyContent: "center",
+        alignItems: "center",
+        alignContent: "center",
     },
     titleTextAlign: {
         textAlign: "center",
+        fontFamily: theme.font.Header,
     },
-});
+}));
 
 export default function (props: {setSearchText: (text: string) => void}) {
     const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
+    const theme = useTheme();
+    const styles = useStyles();
     return (
         <>
             {search === false ? (
                 <>
                     <Col style={styles.backIcon}>
-                        <Icon name='md-arrow-back' />
+                        {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
                     </Col>
                     <Col style={styles.titleColumn}>
                         <Text style={styles.titleTextAlign}>{t("newMessage")}</Text>
                     </Col>
                     <Col style={styles.iconColumn}>
-                        <Icon
-                            name='md-search'
+                        <Button
+                            small
+                            transparent
                             onPress={() => {
                                 setSearch(true);
                             }}
-                        />
+                        >
+                            <Icons8SearchIcon />
+                        </Button>
                     </Col>
                 </>
             ) : (
                 <>
                     <Col style={styles.backIcon}>
-                        <Icon
-                            name='md-arrow-back'
+                        <Button
+                            small
+                            transparent
                             onPress={() => {
                                 setSearch(false);
                                 setStext("");
                                 props.setSearchText("");
                             }}
-                        />
+                        >
+                            {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+                        </Button>
                     </Col>
                     <Col style={styles.searchColumn}>
                         <Input
@@ -81,16 +98,17 @@ export default function (props: {setSearchText: (text: string) => void}) {
                             }}
                         />
                     </Col>
-                    <Col style={styles.closeColumn}>
+                    <Col style={styles.iconColumn}>
                         {Stext.length > 0 && (
-                            <Icon
-                                style={styles.closeIcon}
-                                name='md-close'
+                            <Button
+                                transparent
                                 onPress={() => {
                                     setStext("");
                                     props.setSearchText("");
                                 }}
-                            />
+                            >
+                                <DeleteIcon fill='#939191' />
+                            </Button>
                         )}
                     </Col>
                 </>

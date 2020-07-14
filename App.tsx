@@ -17,6 +17,8 @@ import Home from "./src/pages/Home";
 import {t} from "i18n-js";
 import EditProfile from "./src/pages/EditProfile";
 import Login from "./src/pages/Login";
+import addContact from "./src/pages/addContact";
+import NewMessage from "./src/pages/NewMessage";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -26,7 +28,7 @@ export default function App() {
             <ThemeConsumer>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName='ExplorePostsPage'
+                        initialRouteName='AddContact'
                         screenOptions={{headerShown: false, gestureDirection: "horizontal"}}
                     >
                         <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
@@ -36,6 +38,8 @@ export default function App() {
                         <Stack.Screen name='ChangeColorSettings' component={ChangeColorSettings} />
                         <Stack.Screen name='ChangeColorSimple' component={ChangeColorSimple} />
                         <Stack.Screen name='Login' component={Login} />
+                        <Stack.Screen name='AddContact' component={addContact} />
+                        <Stack.Screen name='NewMessage' component={NewMessage} />
                         <Stack.Screen
                             name='PostPage'
                             component={PostPage}
