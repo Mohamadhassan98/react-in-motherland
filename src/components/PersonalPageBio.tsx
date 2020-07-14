@@ -6,11 +6,11 @@ const styles = StyleSheet.create({
     row: {
         borderBottomColor: "#F1F1F1",
         borderBottomWidth: 1,
-        height: 90,
-        paddingBottom: 10,
+        maxHeight: 50,
+        minHeight: 30,
         paddingLeft: 15,
         paddingRight: 15,
-        paddingTop: 25,
+        paddingTop: 10,
     },
     text: {
         fontSize: 14,

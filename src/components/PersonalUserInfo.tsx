@@ -1,10 +1,12 @@
 import React from "react";
-import {Button, Col, Grid, Icon, Row, Text, Thumbnail} from "native-base";
+import {Button, Col, Row, Text, View} from "native-base";
 import {t} from "i18n-js";
-import {StyleSheet} from "react-native";
-import CommonColors from "../../native-base-theme/variables/commonColor";
+import makeStyles from "../utils/makeStyles";
+import NotificationIcon from "../../assets/icons/NotificationIcon";
+import Avatar from "./Avatar";
+import {PersonalUserInfoProps} from "./types/PersonalUserInfoProps";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     button: {
         alignItems: "center",
         borderRadius: 50,
@@ -16,12 +18,10 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 6,
-        height: "100%",
     },
     grid: {
-        borderBottomColor: "#F1F1F1",
-        borderBottomWidth: 1,
-        height: 80,
+        flexDirection: "row",
+        height: 100,
         paddingBottom: 6,
         paddingEnd: 9,
         paddingStart: 16,
@@ -32,56 +32,63 @@ const styles = StyleSheet.create({
         marginRight: 0,
     },
     image: {
-        flex: 2,
+        // flex: 1,
     },
     notification: {
         flex: 1,
         justifyContent: "flex-end",
     },
     numberText: {
-        color: CommonColors.brandSecondary,
-        fontSize: 10,
+        color: theme.palette.Secondary,
+        fontSize: 14,
+        flex: 1,
+        textAlign: "center",
     },
     otherText: {
-        fontSize: 10,
+        fontSize: 14,
+        flex: 1,
+        textAlign: "center",
     },
     title: {
         fontWeight: "bold",
     },
-});
+    flex1: {
+        flex: 1,
+    },
+    flex2: {
+        flex: 2,
+    },
+}));
 
-export default function () {
-    const fakeSrc =
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg";
+export default function ({followers, followings, posts, profileImage, visibleName}: PersonalUserInfoProps) {
+    const styles = useStyles();
     return (
-        <Grid style={styles.grid}>
-            <Col style={styles.image}>
-                <Thumbnail source={{uri: fakeSrc}} circular />
-            </Col>
+        <View style={styles.grid}>
+            <Avatar profileImage={profileImage} visibleName={visibleName} size={56} />
             <Col style={styles.content}>
                 <Row>
-                    <Text style={styles.title}>Donald Trump</Text>
+                    <Text style={styles.title}>{visibleName}</Text>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col style={styles.flex1}>
                         <Row>
-                            <Text style={styles.numberText}>6</Text>
+                            <Text style={styles.numberText}>{posts}</Text>
                         </Row>
                         <Row>
                             <Text style={styles.otherText}>{t("posts")}</Text>
                         </Row>
                     </Col>
-                    <Col>
+                    <Col style={styles.flex2}>
                         <Row>
-                            <Text style={styles.numberText}>12</Text>
+                            <Text style={styles.numberText}>{followers}</Text>
                         </Row>
                         <Row>
                             <Text style={styles.otherText}>{t("followers")}</Text>
                         </Row>
                     </Col>
-                    <Col>
+                    <Col style={styles.flex2}>
                         <Row>
-                            <Text style={styles.numberText}>24</Text>
+                            <Text style={styles.numberText}>{followings}</Text>
                         </Row>
                         <Row>
                             <Text style={styles.otherText}>{t("following")}</Text>
@@ -91,9 +98,9 @@ export default function () {
             </Col>
             <Col style={styles.notification}>
                 <Button icon style={styles.button}>
-                    <Icon name='md-notifications' style={styles.icon} />
+                    <NotificationIcon />
                 </Button>
             </Col>
-        </Grid>
+        </View>
     );
 }

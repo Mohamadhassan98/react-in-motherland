@@ -7,7 +7,9 @@ import {PersonalPagePostsProps} from "./types/PersonalPagePostsProps";
 
 const styles = StyleSheet.create({
     primary: {
-        height: 250,
+        // height: 250,
+        flexGrow: 1,
+        flex: 1,
     },
     title: {
         height: "auto",

@@ -57,7 +57,20 @@ export default function App() {
                                 }),
                             }}
                         />
-                        <Stack.Screen name='Home' component={Home} />
+                        <Stack.Screen
+                            name='Home'
+                            component={Home}
+                            initialParams={{
+                                profileImage:
+                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg",
+                                visibleName: "Donald Trump",
+                                bio: "I'm the dumbest U.S president ever.",
+                                posts: 6,
+                                followers: 12,
+                                followings: 24,
+                                you: true,
+                            }}
+                        />
                         <Stack.Screen name='EditProfile' component={EditProfile} />
                     </Stack.Navigator>
                 </NavigationContainer>

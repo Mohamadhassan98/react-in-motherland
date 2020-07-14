@@ -89,6 +89,7 @@ export default function initStrings(locale: string) {
             description: "Description",
             groupName: "Group name",
             login: "login",
+            suggestions: "Suggestions for you",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -177,6 +178,7 @@ export default function initStrings(locale: string) {
             emptyCode: "کد نمی تواند خالی باشد",
             wrongNumber: "شماره غلط است؟",
             continue: "ادامه",
+            suggestions: "پیشنهادهایی برای شما",
         },
     };
 
