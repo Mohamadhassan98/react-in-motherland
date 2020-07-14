@@ -8,11 +8,11 @@ import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-in
 import Avatar from "../components/Avatar";
 import {t} from "i18n-js";
 import {StackNavigator} from "../values/Routing";
-import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
+import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 
 const styles = StyleSheet.create({
     FAB: {
-        backgroundColor: "rgb(196,193,195)",
+        backgroundColor: "rgb(38,172,71)",
     },
     container: {
         alignItems: "center",
@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
     },
     flagStyle: {
         marginEnd: "10%",
+    },
+    icon: {
+        color: "white",
     },
 });
 
@@ -91,7 +94,7 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
                         }
                     }}
                 >
-                    <Icons8CheckmarkIcon />
+                    <Icons8ForwardIcon  />
                 </Fab>
             </Container>
         </MainPageLayout>
