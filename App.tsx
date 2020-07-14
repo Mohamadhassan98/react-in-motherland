@@ -26,7 +26,7 @@ export default function App() {
             <ThemeConsumer>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName='Login'
+                        initialRouteName='ExplorePostsPage'
                         screenOptions={{headerShown: false, gestureDirection: "horizontal"}}
                     >
                         <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
