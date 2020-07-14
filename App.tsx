@@ -9,6 +9,8 @@ import platform from "./native-base-theme/variables/platform";
 import ExplorePostsPage from "./src/pages/ExplorePostsPage";
 import ChatRoom from "./src/pages/ChatRoom";
 import LanguageSettings from "./src/pages/LanguageSettings";
+import ConfirmCodeField from "./src/components/ConfirmCodeField";
+import ConfirmCode from "./src/pages/ConfirmCode";
 
 const Stack = createStackNavigator();
 
@@ -23,7 +25,7 @@ export default function App() {
                             options={{
                                 headerShown: false,
                             }}
-                            component={ChatRoom}
+                            component={ConfirmCodeField}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>

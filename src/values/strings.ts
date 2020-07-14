@@ -123,6 +123,10 @@ export default function initStrings(locale: string) {
             Save: "ذحیره",
             Date: "تاریح",
             online: "آنلاین",
+            enterCode: "کد دریافتی را وارد کنید",
+            emptyCode: "کد نمی تواند خالی باشد",
+            wrongNumber: "شماره غلط است؟",
+            continue: "ادامه",
         },
     };
 

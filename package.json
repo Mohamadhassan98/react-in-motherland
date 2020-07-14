@@ -58,6 +58,7 @@
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-native": "latest",
     "prettier": "^2.0.5",
+    "react-native-confirmation-code-field": "^6.5.0",
     "typescript": "~3.8.3"
   },
   "private": true,
