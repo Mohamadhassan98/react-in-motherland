@@ -3,6 +3,7 @@ import {Button, Col, Container, Content, Grid, Input, Item, Root, Row, Text, Thu
 import makeStyles from "../utils/makeStyles";
 import login from "../../assets/login.png";
 import {t} from "i18n-js";
+import {StackNavigator} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     inputBoxEditProfileStyle: {
@@ -51,15 +52,15 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
     },
     thumbnail: {
-        width: 50,
-        height: 50,
+        width: 100,
+        height: 100,
     },
     mt250: {
         marginTop: 250,
     },
 }));
 
-export default function Login() {
+export default function Login({navigation, route}: StackNavigator<"Login">) {
     const styles = useStyles();
     const [phone, setPhone] = useState("+989");
 
@@ -70,7 +71,7 @@ export default function Login() {
                     <Grid style={styles.mt250}>
                         <Row>
                             <Col style={styles.itemsCenter}>
-                                <Thumbnail source={login} style={styles.thumbnail} />
+                                <Thumbnail square source={login} style={styles.thumbnail} />
                             </Col>
                         </Row>
                         <Row style={styles.mt50}>
@@ -96,7 +97,7 @@ export default function Login() {
                                 <Button
                                     style={styles.saveButtonStyleCard}
                                     transparent
-                                    onPress={() => console.log(phone)}
+                                    onPress={() => navigation.navigate("ConfirmCodeField", {number: "09132655936"})}
                                     disabled={phone.length !== 13}
                                 >
                                     <Text style={styles.saveButtonTextStyle}>{t("login")}</Text>

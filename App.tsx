@@ -11,7 +11,7 @@ import ExploreSearch from "./src/pages/ExploreSearch";
 import ExplorePostsPage from "./src/pages/ExplorePostsPage";
 import Settings from "./src/pages/Settings";
 import LanguageSettings from "./src/pages/LanguageSettings";
-import ConfirmCodeField from "./src/components/ConfirmCodeField";
+import ConfirmCodeField from "./src/pages/ConfirmCodeField";
 import ConfirmCode from "./src/pages/ConfirmCode";
 import ChangeColorSettings from "./src/pages/ChangeColorSettings";
 import ChangeColorSimple from "./src/pages/ChangeColorSimple";
@@ -32,37 +32,38 @@ export default function App() {
                         initialRouteName='Login'
                         screenOptions={{headerShown: false, gestureDirection: "horizontal"}}
                     >
-                        <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
-                        <Stack.Screen name='ExplorePostsPage' component={ExplorePostsPage} />
-                        <Stack.Screen name='Settings' component={Settings} />
+                        {/*<Stack.Screen name='ExploreSearch' component={ExploreSearch} />*/}
+                        {/*<Stack.Screen name='ExplorePostsPage' component={ExplorePostsPage} />*/}
+                        {/*<Stack.Screen name='Settings' component={Settings} />*/}
                         <Stack.Screen name='LanguageSettings' component={LanguageSettings} />
-                        <Stack.Screen name='ChangeColorSettings' component={ChangeColorSettings} />
-                        <Stack.Screen name='ChangeColorSimple' component={ChangeColorSimple} />
+                        {/*<Stack.Screen name='ChangeColorSettings' component={ChangeColorSettings} />*/}
+                        {/*<Stack.Screen name='ChangeColorSimple' component={ChangeColorSimple} />*/}
                         <Stack.Screen name='Login' component={Login} />
-                        <Stack.Screen
-                            name='PostPage'
-                            component={PostPage}
-                            initialParams={{
-                                shares: 123,
-                                likes: 321,
-                                visibleName: "Donald trump",
-                                profileImage: undefined,
-                                datePublished: t("_tenMinutesAgo"),
-                                postCaption: "data scientist jobs",
-                                postMediaUri:
-                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg",
-                                comments: new Array(5).fill({
-                                    body: "Please delay the project deadline.",
-                                    datePublished: t("_3MinutesAgo"),
-                                    profileImage:
-                                        "https://www.freecodecamp.org/news/content/images/size/w2000/2020/02/Ekran-Resmi-2019-11-18-18.08.13.png",
-                                    visibleName: "Amir reza",
-                                }),
-                            }}
-                            component={ConfirmCodeField}
-                        />
+                        {/*<Stack.Screen name='ConfirmCodeField' component={ConfirmCodeField} />*/}
+                        {/*<Stack.Screen*/}
+                        {/*    name='PostPage'*/}
+                        {/*    component={PostPage}*/}
+                        {/*    initialParams={{*/}
+                        {/*        shares: 123,*/}
+                        {/*        likes: 321,*/}
+                        {/*        visibleName: "Donald trump",*/}
+                        {/*        profileImage: undefined,*/}
+                        {/*        datePublished: t("_tenMinutesAgo"),*/}
+                        {/*        postCaption: "data scientist jobs",*/}
+                        {/*        postMediaUri:*/}
+                        {/*            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg",*/}
+                        {/*        comments: new Array(5).fill({*/}
+                        {/*            body: "Please delay the project deadline.",*/}
+                        {/*            datePublished: t("_3MinutesAgo"),*/}
+                        {/*            profileImage:*/}
+                        {/*                "https://www.freecodecamp.org/news/content/images/size/w2000/2020/02/Ekran-Resmi-2019-11-18-18.08.13.png",*/}
+                        {/*            visibleName: "Amir reza",*/}
+                        {/*        }),*/}
+                        {/*    }}*/}
+                        {/*/>*/}
+                        <Stack.Screen name='ConfirmCodeField' component={ConfirmCodeField} />
                         <Stack.Screen name='Home' component={Home} />
-                        <Stack.Screen name='EditProfile' component={EditProfile} />
+                        {/*<Stack.Screen name='EditProfile' component={EditProfile} />*/}
                     </Stack.Navigator>
                 </NavigationContainer>
             </ThemeConsumer>

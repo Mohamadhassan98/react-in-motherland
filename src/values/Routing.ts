@@ -12,6 +12,7 @@ import {NotificationsProps} from "../pages/types/NotificationsProps";
 import {ProfileProps} from "../pages/types/ProfileProps";
 import {HomeProps} from "../pages/types/HomeProps";
 import {LoginProps} from "../pages/types/LoginProps";
+import {ConfirmCodeFieldProps} from "../pages/types/ConfirmCodeFieldProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -27,6 +28,7 @@ export type RootStackParamList = {
     Notifications: NotificationsProps;
     Home: HomeProps;
     Login: LoginProps;
+    ConfirmCodeField: ConfirmCodeFieldProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;
