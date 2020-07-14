@@ -97,7 +97,9 @@ export default function Login({navigation, route}: StackNavigator<"Login">) {
                                 <Button
                                     style={styles.saveButtonStyleCard}
                                     transparent
-                                    onPress={() => navigation.navigate("ConfirmCodeField", {number: "09132655936"})}
+                                    onPress={() =>
+                                        navigation.navigate("ConfirmCodeField", {number: `0${phone.slice(3)}`})
+                                    }
                                     disabled={phone.length !== 13}
                                 >
                                     <Text style={styles.saveButtonTextStyle}>{t("login")}</Text>

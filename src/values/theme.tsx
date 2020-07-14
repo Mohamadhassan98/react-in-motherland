@@ -65,10 +65,17 @@ export interface Font {
     Footer: string;
 }
 
+export interface Auth {
+    login: () => void;
+    logout: () => void;
+    loggedIn: boolean;
+}
+
 export interface ThemeContextShape {
     palette: Palette;
     font: Font;
     localize: Localize;
+    auth: Auth;
 }
 
 const ThemeContext = React.createContext<ThemeContextShape>({
@@ -95,11 +102,19 @@ const ThemeContext = React.createContext<ThemeContextShape>({
         setLanguage: async () => {},
         isSystemDefault: true,
     },
+    auth: {
+        loggedIn: false,
+        login: () => {},
+        logout: () => {},
+    },
 });
 
 export default function useTheme() {
     return useContext(ThemeContext);
 }
+
+const consumer = ThemeContext.Consumer;
+export {consumer as ThemeConsumer};
 
 export function ThemeProvider({children}: {children: React.ReactElement}) {
     React.useEffect(() => {
@@ -128,6 +143,11 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
                 initStrings(Localization.isRTL ? "fa" : "en");
             }
         });
+        AsyncStorage.getItem("auth").then((value) => {
+            if (value) {
+                setLoggedIn(true);
+            }
+        });
         loader().then(() => {
             setLoaded(true);
         });
@@ -136,6 +156,14 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
     const [secondary, setSecondary] = React.useState<string>(CommonColor.brandSecondary);
     const [loaded, setLoaded] = React.useState(false);
     const [language, setLanguage] = React.useState<string | null>(null);
+    const [loggedIn, setLoggedIn] = React.useState(false);
+    const login = () => {
+        AsyncStorage.setItem("auth", "true").then(() => setLoggedIn(true));
+    };
+
+    const logout = () => {
+        AsyncStorage.removeItem("auth").then(() => setLoggedIn(false));
+    };
     const setPrime = (value: string) => {
         AsyncStorage.setItem("primary", value).then(() => setPrimary(value));
     };
@@ -177,8 +205,13 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
         setLanguage: setLocale,
         isSystemDefault: !language,
     };
+    const auth = {
+        loggedIn,
+        login,
+        logout,
+    };
     if (!loaded) {
         return null;
     }
-    return <ThemeContext.Provider value={{palette, font, localize}}>{children}</ThemeContext.Provider>;
+    return <ThemeContext.Provider value={{palette, font, localize, auth}}>{children}</ThemeContext.Provider>;
 }

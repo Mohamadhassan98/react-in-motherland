@@ -6,6 +6,7 @@ import {t} from "i18n-js";
 import {Button} from "native-base";
 import vc from "../../assets/vc.png";
 import {StackNavigator} from "../values/Routing";
+import useTheme from "../values/theme";
 
 const CELL_COUNT = 4;
 
@@ -66,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField">) => {
     const styles = useStyles();
+    const theme = useTheme();
     const code = "1234";
     const [value, setValue] = useState("");
     const [errorText, setErrorText] = useState("");
@@ -80,7 +82,7 @@ const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField"
             alert(t("emptyCode"));
         } else {
             if (value === code) {
-                navigation.navigate("MessengerPage");
+                theme.auth.login();
             } else {
                 alert(t("wrongCode"));
             }
