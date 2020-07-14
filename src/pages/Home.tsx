@@ -40,7 +40,7 @@ export default function ({navigation}: StackNavigator<"Home">) {
                         "https://upload.wikimedia.org/wikipedia/commons/1/16/Mike_Pompeo_official_photo.jpg"
                     )}
                 />
-                <PersonalPagePosts />
+                <PersonalPagePosts navigation={navigation} />
                 <View style={styles.fab}>
                     <Fab position='bottomRight' style={styles.fabButton}>
                         <Icons8GoogleImagesIcon />
