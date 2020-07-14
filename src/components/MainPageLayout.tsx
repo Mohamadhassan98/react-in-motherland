@@ -13,11 +13,6 @@ import {RootStackParamList} from "../values/Routing";
 import {StackNavigationProp} from "@react-navigation/stack";
 
 const useStyles = makeStyles((theme) => ({
-    activeButton: {
-        backgroundColor: theme.palette.Primary,
-        height: 60,
-        width: "100%",
-    },
     button: {
         height: 60,
         backgroundColor: "transparent",
@@ -44,6 +39,13 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         flex: 1,
     },
+    activeButtonContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+        flex: 1,
+        borderBottomColor: theme.palette.Primary,
+        borderBottomWidth: 5,
+    },
 }));
 
 const CopilotView = walkthroughable(View);
@@ -58,19 +60,15 @@ const SimpleFooter = ({
     const styles = useStyles();
     return (
         <>
-            <View style={styles.buttonContainer}>
-                <Button
-                    vertical
-                    style={active === 3 ? styles.activeButton : styles.button}
-                    textStyle={styles.textStyle}
-                >
+            <View style={active !== 3 ? styles.buttonContainer : styles.activeButtonContainer}>
+                <Button vertical style={styles.button} textStyle={styles.textStyle}>
                     <Icons8MessagingIcon style={styles.icon} />
                 </Button>
             </View>
-            <View style={styles.buttonContainer}>
+            <View style={active !== 2 ? styles.buttonContainer : styles.activeButtonContainer}>
                 <Button
                     vertical
-                    style={active === 2 ? styles.activeButton : styles.button}
+                    style={styles.button}
                     textStyle={styles.textStyle}
                     onPress={() => {
                         if (active !== 2) {
@@ -81,10 +79,10 @@ const SimpleFooter = ({
                     <Icons8CaretakerIcon style={styles.icon} />
                 </Button>
             </View>
-            <View style={styles.buttonContainer}>
+            <View style={active !== 1 ? styles.buttonContainer : styles.activeButtonContainer}>
                 <Button
                     vertical
-                    style={active === 1 ? styles.activeButton : styles.button}
+                    style={styles.button}
                     textStyle={styles.textStyle}
                     onPress={() => {
                         if (active !== 1) {
@@ -95,10 +93,10 @@ const SimpleFooter = ({
                     <Icons8TelescopeIcon style={styles.icon} />
                 </Button>
             </View>
-            <View style={styles.buttonContainer}>
+            <View style={active !== 0 ? styles.buttonContainer : styles.activeButtonContainer}>
                 <Button
                     vertical
-                    style={active === 0 ? styles.activeButton : styles.button}
+                    style={styles.button}
                     textStyle={styles.textStyle}
                     onPress={() => {
                         if (active !== 0) {
@@ -124,10 +122,10 @@ const TourFooter = ({
     return (
         <>
             <CopilotStep name='Messenger' order={1} text='Messenger is awful'>
-                <CopilotView style={styles.buttonContainer}>
+                <CopilotView style={active !== 3 ? styles.buttonContainer : styles.activeButtonContainer}>
                     <Button
                         vertical
-                        style={active === 3 ? styles.activeButton : styles.button}
+                        style={styles.button}
                         textStyle={styles.textStyle}
                         onPress={() => {
                             if (active !== 3) {
@@ -140,10 +138,10 @@ const TourFooter = ({
                 </CopilotView>
             </CopilotStep>
             <CopilotStep text='HomePage is amazing' name='HomePage' order={2}>
-                <CopilotView style={styles.buttonContainer}>
+                <CopilotView style={active !== 2 ? styles.buttonContainer : styles.activeButtonContainer}>
                     <Button
                         vertical
-                        style={active === 2 ? styles.activeButton : styles.button}
+                        style={styles.button}
                         textStyle={styles.textStyle}
                         onPress={() => {
                             if (active !== 2) {
@@ -156,10 +154,10 @@ const TourFooter = ({
                 </CopilotView>
             </CopilotStep>
             <CopilotStep name='Explore' order={3} text='Nothing to say about Explore'>
-                <CopilotView style={styles.buttonContainer}>
+                <CopilotView style={active !== 1 ? styles.buttonContainer : styles.activeButtonContainer}>
                     <Button
                         vertical
-                        style={active === 1 ? styles.activeButton : styles.button}
+                        style={styles.button}
                         textStyle={styles.textStyle}
                         onPress={() => {
                             if (active !== 1) {
@@ -172,10 +170,10 @@ const TourFooter = ({
                 </CopilotView>
             </CopilotStep>
             <CopilotStep name='Settings' order={4} text='Setting is famous'>
-                <CopilotView style={styles.buttonContainer}>
+                <CopilotView style={active !== 0 ? styles.buttonContainer : styles.activeButtonContainer}>
                     <Button
                         vertical
-                        style={active === 0 ? styles.activeButton : styles.button}
+                        style={styles.button}
                         textStyle={styles.textStyle}
                         onPress={() => {
                             if (active !== 0) {

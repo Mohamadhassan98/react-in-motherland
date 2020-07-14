@@ -173,6 +173,10 @@ export default function initStrings(locale: string) {
             finish: "اتمام",
             "What's in your mind?": "چ چیزی در ذهن دارید؟",
             online: "آنلاین",
+            enterCode: "کد دریافتی را وارد کنید",
+            emptyCode: "کد نمی تواند خالی باشد",
+            wrongNumber: "شماره غلط است؟",
+            continue: "ادامه",
         },
     };
 
