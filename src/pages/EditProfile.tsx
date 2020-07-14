@@ -48,18 +48,17 @@ const useStyles = makeStyles((theme) => ({
         marginEnd: 40,
         height: 60,
     },
-    saveButtonStyleCard: {
+    saveButtonStyle: {
         borderRadius: 15,
         height: 60,
         backgroundColor: theme.palette.Primary,
-        padding: "5%",
     },
     saveButtonTextStyle: {
-        alignSelf: "center",
         color: "#FFFFFF",
-        justifyContent: "center",
+        textAlign: "center",
         fontFamily: theme.font.Body,
         fontSize: 20,
+        flex: 1,
     },
 }));
 
@@ -161,10 +160,16 @@ export default function ({navigation, route}: StackNavigator<"EditProfile">) {
                         </Row>
                         <Row>
                             <Col style={styles.saveButtonStyleCol}>
-                                <Card style={styles.saveButtonStyleCard}>
+                                {/*<Card style={styles.saveButtonStyleCard}>*/}
+                                <Button
+                                    style={styles.saveButtonStyle}
+                                    onPress={() => {
+                                        navigation.goBack();
+                                    }}
+                                >
                                     <Text style={styles.saveButtonTextStyle}>{t("Save")}</Text>
-                                    <Button transparent />
-                                </Card>
+                                </Button>
+                                {/*</Card>*/}
                             </Col>
                         </Row>
                     </Grid>

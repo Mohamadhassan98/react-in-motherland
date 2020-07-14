@@ -21,7 +21,7 @@ export default function () {
             </Row>
             <Row>
                 <Content>
-                    <ExplorePosts />
+                    <ExplorePosts navigation={undefined} />
                 </Content>
             </Row>
         </View>

@@ -1,7 +1,7 @@
 import React from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {Content, Tab, Tabs} from "native-base";
+import {Content, Tab, Tabs, Button} from "native-base";
 import {t} from "i18n-js";
 import ExplorePosts from "../components/ExplorePosts";
 import CommonColors from "../../native-base-theme/variables/commonColor";
@@ -32,7 +32,21 @@ function ExplorePostsPage({navigation}: StackNavigator<"ExplorePostsPage">) {
     return (
         <MainPageLayout active={1} navigation={navigation}>
             <MainHeader hasTabs size='collapsed'>
-                <SimpleHeader title='explore' rightAdornment={<Icons8SearchIcon />} hideBack navigation={navigation} />
+                <SimpleHeader
+                    title='explore'
+                    rightAdornment={
+                        <Button
+                            transparent
+                            onPress={() => {
+                                navigation.navigate("ExploreSearch");
+                            }}
+                        >
+                            <Icons8SearchIcon />
+                        </Button>
+                    }
+                    hideBack
+                    navigation={navigation}
+                />
             </MainHeader>
             <Tabs
                 tabContainerStyle={styles.tabContainer}
@@ -41,7 +55,7 @@ function ExplorePostsPage({navigation}: StackNavigator<"ExplorePostsPage">) {
             >
                 <Tab heading={t("allPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
-                        <ExplorePosts />
+                        <ExplorePosts navigation={navigation} />
                     </Content>
                 </Tab>
                 <Tab heading={t("channelPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
@@ -51,7 +65,7 @@ function ExplorePostsPage({navigation}: StackNavigator<"ExplorePostsPage">) {
                 </Tab>
                 <Tab heading={t("pages")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
-                        <ExplorePosts />
+                        <ExplorePosts navigation={navigation} />
                     </Content>
                 </Tab>
             </Tabs>
