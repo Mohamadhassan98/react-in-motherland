@@ -162,7 +162,7 @@ export default function ({navigation, route}: StackNavigator<"PostPage">) {
             </MainHeader>
             <ScrollView ref={commentsRef}>
                 <Row style={[styles.itemsCenter, styles.p16, styles.pb0]}>
-                    <Avatar size={32} visibleName={visibleName} />
+                    <Avatar size={32} visibleName={visibleName} profileImage={profileImage} />
                     <Text style={[styles.ms8, styles.userName]}>{visibleName}</Text>
                 </Row>
                 <View style={styles.p16}>

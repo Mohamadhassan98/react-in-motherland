@@ -1,6 +1,8 @@
 import React from "react";
-import {Thumbnail, View} from "native-base";
+import {Button, Thumbnail, View} from "native-base";
 import {StyleSheet} from "react-native";
+import {ExplorePostsProps} from "./types/ExplorePostsProps";
+import {t} from "i18n-js";
 
 const styles = StyleSheet.create({
     grid: {
@@ -17,12 +19,12 @@ const styles = StyleSheet.create({
     },
     thumbnail: {
         borderRadius: 15,
-        height: 100,
-        width: 100,
+        height: "100%",
+        width: "100%",
     },
 });
 
-export default function () {
+export default function ({navigation}: ExplorePostsProps) {
     const fakeData = new Array<string>(15).fill(
         "https://www.animalfactsencyclopedia.com/images/animalextremeclose-up-groundhog.jpg"
     );
@@ -30,7 +32,31 @@ export default function () {
         <View style={styles.grid}>
             {fakeData.map((uri, index) => (
                 <View key={index} style={styles.gridItem}>
-                    <Thumbnail square source={{uri}} style={styles.thumbnail} />
+                    <Button
+                        transparent
+                        style={{height: 100, width: 100}}
+                        onPress={() => {
+                            navigation!.navigate("PostPage", {
+                                profileImage:
+                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg",
+                                visibleName: "Donald Trump",
+                                likes: 345,
+                                postCaption: "this is a test",
+                                postMediaUri: uri,
+                                datePublished: t("_tenMinutesAgo"),
+                                shares: 123,
+                                comments: new Array(5).fill({
+                                    body: "Please delay the project deadline.",
+                                    datePublished: t("_3MinutesAgo"),
+                                    profileImage:
+                                        "https://www.freecodecamp.org/news/content/images/size/w2000/2020/02/Ekran-Resmi-2019-11-18-18.08.13.png",
+                                    visibleName: "Amir reza",
+                                }),
+                            });
+                        }}
+                    >
+                        <Thumbnail square source={{uri}} style={styles.thumbnail} />
+                    </Button>
                 </View>
             ))}
         </View>

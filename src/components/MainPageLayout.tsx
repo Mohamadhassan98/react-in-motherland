@@ -72,6 +72,11 @@ const SimpleFooter = ({
                     vertical
                     style={active === 2 ? styles.activeButton : styles.button}
                     textStyle={styles.textStyle}
+                    onPress={() => {
+                        if (active !== 2) {
+                            navigation.replace("Home");
+                        }
+                    }}
                 >
                     <Icons8CaretakerIcon style={styles.icon} />
                 </Button>
@@ -142,7 +147,7 @@ const TourFooter = ({
                         textStyle={styles.textStyle}
                         onPress={() => {
                             if (active !== 2) {
-                                //    navigateTo()
+                                navigation.replace("Home");
                             }
                         }}
                     >
