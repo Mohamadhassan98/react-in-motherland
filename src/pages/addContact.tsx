@@ -7,10 +7,12 @@ import {Container, Fab, Icon, View, Form, Item, Input, Label} from "native-base"
 import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-intl-phone-input";
 import Avatar from "../components/Avatar";
 import {t} from "i18n-js";
+import {StackNavigator} from "../values/Routing";
+import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
 
 const styles = StyleSheet.create({
     FAB: {
-        backgroundColor: "#81e38f",
+        backgroundColor: "rgb(196,193,195)",
     },
     container: {
         alignItems: "center",
@@ -26,17 +28,15 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function addContact() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+export default function AddContact({navigation, route}: StackNavigator<"AddContact">) {
     const [FirstName, setFirstName] = useState("");
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [LastName, setLastName] = useState("");
     const onChangeText = ({dialCode, unmaskedPhoneNumber, phoneNumber, isVerified}: ChangeTextInput) => {
         console.log(dialCode, unmaskedPhoneNumber, phoneNumber, isVerified);
     };
 
     return (
-        <MainPageLayout active={3}>
+        <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
                 <AddContactHeader />
             </MainHeader>
@@ -51,7 +51,7 @@ export default function addContact() {
                 </View>
                 <Form style={{width: "80%", alignSelf: "center"}}>
                     <Item stackedLabel>
-                        <Label>{t("lastName")}</Label>
+                        <Label>{t("firstName")}</Label>
                         <Input
                             onChangeText={(event) => {
                                 setFirstName(event);
@@ -82,9 +82,16 @@ export default function addContact() {
                     containerStyle={{}}
                     style={styles.FAB}
                     position='bottomRight'
-                    onPress={() => {}}
+                    onPress={() => {
+                        navigation.navigate("Home");
+                        {
+                            /*
+                            navigation.canGoBack() && navigation.goBack();
+                            */
+                        }
+                    }}
                 >
-                    <Icon name='md-checkmark' />
+                    <Icons8CheckmarkIcon />
                 </Fab>
             </Container>
         </MainPageLayout>
