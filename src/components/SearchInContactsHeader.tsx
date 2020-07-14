@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         flex: 2,
     },
     closeIcon: {
-        alignSelf: "flex-end",
+        alignSelf: "center",
     },
     searchColumn: {
         flexGrow: 8,

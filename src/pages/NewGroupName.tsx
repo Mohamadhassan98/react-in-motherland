@@ -3,10 +3,12 @@ import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
 import {StyleSheet} from "react-native";
 import AddContactHeader from "../components/addContactHeader";
-import {Container, Fab, Icon, View, Form, Item, Input, Label} from "native-base";
+import {Container, Fab, Icon, View, Form, Item, Input, Label, ActionSheet} from "native-base";
 import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-intl-phone-input";
 import Avatar from "../components/Avatar";
+import NewGroupNameHeader from "../components/NewGroupNameHeader";
 import {t} from "i18n-js";
+import useMediaPicker from "../utils/useMediaPicker";
 
 const styles = StyleSheet.create({
     FAB: {
@@ -17,6 +19,8 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        marginBottom: "10%",
+        marginTop: "10%",
     },
     containerStyle: {
         paddingStart: 0,
@@ -26,7 +30,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function addContact() {
+export default function NewGroupName() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [FirstName, setFirstName] = useState("");
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -34,24 +38,53 @@ export default function addContact() {
     const onChangeText = ({dialCode, unmaskedPhoneNumber, phoneNumber, isVerified}: ChangeTextInput) => {
         console.log(dialCode, unmaskedPhoneNumber, phoneNumber, isVerified);
     };
-
+    const [profileImage, setProfileImage] = useState<string | undefined>();
+    const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
+    const {result, select} = useMediaPicker(cameraOrGallery || "gallery");
     return (
         <MainPageLayout active={3}>
             <MainHeader size='collapsed'>
-                <AddContactHeader />
+                <NewGroupNameHeader />
             </MainHeader>
             {/* Rest of code here */}
             <Container>
                 <View style={styles.container}>
                     <Avatar
-                        visibleName={`${FirstName}  ${LastName}`}
-                        size={80}
-                        profileImage='../../assets/avatar.jpg'
+                        visibleName={FirstName}
+                        size={100}
+                        profileImage={profileImage}
+                        showAccessory
+                        onAccessoryPress={() => {
+                            ActionSheet.show(
+                                {
+                                    options: profileImage ? ["Camera", "Gallery", "delete"] : ["Camera", "Gallery"],
+                                },
+                                (index) => {
+                                    console.log(index);
+                                    switch (index) {
+                                        case 0: {
+                                            setCameraOrGallery("camera");
+                                            break;
+                                        }
+                                        case 1: {
+                                            setCameraOrGallery("gallery");
+                                            break;
+                                        }
+                                        case 2: {
+                                            setProfileImage(undefined);
+                                            break;
+                                        }
+                                        default:
+                                            break;
+                                    }
+                                }
+                            );
+                        }}
                     />
                 </View>
                 <Form style={{width: "80%", alignSelf: "center"}}>
                     <Item stackedLabel>
-                        <Label>{t("lastName")}</Label>
+                        <Label>{t("groupName")}</Label>
                         <Input
                             onChangeText={(event) => {
                                 setFirstName(event);
@@ -59,19 +92,11 @@ export default function addContact() {
                         />
                     </Item>
                     <Item stackedLabel>
-                        <Label>{t("lastName")}</Label>
+                        <Label>{t("description")}</Label>
                         <Input
                             onChangeText={(event) => {
                                 setLastName(event);
                             }}
-                        />
-                    </Item>
-                    <Item>
-                        <IntlPhoneInput
-                            onChangeText={onChangeText}
-                            defaultCountry='IR'
-                            containerStyle={styles.containerStyle}
-                            flagStyle={styles.flagStyle}
                         />
                     </Item>
                 </Form>

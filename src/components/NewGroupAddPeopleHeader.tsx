@@ -4,11 +4,9 @@ import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
-    backColumn: {
-        flex: 2,
-    },
+    backColumn: {},
     backIcon: {
-        alignSelf: "center",
+        flex: 2,
     },
     closeColumn: {
         alignItems: "flex-end",
@@ -48,7 +46,7 @@ export default function (props: {setSearchText: (text: string) => void}) {
                         <Icon name='md-arrow-back' />
                     </Col>
                     <Col style={styles.titleColumn}>
-                        <Text style={styles.titleTextAlign}>{t("newMessage")}</Text>
+                        <Text style={styles.titleTextAlign}>{t("newGroup")}</Text>
                     </Col>
                     <Col style={styles.iconColumn}>
                         <Icon
