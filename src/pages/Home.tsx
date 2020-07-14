@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
         flex: 1,
     },
     fabButton: {
-        backgroundColor: theme.palette.Secondary,
+        backgroundColor: "#FFFCFC",
+        borderColor: theme.palette.Primary,
+        borderWidth: 2,
     },
     primary: {
         flex: 1,

@@ -90,6 +90,11 @@ export default function initStrings(locale: string) {
             groupName: "Group name",
             login: "login",
             suggestions: "Suggestions for you",
+            emptyCode: "Code cannot be empty",
+            wrongCode: "Code is wrong!",
+            continue: "continue?",
+            enterVerificationCode: "Enter verification code",
+            wrongNumber: "Wrong number?",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -177,9 +182,10 @@ export default function initStrings(locale: string) {
             enterCode: "کد دریافتی را وارد کنید",
             emptyCode: "کد نمی تواند خالی باشد",
             wrongNumber: "شماره غلط است؟",
-            continue: "ادامه",
+            continue: "ادامه؟",
             suggestions: "پیشنهادهایی برای شما",
             wrongCode: "کد اشتباه است",
+            enterVerificationCode: "کد تأیید را وارد کنید.",
         },
     };
 

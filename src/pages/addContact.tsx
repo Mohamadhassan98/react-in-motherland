@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {StyleSheet} from "react-native";
 import AddContactHeader from "../components/addContactHeader";
-import {Container, Fab, Icon, View, Form, Item, Input, Label} from "native-base";
-import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-intl-phone-input";
+import {Container, Fab, Form, Input, Item, Label, View} from "native-base";
+import IntlPhoneInput, {ChangeTextInput} from "react-native-intl-phone-input";
 import Avatar from "../components/Avatar";
 import {t} from "i18n-js";
 import {StackNavigator} from "../values/Routing";
@@ -95,7 +94,7 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
                     style={styles.FAB}
                     position='bottomRight'
                     onPress={() => {
-                        navigation.navigate("Home");
+                        navigation.navigate("Home", {} as any);
                         {
                             /*
                             navigation.canGoBack() && navigation.goBack();

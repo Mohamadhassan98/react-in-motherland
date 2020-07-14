@@ -12,13 +12,12 @@ const styles = StyleSheet.create({
     },
     gridItem: {
         flex: 1,
-        flexBasis: "33%",
-        maxWidth: "33%",
-        width: "33%",
-        padding: 9,
+        flexBasis: "33.33%",
+        maxWidth: "33.33%",
+        width: "33.33%",
+        padding: 3,
     },
     thumbnail: {
-        borderRadius: 15,
         height: "100%",
         width: "100%",
     },
@@ -34,7 +33,7 @@ export default function ({navigation}: ExplorePostsProps) {
                 <View key={index} style={styles.gridItem}>
                     <Button
                         transparent
-                        style={{height: 100, width: 100}}
+                        style={{height: 120, width: 120}}
                         onPress={() => {
                             navigation!.navigate("PostPage", {
                                 profileImage:

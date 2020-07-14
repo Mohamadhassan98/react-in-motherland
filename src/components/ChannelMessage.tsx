@@ -1,9 +1,7 @@
 import React, {useState} from "react";
-import {StyleSheet} from "react-native";
-import {Body, Button, Card, CardItem, Col, Grid, Left, Right, Row, Text, Thumbnail} from "native-base";
+import {Body, Button, Card, CardItem, Grid, Left, Row, Text, Thumbnail} from "native-base";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
 import commonColor from "../../native-base-theme/variables/commonColor";
-import * as Localization from "expo-localization";
 import FilledIcons8LoveIcon from "../../assets/icons/FilledLoveIcon";
 import Icons8CommentsIcon from "../../assets/icons/CommentsIcon";
 import useTheme from "../values/theme";
@@ -34,9 +32,6 @@ const useStyles = makeStyles((theme) => ({
     padding: {
         paddingEnd: 13,
         paddingStart: 60,
-    },
-    row: {
-        //     alignSelf: theme.localize.language === "fa" ? "flex-end" : "flex-start",
     },
     username: {
         color: commonColor.brandLight,
@@ -89,7 +84,7 @@ export default function ({message, media, profileImage, profileUsername, date, i
             </CardItem>
             <CardItem style={styles.icon}>
                 <Grid>
-                    <Row style={styles.row}>
+                    <Row>
                         <Button transparent onPress={() => setLiked(!liked)}>
                             {liked ? (
                                 <FilledIcons8LoveIcon style={styles.bottomIcons} />

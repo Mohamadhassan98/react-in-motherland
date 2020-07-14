@@ -19,6 +19,7 @@ import EditProfile from "./src/pages/EditProfile";
 import Login from "./src/pages/Login";
 import addContact from "./src/pages/addContact";
 import NewMessage from "./src/pages/NewMessage";
+import ConfirmCodeField from "./src/pages/ConfirmCodeField";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -28,10 +29,11 @@ export default function App() {
             <ThemeConsumer>
                 <NavigationContainer>
                     <Stack.Navigator
-                        initialRouteName='AddContact'
+                        initialRouteName='Login'
                         screenOptions={{headerShown: false, gestureDirection: "horizontal"}}
                     >
                         <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
+                        <Stack.Screen name='ConfirmCodeField' component={ConfirmCodeField} />
                         <Stack.Screen name='ExplorePostsPage' component={ExplorePostsPage} />
                         <Stack.Screen name='Settings' component={Settings} />
                         <Stack.Screen name='LanguageSettings' component={LanguageSettings} />
