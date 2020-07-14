@@ -8,6 +8,7 @@ import {t} from "i18n-js";
 import {Alert} from "react-native";
 import {Restart} from "fiction-expo-restart";
 import makeStyles from "../utils/makeStyles";
+import {StackNavigator} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     saveButton: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+export default function ({navigation}: StackNavigator<"LanguageSettings">) {
     const {
         localize: {language, isSystemDefault, setLanguage},
     } = useTheme();
@@ -25,6 +26,7 @@ export default function () {
         <Container>
             <MainHeader size='collapsed'>
                 <SimpleHeader
+                    navigation={navigation}
                     title='language'
                     rightAdornment={
                         <Button
@@ -40,7 +42,7 @@ export default function () {
                                             {
                                                 text: t("later"),
                                                 onPress: () => {
-                                                    // Todo navigate to somewhere
+                                                    navigation.popToTop();
                                                 },
                                                 style: "cancel",
                                             },

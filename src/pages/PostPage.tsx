@@ -2,19 +2,18 @@ import React from "react";
 import {Button, Container, Footer, Left, List, Right, Row, Text, Thumbnail, View} from "native-base";
 import SimpleHeader from "../components/SimpleHeader";
 import MainHeader from "../components/MainHeader";
-import {ListView, ScrollView, Share, ToastAndroid, View as RNView} from "react-native";
+import {ScrollView, Share, ToastAndroid} from "react-native";
 import Menu, {MenuItem} from "react-native-material-menu";
 import {t} from "i18n-js";
 import Icons8MenuIcon from "../../assets/icons/MenuIcon";
 import Avatar from "../components/Avatar";
-import {PostPage} from "./types/PostPage";
 import Icons8LoveIcon from "../../assets/icons/LoveIcon";
-import {CommentProps} from "../components/types/CommentProps";
 import CommentCard from "../components/CommentCard";
 import makeStyles from "../utils/makeStyles";
 import LoveOutline from "../../assets/icons/LoveOutline";
 import Icons8ShareIcon from "../../assets/icons/ShareIcon";
 import AddComment from "../components/AddComment";
+import {StackNavigator} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     p16: {
@@ -90,35 +89,44 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function (props: PostPage) {
+export default function ({navigation, route}: StackNavigator<"PostPage">) {
     const menu = React.useRef<Menu | null>(null);
-    const trump =
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg";
-    const initComments: CommentProps[] = new Array(5).fill({
-        body: "Please delay the project deadline.",
-        datePublished: "3 mins ago",
-        profileImage: trump,
-        visibleName: "Amir reza",
-    });
-    const post = {
-        datePublished: "10 دقیقه پیش",
-        postMediaUri: trump,
-        postCaption: "data scientist jobs",
-        likes: 123,
-        shares: 321,
-    };
-    const user = {
-        visibleName: "Donald trump",
-        profileImage: undefined,
-    };
+    const {
+        profileImage,
+        visibleName,
+        comments: initComments,
+        datePublished,
+        likes,
+        postCaption,
+        postMediaUri,
+        shares: initialShares,
+    } = route.params;
+    // const trump =
+    //     "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg";
+    // const initComments: CommentProps[] = new Array(5).fill({
+    //     body: "Please delay the project deadline.",
+    //     datePublished: "3 mins ago",
+    //     profileImage: trump,
+    //     visibleName: "Amir reza",
+    // });
+    // const post = {
+    //     datePublished: "10 دقیقه پیش",
+    //     postMediaUri: trump,
+    //     postCaption: "data scientist jobs",
+    //     likes: 123,
+    //     shares: 321,
+    // };
+    // const user = {
+    //     visibleName: "Donald trump",
+    //     profileImage: undefined,
+    // };
     const [allCommentsShown, setAllCommentsShown] = React.useState(false);
     const styles = useStyles();
-    const {likes} = post;
+    // const {likes} = post;
     const [liked, setLiked] = React.useState(false);
-    const [shares, setShares] = React.useState(post.shares);
+    const [shares, setShares] = React.useState(initialShares);
     const [comments, setComments] = React.useState(initComments);
-    // eslint-disable-next-line no-extra-parens
-    const commentsRef = React.useRef<(ListView & ScrollView & RNView) | null>(null);
+    const commentsRef = React.useRef<ScrollView | null>(null);
     React.useEffect(() => {
         if (comments !== initComments) {
             setAllCommentsShown(true);
@@ -129,6 +137,7 @@ export default function (props: PostPage) {
         <Container>
             <MainHeader size='collapsed'>
                 <SimpleHeader
+                    navigation={navigation}
                     title='post'
                     rightAdornment={
                         <Menu
@@ -153,23 +162,23 @@ export default function (props: PostPage) {
             </MainHeader>
             <ScrollView ref={commentsRef}>
                 <Row style={[styles.itemsCenter, styles.p16, styles.pb0]}>
-                    <Avatar size={32} visibleName={user.visibleName} />
-                    <Text style={[styles.ms8, styles.userName]}>{user.visibleName}</Text>
+                    <Avatar size={32} visibleName={visibleName} />
+                    <Text style={[styles.ms8, styles.userName]}>{visibleName}</Text>
                 </Row>
                 <View style={styles.p16}>
                     <Thumbnail
                         square
                         style={styles.bodyMedia}
                         source={{
-                            uri: post.postMediaUri,
+                            uri: postMediaUri,
                         }}
                     />
                 </View>
                 <View style={styles.px16}>
-                    <Text style={[styles.bodyText, styles.textLeft]}>{post.postCaption}</Text>
+                    <Text style={[styles.bodyText, styles.textLeft]}>{postCaption}</Text>
                 </View>
                 <View style={styles.publishDateWrapper}>
-                    <Text style={styles.publishDate}>{post.datePublished}</Text>
+                    <Text style={styles.publishDate}>{datePublished}</Text>
                 </View>
                 <Row>
                     <Button
@@ -188,7 +197,7 @@ export default function (props: PostPage) {
                         onPress={async () => {
                             try {
                                 const result = await Share.share({
-                                    message: post.postCaption,
+                                    message: postCaption,
                                     title: t("sharePost"),
                                 });
                                 if (result.action === Share.sharedAction) {
@@ -231,8 +240,8 @@ export default function (props: PostPage) {
                         setComments((prevState) => [
                             ...prevState,
                             {
-                                visibleName: user.visibleName,
-                                profileImage: user.profileImage,
+                                visibleName: visibleName,
+                                profileImage: profileImage,
                                 body,
                                 datePublished: t("_justNow"),
                             },
