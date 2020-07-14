@@ -41,9 +41,7 @@ export default function ({navigation}: StackNavigator<"LanguageSettings">) {
                                             },
                                             {
                                                 text: t("later"),
-                                                onPress: () => {
-                                                    navigation.popToTop();
-                                                },
+                                                onPress: () => navigation.popToTop(),
                                                 style: "cancel",
                                             },
                                         ]);
