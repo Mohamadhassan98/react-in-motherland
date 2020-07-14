@@ -179,6 +179,7 @@ export default function initStrings(locale: string) {
             wrongNumber: "شماره غلط است؟",
             continue: "ادامه",
             suggestions: "پیشنهادهایی برای شما",
+            wrongCode: "کد اشتباه است",
         },
     };
 

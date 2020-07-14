@@ -6,6 +6,7 @@ import {t} from "i18n-js";
 import useTheme from "../values/theme";
 import {Button, Thumbnail} from "native-base";
 import vc from "../../assets/vc.png";
+import {StackNavigator} from "../values/Routing";
 
 const CELL_COUNT = 4;
 
@@ -48,8 +49,9 @@ const useStyles = makeStyles((theme) => ({
     },
     wrongNumber: {marginTop: 20, alignItems: "center"},
 }));
-const ConfirmCodeField = ({number}: {number: string}) => {
+const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField">) => {
     const styles = useStyles();
+    const code = "1234";
     const theme = useTheme();
     const [value, setValue] = useState("");
     const [errorText, setErrorText] = useState("");
@@ -66,7 +68,16 @@ const ConfirmCodeField = ({number}: {number: string}) => {
             } else {
                 alert("Code can not be empty");
             }
-            return;
+        } else {
+            if (value === code) {
+                navigation.navigate("Home");
+            } else {
+                if (theme.localize.language === "fa") {
+                    alert(t("wrongCode"));
+                } else {
+                    alert("Code is wrong!");
+                }
+            }
         }
     };
 
@@ -76,12 +87,12 @@ const ConfirmCodeField = ({number}: {number: string}) => {
             {theme.localize.language === "fa" ? (
                 <View>
                     <Text style={styles.title}>{t("EnterCode")}</Text>
-                    <Text style={styles.wrongNumber}>{number}</Text>
+                    <Text style={{alignSelf: "center"}}>{route.params.number}</Text>
                 </View>
             ) : (
                 <View>
                     <Text style={styles.title}>Enter verification code</Text>
-                    <Text style={styles.wrongNumber}>{number}</Text>
+                    <Text style={{alignSelf: "center"}}>{route.params.number}</Text>
                 </View>
             )}
             <CodeField
@@ -113,7 +124,15 @@ const ConfirmCodeField = ({number}: {number: string}) => {
                 )}
             </Button>
             <View style={styles.wrongNumber}>
-                {theme.localize.language === "fa" ? <Text>{t("wrongNumber")}?</Text> : <Text>Wrong number?</Text>}
+                {theme.localize.language === "fa" ? (
+                    <Text style={{textDecorationLine: "underline"}} onPress={() => navigation.navigate("Login")}>
+                        {t("wrongNumber")}?
+                    </Text>
+                ) : (
+                    <Text style={{textDecorationLine: "underline"}} onPress={() => navigation.navigate("Login")}>
+                        Wrong number?
+                    </Text>
+                )}
             </View>
         </SafeAreaView>
     );

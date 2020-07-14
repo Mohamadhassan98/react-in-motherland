@@ -7,14 +7,15 @@ import MainHeader from "../components/MainHeader";
 import {t} from "i18n-js";
 import {MessageProps} from "../components/types/MessageProps";
 import CommentCard from "../components/CommentCard";
+import {StackNavigator} from "../values/Routing";
 
-export default function () {
+export default function Chatroom({navigation, route}: StackNavigator<"Chatroom">) {
     const initMessages: MessageProps[] = new Array(5).fill({
         message: "سلام به روی ماهت",
         type: "receive",
         date: "10 : 32 AM",
         showDate: true,
-    },);
+    });
     const [messages, setMessages] = React.useState(initMessages);
     return (
         <Container>
