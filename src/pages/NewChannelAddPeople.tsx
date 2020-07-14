@@ -8,6 +8,7 @@ import {contactList, SearcList} from "../values/strings";
 import {t} from "i18n-js";
 import GroupAddPeopleHeader from "../components/NewGroupAddPeopleHeader";
 import NewGroupAddPeopleHeader from "../components/NewGroupAddPeopleHeader";
+import NewChannelAddPeopleHeader from "../components/NewChannelAddPeopleHeader";
 
 const styles = StyleSheet.create({
     FAB: {
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function NewGroupAddPeople() {
+export default function NewChannelAddPeople() {
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
     const [List, setList] = useState(contactList);
@@ -135,7 +136,7 @@ export default function NewGroupAddPeople() {
     return (
         <MainPageLayout active={3}>
             <MainHeader size='collapsed'>
-                <NewGroupAddPeopleHeader setSearchText={setSearchText} />
+                <NewChannelAddPeopleHeader setSearchText={setSearchText} />
             </MainHeader>
             {/* Rest of code here */}
             <Container>

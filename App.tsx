@@ -14,6 +14,7 @@ import NewMessage from "./src/pages/NewMessage";
 import MessengerPage from "./src/pages/MessengerPage";
 import SearchInContacts from "./src/pages/SearchInContacts";
 import NewGroupAddPeople from "./src/pages/NewGroupAddPeople";
+import NewGroupName from "./src/pages/NewGroupName";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -28,7 +29,7 @@ export default function App() {
                             options={{
                                 headerShown: false,
                             }}
-                            component={NewGroupAddPeople}
+                            component={NewGroupName}
                         />
                     </Stack.Navigator>
                 </NavigationContainer>
