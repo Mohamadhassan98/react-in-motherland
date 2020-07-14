@@ -11,6 +11,7 @@ import {NewPostProps} from "../pages/types/NewPostProps";
 import {NotificationsProps} from "../pages/types/NotificationsProps";
 import {ProfileProps} from "../pages/types/ProfileProps";
 import {HomeProps} from "../pages/types/HomeProps";
+import {LoginProps} from "../pages/types/LoginProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -25,6 +26,7 @@ export type RootStackParamList = {
     Profile: ProfileProps;
     Notifications: NotificationsProps;
     Home: HomeProps;
+    Login: LoginProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;

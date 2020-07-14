@@ -1,13 +1,11 @@
 import React, {useState} from "react";
-import {StyleSheet, TextInput} from "react-native";
-import {Button, Card, Col, Container, Content, Grid, Root, Row, Text, Thumbnail} from "native-base";
+import {Button, Col, Container, Content, Grid, Input, Item, Root, Row, Text, Thumbnail} from "native-base";
 import makeStyles from "../utils/makeStyles";
 import login from "../../assets/login.png";
-import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-intl-phone-input";
-import Message from "../components/Message";
+import {t} from "i18n-js";
+
 const useStyles = makeStyles((theme) => ({
     inputBoxEditProfileStyle: {
-        // flex: 1,
         marginBottom: 10,
         marginTop: 10,
         marginStart: 40,
@@ -27,14 +25,15 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 15,
         height: 60,
         backgroundColor: theme.palette.Primary,
-        padding: "5%",
+        alignItems: "center",
     },
     saveButtonTextStyle: {
-        alignSelf: "center",
-        color: "#FFFFFF",
-        justifyContent: "center",
+        color: theme.palette.textSecondary,
         fontFamily: theme.font.Body,
         fontSize: 20,
+        flex: 1,
+        textAlign: "center",
+        textAlignVertical: "center",
     },
     textStyle: {
         fontFamily: theme.font.Body,
@@ -42,57 +41,66 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
     },
     cardStyle: {
-        // borderColor: "#fcfcfc",
         borderRadius: 10,
         height: 60,
     },
-    ltrTest: {
-        direction: "ltr",
-        writingDirection: "ltr",
+    mt50: {
+        marginTop: 50,
+    },
+    itemsCenter: {
+        alignItems: "center",
+    },
+    thumbnail: {
+        width: 50,
+        height: 50,
+    },
+    mt250: {
+        marginTop: 250,
     },
 }));
 
 export default function Login() {
     const styles = useStyles();
-    const [phone, setPhone] = useState("");
-    const [errorText, setErrorText] = useState("");
+    const [phone, setPhone] = useState("+989");
 
-    const handleLoginPress = () => {
-        setErrorText("");
-        if (!phone) {
-            alert("Please your phone number");
-            return;
-        }
-    };
     return (
         <Root>
-            <Container style={{backgroundColor: "#FFFFFF"}}>
+            <Container style={styles.forwardBackIconStyle}>
                 <Content>
-                    <Grid style={{marginTop: 250}}>
+                    <Grid style={styles.mt250}>
                         <Row>
-                            <Col style={{alignItems: "center"}}>
-                                <Thumbnail source={login} style={{width: 50, height: 50}} />
+                            <Col style={styles.itemsCenter}>
+                                <Thumbnail source={login} style={styles.thumbnail} />
                             </Col>
                         </Row>
-                        <Row style={{marginTop: 50}}>
+                        <Row style={styles.mt50}>
                             <Col style={styles.inputBoxEditProfileStyle}>
                                 <Content>
-                                    <Card style={styles.cardStyle}>
-                                        <IntlPhoneInput
-                                            containerStyle={styles.ltrTest}
-                                            onChangeText={(phone) => setPhone(phone.phoneNumber)}
-                                            defaultCountry='IR'
+                                    <Item style={styles.cardStyle} rounded>
+                                        <Input
+                                            value={phone}
+                                            onChangeText={(phone) => {
+                                                if (/^\+989\d*$/.test(phone)) {
+                                                    setPhone(phone);
+                                                }
+                                            }}
+                                            maxLength={13}
+                                            textContentType='telephoneNumber'
                                         />
-                                    </Card>
+                                    </Item>
                                 </Content>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col style={styles.saveButtonStyleCol}>
-                                <Card style={styles.saveButtonStyleCard}>
-                                    <Text style={styles.saveButtonTextStyle}>Login</Text>
-                                    <Button transparent onPress={handleLoginPress} />
-                                </Card>
+                        <Row style={styles.saveButtonStyleCol}>
+                            <Col>
+                                <Button
+                                    style={styles.saveButtonStyleCard}
+                                    transparent
+                                    onPress={() => console.log(phone)}
+                                    disabled={phone.length !== 13}
+                                >
+                                    <Text style={styles.saveButtonTextStyle}>{t("login")}</Text>
+                                </Button>
                             </Col>
                         </Row>
                     </Grid>

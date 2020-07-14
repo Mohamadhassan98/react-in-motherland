@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         height: 60,
-        flex: 1,
         backgroundColor: "transparent",
+        width: "100%",
     },
     container: {
         backgroundColor: theme.palette.textSecondary,

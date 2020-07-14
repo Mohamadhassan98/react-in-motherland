@@ -88,6 +88,7 @@ export default function initStrings(locale: string) {
             lastName: "Last name",
             description: "Description",
             groupName: "Group name",
+            login: "login",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -125,6 +126,7 @@ export default function initStrings(locale: string) {
             languageChanged: "زبان تغییر کرد. برای تغییر صحیح تنظیمات و ظاهر، شروع مجدد نیاز است.",
             restartNow: "الان شروع مجدد کن.",
             later: "باشه بعداً",
+            login: "ورود",
             Recent: "اخیرا",
             People: "افراد",
             lastSeenRecently: "آخرین بازدید اخیرا ",
