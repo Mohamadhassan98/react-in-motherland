@@ -15,6 +15,7 @@ import {LoginProps} from "../pages/types/LoginProps";
 import {AddContactProps} from "../pages/types/AddContactProps";
 import {NewMessageProps} from "../pages/types/NewMessageProps";
 import {ConfirmCodeFieldProps} from "../pages/types/ConfirmCodeFieldProps";
+import {MessengerPageProps} from "../pages/types/MessengerPageProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -33,6 +34,7 @@ export type RootStackParamList = {
     AddContact: AddContactProps;
     NewMessage: NewMessageProps;
     ConfirmCodeField: ConfirmCodeFieldProps;
+    MessengerPage: MessengerPageProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;
