@@ -5,8 +5,8 @@ import Header from "../components/NewPostHeader";
 import UserItemList from "../components/NotificationItem";
 
 import {materialColors} from "../values/materialColors";
-import {StackNavigationProp} from "@react-navigation/stack";
 import {ScrollView} from "react-native-gesture-handler";
+import {StackNavigator} from "../values/Routing";
 
 const CategoryList = [
     {
@@ -91,7 +91,7 @@ const CategoryList = [
     },
 ];
 
-export default ({navigation: navigator}: {navigation: StackNavigationProp<NavigationPages, "NewPost">}) => {
+export default ({navigation: navigator}: StackNavigator<"Notifications">) => {
     return (
         <View
             style={{

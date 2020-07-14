@@ -3,30 +3,32 @@ import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
 import PersonalPageHeader from "../components/PersonalPageHeader";
 import PersonalUserInfo from "../components/PersonalUserInfo";
-import {Content, Fab, Icon, View} from "native-base";
+import {Content, Fab, View} from "native-base";
 import PersonalPageBio from "../components/PersonalPageBio";
 import PersonalPageRecommends from "../components/PersonalPageRecommends";
 import PersonalPagePosts from "../components/PersonalPagePosts";
-import {StyleSheet} from "react-native";
-import CommonColors from "../../native-base-theme/variables/commonColor";
+import makeStyles from "../utils/makeStyles";
+import {StackNavigator} from "../values/Routing";
+import Icons8GoogleImagesIcon from "../../assets/icons/GoogleImagesIcon";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     fab: {
         flex: 1,
         marginBottom: 50,
     },
     fabButton: {
-        backgroundColor: CommonColors.brandSecondary,
+        backgroundColor: theme.palette.Secondary,
         marginBottom: 50,
     },
     primary: {
         height: "100%",
     },
-});
+}));
 
-export default function () {
+export default function ({navigation}: StackNavigator<"Home">) {
+    const styles = useStyles();
     return (
-        <MainPageLayout active={2}>
+        <MainPageLayout active={2} navigation={navigation}>
             <MainHeader size='collapsed'>
                 <PersonalPageHeader />
             </MainHeader>
@@ -41,7 +43,7 @@ export default function () {
                 <PersonalPagePosts />
                 <View style={styles.fab}>
                     <Fab position='bottomRight' style={styles.fabButton}>
-                        <Icon name='md-camera' />
+                        <Icons8GoogleImagesIcon />
                     </Fab>
                 </View>
             </Content>

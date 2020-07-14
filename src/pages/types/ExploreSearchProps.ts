@@ -1,1 +1,1 @@
-export interface ExploreSearchProps {}
+export type ExploreSearchProps = undefined;

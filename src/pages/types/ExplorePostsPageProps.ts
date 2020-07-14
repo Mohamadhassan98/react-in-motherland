@@ -1,1 +1,1 @@
-export interface ExplorePostsPageProps {}
+export type ExplorePostsPageProps = undefined;

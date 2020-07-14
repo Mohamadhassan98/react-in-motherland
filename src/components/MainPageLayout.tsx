@@ -8,6 +8,9 @@ import Icons8SettingsIcon from "../../assets/icons/SettingsIcon";
 import makeStyles from "../utils/makeStyles";
 import {CopilotStep, walkthroughable} from "react-native-copilot";
 import {AsyncStorage, View} from "react-native";
+import {MainPageLayoutProps} from "./types/MainPageLayoutProps";
+import {RootStackParamList} from "../values/Routing";
+import {StackNavigationProp} from "@react-navigation/stack";
 
 const useStyles = makeStyles((theme) => ({
     activeButton: {
@@ -45,7 +48,13 @@ const useStyles = makeStyles((theme) => ({
 
 const CopilotView = walkthroughable(View);
 
-const SimpleFooter = ({active}: {active: number}) => {
+const SimpleFooter = ({
+    active,
+    navigation,
+}: {
+    active: number;
+    navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
+}) => {
     const styles = useStyles();
     return (
         <Footer style={styles.footer}>
@@ -73,6 +82,11 @@ const SimpleFooter = ({active}: {active: number}) => {
                         vertical
                         style={active === 1 ? styles.activeButton : styles.button}
                         textStyle={styles.textStyle}
+                        onPress={() => {
+                            if (active !== 1) {
+                                navigation.replace("ExplorePostsPage");
+                            }
+                        }}
                     >
                         <Icons8TelescopeIcon style={styles.icon} />
                     </Button>
@@ -82,6 +96,11 @@ const SimpleFooter = ({active}: {active: number}) => {
                         vertical
                         style={active === 0 ? styles.activeButton : styles.button}
                         textStyle={styles.textStyle}
+                        onPress={() => {
+                            if (active !== 0) {
+                                navigation.replace("Settings");
+                            }
+                        }}
                     >
                         <Icons8SettingsIcon style={styles.icon} />
                     </Button>
@@ -91,7 +110,13 @@ const SimpleFooter = ({active}: {active: number}) => {
     );
 };
 
-const TourFooter = ({active}: {active: number}) => {
+const TourFooter = ({
+    active,
+    navigation,
+}: {
+    active: number;
+    navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
+}) => {
     const styles = useStyles();
     return (
         <Footer style={styles.footer}>
@@ -102,6 +127,11 @@ const TourFooter = ({active}: {active: number}) => {
                             vertical
                             style={active === 3 ? styles.activeButton : styles.button}
                             textStyle={styles.textStyle}
+                            onPress={() => {
+                                if (active !== 3) {
+                                    // navigateTo()
+                                }
+                            }}
                         >
                             <Icons8MessagingIcon style={styles.icon} />
                         </Button>
@@ -113,6 +143,11 @@ const TourFooter = ({active}: {active: number}) => {
                             vertical
                             style={active === 2 ? styles.activeButton : styles.button}
                             textStyle={styles.textStyle}
+                            onPress={() => {
+                                if (active !== 2) {
+                                    //    navigateTo()
+                                }
+                            }}
                         >
                             <Icons8CaretakerIcon style={styles.icon} />
                         </Button>
@@ -124,6 +159,11 @@ const TourFooter = ({active}: {active: number}) => {
                             vertical
                             style={active === 1 ? styles.activeButton : styles.button}
                             textStyle={styles.textStyle}
+                            onPress={() => {
+                                if (active !== 1) {
+                                    navigation.replace("ExplorePostsPage");
+                                }
+                            }}
                         >
                             <Icons8TelescopeIcon style={styles.icon} />
                         </Button>
@@ -135,6 +175,11 @@ const TourFooter = ({active}: {active: number}) => {
                             vertical
                             style={active === 0 ? styles.activeButton : styles.button}
                             textStyle={styles.textStyle}
+                            onPress={() => {
+                                if (active !== 0) {
+                                    navigation.replace("Settings");
+                                }
+                            }}
                         >
                             <Icons8SettingsIcon style={styles.icon} />
                         </Button>
@@ -145,20 +190,7 @@ const TourFooter = ({active}: {active: number}) => {
     );
 };
 
-export default function ({
-    children,
-    active,
-    start,
-    copilotEvents,
-}: {
-    children: React.ReactElement[];
-    active: number;
-    start?: () => void;
-    copilotEvents?: {
-        on: (handlerName: string, callback: (step?: number) => void) => void;
-        off: (handlerName: string) => void;
-    };
-}) {
+export default function ({children, active, start, copilotEvents, navigation}: MainPageLayoutProps) {
     const styles = useStyles();
     React.useEffect(() => {
         (async () => {
@@ -178,7 +210,11 @@ export default function ({
     return (
         <Container style={styles.container}>
             {children}
-            {start ? <TourFooter active={active} /> : <SimpleFooter active={active} />}
+            {start ? (
+                <TourFooter active={active} navigation={navigation} />
+            ) : (
+                <SimpleFooter active={active} navigation={navigation} />
+            )}
         </Container>
     );
 }

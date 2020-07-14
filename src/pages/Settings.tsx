@@ -10,6 +10,7 @@ import {t} from "i18n-js";
 import useTheme from "../values/theme";
 import Icons8ToggleOffIcon from "../../assets/icons/ToggleOffIcon";
 import ToggleOnIcon from "../../assets/icons/ToggleOnIcon";
+import {StackNavigator} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     primary: {
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+export default function ({navigation}: StackNavigator<"Settings">) {
     const styles = useStyles();
     const theme = useTheme();
     const [showPostsByPopularity, setShowPostsByPopularity] = useState(false);
@@ -58,12 +59,17 @@ export default function () {
     const [privateAccount, setPrivateAccount] = useState(false);
     const [allowSaving, setAllowSaving] = useState(false);
     return (
-        <MainPageLayout active={0}>
+        <MainPageLayout active={0} navigation={navigation}>
             <MainHeader size='collapsed'>
                 <Left style={[styles.flex, styles.itemsStart]}>
-                    <Button style={styles.forwardBackIconStyle} icon transparent>
-                        {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
-                    </Button>
+                    {/*<Button*/}
+                    {/*    style={styles.forwardBackIconStyle}*/}
+                    {/*    icon*/}
+                    {/*    transparent*/}
+                    {/*    onPress={() => navigation.canGoBack() && na}*/}
+                    {/*>*/}
+                    {/*    {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}*/}
+                    {/*</Button>*/}
                 </Left>
                 <Body style={[styles.flex, styles.itemsCenter]}>
                     <Text style={styles.headerTextStyle}>{t("settings")} </Text>
@@ -77,6 +83,19 @@ export default function () {
                             <Text style={styles.dividerStyle}>{t("generalSettings")}</Text>
                         </Left>
                     </ListItem>
+                    <SettingItem
+                        scope='editProfile'
+                        rightAdornment={
+                            <Button
+                                transparent
+                                onPress={() => {
+                                    navigation.navigate("EditProfile");
+                                }}
+                            >
+                                {theme.localize.language === "fa" ? <Icons8BackIcon /> : <Icons8ForwardIcon />}
+                            </Button>
+                        }
+                    />
                     <SettingItem
                         scope='showPostsByPopularity'
                         rightAdornment={
@@ -112,9 +131,27 @@ export default function () {
                         }
                     />
                     <SettingItem
+                        scope='languageSettings'
+                        rightAdornment={
+                            <Button
+                                transparent
+                                onPress={() => {
+                                    navigation.navigate("LanguageSettings");
+                                }}
+                            >
+                                {theme.localize.language === "fa" ? <Icons8BackIcon /> : <Icons8ForwardIcon />}
+                            </Button>
+                        }
+                    />
+                    <SettingItem
                         scope='colorSettings'
                         rightAdornment={
-                            <Button transparent onPress={() => {}}>
+                            <Button
+                                transparent
+                                onPress={() => {
+                                    navigation.navigate("ChangeColorSettings");
+                                }}
+                            >
                                 {theme.localize.language === "fa" ? <Icons8BackIcon /> : <Icons8ForwardIcon />}
                             </Button>
                         }

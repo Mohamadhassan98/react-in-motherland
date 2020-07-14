@@ -1,10 +1,12 @@
 import React from "react";
-import {Left, Right, Row, Text} from "native-base";
+import {Button, Left, Right, Row, Text} from "native-base";
 import Forward from "../../assets/icons/ForwardIcon";
 import Back from "../../assets/icons/BackIcon";
 import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
 import useTheme from "../values/theme";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../values/Routing";
 
 const styles = StyleSheet.create({
     itemsCenter: {
@@ -19,7 +21,17 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function ({title, rightAdornment}: {title: string; rightAdornment?: React.ReactElement}) {
+export default function ({
+    title,
+    rightAdornment,
+    navigation,
+    hideBack,
+}: {
+    title: string;
+    rightAdornment?: React.ReactElement;
+    navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
+    hideBack?: boolean;
+}) {
     const {
         localize: {language},
     } = useTheme();
@@ -27,7 +39,13 @@ export default function ({title, rightAdornment}: {title: string; rightAdornment
         <Row style={styles.root}>
             <Left>
                 <Row style={styles.itemsCenter}>
-                    {language === "fa" ? <Forward /> : <Back />}
+                    <Button
+                        disabled={hideBack}
+                        transparent
+                        onPress={() => navigation.canGoBack() && navigation.goBack()}
+                    >
+                        {language === "fa" ? !hideBack && <Forward /> : !hideBack && <Back />}
+                    </Button>
                     <Text style={styles.title}>{t(title)}</Text>
                 </Row>
             </Left>

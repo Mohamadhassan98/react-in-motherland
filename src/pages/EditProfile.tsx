@@ -11,6 +11,7 @@ import Avatar from "../components/Avatar";
 import useMediaPicker from "../utils/useMediaPicker";
 import MainHeader from "../components/MainHeader";
 import useTheme from "../values/theme";
+import {StackNavigator} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     avatarStyle: {
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+export default function ({navigation, route}: StackNavigator<"EditProfile">) {
     const styles = useStyles();
     const [profileImage, setProfileImage] = useState<string | undefined>();
     const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
@@ -83,9 +84,13 @@ export default function () {
         <Root>
             <Container style={{backgroundColor: "#FFFFFF"}}>
                 <MainHeader noShadow={true} size='collapsed'>
-                    {/*<Content>*/}
                     <Left style={{flex: 1, alignItems: "flex-start"}}>
-                        <Button style={styles.forwardBackIconStyle} icon transparent>
+                        <Button
+                            style={styles.forwardBackIconStyle}
+                            icon
+                            transparent
+                            onPress={() => navigation.canGoBack() && navigation.goBack()}
+                        >
                             {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
                         </Button>
                     </Left>
