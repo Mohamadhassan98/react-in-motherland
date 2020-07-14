@@ -13,21 +13,32 @@ import {
     contactListFaBe,
 } from "../values/strings";
 import {t} from "i18n-js";
+import {StackNavigator} from "../values/Routing";
+import makeStyles from "../utils/makeStyles";
+import Icons8GroupIcon from "../../assets/icons/GroupIcon";
+import Icons8CommercialIcon from "../../assets/icons/CommercialIcon";
+import Icons8AddUserGroupIcon from "../../assets/icons/AddUserGroupIcon";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     Alphabet: {
         alignContent: "center",
         alignItems: "center",
         //backgroundColor: "red",
         display: "flex",
         fontSize: 30,
+        fontFamily: theme.font.Body,
         justifyContent: "center",
         marginBottom: "1.8%",
         textAlign: "center",
         width: "22%",
     },
-    FAB: {
-        backgroundColor: "#81e38f",
+    FAB1: {
+        backgroundColor: theme.palette.Primary,
+    },
+    FAB2: {
+        backgroundColor: "#fffcfc",
+        borderColor: theme.palette.Primary,
+        borderWidth: 2,
     },
     Info: {
         borderBottomWidth: 1,
@@ -69,18 +80,21 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: "left",
+        fontFamily: theme.font.Body,
     },
     textLastSeen: {
         marginBottom: "5%",
         textAlign: "left",
+        fontFamily: theme.font.Body,
     },
-});
+}));
 
-export default function NewMessage() {
+export default function NewMessage({navigation, route}: StackNavigator<"NewMessage">) {
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
+    const styles = useStyles();
     return (
-        <MainPageLayout active={3}>
+        <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
                 <NewMessageHeader setSearchText={setSearchText} />
             </MainHeader>
@@ -255,21 +269,21 @@ export default function NewMessage() {
                         active={Active}
                         direction='up'
                         containerStyle={{}}
-                        style={styles.FAB}
+                        style={styles.FAB1}
                         position='bottomRight'
                         onPress={() => {
                             setActive(!Active);
                         }}
                     >
                         <Icon name='add' />
-                        <Button style={styles.FAB}>
-                            <Icon name='md-megaphone' />
+                        <Button style={styles.FAB2}>
+                            <Icons8CommercialIcon />
                         </Button>
-                        <Button style={styles.FAB}>
-                            <Icon name='md-people' />
+                        <Button style={styles.FAB2}>
+                            <Icons8GroupIcon />
                         </Button>
-                        <Button style={styles.FAB}>
-                            <Icon name='md-person-add' />
+                        <Button style={styles.FAB2}>
+                            <Icons8AddUserGroupIcon />
                         </Button>
                     </Fab>
                 )}

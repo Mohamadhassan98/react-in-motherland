@@ -18,6 +18,7 @@ import {t} from "i18n-js";
 import EditProfile from "./src/pages/EditProfile";
 import Login from "./src/pages/Login";
 import addContact from "./src/pages/addContact";
+import NewMessage from "./src/pages/NewMessage";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -38,6 +39,7 @@ export default function App() {
                         <Stack.Screen name='ChangeColorSimple' component={ChangeColorSimple} />
                         <Stack.Screen name='Login' component={Login} />
                         <Stack.Screen name='AddContact' component={addContact} />
+                        <Stack.Screen name='NewMessage' component={NewMessage} />
                         <Stack.Screen
                             name='PostPage'
                             component={PostPage}

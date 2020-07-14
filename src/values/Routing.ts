@@ -13,6 +13,7 @@ import {ProfileProps} from "../pages/types/ProfileProps";
 import {HomeProps} from "../pages/types/HomeProps";
 import {LoginProps} from "../pages/types/LoginProps";
 import {AddContactProps} from "../pages/types/AddContactProps";
+import {NewMessageProps} from "../pages/types/NewMessageProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -29,6 +30,7 @@ export type RootStackParamList = {
     Home: HomeProps;
     Login: LoginProps;
     AddContact: AddContactProps;
+    NewMessage: NewMessageProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;

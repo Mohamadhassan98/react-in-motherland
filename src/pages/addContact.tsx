@@ -9,16 +9,18 @@ import Avatar from "../components/Avatar";
 import {t} from "i18n-js";
 import {StackNavigator} from "../values/Routing";
 import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
+import makeStyles from "../utils/makeStyles";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     FAB: {
-        backgroundColor: "rgb(38,172,71)",
+        backgroundColor: theme.palette.Primary,
     },
     container: {
         alignItems: "center",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        marginTop: "10%",
     },
     containerStyle: {
         paddingStart: 0,
@@ -29,11 +31,16 @@ const styles = StyleSheet.create({
     icon: {
         color: "white",
     },
-});
+    text: {
+        fontFamily: theme.font.Body,
+    },
+    form: {width: "80%", alignSelf: "center"},
+}));
 
 export default function AddContact({navigation, route}: StackNavigator<"AddContact">) {
     const [FirstName, setFirstName] = useState("");
     const [LastName, setLastName] = useState("");
+    const styles = useStyles();
     const onChangeText = ({dialCode, unmaskedPhoneNumber, phoneNumber, isVerified}: ChangeTextInput) => {
         console.log(dialCode, unmaskedPhoneNumber, phoneNumber, isVerified);
     };
@@ -52,18 +59,20 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
                         profileImage='../../assets/avatar.jpg'
                     />
                 </View>
-                <Form style={{width: "80%", alignSelf: "center"}}>
+                <Form style={styles.form}>
                     <Item stackedLabel>
-                        <Label>{t("firstName")}</Label>
+                        <Label style={styles.text}>{t("firstName")}</Label>
                         <Input
+                            style={styles.text}
                             onChangeText={(event) => {
                                 setFirstName(event);
                             }}
                         />
                     </Item>
                     <Item stackedLabel>
-                        <Label>{t("lastName")}</Label>
+                        <Label style={styles.text}>{t("lastName")}</Label>
                         <Input
+                            style={styles.text}
                             onChangeText={(event) => {
                                 setLastName(event);
                             }}
