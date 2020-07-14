@@ -170,6 +170,7 @@ export default function initStrings(locale: string) {
             previous: "قبلی",
             finish: "اتمام",
             "What's in your mind?": "چ چیزی در ذهن دارید؟",
+            online: "آنلاین",
         },
     };
 

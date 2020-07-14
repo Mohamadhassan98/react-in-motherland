@@ -1,11 +1,21 @@
-import React from "react";
-import {Body, Container, Footer} from "native-base";
+import React, {useState} from "react";
+import {Body, Container, Content, Footer} from "native-base";
 import Message from "../components/Message";
 import ChatRoomHeader from "../components/ChatRoomHeader";
 import SendMessageBox from "../components/SendMessageBox";
 import MainHeader from "../components/MainHeader";
+import {t} from "i18n-js";
+import {MessageProps} from "../components/types/MessageProps";
+import CommentCard from "../components/CommentCard";
 
 export default function () {
+    const initMessages: MessageProps[] = new Array(5).fill({
+        message: "سلام به روی ماهت",
+        type: "receive",
+        date: "10 : 32 AM",
+        showDate: true,
+    },);
+    const [messages, setMessages] = React.useState(initMessages);
     return (
         <Container>
             <MainHeader size='collapsed'>
@@ -15,15 +25,26 @@ export default function () {
                     status='online'
                 />
             </MainHeader>
-            <Body>
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' />
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' />
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' />
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' />
-                <Message date='10 : 32 AM' message='سلامممممم' type='receive' showDate />
-            </Body>
-            <Footer>
-                <SendMessageBox />
+            <Content>
+                {messages.map((value, index) => (
+                    <Message {...value} key={index} />
+                ))}
+            </Content>
+            <Footer style={{backgroundColor: "transparent"}}>
+                <SendMessageBox
+                    onSubmit={(message) => {
+                        setMessages((prevState) => [
+                            ...prevState,
+                            {
+                                message: message,
+                                date: "justNow",
+                                type: "send",
+                                showDate: true,
+                                seen: false,
+                            },
+                        ]);
+                    }}
+                />
             </Footer>
         </Container>
     );
