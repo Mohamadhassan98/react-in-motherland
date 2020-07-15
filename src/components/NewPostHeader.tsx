@@ -5,7 +5,12 @@ import {materialColors} from "../values/materialColors";
 import BackIcon from "../../assets/icons/BackIcon";
 const {width} = Dimensions.get("window");
 
-export default (props: {onBackPressed?: () => void; onUserPressed: () => void; Title: string}) => {
+export default (props: {
+    onBackPressed?: () => void;
+    onUserPressed: () => void;
+    Title: string;
+    url: string | undefined;
+}) => {
     return (
         <View
             style={{
@@ -41,7 +46,19 @@ export default (props: {onBackPressed?: () => void; onUserPressed: () => void; T
                         alignItems: "flex-start",
                     }}
                 >
-                    <Text style={{color: materialColors[22], fontSize: 22, fontWeight: "bold"}}>{props.Title}</Text>
+                    <Text
+                        style={{
+                            color: materialColors[22],
+                            fontSize: 22,
+                            fontWeight: "bold",
+                            textAlign: "center",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            alignSelf: "center",
+                        }}
+                    >
+                        {props.Title}
+                    </Text>
                 </View>
                 <TouchableOpacity
                     style={{
@@ -52,10 +69,7 @@ export default (props: {onBackPressed?: () => void; onUserPressed: () => void; T
                     }}
                     onPress={props.onUserPressed}
                 >
-                    <Image
-                        source={require("../../assets/images/avatar.jpg")}
-                        style={{width: 48, height: 48, borderRadius: 40}}
-                    />
+                    <Image source={{uri: props.url}} style={{width: 48, height: 48, borderRadius: 40}} />
                 </TouchableOpacity>
             </View>
         </View>

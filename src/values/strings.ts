@@ -95,6 +95,7 @@ export default function initStrings(locale: string) {
             continue: "continue?",
             enterVerificationCode: "Enter verification code",
             wrongNumber: "Wrong number?",
+            notificationHeader: "notifications",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -186,6 +187,7 @@ export default function initStrings(locale: string) {
             suggestions: "پیشنهادهایی برای شما",
             wrongCode: "کد اشتباه است",
             enterVerificationCode: "کد تأیید را وارد کنید.",
+            notificationHeader: "اعلانات",
         },
     };
 

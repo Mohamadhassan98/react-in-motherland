@@ -3,7 +3,7 @@ import {View} from "react-native";
 
 import Header from "../components/NewPostHeader";
 import UserItemList from "../components/NotificationItem";
-
+import {t} from "i18n-js";
 import {materialColors} from "../values/materialColors";
 import {ScrollView} from "react-native-gesture-handler";
 import {StackNavigator} from "../values/Routing";
@@ -91,7 +91,7 @@ const CategoryList = [
     },
 ];
 
-export default ({navigation: navigator}: StackNavigator<"MyNotification">) => {
+export default ({navigation: navigator, route}: StackNavigator<"MyNotification">) => {
     return (
         <View
             style={{
@@ -102,9 +102,10 @@ export default ({navigation: navigator}: StackNavigator<"MyNotification">) => {
             }}
         >
             <Header
+                url={route.params.uri}
                 onBackPressed={navigator.canGoBack() ? navigator.goBack : console.log}
-                onUserPressed={() => navigator.navigate("Profile")}
-                Title='Notification'
+                onUserPressed={() => navigator.navigate("EditProfile")}
+                Title={t("notificationHeader")}
             />
             <View
                 style={{
@@ -115,6 +116,7 @@ export default ({navigation: navigator}: StackNavigator<"MyNotification">) => {
                 <ScrollView>
                     {CategoryList.map((name, index) => (
                         <UserItemList
+                            url={route.params.uri}
                             key={`notification-${index}`}
                             CategoryName={name.CategoryName}
                             UserDetails={name.UserDetails}

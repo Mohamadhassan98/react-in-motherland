@@ -101,7 +101,7 @@ export default function ({followers, followings, posts, profileImage, visibleNam
                     icon
                     style={styles.button}
                     onPress={() => {
-                        navigation.navigate("MyNotification");
+                        navigation.navigate("MyNotification", {uri: profileImage});
                     }}
                 >
                     <NotificationIcon />
