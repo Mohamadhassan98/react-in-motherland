@@ -102,6 +102,7 @@ export default function initStrings(locale: string) {
             logout: "logout",
             ok: "ok",
             error: "error",
+            notificationHeader: "notifications",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -200,6 +201,7 @@ export default function initStrings(locale: string) {
             logout: "خروج",
             ok: "باشه",
             error: "خطا",
+            notificationHeader: "اعلانات",
         },
     };
 

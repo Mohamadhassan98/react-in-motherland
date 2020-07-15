@@ -8,7 +8,7 @@ import {PostPageProps} from "../pages/types/PostPageProps";
 import {SettingsProps} from "../pages/types/SettingsProps";
 import {StackScreenProps} from "@react-navigation/stack";
 import {NewPostProps} from "../pages/types/NewPostProps";
-import {NotificationsProps} from "../pages/types/NotificationsProps";
+import {MyNotificationProps} from "../pages/types/MyNotificationProps";
 import {ProfileProps} from "../pages/types/ProfileProps";
 import {HomeProps} from "../pages/types/HomeProps";
 import {LoginProps} from "../pages/types/LoginProps";
@@ -29,7 +29,7 @@ export type RootStackParamList = {
     Settings: SettingsProps;
     NewPost: NewPostProps;
     Profile: ProfileProps;
-    Notifications: NotificationsProps;
+    MyNotification: MyNotificationProps;
     Home: HomeProps;
     Login: LoginProps;
     AddContact: AddContactProps;

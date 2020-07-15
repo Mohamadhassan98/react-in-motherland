@@ -6,6 +6,7 @@ const {width} = Dimensions.get("window");
 
 const Content = (props: {
     CategoryName: string;
+    url: string | undefined;
     UserDetails: Array<{
         UserName: string;
         UserStatus: string;
@@ -52,10 +53,7 @@ const Content = (props: {
                                 alignItems: "center",
                             }}
                         >
-                            <Image
-                                source={require("../../assets/images/avatar.jpg")}
-                                style={{width: 48, height: 48, borderRadius: 40}}
-                            />
+                            <Image source={{uri: props.url}} style={{width: 48, height: 48, borderRadius: 40}} />
                         </View>
 
                         <View

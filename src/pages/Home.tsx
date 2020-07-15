@@ -60,7 +60,7 @@ export default function ({navigation, route}: StackNavigator<"Home">) {
                 />
             </MainHeader>
             <View style={styles.primary}>
-                <PersonalUserInfo {...route.params} />
+                <PersonalUserInfo navigation={navigation} {...route.params} />
                 <PersonalPageBio bio={bio} />
                 <PersonalPageRecommends
                     images={new Array(5).fill(
@@ -83,7 +83,13 @@ export default function ({navigation, route}: StackNavigator<"Home">) {
                         </Content>
                     </Tab>
                 </Tabs>
-                <Fab position='bottomRight' style={styles.fabButton}>
+                <Fab
+                    position='bottomRight'
+                    style={styles.fabButton}
+                    onPress={() => {
+                        navigation.navigate("NewPost");
+                    }}
+                >
                     <Icons8GoogleImagesIcon />
                 </Fab>
             </View>

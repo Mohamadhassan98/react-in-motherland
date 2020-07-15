@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({followers, followings, posts, profileImage, visibleName}: PersonalUserInfoProps) {
+export default function ({followers, followings, posts, profileImage, visibleName, navigation}: PersonalUserInfoProps) {
     const styles = useStyles();
     return (
         <View style={styles.grid}>
@@ -97,7 +97,13 @@ export default function ({followers, followings, posts, profileImage, visibleNam
                 </Row>
             </Col>
             <Col style={styles.notification}>
-                <Button icon style={styles.button}>
+                <Button
+                    icon
+                    style={styles.button}
+                    onPress={() => {
+                        navigation.navigate("MyNotification", {uri: profileImage});
+                    }}
+                >
                     <NotificationIcon />
                 </Button>
             </Col>
