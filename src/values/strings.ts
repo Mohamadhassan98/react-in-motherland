@@ -95,6 +95,10 @@ export default function initStrings(locale: string) {
             continue: "continue?",
             enterVerificationCode: "Enter verification code",
             wrongNumber: "Wrong number?",
+            messengerTour: `Say hi to your friends!\nUse messenger to chat with friends and share media with'em.`,
+            personalPageTour: `Look for fresh content?\nCheck for your followers' latest posts or post a new content for your followers.`,
+            explorePageTour: `Everything from A to Z!\nSearch for anything and find useful content.`,
+            settingsPageTour: `How ever you want!\nConfigure and customize app behaviour here.`,
             notificationHeader: "notifications",
         },
         fa: {
@@ -187,6 +191,10 @@ export default function initStrings(locale: string) {
             suggestions: "پیشنهادهایی برای شما",
             wrongCode: "کد اشتباه است",
             enterVerificationCode: "کد تأیید را وارد کنید.",
+            messengerTour: `از حال دوستاتون با خبر شین!\n با استفاده از بخش پیام${zwnj}رسان می${zwnj}تونید به راحتی با بقیه چت کنین و محتواهاتون رو به اشتراک بذارین. `,
+            personalPageTour: `دنبال مطالب جدیدین؟\nاز اینجا بررسی کنید که کسایی که دنبالشون کردین جدیداً چه مطالبی رو منتشر کردن و یا خودتون پست جدیدی منتشر کنید.`,
+            explorePageTour: `از شیر مرغ تا جون آدمیزاد!\n توی این قسمت با جستجو می${zwnj}تونین هر مطلبی که می${zwnj}رو پیدا کنین.`,
+            settingsPageTour: `هر جور خودت دوست داری!\nاز این قسمت می${zwnj}تونین تنظیمات مورد نظر خودتونو اعمال کنین!`,
             notificationHeader: "اعلانات",
         },
     };

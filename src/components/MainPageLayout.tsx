@@ -11,6 +11,7 @@ import {AsyncStorage, View} from "react-native";
 import {MainPageLayoutProps} from "./types/MainPageLayoutProps";
 import {RootStackParamList} from "../values/Routing";
 import {StackNavigationProp} from "@react-navigation/stack";
+import {t} from "i18n-js";
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -61,7 +62,16 @@ const SimpleFooter = ({
     return (
         <>
             <View style={active !== 3 ? styles.buttonContainer : styles.activeButtonContainer}>
-                <Button vertical style={styles.button} textStyle={styles.textStyle}>
+                <Button
+                    vertical
+                    style={styles.button}
+                    textStyle={styles.textStyle}
+                    onPress={() => {
+                        if (active !== 3) {
+                            navigation.replace("MessengerPage");
+                        }
+                    }}
+                >
                     <Icons8MessagingIcon style={styles.icon} />
                 </Button>
             </View>
@@ -72,7 +82,7 @@ const SimpleFooter = ({
                     textStyle={styles.textStyle}
                     onPress={() => {
                         if (active !== 2) {
-                            navigation.replace("Home");
+                            navigation.replace("Home", {} as any);
                         }
                     }}
                 >
@@ -121,7 +131,7 @@ const TourFooter = ({
     const styles = useStyles();
     return (
         <>
-            <CopilotStep name='Messenger' order={1} text='Messenger is awful'>
+            <CopilotStep name='Messenger' order={1} text={t("messengerTour")}>
                 <CopilotView style={active !== 3 ? styles.buttonContainer : styles.activeButtonContainer}>
                     <Button
                         vertical
@@ -129,7 +139,7 @@ const TourFooter = ({
                         textStyle={styles.textStyle}
                         onPress={() => {
                             if (active !== 3) {
-                                // navigateTo()
+                                navigation.replace("MessengerPage");
                             }
                         }}
                     >
@@ -137,7 +147,7 @@ const TourFooter = ({
                     </Button>
                 </CopilotView>
             </CopilotStep>
-            <CopilotStep text='HomePage is amazing' name='HomePage' order={2}>
+            <CopilotStep text={t("personalPageTour")} name='HomePage' order={2}>
                 <CopilotView style={active !== 2 ? styles.buttonContainer : styles.activeButtonContainer}>
                     <Button
                         vertical
@@ -145,7 +155,7 @@ const TourFooter = ({
                         textStyle={styles.textStyle}
                         onPress={() => {
                             if (active !== 2) {
-                                navigation.replace("Home");
+                                navigation.replace("Home", {} as any);
                             }
                         }}
                     >
@@ -153,7 +163,7 @@ const TourFooter = ({
                     </Button>
                 </CopilotView>
             </CopilotStep>
-            <CopilotStep name='Explore' order={3} text='Nothing to say about Explore'>
+            <CopilotStep name='Explore' order={3} text={t("explorePageTour")}>
                 <CopilotView style={active !== 1 ? styles.buttonContainer : styles.activeButtonContainer}>
                     <Button
                         vertical
@@ -169,7 +179,7 @@ const TourFooter = ({
                     </Button>
                 </CopilotView>
             </CopilotStep>
-            <CopilotStep name='Settings' order={4} text='Setting is famous'>
+            <CopilotStep name='Settings' order={4} text={t("settingsPageTour")}>
                 <CopilotView style={active !== 0 ? styles.buttonContainer : styles.activeButtonContainer}>
                     <Button
                         vertical
@@ -193,7 +203,7 @@ export default function ({children, active, start, copilotEvents, navigation}: M
     const styles = useStyles();
     React.useEffect(() => {
         (async () => {
-            const finished = await AsyncStorage.getItem("TourFinished");
+            const finished = await AsyncStorage.getItem("tourFinished");
             if (finished !== "true") {
                 copilotEvents?.on("stop", () => {
                     AsyncStorage.setItem("tourFinished", "true");

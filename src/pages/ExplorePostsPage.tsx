@@ -1,7 +1,7 @@
 import React from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {Content, Tab, Tabs, Button} from "native-base";
+import {Button, Content, Tab, Tabs} from "native-base";
 import {t} from "i18n-js";
 import ExplorePosts from "../components/ExplorePosts";
 import CommonColors from "../../native-base-theme/variables/commonColor";
@@ -9,9 +9,7 @@ import ExploreChannels from "../components/ExploreChannels";
 import SimpleHeader from "../components/SimpleHeader";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import makeStyles from "../utils/makeStyles";
-import {copilot} from "react-native-copilot";
 import {StackNavigator} from "../values/Routing";
-import {CopilotTypes} from "../components/types/copilotTypes";
 
 const useStyles = makeStyles((theme) => ({
     activeTab: {
@@ -28,10 +26,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ExplorePostsPage({navigation, start, copilotEvents}: StackNavigator<"ExplorePostsPage"> & CopilotTypes) {
+export default function ({navigation}: StackNavigator<"ExplorePostsPage">) {
     const styles = useStyles();
     return (
-        <MainPageLayout active={1} navigation={navigation} copilotEvents={copilotEvents} start={start}>
+        <MainPageLayout active={1} navigation={navigation}>
             <MainHeader hasTabs size='collapsed'>
                 <SimpleHeader
                     title='explore'
@@ -73,10 +71,3 @@ function ExplorePostsPage({navigation, start, copilotEvents}: StackNavigator<"Ex
         </MainPageLayout>
     );
 }
-
-export default copilot({
-    animated: true,
-    overlay: "svg",
-    androidStatusBarVisible: true,
-    labels: {previous: t("previous"), next: t("next"), skip: t("skip"), finish: t("finish")},
-})(ExplorePostsPage as any);
