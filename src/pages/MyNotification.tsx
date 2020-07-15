@@ -91,7 +91,7 @@ const CategoryList = [
     },
 ];
 
-export default ({navigation: navigator}: StackNavigator<"Notifications">) => {
+export default ({navigation: navigator}: StackNavigator<"MyNotification">) => {
     return (
         <View
             style={{

@@ -21,6 +21,8 @@ import addContact from "./src/pages/addContact";
 import NewMessage from "./src/pages/NewMessage";
 import MessengerPage from "./src/pages/MessengerPage";
 import ConfirmCodeField from "./src/pages/ConfirmCodeField";
+import NewPost from "./src/pages/NewPost";
+import MyNotification from "./src/pages/MyNotification";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -79,6 +81,8 @@ export default function App() {
                                             }}
                                         />
                                         <Stack.Screen name='EditProfile' component={EditProfile} />
+                                        <Stack.Screen name='NewPost' component={NewPost} />
+                                        <Stack.Screen name='MyNotification' component={MyNotification} />
                                     </>
                                 ) : (
                                     <>

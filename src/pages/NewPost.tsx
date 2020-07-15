@@ -5,6 +5,7 @@ import Header from "../components/NewPostHeader";
 import Content from "../components/NewPost";
 import {materialColors} from "../values/materialColors";
 import {StackNavigationProp} from "@react-navigation/stack";
+import {StackNavigator} from "../values/Routing";
 
 const data = {
     PostItem: [
@@ -25,7 +26,7 @@ const data = {
         },
     ],
 };
-export default ({navigation: navigator}: {navigation: StackNavigationProp<NavigationPages, "NewPost">}) => {
+export default ({navigation: navigator}: StackNavigator<"NewPost">) => {
     const PostItemList = data.PostItem.map((Items, index) => {
         return (
             <TouchableOpacity
