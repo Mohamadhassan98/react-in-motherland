@@ -48,29 +48,13 @@ export default function ({message, media, profileImage, profileUsername, date, i
     return (
         <Card style={styles.bodyGrid}>
             <CardItem>
-                {language === "fa" ? (
-                    <Left>
-                        <Thumbnail source={{uri: profileImage}} />
-                        <Body>
-                            <Text style={styles.username}>{profileUsername}</Text>
-                            <Text note>{date}</Text>
-                        </Body>
-                    </Left>
-                ) : (
-                    // <Right>
-                    //     <Thumbnail source={{uri: profileImage}}/>
-                    //     <Body>
-                    //         <Text style={styles.username}>{profileUsername}</Text>
-                    //         <Text note >{date}</Text>
-                    //     </Body>
-                    // </Right>
-                    <Grid>
-                        <Row>
-                            <Text style={styles.username}>{profileUsername}</Text>
-                            <Thumbnail source={{uri: profileImage}} />
-                        </Row>
-                    </Grid>
-                )}
+                <Left>
+                    <Thumbnail source={{uri: profileImage}} />
+                    <Body>
+                        <Text style={styles.username}>{profileUsername}</Text>
+                        <Text note>{date}</Text>
+                    </Body>
+                </Left>
             </CardItem>
             <CardItem style={styles.padding}>
                 <Grid>
@@ -78,7 +62,7 @@ export default function ({message, media, profileImage, profileUsername, date, i
                         <Text style={styles.body}>{message}</Text>
                     </Row>
                     <Row>
-                        <Thumbnail square source={{uri: media}} />
+                        <Thumbnail square source={{uri: media}} style={{flex: 1, height: 130}} />
                     </Row>
                 </Grid>
             </CardItem>

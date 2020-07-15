@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Body, Button, Content, Left, List, ListItem, Right, Text} from "native-base";
+import {Body, Content, Left, List, ListItem, Right, Text} from "native-base";
 import MainHeader from "../components/MainHeader";
 import SettingItem from "../components/SettingItem";
 import makeStyles from "../utils/makeStyles";
@@ -154,6 +154,7 @@ export default function ({navigation}: StackNavigator<"Settings">) {
                             )
                         }
                     />
+                    <SettingItem scope='logout' onClick={() => theme.auth.logout()} />
                 </List>
             </Content>
         </MainPageLayout>

@@ -64,7 +64,7 @@ function Messenger({navigation, route, start, copilotEvents}: StackNavigator<"Me
                 <Content>
                     <List>
                         {chatList.map((item) => (
-                            <ListItem avatar key={item.id}>
+                            <ListItem avatar key={item.id} onPress={() => navigation.navigate("ChatRoom")}>
                                 <Left>
                                     <Thumbnail source={item.img} />
                                 </Left>

@@ -99,6 +99,9 @@ export default function initStrings(locale: string) {
             personalPageTour: `Look for fresh content?\nCheck for your followers' latest posts or post a new content for your followers.`,
             explorePageTour: `Everything from A to Z!\nSearch for anything and find useful content.`,
             settingsPageTour: `How ever you want!\nConfigure and customize app behaviour here.`,
+            logout: "logout",
+            ok: "ok",
+            error: "error",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -194,6 +197,9 @@ export default function initStrings(locale: string) {
             personalPageTour: `دنبال مطالب جدیدین؟\nاز اینجا بررسی کنید که کسایی که دنبالشون کردین جدیداً چه مطالبی رو منتشر کردن و یا خودتون پست جدیدی منتشر کنید.`,
             explorePageTour: `از شیر مرغ تا جون آدمیزاد!\n توی این قسمت با جستجو می${zwnj}تونین هر مطلبی که می${zwnj}رو پیدا کنین.`,
             settingsPageTour: `هر جور خودت دوست داری!\nاز این قسمت می${zwnj}تونین تنظیمات مورد نظر خودتونو اعمال کنین!`,
+            logout: "خروج",
+            ok: "باشه",
+            error: "خطا",
         },
     };
 
