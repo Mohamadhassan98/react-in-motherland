@@ -1,13 +1,15 @@
 import React from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {StyleSheet} from "react-native";
 import MessengerHeader from "../components/MessengerHeader";
 import _ from "lodash";
 import {Badge, Body, Container, Content, Fab, Icon, Left, List, ListItem, Right, Text, Thumbnail} from "native-base";
 import {chatList} from "../values/strings";
 import {StackNavigator} from "../values/Routing";
 import makeStyles from "../utils/makeStyles";
+import {copilot} from "react-native-copilot";
+import {t} from "i18n-js";
+import {CopilotTypes} from "../components/types/copilotTypes";
 
 const useStyles = makeStyles((theme) => ({
     FAB: {
@@ -49,10 +51,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Messenger({navigation, route}: StackNavigator<"MessengerPage">) {
+function Messenger({navigation, route, start, copilotEvents}: StackNavigator<"MessengerPage"> & CopilotTypes) {
     const styles = useStyles();
     return (
-        <MainPageLayout active={3} navigation={navigation}>
+        <MainPageLayout active={3} navigation={navigation} start={start} copilotEvents={copilotEvents}>
             <MainHeader size='collapsed'>
                 <MessengerHeader />
             </MainHeader>
@@ -111,3 +113,10 @@ export default function Messenger({navigation, route}: StackNavigator<"Messenger
         </MainPageLayout>
     );
 }
+
+export default copilot({
+    animated: true,
+    overlay: "svg",
+    androidStatusBarVisible: true,
+    labels: {previous: t("previous"), next: t("next"), skip: t("skip"), finish: t("finish")},
+})(Messenger as any);
