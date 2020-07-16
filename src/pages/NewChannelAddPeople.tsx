@@ -143,7 +143,7 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <NewChannelAddPeopleHeader setSearchText={setSearchText} />
+                <NewChannelAddPeopleHeader setSearchText={setSearchText} navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
             <Container>

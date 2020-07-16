@@ -144,7 +144,7 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <NewGroupAddPeopleHeader setSearchText={setSearchText} />
+                <NewGroupAddPeopleHeader setSearchText={setSearchText} navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
             <Container>

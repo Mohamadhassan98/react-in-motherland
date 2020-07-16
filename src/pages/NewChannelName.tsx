@@ -48,7 +48,7 @@ export default function NewChannelName({navigation, route}: StackNavigator<"NewC
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <NewChannelNameHeader />
+                <NewChannelNameHeader navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
             <Container>

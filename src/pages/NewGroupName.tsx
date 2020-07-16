@@ -48,7 +48,7 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <NewGroupNameHeader />
+                <NewGroupNameHeader navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
             <Container>
