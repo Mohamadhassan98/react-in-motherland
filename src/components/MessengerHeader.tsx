@@ -8,6 +8,9 @@ import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
+import {MainPageLayoutProps} from "./types/MainPageLayoutProps";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     backColumn: {
@@ -47,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+export default function ({navigation}:{navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;}) {
     const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
     const theme = useTheme();
@@ -55,7 +58,8 @@ export default function () {
     return (
         <View style={{display: "flex", flexDirection: "row"}}>
             <Col style={styles.backIcon}>
-                {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+
+
             </Col>
             <Col style={styles.titleColumn}>
                 <Text style={styles.titleTextAlign}>{t("chats")}</Text>
@@ -66,6 +70,7 @@ export default function () {
                     transparent
                     onPress={() => {
                         setSearch(true);
+                        navigation.navigate("SearchInMessenger", {} as any);
                     }}
                 >
                     <Icons8SearchIcon />

@@ -171,7 +171,7 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <SearchInMessengerHeader setSearchText={setSearchText} />
+                <SearchInMessengerHeader setSearchText={setSearchText} navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
 

@@ -2,12 +2,13 @@ import React, {useState} from "react";
 import {Col, Icon, Text, Input, Button} from "native-base";
 import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
-import {StackNavigator} from "../values/Routing";
+import {RootStackParamList, StackNavigator} from "../values/Routing";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 import Icons8BackIcon from "../../assets/icons/BackIcon";
 import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
+import {StackNavigationProp} from "@react-navigation/stack";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function (props: {setSearchText: (text: string) => void} ) {
+export default function ({setSearchText,navigation}:{setSearchText:(text: string) => void ;navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;} ) {
     const [Stext, setStext] = useState("");
     const theme = useTheme();
     const styles = useStyles();
@@ -48,13 +49,13 @@ export default function (props: {setSearchText: (text: string) => void} ) {
                         small
                         transparent
                         onPress={() => {
-
+                            navigation.navigate("MessengerPage", {} as any);
                         }}
                     ><Icons8ForwardIcon /> </Button> : <Button
                         small
                         transparent
                         onPress={() => {
-
+                            navigation.navigate("MessengerPage", {} as any);
                         }}
                     ><Icons8BackIcon /></Button> }
             </Col>
@@ -64,7 +65,7 @@ export default function (props: {setSearchText: (text: string) => void} ) {
                     placeholder={t("search")}
                     onChangeText={(event) => {
                         setStext(event);
-                        props.setSearchText(event);
+                        setSearchText(event);
                     }}
                 />
             </Col>
@@ -75,7 +76,7 @@ export default function (props: {setSearchText: (text: string) => void} ) {
                     transparent
                     onPress={() => {
                     setStext("");
-                    props.setSearchText("");
+                    setSearchText("");
                 }}
                     >
                     <DeleteIcon fill='#939191' />

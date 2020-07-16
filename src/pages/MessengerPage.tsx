@@ -51,12 +51,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Messenger({navigation, route, start, copilotEvents}: StackNavigator<"MessengerPage"> & CopilotTypes) {
+function MessengerPage({navigation, route, start, copilotEvents}: StackNavigator<"MessengerPage"> & CopilotTypes) {
     const styles = useStyles();
     return (
         <MainPageLayout active={3} navigation={navigation} start={start} copilotEvents={copilotEvents}>
             <MainHeader size='collapsed'>
-                <MessengerHeader />
+                <MessengerHeader navigation={navigation} />
             </MainHeader>
             {/* Rest of code here */}
 
@@ -121,4 +121,4 @@ export default copilot({
     overlay: "svg",
     androidStatusBarVisible: true,
     labels: {previous: t("previous"), next: t("next"), skip: t("skip"), finish: t("finish")},
-})(Messenger as any);
+})(MessengerPage as any);
