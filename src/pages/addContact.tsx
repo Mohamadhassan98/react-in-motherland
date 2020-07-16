@@ -47,7 +47,7 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <AddContactHeader />
+                <AddContactHeader navigation={navigation} />
             </MainHeader>
             {/* Rest of code here */}
             <Container>

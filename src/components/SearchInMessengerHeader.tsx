@@ -49,13 +49,13 @@ export default function ({setSearchText,navigation}:{setSearchText:(text: string
                         small
                         transparent
                         onPress={() => {
-                            navigation.navigate("MessengerPage", {} as any);
+                            navigation.canGoBack() && navigation.goBack();
                         }}
                     ><Icons8ForwardIcon /> </Button> : <Button
                         small
                         transparent
                         onPress={() => {
-                            navigation.navigate("MessengerPage", {} as any);
+                            navigation.canGoBack() && navigation.goBack();
                         }}
                     ><Icons8BackIcon /></Button> }
             </Col>

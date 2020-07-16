@@ -8,6 +8,8 @@ import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     backColumn: {
@@ -51,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function (props: {setSearchText: (text: string) => void}) {
+export default function ({setSearchText,navigation}:{setSearchText:(text: string) => void ;navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;} ) {
     const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
     const theme = useTheme();
@@ -68,12 +70,14 @@ export default function (props: {setSearchText: (text: string) => void}) {
                                 transparent
                                 onPress={() => {
                                     setSearch(true);
+                                    navigation.canGoBack() && navigation.goBack();
                                 }}
                             ><Icons8ForwardIcon /> </Button> : <Button
                                     small
                                     transparent
                                     onPress={() => {
                                         setSearch(true);
+                                        navigation.canGoBack() && navigation.goBack();
                                     }}
                                 ><Icons8BackIcon /></Button> }
                     </Col>
@@ -101,7 +105,7 @@ export default function (props: {setSearchText: (text: string) => void}) {
                             onPress={() => {
                                 setSearch(false);
                                 setStext("");
-                                props.setSearchText("");
+                                setSearchText("");
                                 {/*
                                     navigation.canGoBack() && navigation.goBack();
                                     */
@@ -117,7 +121,7 @@ export default function (props: {setSearchText: (text: string) => void}) {
                             placeholder={t("search")}
                             onChangeText={(event) => {
                                 setStext(event);
-                                props.setSearchText(event);
+                                setSearchText(event);
                             }}
                         />
                     </Col>
@@ -127,7 +131,7 @@ export default function (props: {setSearchText: (text: string) => void}) {
                                 transparent
                                 onPress={() => {
                                     setStext("");
-                                    props.setSearchText("");
+                                    setSearchText("");
                                 }}
                             >
                                 <DeleteIcon fill='#939191' />
