@@ -2,17 +2,19 @@ import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
 import {StyleSheet} from "react-native";
-import AddContactHeader from "../components/addContactHeader";
 import {Container, Fab, Icon, View, Form, Item, Input, Label, ActionSheet} from "native-base";
 import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-intl-phone-input";
 import Avatar from "../components/Avatar";
 import NewGroupNameHeader from "../components/NewGroupNameHeader";
 import {t} from "i18n-js";
 import useMediaPicker from "../utils/useMediaPicker";
+import {StackNavigator} from "../values/Routing";
+import makeStyles from "../utils/makeStyles";
 
-const styles = StyleSheet.create({
+
+const useStyles = makeStyles((theme) => ({
     FAB: {
-        backgroundColor: "#81e38f",
+        backgroundColor: theme.palette.Primary,
     },
     container: {
         alignItems: "center",
@@ -28,9 +30,10 @@ const styles = StyleSheet.create({
     flagStyle: {
         marginEnd: "10%",
     },
-});
+}));
 
-export default function NewGroupName() {
+
+export default function NewGroupName({navigation, route}: StackNavigator<"NewGroupName">) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [FirstName, setFirstName] = useState("");
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -41,8 +44,9 @@ export default function NewGroupName() {
     const [profileImage, setProfileImage] = useState<string | undefined>();
     const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
     const {result, select} = useMediaPicker(cameraOrGallery || "gallery");
+    const styles = useStyles();
     return (
-        <MainPageLayout active={3}>
+        <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
                 <NewGroupNameHeader />
             </MainHeader>

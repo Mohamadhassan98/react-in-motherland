@@ -3,15 +3,21 @@ import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
 import {TouchableOpacity, ScrollView, StyleSheet, TouchableWithoutFeedback} from "react-native";
 import NewMessageHeader from "../components/NewMessageHeader";
-import {Container, Content, Button, Thumbnail, Text, View, Fab, Icon} from "native-base";
+import {Container, Content, Button, Thumbnail, Text, View, Fab, Icon, Col} from "native-base";
 import {contactList, SearcList} from "../values/strings";
 import {t} from "i18n-js";
 import NewChannelAddPeopleHeader from "../components/NewChannelAddPeopleHeader";
 import {StackNavigator} from "../values/Routing";
+import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
+import Icons8BackIcon from "../../assets/icons/BackIcon";
+import useTheme from "../values/theme";
+import makeStyles from "../utils/makeStyles";
 
-const styles = StyleSheet.create({
+
+
+const useStyles = makeStyles((theme) => ({
     FAB: {
-        backgroundColor: "#81e38f",
+        backgroundColor: theme.palette.Primary,
     },
     Info: {
         borderBottomWidth: 1,
@@ -115,12 +121,14 @@ const styles = StyleSheet.create({
         marginBottom: "5%",
         textAlign: "left",
     },
-});
+}));
 
 export default function NewChannelAddPeople({navigation, route}: StackNavigator<"NewChannelAddPeople">) {
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
     const [List, setList] = useState(contactList);
+    const theme = useTheme();
+    const styles = useStyles();
 
     const [members, setMembers] = useState([
         {
@@ -264,7 +272,7 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                     position='bottomRight'
                     onPress={() => {}}
                 >
-                    <Icon name='md-arrow-forward' />
+                    {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
                 </Fab>
             </Container>
         </MainPageLayout>
