@@ -19,6 +19,7 @@ import {MessengerPageProps} from "../pages/types/MessengerPageProps";
 import {SearchInMessengerProps} from "../pages/types/SearchInMessengerProps";
 import {NewChannelAddPeopleProps} from "../pages/types/NewChannelAddPeople";
 import {NewGroupNameProps} from "../pages/types/NewGroupNameProps";
+import {NewChannelNameProps} from "../pages/types/NewChannelNameProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -41,7 +42,7 @@ export type RootStackParamList = {
     SearchInMessenger:SearchInMessengerProps;
     NewChannelAddPeople:NewChannelAddPeopleProps;
     NewGroupName:NewGroupNameProps;
-
+    NewChannelName:NewChannelNameProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;

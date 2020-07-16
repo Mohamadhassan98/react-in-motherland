@@ -27,6 +27,7 @@ import SearchInMessenger from "./src/pages/SearchInMessenger";
 import NewGroupAddPeople from "./src/pages/NewGroupAddPeople";
 import NewChannelAddPeople from "./src/pages/NewChannelAddPeople";
 import NewGroupName from "./src/pages/NewGroupName";
+import NewChannelName from "./src/pages/NewChannelName";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -40,7 +41,7 @@ export default function App() {
                             <Stack.Navigator screenOptions={{headerShown: false, gestureDirection: "horizontal"}}>
                                 {theme.auth.loggedIn ? (
                                     <>
-                                        <Stack.Screen name='NewGroupName' component={NewGroupName} />
+                                        <Stack.Screen name='NewChannelName' component={NewChannelName} />
                                         <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
                                         <Stack.Screen name='ExplorePostsPage' component={ExplorePostsPage} />
                                         <Stack.Screen name='Settings' component={Settings} />
@@ -52,6 +53,7 @@ export default function App() {
                                         <Stack.Screen name='SearchInMessenger' component={SearchInMessenger} />
                                         <Stack.Screen name='NewMessage' component={NewMessage} />
                                         <Stack.Screen name='NewChannelAddPeople' component={NewChannelAddPeople} />
+                                        <Stack.Screen name='NewGroupName' component={NewGroupName} />
                                         <Stack.Screen
                                             name='PostPage'
                                             component={PostPage}

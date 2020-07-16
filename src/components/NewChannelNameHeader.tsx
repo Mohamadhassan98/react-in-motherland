@@ -1,0 +1,75 @@
+import React, {useState} from "react";
+import {Button, Col, Icon, Input, Text} from "native-base";
+import {t} from "i18n-js";
+import {StyleSheet} from "react-native";
+import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
+import Icons8BackIcon from "../../assets/icons/BackIcon";
+import useTheme from "../values/theme";
+import makeStyles from "../utils/makeStyles";
+
+
+
+const useStyles = makeStyles((theme) => ({
+    backIcon: {
+        flex: 2,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+    },
+    closeColumn: {
+        alignItems: "flex-end",
+        flex: 2,
+        right: "10%",
+    },
+    closeIcon: {
+        alignSelf: "flex-end",
+    },
+    emptyColumn: {
+        flex: 2,
+    },
+    iconColumn: {
+        alignItems: "flex-end",
+        flex: 2,
+    },
+    searchColumn: {
+        flexGrow: 8,
+    },
+    titleColumn: {
+        flexGrow: 8,
+    },
+    titleTextAlign: {
+        textAlign: "center",
+    },
+}));
+
+export default function () {
+    const [search, setSearch] = useState(false);
+    const [Stext, setStext] = useState("");
+    const theme = useTheme();
+    const styles = useStyles();
+    return (
+        <>
+            <Col style={styles.backIcon}>
+                {
+
+                    theme.localize.language === "fa" ? <Button
+                        small
+                        transparent
+                        onPress={() => {
+
+                        }}
+                    ><Icons8ForwardIcon /> </Button> : <Button
+                        small
+                        transparent
+                        onPress={() => {
+
+                        }}
+                    ><Icons8BackIcon /></Button> }
+            </Col>
+            <Col style={styles.titleColumn}>
+                <Text style={styles.titleTextAlign}>{t("newChannel")}</Text>
+            </Col>
+            <Col style={styles.iconColumn}></Col>
+        </>
+    );
+}
