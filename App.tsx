@@ -23,6 +23,9 @@ import MessengerPage from "./src/pages/MessengerPage";
 import ConfirmCodeField from "./src/pages/ConfirmCodeField";
 import NewPost from "./src/pages/NewPost";
 import MyNotification from "./src/pages/MyNotification";
+import SearchInMessenger from "./src/pages/SearchInMessenger";
+import NewGroupAddPeople from "./src/pages/NewGroupAddPeople";
+import NewChannelAddPeople from "./src/pages/NewChannelAddPeople";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -44,7 +47,9 @@ export default function App() {
                                         <Stack.Screen name='ChangeColorSettings' component={ChangeColorSettings} />
                                         <Stack.Screen name='ChangeColorSimple' component={ChangeColorSimple} />
                                         <Stack.Screen name='AddContact' component={addContact} />
+                                        <Stack.Screen name='SearchInMessenger' component={SearchInMessenger} />
                                         <Stack.Screen name='NewMessage' component={NewMessage} />
+                                        <Stack.Screen name='NewChannelAddPeople' component={NewChannelAddPeople} />
                                         <Stack.Screen
                                             name='PostPage'
                                             component={PostPage}

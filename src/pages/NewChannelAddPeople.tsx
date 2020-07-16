@@ -6,9 +6,8 @@ import NewMessageHeader from "../components/NewMessageHeader";
 import {Container, Content, Button, Thumbnail, Text, View, Fab, Icon} from "native-base";
 import {contactList, SearcList} from "../values/strings";
 import {t} from "i18n-js";
-import GroupAddPeopleHeader from "../components/NewGroupAddPeopleHeader";
-import NewGroupAddPeopleHeader from "../components/NewGroupAddPeopleHeader";
 import NewChannelAddPeopleHeader from "../components/NewChannelAddPeopleHeader";
+import {StackNavigator} from "../values/Routing";
 
 const styles = StyleSheet.create({
     FAB: {
@@ -118,7 +117,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function NewChannelAddPeople() {
+export default function NewChannelAddPeople({navigation, route}: StackNavigator<"NewChannelAddPeople">) {
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
     const [List, setList] = useState(contactList);
@@ -134,13 +133,14 @@ export default function NewChannelAddPeople() {
         },
     ]);
     return (
-        <MainPageLayout active={3}>
+        <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
                 <NewChannelAddPeopleHeader setSearchText={setSearchText} />
             </MainHeader>
             {/* Rest of code here */}
             <Container>
                 <Content>
+
                     {/*<View style={styles.chooseM}>
                         <Text style={styles.chooseText}>{t("Members")}
 
@@ -148,6 +148,7 @@ export default function NewChannelAddPeople() {
                     </Text><View style={{width: "100%", height: 10}} />*/}
                     {SearchText.length === 0 ? (
                         <>
+
                             <ScrollView horizontal={true}>
                                 {List.map(
                                     (item, index) =>

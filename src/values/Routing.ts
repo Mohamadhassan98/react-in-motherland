@@ -16,6 +16,8 @@ import {AddContactProps} from "../pages/types/AddContactProps";
 import {NewMessageProps} from "../pages/types/NewMessageProps";
 import {ConfirmCodeFieldProps} from "../pages/types/ConfirmCodeFieldProps";
 import {MessengerPageProps} from "../pages/types/MessengerPageProps";
+import {SearchInMessengerProps} from "../pages/types/SearchInMessengerProps";
+import {NewChannelAddPeopleProps} from "../pages/types/NewChannelAddPeople";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -35,6 +37,8 @@ export type RootStackParamList = {
     NewMessage: NewMessageProps;
     ConfirmCodeField: ConfirmCodeFieldProps;
     MessengerPage: MessengerPageProps;
+    SearchInMessenger:SearchInMessengerProps;
+    NewChannelAddPeople:NewChannelAddPeopleProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;

@@ -15,18 +15,19 @@ const useStyles = makeStyles((theme) => ({
     },
     backIcon: {
         alignSelf: "center",
+        flex: 2,
     },
     closeColumn: {
         alignItems: "flex-end",
         flex: 2,
-        right: "10%",
+
     },
     closeIcon: {},
     emptyColumn: {
         flex: 2,
     },
     iconColumn: {
-        flex: 1,
+        flex: 2,
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-end",

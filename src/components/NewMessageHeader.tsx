@@ -14,7 +14,11 @@ const useStyles = makeStyles((theme) => ({
         flex: 2,
     },
     backIcon: {
-        alignSelf: "center",
+        //alignSelf: "center",
+        flex: 2,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
     },
     closeColumn: {
         alignItems: "flex-end",
@@ -26,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
         flex: 2,
     },
     iconColumn: {
-        flex: 1,
+        //
+        flex: 2,
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-end",
@@ -56,7 +61,21 @@ export default function (props: {setSearchText: (text: string) => void}) {
             {search === false ? (
                 <>
                     <Col style={styles.backIcon}>
-                        {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+                        {
+
+                            theme.localize.language === "fa" ? <Button
+                                small
+                                transparent
+                                onPress={() => {
+                                    setSearch(true);
+                                }}
+                            ><Icons8ForwardIcon /> </Button> : <Button
+                                    small
+                                    transparent
+                                    onPress={() => {
+                                        setSearch(true);
+                                    }}
+                                ><Icons8BackIcon /></Button> }
                     </Col>
                     <Col style={styles.titleColumn}>
                         <Text style={styles.titleTextAlign}>{t("newMessage")}</Text>
@@ -83,6 +102,10 @@ export default function (props: {setSearchText: (text: string) => void}) {
                                 setSearch(false);
                                 setStext("");
                                 props.setSearchText("");
+                                {/*
+                                    navigation.canGoBack() && navigation.goBack();
+                                    */
+                                }
                             }}
                         >
                             {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
