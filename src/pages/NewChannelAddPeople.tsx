@@ -270,7 +270,9 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                     containerStyle={{}}
                     style={styles.FAB}
                     position='bottomRight'
-                    onPress={() => {}}
+                    onPress={() => {
+                        navigation.navigate("NewChannelName", {} as any);
+                    }}
                 >
                     {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
                 </Fab>

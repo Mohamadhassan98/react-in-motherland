@@ -105,7 +105,9 @@ function Messenger({navigation, route, start, copilotEvents}: StackNavigator<"Me
                     containerStyle={{}}
                     style={styles.FAB}
                     position='bottomRight'
-                    onPress={() => {}}
+                    onPress={() => {
+                        navigation.navigate("NewMessage", {} as any);
+                    }}
                 >
                     <Icon name='create' />
                 </Fab>

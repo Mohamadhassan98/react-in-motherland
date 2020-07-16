@@ -41,7 +41,7 @@ export default function App() {
                             <Stack.Navigator screenOptions={{headerShown: false, gestureDirection: "horizontal"}}>
                                 {theme.auth.loggedIn ? (
                                     <>
-                                        <Stack.Screen name='NewGroupAddPeople' component={NewGroupAddPeople} />
+
                                         <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
                                         <Stack.Screen name='ExplorePostsPage' component={ExplorePostsPage} />
                                         <Stack.Screen name='Settings' component={Settings} />
@@ -55,6 +55,7 @@ export default function App() {
                                         <Stack.Screen name='NewChannelAddPeople' component={NewChannelAddPeople} />
                                         <Stack.Screen name='NewGroupName' component={NewGroupName} />
                                         <Stack.Screen name='NewChannelName' component={NewChannelName} />
+                                        <Stack.Screen name='NewGroupAddPeople' component={NewGroupAddPeople} />
                                         <Stack.Screen
                                             name='PostPage'
                                             component={PostPage}

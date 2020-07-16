@@ -271,7 +271,9 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
                     containerStyle={{}}
                     style={styles.FAB}
                     position='bottomRight'
-                    onPress={() => {}}
+                    onPress={() => {
+                        navigation.navigate("NewGroupName", {} as any);
+                    }}
                 >
                     {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
                 </Fab>
