@@ -3,15 +3,22 @@ import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
 import {TouchableOpacity, ScrollView, StyleSheet, TouchableWithoutFeedback} from "react-native";
 import NewMessageHeader from "../components/NewMessageHeader";
-import {Container, Content, Button, Thumbnail, Text, View, Fab, Icon} from "native-base";
+import {Container, Content, Button, Thumbnail, Text, View, Fab, Icon, Col} from "native-base";
 import {contactList, SearcList} from "../values/strings";
 import {t} from "i18n-js";
-import GroupAddPeopleHeader from "../components/NewGroupAddPeopleHeader";
+import NewChannelAddPeopleHeader from "../components/NewChannelAddPeopleHeader";
+import {StackNavigator} from "../values/Routing";
+import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
+import Icons8BackIcon from "../../assets/icons/BackIcon";
+import useTheme from "../values/theme";
+import makeStyles from "../utils/makeStyles";
 import NewGroupAddPeopleHeader from "../components/NewGroupAddPeopleHeader";
 
-const styles = StyleSheet.create({
+
+
+const useStyles = makeStyles((theme) => ({
     FAB: {
-        backgroundColor: "#81e38f",
+        backgroundColor: theme.palette.Primary,
     },
     Info: {
         borderBottomWidth: 1,
@@ -115,12 +122,14 @@ const styles = StyleSheet.create({
         marginBottom: "5%",
         textAlign: "left",
     },
-});
+}));
 
-export default function NewGroupAddPeople() {
+export default function NewGroupAddPeople({navigation, route}: StackNavigator<"NewGroupAddPeople">) {
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
     const [List, setList] = useState(contactList);
+    const theme = useTheme();
+    const styles = useStyles();
 
     const [members, setMembers] = useState([
         {
@@ -133,13 +142,14 @@ export default function NewGroupAddPeople() {
         },
     ]);
     return (
-        <MainPageLayout active={3}>
+        <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
                 <NewGroupAddPeopleHeader setSearchText={setSearchText} />
             </MainHeader>
             {/* Rest of code here */}
             <Container>
                 <Content>
+
                     {/*<View style={styles.chooseM}>
                         <Text style={styles.chooseText}>{t("Members")}
 
@@ -147,6 +157,7 @@ export default function NewGroupAddPeople() {
                     </Text><View style={{width: "100%", height: 10}} />*/}
                     {SearchText.length === 0 ? (
                         <>
+
                             <ScrollView horizontal={true}>
                                 {List.map(
                                     (item, index) =>
@@ -262,7 +273,7 @@ export default function NewGroupAddPeople() {
                     position='bottomRight'
                     onPress={() => {}}
                 >
-                    <Icon name='md-arrow-forward' />
+                    {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
                 </Fab>
             </Container>
         </MainPageLayout>
