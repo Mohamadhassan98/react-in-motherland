@@ -96,7 +96,6 @@ export default function App() {
                                             }}
                                         />
                                         <Stack.Screen name='EditProfile' component={EditProfile} />
-                                        <Stack.Screen name='NewPost' component={NewPost} />
                                         <Stack.Screen name='MyNotification' component={MyNotification} />
                                     </>
                                 ) : (
