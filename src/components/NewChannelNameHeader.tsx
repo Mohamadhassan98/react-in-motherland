@@ -1,14 +1,14 @@
 import React, {useState} from "react";
-import {Col, Icon, Text, Input, Button} from "native-base";
+import {Button, Col, Icon, Input, Text} from "native-base";
 import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
-import {RootStackParamList, StackNavigator} from "../values/Routing";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 import Icons8BackIcon from "../../assets/icons/BackIcon";
 import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
-import DeleteIcon from "../../assets/icons/DeleteIcon";
 import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../values/Routing";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,24 +19,33 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "flex-start",
     },
     closeColumn: {
+        alignItems: "flex-end",
         flex: 2,
+        right: "10%",
     },
     closeIcon: {
         alignSelf: "flex-end",
     },
+    emptyColumn: {
+        flex: 2,
+    },
+    iconColumn: {
+        alignItems: "flex-end",
+        flex: 2,
+    },
     searchColumn: {
         flexGrow: 8,
     },
-    iconColumn: {
-        //
-        flex: 2,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-end",
+    titleColumn: {
+        flexGrow: 8,
+    },
+    titleTextAlign: {
+        textAlign: "center",
     },
 }));
 
-export default function ({setSearchText,navigation}:{setSearchText:(text: string) => void ;navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;} ) {
+export default function ({navigation}:{navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;} ) {
+    const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
     const theme = useTheme();
     const styles = useStyles();
@@ -59,31 +68,10 @@ export default function ({setSearchText,navigation}:{setSearchText:(text: string
                         }}
                     ><Icons8BackIcon /></Button> }
             </Col>
-            <Col style={styles.searchColumn}>
-                <Input
-                    value={Stext}
-                    placeholder={t("search")}
-                    onChangeText={(event) => {
-                        setStext(event);
-                        setSearchText(event);
-                    }}
-                />
+            <Col style={styles.titleColumn}>
+                <Text style={styles.titleTextAlign}>{t("newChannel")}</Text>
             </Col>
-            <Col style={styles.iconColumn}>
-                {Stext.length > 0 && (
-
-                    <Button
-                    transparent
-                    onPress={() => {
-                    setStext("");
-                    setSearchText("");
-                }}
-                    >
-                    <DeleteIcon fill='#939191' />
-                    </Button>
-
-                )}
-            </Col>
+            <Col style={styles.iconColumn}></Col>
         </>
     );
 }

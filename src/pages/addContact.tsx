@@ -47,7 +47,7 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <AddContactHeader />
+                <AddContactHeader navigation={navigation} />
             </MainHeader>
             {/* Rest of code here */}
             <Container>
@@ -93,8 +93,9 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
                     containerStyle={{}}
                     style={styles.FAB}
                     position='bottomRight'
-                    onPress={() => {
-                        navigation.navigate("Home", {} as any);
+                    onPress={() => {/*
+                        navigation.navigate("MessengerPage", {} as any);
+                        */
                         {
                             /*
                             navigation.canGoBack() && navigation.goBack();

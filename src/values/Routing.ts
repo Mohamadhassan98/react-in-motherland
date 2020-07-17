@@ -18,6 +18,11 @@ import {ConfirmCodeFieldProps} from "../pages/types/ConfirmCodeFieldProps";
 import {MessengerPageProps} from "../pages/types/MessengerPageProps";
 import {ChatroomProps} from "../pages/types/ChatroomProps";
 import {AddCommentChannelProps} from "../pages/types/AddCommentChannelProps";
+import {SearchInMessengerProps} from "../pages/types/SearchInMessengerProps";
+import {NewChannelAddPeopleProps} from "../pages/types/NewChannelAddPeople";
+import {NewGroupNameProps} from "../pages/types/NewGroupNameProps";
+import {NewChannelNameProps} from "../pages/types/NewChannelNameProps";
+import {NewGroupAddPeopleProps} from "../pages/types/NewGroupAddPeopleProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -39,6 +44,11 @@ export type RootStackParamList = {
     MessengerPage: MessengerPageProps;
     ChatRoom: ChatroomProps;
     AddCommentChannel: AddCommentChannelProps;
+    SearchInMessenger:SearchInMessengerProps;
+    NewChannelAddPeople:NewChannelAddPeopleProps;
+    NewGroupName:NewGroupNameProps;
+    NewChannelName:NewChannelNameProps;
+    NewGroupAddPeople:NewGroupAddPeopleProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;

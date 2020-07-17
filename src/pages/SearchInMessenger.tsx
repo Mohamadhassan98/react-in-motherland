@@ -21,6 +21,7 @@ import {
 import {t} from "i18n-js";
 import {Recent, peopleList} from "../values/strings";
 import SimpleHeader from "../components/SimpleHeader";
+import {StackNavigator} from "../values/Routing";
 
 const styles = StyleSheet.create({
     Info: {
@@ -163,20 +164,23 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function SearchInMessenger() {
+export default function SearchInMessenger({navigation, route}: StackNavigator<"SearchInMessenger">) {
     const [Empty, setEmpty] = useState(false);
     const [RecentList, setRecentList] = useState(Recent);
     const [SearchText, setSearchText] = useState("");
     return (
-        <MainPageLayout active={3}>
+        <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <SearchInMessengerHeader setSearchText={setSearchText} />
+                <SearchInMessengerHeader setSearchText={setSearchText} navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
 
             <Content>
                 {SearchText.length === 0 ? (
                     <>
+                        <View style={styles.recent}>
+                            <Text style={styles.recentText}>{t("suggestions")}</Text>
+                        </View>
                         <View style={{width: "100%", height: 10}} />
 
                         <ScrollView horizontal={true}>

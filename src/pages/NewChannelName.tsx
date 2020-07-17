@@ -5,7 +5,7 @@ import {StyleSheet} from "react-native";
 import {Container, Fab, Icon, View, Form, Item, Input, Label, ActionSheet} from "native-base";
 import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-intl-phone-input";
 import Avatar from "../components/Avatar";
-import NewGroupNameHeader from "../components/NewGroupNameHeader";
+import NewChannelNameHeader from "../components/NewChannelNameHeader";
 import {t} from "i18n-js";
 import useMediaPicker from "../utils/useMediaPicker";
 import {StackNavigator} from "../values/Routing";
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function NewGroupName({navigation, route}: StackNavigator<"NewGroupName">) {
+export default function NewChannelName({navigation, route}: StackNavigator<"NewChannelName">) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [FirstName, setFirstName] = useState("");
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -48,7 +48,7 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <NewGroupNameHeader navigation={navigation}/>
+                <NewChannelNameHeader navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
             <Container>

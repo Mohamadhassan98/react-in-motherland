@@ -23,6 +23,12 @@ import MessengerPage from "./src/pages/MessengerPage";
 import ConfirmCodeField from "./src/pages/ConfirmCodeField";
 import ChatRoom from "./src/pages/ChatRoom";
 import NewPost from "./src/pages/NewPost";
+import MyNotification from "./src/pages/MyNotification";
+import SearchInMessenger from "./src/pages/SearchInMessenger";
+import NewGroupAddPeople from "./src/pages/NewGroupAddPeople";
+import NewChannelAddPeople from "./src/pages/NewChannelAddPeople";
+import NewGroupName from "./src/pages/NewGroupName";
+import NewChannelName from "./src/pages/NewChannelName";
 import AddCommentChannel from "./src/pages/AddCommentChannel";
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -45,7 +51,12 @@ export default function App() {
                                         <Stack.Screen name='ChangeColorSettings' component={ChangeColorSettings} />
                                         <Stack.Screen name='ChangeColorSimple' component={ChangeColorSimple} />
                                         <Stack.Screen name='AddContact' component={addContact} />
+                                        <Stack.Screen name='SearchInMessenger' component={SearchInMessenger} />
                                         <Stack.Screen name='NewMessage' component={NewMessage} />
+                                        <Stack.Screen name='NewChannelAddPeople' component={NewChannelAddPeople} />
+                                        <Stack.Screen name='NewGroupName' component={NewGroupName} />
+                                        <Stack.Screen name='NewChannelName' component={NewChannelName} />
+                                        <Stack.Screen name='NewGroupAddPeople' component={NewGroupAddPeople} />
                                         <Stack.Screen name='ChatRoom' component={ChatRoom} />
                                         <Stack.Screen name='NewPost' component={NewPost} />
                                         <Stack.Screen name='AddCommentChannel' component={AddCommentChannel} />
@@ -85,6 +96,8 @@ export default function App() {
                                             }}
                                         />
                                         <Stack.Screen name='EditProfile' component={EditProfile} />
+                                        <Stack.Screen name='NewPost' component={NewPost} />
+                                        <Stack.Screen name='MyNotification' component={MyNotification} />
                                     </>
                                 ) : (
                                     <>
@@ -100,8 +113,3 @@ export default function App() {
         </ThemeProvider>
     );
 }
-
-// const ThemeConsumer = ({children}: {children: React.ReactElement}) => {
-//     const theme = useTheme();
-//     return <StyleProvider style={getTheme(platform(theme.localize.language) as any)}>{children}</StyleProvider>;
-// };

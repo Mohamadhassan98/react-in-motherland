@@ -8,13 +8,19 @@ import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     backColumn: {
         flex: 2,
     },
     backIcon: {
-        alignSelf: "center",
+        //alignSelf: "center",
+        flex: 2,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
     },
     closeColumn: {
         alignItems: "flex-end",
@@ -26,7 +32,8 @@ const useStyles = makeStyles((theme) => ({
         flex: 2,
     },
     iconColumn: {
-        flex: 1,
+        //
+        flex: 2,
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-end",
@@ -46,35 +53,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function (props: {setSearchText: (text: string) => void}) {
+export default function ({setSearchText,navigation}:{setSearchText:(text: string) => void ;navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;} ) {
     const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
     const theme = useTheme();
     const styles = useStyles();
     return (
         <>
-            {search === false ? (
-                <>
-                    <Col style={styles.backIcon}>
-                        {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
-                    </Col>
-                    <Col style={styles.titleColumn}>
-                        <Text style={styles.titleTextAlign}>{t("newMessage")}</Text>
-                    </Col>
-                    <Col style={styles.iconColumn}>
-                        <Button
-                            small
-                            transparent
-                            onPress={() => {
-                                setSearch(true);
-                            }}
-                        >
-                            <Icons8SearchIcon />
-                        </Button>
-                    </Col>
-                </>
-            ) : (
-                <>
+
                     <Col style={styles.backIcon}>
                         <Button
                             small
@@ -82,7 +68,12 @@ export default function (props: {setSearchText: (text: string) => void}) {
                             onPress={() => {
                                 setSearch(false);
                                 setStext("");
-                                props.setSearchText("");
+                                setSearchText("");
+                                navigation.canGoBack() && navigation.goBack();
+                                {/*
+                                    navigation.canGoBack() && navigation.goBack();
+                                    */
+                                }
                             }}
                         >
                             {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
@@ -94,7 +85,7 @@ export default function (props: {setSearchText: (text: string) => void}) {
                             placeholder={t("search")}
                             onChangeText={(event) => {
                                 setStext(event);
-                                props.setSearchText(event);
+                                setSearchText(event);
                             }}
                         />
                     </Col>
@@ -104,7 +95,7 @@ export default function (props: {setSearchText: (text: string) => void}) {
                                 transparent
                                 onPress={() => {
                                     setStext("");
-                                    props.setSearchText("");
+                                    setSearchText("");
                                 }}
                             >
                                 <DeleteIcon fill='#939191' />
@@ -112,7 +103,5 @@ export default function (props: {setSearchText: (text: string) => void}) {
                         )}
                     </Col>
                 </>
-            )}
-        </>
     );
 }

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Col, Icon, Input, Text, View} from "native-base";
+import {Button, Col, Icon, Input, Left, Text, Thumbnail, View} from "native-base";
 import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
@@ -8,6 +8,9 @@ import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
+import {MainPageLayoutProps} from "./types/MainPageLayoutProps";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     backColumn: {
@@ -15,18 +18,19 @@ const useStyles = makeStyles((theme) => ({
     },
     backIcon: {
         alignSelf: "center",
+        flex: 2,
     },
     closeColumn: {
         alignItems: "flex-end",
         flex: 2,
-        right: "10%",
+
     },
     closeIcon: {},
     emptyColumn: {
         flex: 2,
     },
     iconColumn: {
-        flex: 1,
+        flex: 2,
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-end",
@@ -46,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+export default function ({navigation}:{navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;}) {
     const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
     const theme = useTheme();
@@ -54,7 +58,7 @@ export default function () {
     return (
         <View style={{display: "flex", flexDirection: "row"}}>
             <Col style={styles.backIcon}>
-                {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+                <Thumbnail square style={{width:40, height:40}} source={require("../../assets/images/logo.png")} />
             </Col>
             <Col style={styles.titleColumn}>
                 <Text style={styles.titleTextAlign}>{t("chats")}</Text>
@@ -65,6 +69,7 @@ export default function () {
                     transparent
                     onPress={() => {
                         setSearch(true);
+                        navigation.navigate("SearchInMessenger", {} as any);
                     }}
                 >
                     <Icons8SearchIcon />
