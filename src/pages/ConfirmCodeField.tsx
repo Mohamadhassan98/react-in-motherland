@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Image, SafeAreaView, Text, View} from "react-native";
+import {Alert, Image, SafeAreaView, Text, View} from "react-native";
 import {CodeField, Cursor, useBlurOnFulfill, useClearByFocusCell} from "react-native-confirmation-code-field";
 import makeStyles from "../utils/makeStyles";
 import {t} from "i18n-js";
@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: theme.font.Body,
     },
 }));
+
 const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField">) => {
     const styles = useStyles();
     const theme = useTheme();
@@ -79,12 +80,20 @@ const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField"
     const handleContinuePress = () => {
         setErrorText("");
         if (!value) {
-            alert(t("emptyCode"));
+            Alert.alert(t("error"), t("emptyCode"), [
+                {
+                    text: t("ok"),
+                },
+            ]);
         } else {
             if (value === code) {
                 theme.auth.login();
             } else {
-                alert(t("wrongCode"));
+                Alert.alert(t("error"), t("wrongCode"), [
+                    {
+                        text: t("ok"),
+                    },
+                ]);
             }
         }
     };
@@ -100,7 +109,11 @@ const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField"
                 ref={ref}
                 {...props}
                 value={value}
-                onChangeText={setValue}
+                onChangeText={(text) => {
+                    if (/^\d*$/.test(text)) {
+                        setValue(text);
+                    }
+                }}
                 cellCount={CELL_COUNT}
                 rootStyle={styles.codeFieldRoot}
                 keyboardType='number-pad'

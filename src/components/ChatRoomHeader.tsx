@@ -1,6 +1,6 @@
 import React from "react";
 import {StyleSheet} from "react-native";
-import {Body, Button, Card, CardItem, Grid, Left, Row, Text, Thumbnail, View} from "native-base";
+import {Button, Grid, Row, Text, View} from "native-base";
 import {ChatRoomHeadersProps} from "./types/ChatRoomHeadersProps";
 import commonColor from "../../native-base-theme/variables/commonColor";
 import {t} from "i18n-js";
@@ -26,13 +26,18 @@ const styles = StyleSheet.create({
         color: commonColor.textColor,
     },
 });
-export default function ({profileImage, profileUsername, status}: ChatRoomHeadersProps) {
+export default function ({profileImage, profileUsername, status, navigation}: ChatRoomHeadersProps) {
     const theme = useTheme();
     return (
         <Grid style={styles.padding}>
             <Row style={{alignItems: "center", justifyContent: "space-between"}}>
                 <View style={{flexDirection: "row"}}>
-                    <Button style={styles.forwardBackIconStyle} icon transparent>
+                    <Button
+                        style={styles.forwardBackIconStyle}
+                        icon
+                        transparent
+                        onPress={() => navigation.canGoBack() && navigation.goBack()}
+                    >
                         {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
                     </Button>
                     <Avatar profileImage={profileImage} visibleName={profileUsername} size={38} />

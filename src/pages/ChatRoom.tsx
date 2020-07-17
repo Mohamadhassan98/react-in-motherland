@@ -1,13 +1,12 @@
-import React, {useState} from "react";
-import {Body, Container, Content, Footer} from "native-base";
+import React from "react";
+import {Container, Content, Footer} from "native-base";
 import Message from "../components/Message";
 import ChatRoomHeader from "../components/ChatRoomHeader";
 import SendMessageBox from "../components/SendMessageBox";
 import MainHeader from "../components/MainHeader";
-import {t} from "i18n-js";
 import {MessageProps} from "../components/types/MessageProps";
-import CommentCard from "../components/CommentCard";
 import {StackNavigator} from "../values/Routing";
+import {t} from "i18n-js";
 
 export default function Chatroom({navigation, route}: StackNavigator<"ChatRoom">) {
     const initMessages: MessageProps[] = new Array(5).fill({
@@ -24,6 +23,7 @@ export default function Chatroom({navigation, route}: StackNavigator<"ChatRoom">
                     profileImage='https://static.independent.co.uk/s3fs-public/thumbnails/image/2020/06/15/20/donald-trump-cabinet-room-white-house.jpg'
                     profileUsername='donald trump'
                     status='online'
+                    navigation={navigation}
                 />
             </MainHeader>
             <Content>
@@ -38,7 +38,7 @@ export default function Chatroom({navigation, route}: StackNavigator<"ChatRoom">
                             ...prevState,
                             {
                                 message: message,
-                                date: "justNow",
+                                date: t("_justNow"),
                                 type: "send",
                                 showDate: true,
                                 seen: false,

@@ -106,6 +106,7 @@ export default function initStrings(locale: string) {
             cancel:"CANCEL",
             ClearSearchHistoryMessage:"Are you sure you want to clear your search history ?",
 
+            Comments: "Comments",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -207,6 +208,7 @@ export default function initStrings(locale: string) {
             Clear:"پاک کردن",
             cancel:"لغو",
             ClearSearchHistoryMessage:"آیا از پاک کردن تاریخچه ی جست و جوی خود اطمینان دارید ؟",
+            Comments: "نظرات",
         },
     };
 

@@ -64,7 +64,7 @@ function MessengerPage({navigation, route, start, copilotEvents}: StackNavigator
                 <Content>
                     <List>
                         {chatList.map((item) => (
-                            <ListItem avatar key={item.id}>
+                            <ListItem avatar key={item.id} onPress={() => navigation.navigate("ChatRoom")}>
                                 <Left>
                                     <Thumbnail source={item.img} />
                                 </Left>
@@ -98,7 +98,6 @@ function MessengerPage({navigation, route, start, copilotEvents}: StackNavigator
                         ))}
                     </List>
                 </Content>
-
                 <Fab
                     active={false}
                     direction='up'
