@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     FAB: {
         backgroundColor: theme.palette.Primary,
     },
+    disableFAB:{
+        backgroundColor:"#eae6e6"
+    },
     Info: {
         borderBottomWidth: 1,
         borderColor: "#eeeeee",
@@ -133,6 +136,7 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
     const [List, setList] = useState(contactList);
+    const [disable,setDisable] = useState(true);
     const theme = useTheme();
     const styles = useStyles();
 
@@ -205,6 +209,7 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                                                 index1 !== index ? value1 : {...value1, choose: !value1.choose}
                                             )
                                         );
+                                        setDisable(false);
                                     }}
                                 >
                                     <View style={styles.listItem} key={item.id}>
@@ -241,6 +246,7 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                                                         index1 !== index ? value1 : {...value1, choose: !value1.choose}
                                                     )
                                                 );
+                                                setDisable(false);
                                             }}
                                         >
                                             <View style={styles.listItem} key={item.id}>
@@ -270,18 +276,35 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                         </>
                     )}
                 </Content>
-                <Fab
-                    active={false}
-                    direction='up'
-                    containerStyle={{}}
-                    style={styles.FAB}
-                    position='bottomRight'
-                    onPress={() => {
-                        navigation.navigate("NewChannelName", {} as any);
-                    }}
-                >
-                    {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
-                </Fab>
+                {
+                    disable===true ?
+                        <Fab
+                            active={false}
+                            direction='up'
+                            containerStyle={{}}
+                            style={styles.disableFAB}
+                            position='bottomRight'
+                            onPress={() => {
+
+                            }}
+                        >
+                            {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
+                        </Fab>
+                        :
+                        <Fab
+                            active={false}
+                            direction='up'
+                            containerStyle={{}}
+                            style={styles.FAB}
+                            position='bottomRight'
+                            onPress={() => {
+                                navigation.navigate("NewChannelName", {} as any);
+                            }}
+                        >
+                            {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
+                        </Fab>
+
+                }
             </Container>
         </MainPageLayout>
     );
