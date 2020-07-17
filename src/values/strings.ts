@@ -101,6 +101,13 @@ export default function initStrings(locale: string) {
             explorePageTour: `Everything from A to Z!\nSearch for anything and find useful content.`,
             settingsPageTour: `How ever you want!\nConfigure and customize app behaviour here.`,
             notificationHeader: "notifications",
+            new: "New",
+            likedYourPost: "Liked Your Post",
+            SevenHoursAgo: "7h ago",
+            today: "Today",
+            thisWeek: "This Week",
+            thisMonth: "This Month",
+            DeleteNotification: "Delete Notification",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -198,6 +205,13 @@ export default function initStrings(locale: string) {
             explorePageTour: `از شیر مرغ تا جون آدمیزاد!\n توی این قسمت با جستجو می${zwnj}تونین هر مطلبی که می${zwnj}رو پیدا کنین.`,
             settingsPageTour: `هر جور خودت دوست داری!\nاز این قسمت می${zwnj}تونین تنظیمات مورد نظر خودتونو اعمال کنین!`,
             notificationHeader: "اعلانات",
+            new: "جدید",
+            likedYourPost: "پست شما را پسندید",
+            SevenHoursAgo: "هفت ساعت پیش",
+            today: "امروز",
+            thisWeek: "هفته گذشته",
+            thisMonth: "ماه گذشته",
+            DeleteNotification: "حذف اعلان",
         },
     };
 

@@ -6,7 +6,7 @@ import ColorPalette from "react-native-color-palette";
 import useTheme from "../values/theme";
 import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
 import {fromHsv, TriangleColorPicker} from "react-native-color-picker";
-import {materialColors} from "../values/materialColors";
+import {materialColorsForUser} from "../values/materialColors";
 import makeStyles from "../utils/makeStyles";
 import SimpleHeader from "../components/SimpleHeader";
 import {StackNavigator} from "../values/Routing";
@@ -53,10 +53,10 @@ export default function ({navigation, route}: StackNavigator<"ChangeColorSimple"
             <Content>
                 <ColorPalette
                     onChange={(color) => setSelectedColor(color)}
-                    value={materialColors.includes(selectedColor) ? selectedColor : undefined}
-                    colors={materialColors}
+                    value={materialColorsForUser.includes(selectedColor) ? selectedColor : undefined}
+                    colors={materialColorsForUser}
                     title={t("chooseOneOfThese")}
-                    icon={materialColors.includes(selectedColor) && <Icons8CheckmarkIcon />}
+                    icon={materialColorsForUser.includes(selectedColor) && <Icons8CheckmarkIcon />}
                 />
                 <Text>{t("orCustomizeIt")}</Text>
                 <TriangleColorPicker

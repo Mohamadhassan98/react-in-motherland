@@ -41,14 +41,13 @@ export default function App() {
                             <Stack.Navigator screenOptions={{headerShown: false, gestureDirection: "horizontal"}}>
                                 {theme.auth.loggedIn ? (
                                     <>
-
+                                        <Stack.Screen name='MessengerPage' component={MessengerPage} />
                                         <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
                                         <Stack.Screen name='ExplorePostsPage' component={ExplorePostsPage} />
                                         <Stack.Screen name='Settings' component={Settings} />
                                         <Stack.Screen name='LanguageSettings' component={LanguageSettings} />
                                         <Stack.Screen name='ChangeColorSettings' component={ChangeColorSettings} />
                                         <Stack.Screen name='ChangeColorSimple' component={ChangeColorSimple} />
-                                        <Stack.Screen name='MessengerPage' component={MessengerPage} />
                                         <Stack.Screen name='AddContact' component={addContact} />
                                         <Stack.Screen name='SearchInMessenger' component={SearchInMessenger} />
                                         <Stack.Screen name='NewMessage' component={NewMessage} />

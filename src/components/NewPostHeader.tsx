@@ -3,6 +3,8 @@ import {TouchableOpacity, Image, Text, Dimensions} from "react-native";
 import {View} from "native-base";
 import {materialColors} from "../values/materialColors";
 import BackIcon from "../../assets/icons/BackIcon";
+import useTheme from "../values/theme";
+import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 const {width} = Dimensions.get("window");
 
 export default (props: {
@@ -11,6 +13,7 @@ export default (props: {
     Title: string;
     url: string | undefined;
 }) => {
+    const theme = useTheme();
     return (
         <View
             style={{
@@ -36,7 +39,11 @@ export default (props: {
                     }}
                     onPress={props.onBackPressed}
                 >
-                    <BackIcon style={{width: 30}} />
+                    {theme.localize.language === "fa" ? (
+                        <Icons8ForwardIcon style={{width: 30}} />
+                    ) : (
+                        <BackIcon style={{width: 30}} />
+                    )}
                 </TouchableOpacity>
                 <View
                     style={{
@@ -67,9 +74,9 @@ export default (props: {
                         justifyContent: "center",
                         alignItems: "center",
                     }}
-                    onPress={props.onUserPressed}
+                    // onPress={props.onUserPressed}
                 >
-                    <Image source={{uri: props.url}} style={{width: 48, height: 48, borderRadius: 40}} />
+                    {/*<Image source={{uri: props.url}} style={{width: 48, height: 48, borderRadius: 40}} />*/}
                 </TouchableOpacity>
             </View>
         </View>
