@@ -60,44 +60,7 @@ export default function ({setSearchText,navigation}:{setSearchText:(text: string
     const styles = useStyles();
     return (
         <>
-            {search === false ? (
-                <>
-                    <Col style={styles.backIcon}>
-                        {
 
-                            theme.localize.language === "fa" ? <Button
-                                small
-                                transparent
-                                onPress={() => {
-                                    setSearch(true);
-                                    navigation.canGoBack() && navigation.goBack();
-                                }}
-                            ><Icons8ForwardIcon /> </Button> : <Button
-                                    small
-                                    transparent
-                                    onPress={() => {
-                                        setSearch(true);
-                                        navigation.canGoBack() && navigation.goBack();
-                                    }}
-                                ><Icons8BackIcon /></Button> }
-                    </Col>
-                    <Col style={styles.titleColumn}>
-                        <Text style={styles.titleTextAlign}>{t("newMessage")}</Text>
-                    </Col>
-                    <Col style={styles.iconColumn}>
-                        <Button
-                            small
-                            transparent
-                            onPress={() => {
-                                setSearch(true);
-                            }}
-                        >
-                            <Icons8SearchIcon />
-                        </Button>
-                    </Col>
-                </>
-            ) : (
-                <>
                     <Col style={styles.backIcon}>
                         <Button
                             small
@@ -106,6 +69,7 @@ export default function ({setSearchText,navigation}:{setSearchText:(text: string
                                 setSearch(false);
                                 setStext("");
                                 setSearchText("");
+                                navigation.canGoBack() && navigation.goBack();
                                 {/*
                                     navigation.canGoBack() && navigation.goBack();
                                     */
@@ -139,7 +103,5 @@ export default function ({setSearchText,navigation}:{setSearchText:(text: string
                         )}
                     </Col>
                 </>
-            )}
-        </>
     );
 }

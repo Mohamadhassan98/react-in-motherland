@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Col, Icon, Input, Text, View} from "native-base";
+import {Button, Col, Icon, Input, Left, Text, Thumbnail, View} from "native-base";
 import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
@@ -58,8 +58,7 @@ export default function ({navigation}:{navigation: StackNavigationProp<RootStack
     return (
         <View style={{display: "flex", flexDirection: "row"}}>
             <Col style={styles.backIcon}>
-
-
+                <Thumbnail square style={{width:40, height:40}} source={require("../../assets/images/logo.png")} />
             </Col>
             <Col style={styles.titleColumn}>
                 <Text style={styles.titleTextAlign}>{t("chats")}</Text>

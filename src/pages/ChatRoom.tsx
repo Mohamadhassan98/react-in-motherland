@@ -9,7 +9,7 @@ import {MessageProps} from "../components/types/MessageProps";
 import CommentCard from "../components/CommentCard";
 import {StackNavigator} from "../values/Routing";
 
-export default function Chatroom({navigation, route}: StackNavigator<"Chatroom">) {
+export default function Chatroom({navigation, route}: StackNavigator<"ChatRoom">) {
     const initMessages: MessageProps[] = new Array(5).fill({
         message: "سلام به روی ماهت",
         type: "receive",
