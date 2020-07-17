@@ -18,7 +18,11 @@ import NewGroupAddPeopleHeader from "../components/NewGroupAddPeopleHeader";
 
 const useStyles = makeStyles((theme) => ({
     FAB: {
-        backgroundColor: theme.palette.Primary,
+       backgroundColor: theme.palette.Primary,
+
+    },
+    disableFAB:{
+        backgroundColor:"#eae6e6"
     },
     Info: {
         borderBottomWidth: 1,
@@ -72,26 +76,25 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "2%",
         marginStart: "5%",
         marginTop: "2%",
+        fontFamily:theme.font.Body,
     },
     listItem: {
         alignItems: "flex-end",
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        //marginBottom: "3%",
         width: "100%",
         marginTop: "2%",
     },
     people: {
         alignItems: "center",
-        // backgroundColor: "red",
         display: "flex",
         width: 80,
-        // marginBottom: "10%",
+
     },
     remove: {
         alignItems: "center",
-        backgroundColor: "#3aba07",
+        backgroundColor: "#ba0707",
         borderColor: "white",
         borderRadius: 25,
         borderWidth: 1,
@@ -111,23 +114,31 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         width: "100%",
         height: 450,
-        //backgroundColor: "red",
         justifyContent: "center",
         alignItems: "center",
     },
     text: {
         textAlign: "left",
+        fontFamily:theme.font.Body,
     },
     textLastSeen: {
         marginBottom: "5%",
         textAlign: "left",
+        fontFamily:theme.font.Body,
     },
+    FLName:{
+        marginTop: "5%",
+        fontSize: 13,
+        marginBottom: "10%",
+        fontFamily:theme.font.Body,
+    }
 }));
 
 export default function NewGroupAddPeople({navigation, route}: StackNavigator<"NewGroupAddPeople">) {
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
     const [List, setList] = useState(contactList);
+    const [disable,setDisable] = useState(true);
     const theme = useTheme();
     const styles = useStyles();
 
@@ -140,11 +151,12 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
             id: 0,
             choose: false,
         },
+
     ]);
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <NewGroupAddPeopleHeader setSearchText={setSearchText} />
+                <NewGroupAddPeopleHeader setSearchText={setSearchText} navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
             <Container>
@@ -164,7 +176,7 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
                                         item.choose === true && (
                                             <View style={styles.people}>
                                                 <Thumbnail source={item.img} />
-                                                <Text style={{marginTop: "5%", fontSize: 13, marginBottom: "10%"}}>
+                                                <Text style={styles.FLName}>
                                                     {`${item.FirstName} ${item.LastName}`}
                                                 </Text>
                                                 <View style={styles.remove}>
@@ -200,6 +212,7 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
                                                 index1 !== index ? value1 : {...value1, choose: !value1.choose}
                                             )
                                         );
+                                        setDisable(false);
                                     }}
                                 >
                                     <View style={styles.listItem} key={item.id}>
@@ -236,6 +249,7 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
                                                         index1 !== index ? value1 : {...value1, choose: !value1.choose}
                                                     )
                                                 );
+                                                setDisable(false);
                                             }}
                                         >
                                             <View style={styles.listItem} key={item.id}>
@@ -265,18 +279,35 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
                         </>
                     )}
                 </Content>
-                <Fab
-                    active={false}
-                    direction='up'
-                    containerStyle={{}}
-                    style={styles.FAB}
-                    position='bottomRight'
-                    onPress={() => {
-                        navigation.navigate("NewGroupName", {} as any);
-                    }}
-                >
-                    {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
-                </Fab>
+                {
+                    disable===true ?
+                        <Fab
+                            active={false}
+                            direction='up'
+                            containerStyle={{}}
+                            style={styles.disableFAB}
+                            position='bottomRight'
+                            onPress={() => {
+
+                            }}
+                        >
+                            {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
+                        </Fab>
+                        :
+                        <Fab
+                            active={false}
+                            direction='up'
+                            containerStyle={{}}
+                            style={styles.FAB}
+                            position='bottomRight'
+                            onPress={() => {
+                                navigation.navigate("NewGroupName", {} as any);
+                            }}
+                        >
+                            {theme.localize.language === "fa" ? <Icons8BackIcon fill='white' />:<Icons8ForwardIcon fill='white'/>}
+                        </Fab>
+
+                }
             </Container>
         </MainPageLayout>
     );

@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     FAB: {
         backgroundColor: theme.palette.Primary,
     },
+    disableFAB:{
+        backgroundColor:"#eae6e6"
+    },
     container: {
         alignItems: "center",
         display: "flex",
@@ -30,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     flagStyle: {
         marginEnd: "10%",
     },
+    text:{
+        fontFamily:theme.font.Body
+    }
 }));
 
 
@@ -44,11 +50,12 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
     const [profileImage, setProfileImage] = useState<string | undefined>();
     const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
     const {result, select} = useMediaPicker(cameraOrGallery || "gallery");
+    const [disable,setDisable] = useState(true);
     const styles = useStyles();
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <NewGroupNameHeader />
+                <NewGroupNameHeader navigation={navigation}/>
             </MainHeader>
             {/* Rest of code here */}
             <Container>
@@ -88,15 +95,16 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                 </View>
                 <Form style={{width: "80%", alignSelf: "center"}}>
                     <Item stackedLabel>
-                        <Label>{t("groupName")}</Label>
+                        <Label style={styles.text}>{t("groupName")}</Label>
                         <Input
                             onChangeText={(event) => {
                                 setFirstName(event);
+                                event.length>0?setDisable(false):setDisable(true);
                             }}
                         />
                     </Item>
-                    <Item stackedLabel>
-                        <Label>{t("description")}</Label>
+                    <Item stackedLabel >
+                        <Label style={styles.text}>{t("description")}</Label>
                         <Input
                             onChangeText={(event) => {
                                 setLastName(event);
@@ -105,16 +113,31 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                     </Item>
                 </Form>
 
-                <Fab
+                {
+                    disable ?
+                    <Fab
                     active={false}
                     direction='up'
                     containerStyle={{}}
-                    style={styles.FAB}
+                    style={styles.disableFAB}
                     position='bottomRight'
-                    onPress={() => {}}
+                    onPress={() => {
+                    }}
                 >
-                    <Icon name='md-checkmark' />
-                </Fab>
+                    <Icon name='md-checkmark'/>
+                </Fab>:
+                        <Fab
+                            active={false}
+                            direction='up'
+                            containerStyle={{}}
+                            style={styles.FAB}
+                            position='bottomRight'
+                            onPress={() => {
+                            }}
+                        >
+                            <Icon name='md-checkmark'/>
+                        </Fab>
+                }
             </Container>
         </MainPageLayout>
     );

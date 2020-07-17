@@ -8,6 +8,8 @@ import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../values/Routing";
 
 const useStyles = makeStyles((theme) => ({
     backColumn: {
@@ -46,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function () {
+export default function ({navigation}:{navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;}) {
     const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
     const theme = useTheme();
@@ -54,7 +56,21 @@ export default function () {
     return (
         <>
             <Col style={styles.backIcon}>
-                {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+                {
+
+                    theme.localize.language === "fa" ? <Button
+                        small
+                        transparent
+                        onPress={() => {
+                            navigation.canGoBack() && navigation.goBack();
+                        }}
+                    ><Icons8ForwardIcon /> </Button> : <Button
+                        small
+                        transparent
+                        onPress={() => {
+                            navigation.canGoBack() && navigation.goBack();
+                        }}
+                    ><Icons8BackIcon /></Button> }
             </Col>
             <Col style={styles.titleColumn}>
                 <Text style={styles.titleTextAlign}>{t("addContact")}</Text>

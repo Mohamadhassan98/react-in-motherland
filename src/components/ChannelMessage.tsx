@@ -4,11 +4,10 @@ import {ChannelMessageProps} from "./types/ChannelMessageProps";
 import commonColor from "../../native-base-theme/variables/commonColor";
 import FilledIcons8LoveIcon from "../../assets/icons/FilledLoveIcon";
 import Icons8CommentsIcon from "../../assets/icons/CommentsIcon";
-import useTheme from "../values/theme";
-import Icons8LoveIcon from "../../assets/icons/LoveIcon";
 import makeStyles from "../utils/makeStyles";
+import LoveOutline from "../../assets/icons/LoveOutline";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     body: {
         paddingBottom: 10,
         textAlign: "left",
@@ -39,38 +38,28 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({message, media, profileImage, profileUsername, date, isLiked}: ChannelMessageProps) {
+export default function ({
+    message,
+    media,
+    profileImage,
+    profileUsername,
+    date,
+    isLiked,
+    navigation,
+}: ChannelMessageProps) {
     const styles = useStyles();
-    const {
-        localize: {language},
-    } = useTheme();
+
     const [liked, setLiked] = useState<boolean>(isLiked);
     return (
         <Card style={styles.bodyGrid}>
             <CardItem>
-                {language === "fa" ? (
-                    <Left>
-                        <Thumbnail source={{uri: profileImage}} />
-                        <Body>
-                            <Text style={styles.username}>{profileUsername}</Text>
-                            <Text note>{date}</Text>
-                        </Body>
-                    </Left>
-                ) : (
-                    // <Right>
-                    //     <Thumbnail source={{uri: profileImage}}/>
-                    //     <Body>
-                    //         <Text style={styles.username}>{profileUsername}</Text>
-                    //         <Text note >{date}</Text>
-                    //     </Body>
-                    // </Right>
-                    <Grid>
-                        <Row>
-                            <Text style={styles.username}>{profileUsername}</Text>
-                            <Thumbnail source={{uri: profileImage}} />
-                        </Row>
-                    </Grid>
-                )}
+                <Left>
+                    <Thumbnail source={{uri: profileImage}} />
+                    <Body>
+                        <Text style={styles.username}>{profileUsername}</Text>
+                        <Text note>{date}</Text>
+                    </Body>
+                </Left>
             </CardItem>
             <CardItem style={styles.padding}>
                 <Grid>
@@ -78,7 +67,7 @@ export default function ({message, media, profileImage, profileUsername, date, i
                         <Text style={styles.body}>{message}</Text>
                     </Row>
                     <Row>
-                        <Thumbnail square source={{uri: media}} />
+                        <Thumbnail square source={{uri: media}} style={{flex: 1, height: 130}} />
                     </Row>
                 </Grid>
             </CardItem>
@@ -89,10 +78,10 @@ export default function ({message, media, profileImage, profileUsername, date, i
                             {liked ? (
                                 <FilledIcons8LoveIcon style={styles.bottomIcons} />
                             ) : (
-                                <Icons8LoveIcon style={styles.bottomIcons} />
+                                <LoveOutline style={styles.bottomIcons} />
                             )}
                         </Button>
-                        <Button transparent>
+                        <Button transparent onPress={() => navigation.navigate("AddCommentChannel")}>
                             <Icons8CommentsIcon style={styles.bottomIcons} />
                         </Button>
                     </Row>

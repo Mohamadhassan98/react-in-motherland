@@ -18,6 +18,7 @@ import makeStyles from "../utils/makeStyles";
 import Icons8GroupIcon from "../../assets/icons/GroupIcon";
 import Icons8CommercialIcon from "../../assets/icons/CommercialIcon";
 import Icons8AddUserGroupIcon from "../../assets/icons/AddUserGroupIcon";
+import AddContactHeader from "../components/addContactHeader";
 
 const useStyles = makeStyles((theme) => ({
     Alphabet: {
@@ -96,7 +97,7 @@ export default function NewMessage({navigation, route}: StackNavigator<"NewMessa
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <NewMessageHeader setSearchText={setSearchText} />
+                <NewMessageHeader setSearchText={setSearchText} navigation={navigation} />
             </MainHeader>
             {/* Rest of code here */}
             <Container>
@@ -277,12 +278,13 @@ export default function NewMessage({navigation, route}: StackNavigator<"NewMessa
                     >
                         <Icon name='add' />
                         <Button style={styles.FAB2} onPress={()=>{
-                            navigation.navigate("NewGroupAddPeople", {} as any);
+                            navigation.navigate("NewChannelAddPeople", {} as any);
+
                         }}>
                             <Icons8CommercialIcon />
                         </Button>
                         <Button style={styles.FAB2} onPress={()=>{
-                            navigation.navigate("NewChannelAddPeople", {} as any);
+                            navigation.navigate("NewGroupAddPeople", {} as any);
                         }}>
                             <Icons8GroupIcon />
                         </Button>

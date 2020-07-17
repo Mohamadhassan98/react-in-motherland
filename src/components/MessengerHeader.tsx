@@ -1,14 +1,9 @@
 import React, {useState} from "react";
-import {Button, Col, Icon, Input, Text, View} from "native-base";
+import {Button, Col, Text, Thumbnail, View} from "native-base";
 import {t} from "i18n-js";
-import {StyleSheet} from "react-native";
-import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
-import Icons8BackIcon from "../../assets/icons/BackIcon";
 import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
-import DeleteIcon from "../../assets/icons/DeleteIcon";
-import {MainPageLayoutProps} from "./types/MainPageLayoutProps";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../values/Routing";
 
@@ -23,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     closeColumn: {
         alignItems: "flex-end",
         flex: 2,
-
     },
     closeIcon: {},
     emptyColumn: {
@@ -43,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
+        fontFamily:theme.font.Header,
     },
     titleTextAlign: {
         textAlign: "center",
@@ -50,7 +45,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({navigation}:{navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;}) {
+export default function ({
+    navigation,
+}: {
+    navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
+}) {
     const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
     const theme = useTheme();
@@ -58,8 +57,7 @@ export default function ({navigation}:{navigation: StackNavigationProp<RootStack
     return (
         <View style={{display: "flex", flexDirection: "row"}}>
             <Col style={styles.backIcon}>
-
-
+                <Thumbnail square style={{width:30, height:30}} source={require("../../assets/logo.png")} />
             </Col>
             <Col style={styles.titleColumn}>
                 <Text style={styles.titleTextAlign}>{t("chats")}</Text>

@@ -60,7 +60,7 @@ export default function ({navigation}: StackNavigator<"ExploreSearch">) {
             >
                 <Tab heading={t("channelPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
                     <Content>
-                        <ExploreChannels />
+                        <ExploreChannels navigation={navigation} />
                     </Content>
                 </Tab>
                 <Tab heading={t("pages")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>

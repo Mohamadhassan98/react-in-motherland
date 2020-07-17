@@ -4,6 +4,8 @@ import {StyleSheet} from "react-native";
 import ChannelMessage from "./ChannelMessage";
 import {ChannelMessageProps} from "./types/ChannelMessageProps";
 import {t} from "i18n-js";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../values/Routing";
 
 const styles = StyleSheet.create({
     grid: {
@@ -12,8 +14,12 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function () {
-    const messages = new Array<ChannelMessageProps>(5).fill({
+export default function ({
+    navigation,
+}: {
+    navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
+}) {
+    const messages = new Array<Omit<ChannelMessageProps, "navigation">>(5).fill({
         date: t("_todayChannelPost"),
         message:
             "What is the loop of Creation? How is there something from nothing? In spite of the fact that it is impossible to prove that anythin….",
@@ -21,12 +27,12 @@ export default function () {
             "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/368px-Donald_Trump_official_portrait.jpg",
         profileUsername: "Donald Trump",
         media: "https://www.animalfactsencyclopedia.com/images/animalextremeclose-up-racoon.jpg",
-        isLiked:false
+        isLiked: false,
     });
     return (
         <View style={styles.grid}>
             {messages.map((value, index) => (
-                <ChannelMessage {...value} key={index} />
+                <ChannelMessage {...value} navigation={navigation} key={index} />
             ))}
         </View>
     );
