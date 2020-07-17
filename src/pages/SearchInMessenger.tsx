@@ -1,30 +1,13 @@
 import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {Alert, ScrollView, StyleSheet} from "react-native";
+import {Alert, ScrollView} from "react-native";
 import SearchInMessengerHeader from "../components/SearchInMessengerHeader";
-import {
-    Badge,
-    Body,
-    Container,
-    Content,
-    Icon,
-    Left,
-    List,
-    ListItem,
-    Right,
-    Text,
-    Thumbnail,
-    View,
-    Button,
-} from "native-base";
+import {Badge, Content, Icon, Text, Thumbnail, View} from "native-base";
 import {t} from "i18n-js";
-import {Recent, peopleList} from "../values/strings";
+import {peopleList, Recent} from "../values/strings";
 import {StackNavigator} from "../values/Routing";
 import makeStyles from "../utils/makeStyles";
-import {Restart} from "fiction-expo-restart";
-
-
 
 const useStyles = makeStyles((theme) => ({
     Info: {
@@ -35,10 +18,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         marginLeft: "2%",
         width: "65%",
-        fontFamily:theme.font.Body,
+        fontFamily: theme.font.Body,
     },
     InfoEnd: {
-
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -55,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     },
     end: {
         alignSelf: "flex-end",
-
     },
     listItem: {
         alignItems: "flex-end",
@@ -82,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#67c074",
     },
     notification: {
-
         borderBottomWidth: 1,
         borderColor: "#eeeeee",
         justifyContent: "center",
@@ -116,26 +96,24 @@ const useStyles = makeStyles((theme) => ({
 
         width: "100%",
     },
-
     recentText: {
         marginBottom: "2%",
         marginStart: "5%",
         marginTop: "2%",
-        fontFamily:theme.font.Body,
+        fontFamily: theme.font.Body,
     },
     right_end: {
-
         alignSelf: "flex-end",
         height: "100%",
     },
     text: {
         textAlign: "left",
-        fontFamily:theme.font.Body,
+        fontFamily: theme.font.Body,
     },
     textLastSeen: {
         marginBottom: "5%",
         textAlign: "left",
-        fontFamily:theme.font.Body,
+        fontFamily: theme.font.Body,
     },
     time: {
         borderBottomWidth: 1,
@@ -143,14 +121,13 @@ const useStyles = makeStyles((theme) => ({
         height: "90%",
         paddingBottom: "4%",
         width: "10%",
-        fontFamily:theme.font.Body,
+        fontFamily: theme.font.Body,
     },
     timeEnd: {
-
         height: "90%",
         paddingBottom: "4%",
         width: "10%",
-        fontFamily:theme.font.Body,
+        fontFamily: theme.font.Body,
     },
     trash: {
         color: "#5f5e5e",
@@ -158,40 +135,42 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "1%",
         position: "absolute",
     },
-    FirstNameText:{
+    FirstNameText: {
         marginTop: "5%",
         fontSize: 13,
-        fontFamily:theme.font.Body,
+        fontFamily: theme.font.Body,
     },
-    textMessageNumber:{
+    textMessageNumber: {
         fontSize: 13,
-        fontFamily:theme.font.Body,
+        fontFamily: theme.font.Body,
     },
-    notificationText:{
-        fontFamily:theme.font.Body,
-    }
+    notificationText: {
+        fontFamily: theme.font.Body,
+    },
 }));
 
 export default function SearchInMessenger({navigation, route}: StackNavigator<"SearchInMessenger">) {
     const [Empty, setEmpty] = useState(false);
     const [RecentList, setRecentList] = useState(Recent);
-    const [SearchText, setSearchText] = useState("");
+    const [SearchText, setSearchText] = useState<string | undefined>();
     const styles = useStyles();
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <SearchInMessengerHeader setSearchText={setSearchText} navigation={navigation}/>
+                <SearchInMessengerHeader
+                    setSearchText={setSearchText}
+                    searchText={SearchText}
+                    navigation={navigation}
+                />
             </MainHeader>
             {/* Rest of code here */}
-
             <Content>
-                {SearchText.length === 0 ? (
+                {!!SearchText ? (
                     <>
                         <View style={styles.recent}>
                             <Text style={styles.recentText}>{t("People")}</Text>
                         </View>
                         <View style={{width: "100%", height: 10}} />
-
                         <ScrollView horizontal={true}>
                             {peopleList.map((item) => (
                                 <View style={styles.people} key={item.id}>
@@ -202,20 +181,17 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                                             <Text style={styles.textMessageNumber}>{item.messageNumber}</Text>
                                         </Badge>
                                     )}
-                                    {item.online === true && <View style={styles.online} />}
+                                    {item.online && <View style={styles.online} />}
                                 </View>
                             ))}
                         </ScrollView>
-
                         <View style={{width: "100%", height: 10}} />
-
                         <View style={styles.recent}>
                             <Text style={styles.recentText}>{t("recent")}</Text>
                             <Icon
                                 name='md-trash'
                                 style={styles.trash}
                                 onPress={() => {
-
                                     Alert.alert(t("ClearSearchHistory"), t("ClearSearchHistoryMessage"), [
                                         {
                                             text: t("cancel"),
@@ -227,16 +203,14 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                                             onPress: () => {
                                                 let List = RecentList.filter((Item) => Item.id < 0);
                                                 setRecentList(List);
-                                                List.length > 0 ? setEmpty(false) : setEmpty(true);},
-
+                                                List.length > 0 ? setEmpty(false) : setEmpty(true);
+                                            },
                                         },
                                     ]);
                                 }}
                             />
                         </View>
-
                         <View style={{width: "100%", height: 10}} />
-
                         {RecentList.map((item) => (
                             <View style={styles.listItem} key={item.id}>
                                 <View style={styles.close}>
@@ -282,48 +256,40 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <View style={styles.avatar}>
                                 <Thumbnail source={require("../../assets/img_avatar2.png")} />
                             </View>
-
                             <View style={styles.Info}>
                                 <Text style={styles.text}>zahra kml</Text>
                                 <Text note style={styles.textLastSeen}>
                                     last seen
                                 </Text>
                             </View>
-
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
                         </View>
-
                         <View style={styles.listItem}>
                             <View style={styles.avatar}>
                                 <Thumbnail source={require("../../assets/img_avatar2.png")} />
                             </View>
-
                             <View style={styles.Info}>
                                 <Text style={styles.text}>zahra </Text>
                                 <Text note style={styles.textLastSeen}>
                                     last seen
                                 </Text>
                             </View>
-
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
                         </View>
-
                         <View style={styles.listItem}>
                             <View style={styles.avatar}>
                                 <Thumbnail source={require("../../assets/img_avatar2.png")} />
                             </View>
-
                             <View style={styles.Info}>
                                 <Text style={styles.text}>zahra a</Text>
                                 <Text note style={styles.textLastSeen}>
                                     last seen
                                 </Text>
                             </View>
-
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
@@ -332,14 +298,12 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <View style={styles.avatar}>
                                 <Thumbnail source={require("../../assets/img_avatar2.png")} />
                             </View>
-
                             <View style={styles.InfoEnd}>
                                 <Text style={styles.text}>zahra gh</Text>
                                 <Text note style={styles.textLastSeen}>
                                     last seen
                                 </Text>
                             </View>
-
                             <View style={styles.timeEnd}>
                                 <Text note>3:54</Text>
                             </View>
@@ -349,36 +313,30 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <Text style={styles.recentText}>{t("messages")}</Text>
                         </View>
                         <View style={{width: "100%", height: 10}} />
-
                         <View style={styles.listItem}>
                             <View style={styles.avatar}>
                                 <Thumbnail source={require("../../assets/img_avatar2.png")} />
                             </View>
-
                             <View style={styles.Info}>
                                 <Text style={styles.text}>faezeh</Text>
                                 <Text note style={styles.textLastSeen}>
                                     zahra kojai
                                 </Text>
                             </View>
-
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
                         </View>
-
                         <View style={styles.listItem}>
                             <View style={styles.avatar}>
                                 <Thumbnail source={require("../../assets/img_avatar2.png")} />
                             </View>
-
                             <View style={styles.Info}>
                                 <Text style={styles.text}>zahra gh</Text>
                                 <Text note style={styles.textLastSeen}>
                                     salam zahra
                                 </Text>
                             </View>
-
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>

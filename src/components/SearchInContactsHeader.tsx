@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Col, Icon, Text, Input} from "native-base";
+import {Col, Icon, Input} from "native-base";
 import {t} from "i18n-js";
 import {StyleSheet} from "react-native";
 
