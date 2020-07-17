@@ -112,6 +112,13 @@ export default function initStrings(locale: string) {
             am: "am",
             ok: "ok",
             error: "error",
+            new: "New",
+            likedYourPost: "Liked Your Post",
+            SevenHoursAgo: "7h ago",
+            today: "Today",
+            thisWeek: "This Week",
+            thisMonth: "This Month",
+            DeleteNotification: "Delete Notification",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -219,6 +226,13 @@ export default function initStrings(locale: string) {
             am: "قبل از ظهر",
             ok: "باشه",
             error: "خطا",
+            new: "جدید",
+            likedYourPost: "پست شما را پسندید",
+            SevenHoursAgo: "هفت ساعت پیش",
+            today: "امروز",
+            thisWeek: "هفته گذشته",
+            thisMonth: "ماه گذشته",
+            DeleteNotification: "حذف اعلان",
         },
     };
 

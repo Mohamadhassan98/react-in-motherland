@@ -1,4 +1,4 @@
-export const materialColors = [
+export const materialColorsForUser = [
     "#F44336",
     "#E91E63",
     "#9C27B0",
@@ -18,6 +18,28 @@ export const materialColors = [
     "#795548",
     "#9E9E9E",
     "#607D8B",
+];
+//
+export const materialColors = [
+    "#F44336",
+    "#E91E63",
+    "#9C27B0",
+    "#673AB7",
+    "#3F51B5",
+    "#2196F3",
+    "#03A9F4",
+    "#00BCD4",
+    "#009688",
+    "#4CAF50",
+    "#8BC34A",
+    "#CDDC39",
+    "#FFEB3B",
+    "#FFC107",
+    "#FF9800",
+    "#FF5722",
+    "#795548",
+    "#9e9e9e",
+    "#607D8B",
     "#888888",
     "#FFFFFF",
     "#ea2e38",
@@ -30,6 +52,6 @@ export const materialColors = [
     "0000000",
 ];
 
-export function getMaterialColor(selector: number) {
-    return materialColors[selector % materialColors.length];
+export function getMaterialColorForUser(selector: number) {
+    return materialColorsForUser[selector % materialColorsForUser.length];
 }

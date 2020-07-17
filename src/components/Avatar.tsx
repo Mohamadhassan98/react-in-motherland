@@ -2,7 +2,7 @@ import React from "react";
 import {Avatar} from "react-native-elements";
 import {AvatarProps} from "./types/AvatarProps";
 import icon from "../../assets/icons/icons8-google-images-48.png";
-import {getMaterialColor} from "../values/materialColors";
+import {getMaterialColorForUser} from "../values/materialColors";
 import {Asset} from "expo-asset";
 
 export default function ({profileImage, size, showAccessory, visibleName, onAccessoryPress, local}: AvatarProps) {
@@ -28,7 +28,7 @@ export default function ({profileImage, size, showAccessory, visibleName, onAcce
                 .slice(0, 2)
                 .toUpperCase()}
             titleStyle={{color: "#ffffff"}}
-            containerStyle={{backgroundColor: getMaterialColor(visibleName.length)}}
+            containerStyle={{backgroundColor: getMaterialColorForUser(visibleName.length)}}
         />
     );
 }

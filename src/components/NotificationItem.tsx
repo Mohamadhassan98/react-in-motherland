@@ -2,8 +2,35 @@ import React from "react";
 import {View, Text, Image, Dimensions} from "react-native";
 import {materialColors} from "../values/materialColors";
 import Dots from "../../assets/icons/Dots";
-const {width} = Dimensions.get("window");
+import {t} from "i18n-js";
+import Menu, {MenuItem} from "react-native-material-menu";
+import {Button} from "native-base";
+import MenuVerticalIcon from "../../assets/icons/MenuVerticalIcon";
+import commonColor from "../../native-base-theme/variables/commonColor";
+import makeStyles from "../utils/makeStyles";
+// const {width} = Dimensions.get("window");
 
+const useStyles = makeStyles((theme) => ({
+    userNameStyle: {
+        fontFamily: theme.font.body.Bold,
+        fontWeight: "bold",
+        fontSize: 16,
+        color: materialColors[24],
+    },
+    timeOfNotificationStyle: {
+        fontFamily: theme.font.Body,
+        // width: width,
+        paddingLeft: 20,
+        color: materialColors[24],
+        fontSize: 18,
+    },
+    userStatusNotificationStyle: {
+        fontFamily: theme.font.Body,
+        fontWeight: "bold",
+        fontSize: 16,
+        color: materialColors[24],
+    },
+}));
 const Content = (props: {
     CategoryName: string;
     url: string | undefined;
@@ -13,30 +40,32 @@ const Content = (props: {
         LastSeen: string;
     }>;
 }) => {
+    const styles = useStyles();
+    const menu = React.useRef<Menu | null>(null);
+    const [userDetails, setUserDetails] = React.useState<
+        Array<{
+            UserName: string;
+            UserStatus: string;
+            LastSeen: string;
+        }>
+    >(props.UserDetails);
     return (
         <View
             style={{
                 paddingTop: 10,
                 paddingBottom: 20,
                 borderBottomWidth: 0.5,
+                paddingStart: 5,
+                paddingEnd: 5,
                 borderColor: materialColors[23],
             }}
         >
-            <Text
-                style={{
-                    width: width,
-                    paddingLeft: 20,
-                    color: materialColors[24],
-                    fontSize: 18,
-                }}
-            >
-                {props.CategoryName}
-            </Text>
-            {props.UserDetails.map((details, index) => (
+            <Text style={styles.timeOfNotificationStyle}>{props.CategoryName}</Text>
+            {userDetails.map((details, index) => (
                 <View key={`detail-${index}`}>
                     <View
                         style={{
-                            width: width,
+                            // width: width,
                             height: 50,
                             flex: 1,
                             backgroundColor: materialColors[20],
@@ -65,33 +94,32 @@ const Content = (props: {
                                 alignItems: "flex-start",
                             }}
                         >
-                            <Text style={{fontWeight: "bold", fontSize: 16, color: materialColors[24]}}>
-                                {details.UserName}
-                            </Text>
-                            <Text style={{fontSize: 13, color: materialColors[24]}}>
-                                {details.UserStatus}{" "}
-                                <View
-                                    style={{
-                                        width: 5,
-                                        height: 5,
-                                        backgroundColor: materialColors[25],
-                                        borderRadius: 20,
-                                    }}
-                                ></View>{" "}
-                                <Text>{details.LastSeen}</Text>{" "}
+                            <Text style={styles.userNameStyle}>{details.UserName}</Text>
+                            <Text style={styles.userStatusNotificationStyle}>
+                                {`${t(details.UserStatus)}. `}
+                                <Text>{t(details.LastSeen)}</Text>{" "}
                             </Text>
                         </View>
-                        <View
-                            style={{
-                                flex: 1,
-                                width: "100%",
-                                height: "100%",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
+                        <Menu
+                            button={
+                                <Button onPress={() => menu.current?.show()} transparent>
+                                    <MenuVerticalIcon />
+                                </Button>
+                            }
+                            ref={menu}
                         >
-                            <Dots />
-                        </View>
+                            <MenuItem
+                                onPress={() => {
+                                    // delete userDetails[index];
+                                    setUserDetails((prevState) =>
+                                        prevState.filter((value, index1) => index1 !== index)
+                                    );
+                                    menu.current?.hide();
+                                }}
+                            >
+                                <Text>{t("DeleteNotification")}</Text>
+                            </MenuItem>
+                        </Menu>
                     </View>
                 </View>
             ))}
