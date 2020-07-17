@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
     titleTextAlign: {
         textAlign: "center",
+        fontFamily:theme.font.Header,
     },
 }));
 

@@ -41,7 +41,6 @@ export default function App() {
                             <Stack.Navigator screenOptions={{headerShown: false, gestureDirection: "horizontal"}}>
                                 {theme.auth.loggedIn ? (
                                     <>
-
                                         <Stack.Screen name='ExploreSearch' component={ExploreSearch} />
                                         <Stack.Screen name='ExplorePostsPage' component={ExplorePostsPage} />
                                         <Stack.Screen name='Settings' component={Settings} />
