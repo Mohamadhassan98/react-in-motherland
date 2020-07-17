@@ -101,6 +101,11 @@ export default function initStrings(locale: string) {
             explorePageTour: `Everything from A to Z!\nSearch for anything and find useful content.`,
             settingsPageTour: `How ever you want!\nConfigure and customize app behaviour here.`,
             notificationHeader: "notifications",
+            ClearSearchHistory:"Clear search history",
+            Clear:"CLEAR",
+            cancel:"CANCEL",
+            ClearSearchHistoryMessage:"Are you sure you want to clear your search history ?",
+
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -198,6 +203,10 @@ export default function initStrings(locale: string) {
             explorePageTour: `از شیر مرغ تا جون آدمیزاد!\n توی این قسمت با جستجو می${zwnj}تونین هر مطلبی که می${zwnj}رو پیدا کنین.`,
             settingsPageTour: `هر جور خودت دوست داری!\nاز این قسمت می${zwnj}تونین تنظیمات مورد نظر خودتونو اعمال کنین!`,
             notificationHeader: "اعلانات",
+            ClearSearchHistory:"پاک کردن تاریخچه ی جست و جو",
+            Clear:"پاک کردن",
+            cancel:"لغو",
+            ClearSearchHistoryMessage:"آیا از پاک کردن تاریخچه ی جست و جوی خود اطمینان دارید ؟",
         },
     };
 
