@@ -1,4 +1,5 @@
 import i18n from "i18n-js";
+import {I18nManager} from "react-native";
 
 export const zwnj = "‌";
 
@@ -9,7 +10,7 @@ export default function initStrings(locale: string) {
             settings: "settings",
             explore: "explore",
             personalPage: "personal page",
-            appName: "app-name",
+            appName: "Smartiz",
             chats: "chats",
             allPosts: "All Posts",
             channelPosts: "Channel Posts",
@@ -20,8 +21,8 @@ export default function initStrings(locale: string) {
             followers: "followers",
             messageBoxPlaceHolder: "Write your message here...",
             colorSettings: "Color Settings",
-            primary: "primary",
-            secondary: "secondary",
+            Primary: "primary",
+            Secondary: "secondary",
             save: "save",
             resetToDefault: "Reset to default",
             chosenColor: "chosen color:",
@@ -105,6 +106,8 @@ export default function initStrings(locale: string) {
             error: "error",
             notificationHeader: "notifications",
             Comments: "Comments",
+            pm: "pm",
+            am: "am",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -188,7 +191,7 @@ export default function initStrings(locale: string) {
             skip: "رد شدن",
             previous: "قبلی",
             finish: "اتمام",
-            "What's in your mind?": "چ چیزی در ذهن دارید؟",
+            "What's in your mind?": "چه چیزی در ذهن دارید؟",
             online: "آنلاین",
             enterCode: "کد دریافتی را وارد کنید",
             emptyCode: "کد نمی تواند خالی باشد",
@@ -199,13 +202,15 @@ export default function initStrings(locale: string) {
             enterVerificationCode: "کد تأیید را وارد کنید.",
             messengerTour: `از حال دوستاتون با خبر شین!\n با استفاده از بخش پیام${zwnj}رسان می${zwnj}تونید به راحتی با بقیه چت کنین و محتواهاتون رو به اشتراک بذارین. `,
             personalPageTour: `دنبال مطالب جدیدین؟\nاز اینجا بررسی کنید که کسایی که دنبالشون کردین جدیداً چه مطالبی رو منتشر کردن و یا خودتون پست جدیدی منتشر کنید.`,
-            explorePageTour: `از شیر مرغ تا جون آدمیزاد!\n توی این قسمت با جستجو می${zwnj}تونین هر مطلبی که می${zwnj}رو پیدا کنین.`,
+            explorePageTour: `از شیر مرغ تا جون آدمیزاد!\n توی این قسمت با جستجو می${zwnj}تونین هر مطلبی که می${zwnj}خواید رو پیدا کنین.`,
             settingsPageTour: `هر جور خودت دوست داری!\nاز این قسمت می${zwnj}تونین تنظیمات مورد نظر خودتونو اعمال کنین!`,
             logout: "خروج",
             ok: "باشه",
             error: "خطا",
             notificationHeader: "اعلانات",
             Comments: "نظرات",
+            pm: "بعد از ظهر",
+            am: "قبل از ظهر",
         },
     };
 
@@ -213,6 +218,15 @@ export default function initStrings(locale: string) {
 
     i18n.fallbacks = true;
 }
+
+export const i17n = {
+    pm: I18nManager.isRTL ? "بعد از ظهر" : "pm",
+    am: I18nManager.isRTL ? "قبل از ظهر" : "am",
+    next: I18nManager.isRTL ? "بعدی" : "next",
+    skip: I18nManager.isRTL ? "رد شدن" : "skip",
+    previous: I18nManager.isRTL ? "قبلی" : "previous",
+    finish: I18nManager.isRTL ? "اتمام" : "finish",
+};
 
 export let chatList = [
     {
@@ -222,7 +236,7 @@ export let chatList = [
         notification: 5,
         mute: false,
         img: require("../../assets/avatar.jpg"),
-        time: "3:43 pm",
+        time: `3:43 ${i17n.pm}`,
         id: 1,
     },
     {
@@ -232,7 +246,7 @@ export let chatList = [
         notification: "",
         mute: true,
         img: require("../../assets/avatar.jpg"),
-        time: "3:43 pm",
+        time: `3:43 ${i17n.pm}`,
         id: 2,
     },
     {
@@ -242,7 +256,7 @@ export let chatList = [
         notification: 150,
         mute: false,
         img: require("../../assets/avatar.jpg"),
-        time: "3:43 pm",
+        time: `3:43 ${i17n.pm}`,
         id: 3,
     },
     {
@@ -252,7 +266,7 @@ export let chatList = [
         notification: 150,
         mute: false,
         img: require("../../assets/avatar.jpg"),
-        time: "3:43 pm",
+        time: `3:43 ${i17n.pm}`,
         id: 4,
     },
     {
@@ -262,7 +276,7 @@ export let chatList = [
         notification: 150,
         mute: false,
         img: require("../../assets/avatar.jpg"),
-        time: "3:45 pm",
+        time: `3:45 ${i17n.pm}`,
         id: 5,
     },
     {
@@ -272,7 +286,7 @@ export let chatList = [
         notification: 150,
         mute: false,
         img: require("../../assets/avatar.jpg"),
-        time: "3:43 pm",
+        time: `3:43 ${i17n.pm}`,
         id: 6,
     },
     {
@@ -282,7 +296,7 @@ export let chatList = [
         notification: 150,
         mute: false,
         img: require("../../assets/avatar.jpg"),
-        time: "3:43 pm",
+        time: `3:43 ${i17n.pm}`,
         id: 7,
     },
     {
@@ -292,7 +306,7 @@ export let chatList = [
         notification: 150,
         mute: false,
         img: require("../../assets/avatar.jpg"),
-        time: "3:43 pm",
+        time: `3:43 ${i17n.pm}`,
         id: 8,
     },
     {
@@ -302,10 +316,11 @@ export let chatList = [
         notification: "",
         mute: false,
         img: require("../../assets/avatar.jpg"),
-        time: "4:00 pm",
+        time: `4:00 ${i17n.pm}`,
         id: 9,
     },
 ];
+
 export let Recent = [
     {
         FirstName: "zahra",
@@ -583,6 +598,7 @@ export let peopleList = [
         id: 6,
     },
 ];
+
 export let contactList = [
     {
         FirstName: "باران",
@@ -657,6 +673,7 @@ export let contactList = [
         choose: false,
     },
 ];
+
 export let SearcList = [
     {
         FirstName: "zahra",

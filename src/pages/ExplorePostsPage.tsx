@@ -15,11 +15,17 @@ const useStyles = makeStyles((theme) => ({
     activeTab: {
         backgroundColor: theme.palette.Primary,
     },
+    activeTabText: {
+        color: theme.palette.textSecondary,
+    },
     tabs: {
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.textSecondary,
+    },
+    tabsText: {
+        color: theme.palette.textPrimary,
     },
     underline: {
-        backgroundColor: theme.palette.textSecondary,
+        backgroundColor: theme.palette.Secondary,
     },
     tabContainer: {
         backgroundColor: "transparent",
@@ -43,8 +49,8 @@ export default function ({navigation}: StackNavigator<"ExplorePostsPage">) {
                             <Icons8SearchIcon />
                         </Button>
                     }
-                    hideBack
                     navigation={navigation}
+                    leftAdornment='logo'
                 />
             </MainHeader>
             <Tabs
@@ -52,17 +58,35 @@ export default function ({navigation}: StackNavigator<"ExplorePostsPage">) {
                 tabBarUnderlineStyle={styles.underline}
                 tabBarActiveTextColor={CommonColors.inverseTextColor}
             >
-                <Tab heading={t("allPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
+                <Tab
+                    heading={t("allPosts")}
+                    tabStyle={styles.tabs}
+                    activeTabStyle={styles.activeTab}
+                    textStyle={styles.tabsText}
+                    activeTextStyle={styles.activeTabText}
+                >
                     <Content>
                         <ExplorePosts navigation={navigation} />
                     </Content>
                 </Tab>
-                <Tab heading={t("channelPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
+                <Tab
+                    heading={t("channelPosts")}
+                    tabStyle={styles.tabs}
+                    activeTabStyle={styles.activeTab}
+                    textStyle={styles.tabsText}
+                    activeTextStyle={styles.activeTabText}
+                >
                     <Content>
                         <ExploreChannels navigation={navigation} />
                     </Content>
                 </Tab>
-                <Tab heading={t("pages")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
+                <Tab
+                    heading={t("pages")}
+                    tabStyle={styles.tabs}
+                    activeTabStyle={styles.activeTab}
+                    textStyle={styles.tabsText}
+                    activeTextStyle={styles.activeTabText}
+                >
                     <Content>
                         <ExplorePosts navigation={navigation} />
                     </Content>

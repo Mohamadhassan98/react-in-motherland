@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         paddingEnd: 6,
         paddingStart: 6,
         width: 40,
-        backgroundColor: theme.palette.Secondary,
+        backgroundColor: "transparent",
     },
     sentIcon: {
         transform: [{scaleX: theme.localize.language === "fa" ? -1 : 1}],

@@ -6,9 +6,9 @@ import SettingItem from "../components/SettingItem";
 import useTheme from "../values/theme";
 import {t} from "i18n-js";
 import {Alert} from "react-native";
-import {Restart} from "fiction-expo-restart";
 import makeStyles from "../utils/makeStyles";
 import {StackNavigator} from "../values/Routing";
+import restart from "../utils/restart";
 
 const useStyles = makeStyles((theme) => ({
     saveButton: {
@@ -37,7 +37,7 @@ export default function ({navigation}: StackNavigator<"LanguageSettings">) {
                                         Alert.alert(t("languageChange"), t("languageChanged"), [
                                             {
                                                 text: t("restartNow"),
-                                                onPress: () => Restart(),
+                                                onPress: async () => await restart(),
                                             },
                                             {
                                                 text: t("later"),

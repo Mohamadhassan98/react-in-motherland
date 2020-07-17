@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Body, Content, Left, List, ListItem, Right, Text} from "native-base";
+import {Content, Left, List, ListItem, Text} from "native-base";
 import MainHeader from "../components/MainHeader";
 import SettingItem from "../components/SettingItem";
 import makeStyles from "../utils/makeStyles";
@@ -11,6 +11,7 @@ import useTheme from "../values/theme";
 import Icons8ToggleOffIcon from "../../assets/icons/ToggleOffIcon";
 import ToggleOnIcon from "../../assets/icons/ToggleOnIcon";
 import {StackNavigator} from "../values/Routing";
+import SimpleHeader from "../components/SimpleHeader";
 
 const useStyles = makeStyles((theme) => ({
     primary: {
@@ -61,11 +62,7 @@ export default function ({navigation}: StackNavigator<"Settings">) {
     return (
         <MainPageLayout active={0} navigation={navigation}>
             <MainHeader size='collapsed'>
-                <Left style={[styles.flex, styles.itemsStart]}></Left>
-                <Body style={[styles.flex, styles.itemsCenter]}>
-                    <Text style={styles.headerTextStyle}>{t("settings")} </Text>
-                </Body>
-                <Right style={styles.flex} />
+                <SimpleHeader title='settings' navigation={navigation} leftAdornment='logo' />
             </MainHeader>
             <Content>
                 <List>

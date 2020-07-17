@@ -1,14 +1,10 @@
 import React, {useState} from "react";
-import {StyleSheet, TextInputProps} from "react-native";
-import {Button, Icon, Input, Item} from "native-base";
+import {Button, Input, Item} from "native-base";
 import CommonColor from "../../native-base-theme/variables/commonColor";
 import {Col, Grid} from "react-native-easy-grid";
 import {t} from "i18n-js";
-import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import Icons8SentIcon from "../../assets/icons/SentIcon";
-import {CommentProps} from "./types/CommentProps";
-import {MessageProps} from "./types/MessageProps";
 
 const useStyles = makeStyles((theme) => ({
     addButton: {
@@ -42,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: theme.font.Body,
         fontSize: 15,
     },
-
     sendCol: {
         height: 40,
         paddingLeft: 0,

@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: 0,
         paddingTop: 0,
         width: 35,
+        backgroundColor: "transparent",
     },
     content: {
         flex: 6,

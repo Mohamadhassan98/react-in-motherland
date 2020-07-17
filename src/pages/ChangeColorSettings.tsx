@@ -61,12 +61,12 @@ export default function ({navigation}: StackNavigator<"ChangeColorSettings">) {
             <Content>
                 <List>
                     <SettingItem
-                        scope='primary'
+                        scope='Primary'
                         rightAdornment={<View style={styles.primary} />}
                         onClick={() => navigation.navigate("ChangeColorSimple", {color: "Primary"})}
                     />
                     <SettingItem
-                        scope='secondary'
+                        scope='Secondary'
                         rightAdornment={<View style={styles.secondary} />}
                         onClick={() => navigation.navigate("ChangeColorSimple", {color: "Secondary"})}
                     />

@@ -1,5 +1,5 @@
 import React from "react";
-import {Body, Button, Left, Right, Row, Text} from "native-base";
+import {Body, Button, Left, Right, Row, Text, Thumbnail} from "native-base";
 import Forward from "../../assets/icons/ForwardIcon";
 import Back from "../../assets/icons/BackIcon";
 import {t} from "i18n-js";
@@ -32,23 +32,37 @@ export default function ({
     title,
     rightAdornment,
     navigation,
-    hideBack,
+    leftAdornment = "back",
 }: {
     title: string;
     rightAdornment?: React.ReactElement;
     navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
-    hideBack?: boolean;
+    leftAdornment?: "back" | "logo" | "none";
 }) {
     const {
         localize: {language},
     } = useTheme();
+    let left;
+    switch (leftAdornment) {
+        case "back":
+            left = (
+                <Button transparent onPress={() => navigation.canGoBack() && navigation.goBack()}>
+                    {language === "fa" ? <Forward /> : <Back />}
+                </Button>
+            );
+            break;
+        case "logo":
+            left = <Thumbnail square style={{width: 30, height: 30}} source={require("../../assets/logo.png")} />;
+            break;
+        case "none":
+            left = undefined;
+            break;
+        default:
+            break;
+    }
     return (
         <Row style={styles.root}>
-            <Left style={[styles.flex, styles.itemsStart]}>
-                <Button disabled={hideBack} transparent onPress={() => navigation.canGoBack() && navigation.goBack()}>
-                    {language === "fa" ? !hideBack && <Forward /> : !hideBack && <Back />}
-                </Button>
-            </Left>
+            <Left style={[styles.flex, styles.itemsStart]}>{left}</Left>
             <Body style={[styles.flex, styles.itemsCenter]}>
                 <Text style={styles.textCenter}>{t(title)}</Text>
             </Body>

@@ -4,11 +4,10 @@ import MainHeader from "../components/MainHeader";
 import MessengerHeader from "../components/MessengerHeader";
 import _ from "lodash";
 import {Badge, Body, Container, Content, Fab, Icon, Left, List, ListItem, Right, Text, Thumbnail} from "native-base";
-import {chatList} from "../values/strings";
+import {chatList, i17n} from "../values/strings";
 import {StackNavigator} from "../values/Routing";
 import makeStyles from "../utils/makeStyles";
 import {copilot} from "react-native-copilot";
-import {t} from "i18n-js";
 import {CopilotTypes} from "../components/types/copilotTypes";
 
 const useStyles = makeStyles((theme) => ({
@@ -119,5 +118,5 @@ export default copilot({
     animated: true,
     overlay: "svg",
     androidStatusBarVisible: true,
-    labels: {previous: t("previous"), next: t("next"), skip: t("skip"), finish: t("finish")},
+    labels: {previous: i17n.previous, next: i17n.next, skip: i17n.skip, finish: i17n.finish},
 })(MessengerPage as any);

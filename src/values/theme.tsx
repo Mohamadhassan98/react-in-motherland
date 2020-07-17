@@ -5,6 +5,7 @@ import {loader} from "../../assets/fonts/Loader";
 import fontTypes from "../../assets/fonts/FontTypes";
 import * as Localization from "expo-localization";
 import initStrings from "./strings";
+import restart from "../utils/restart";
 
 export interface Palette {
     Primary: string;
@@ -128,11 +129,14 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
                 setSecondary(value);
             }
         });
-        AsyncStorage.getItem("language").then((value) => {
+        AsyncStorage.getItem("language").then(async (value) => {
             if (!value) {
                 setLanguage(Localization.isRTL ? "fa" : "en");
                 initStrings(Localization.isRTL ? "fa" : "en");
-                AsyncStorage.setItem("language", "default");
+                await AsyncStorage.setItem("language", "default");
+                I18nManager.allowRTL(Localization.isRTL);
+                I18nManager.forceRTL(Localization.isRTL);
+                await restart();
                 return;
             }
             if (value !== "default") {

@@ -12,7 +12,7 @@ export default function Chatroom({navigation, route}: StackNavigator<"ChatRoom">
     const initMessages: MessageProps[] = new Array(5).fill({
         message: "سلام به روی ماهت",
         type: "receive",
-        date: "10 : 32 AM",
+        date: `10 : 32 ${t("am")}`,
         showDate: true,
     });
     const [messages, setMessages] = React.useState(initMessages);
