@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     FAB: {
         backgroundColor: theme.palette.Primary,
     },
+    disableFAB:{
+        backgroundColor:"#eae6e6"
+    },
     container: {
         alignItems: "center",
         display: "flex",
@@ -39,9 +42,12 @@ const useStyles = makeStyles((theme) => ({
 export default function AddContact({navigation, route}: StackNavigator<"AddContact">) {
     const [FirstName, setFirstName] = useState("");
     const [LastName, setLastName] = useState("");
+    const [disable1,setDisable1] = useState(true);
+    const [disable2,setDisable2] = useState(true);
     const styles = useStyles();
     const onChangeText = ({dialCode, unmaskedPhoneNumber, phoneNumber, isVerified}: ChangeTextInput) => {
         console.log(dialCode, unmaskedPhoneNumber, phoneNumber, isVerified);
+        phoneNumber.length>0?setDisable2(false):setDisable2(true);
     };
 
     return (
@@ -65,6 +71,7 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
                             style={styles.text}
                             onChangeText={(event) => {
                                 setFirstName(event);
+                                event.length>0?setDisable1(false):setDisable1(true);
                             }}
                         />
                     </Item>
@@ -87,11 +94,12 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
                     </Item>
                 </Form>
 
-                <Fab
+                { disable1 || disable2 ?
+                    <Fab
                     active={false}
                     direction='up'
                     containerStyle={{}}
-                    style={styles.FAB}
+                    style={styles.disableFAB}
                     position='bottomRight'
                     onPress={() => {/*
                         navigation.navigate("MessengerPage", {} as any);
@@ -103,8 +111,27 @@ export default function AddContact({navigation, route}: StackNavigator<"AddConta
                         }
                     }}
                 >
-                    <Icons8CheckmarkIcon fill='#fff' />
-                </Fab>
+                    <Icons8CheckmarkIcon fill='#fff'/>
+                </Fab>:
+                    <Fab
+                        active={false}
+                        direction='up'
+                        containerStyle={{}}
+                        style={styles.FAB}
+                        position='bottomRight'
+                        onPress={() => {/*
+                        navigation.navigate("MessengerPage", {} as any);
+                        */
+                            {
+                                /*
+                                navigation.canGoBack() && navigation.goBack();
+                                */
+                            }
+                        }}
+                    >
+                        <Icons8CheckmarkIcon fill='#fff'/>
+                    </Fab>
+                }
             </Container>
         </MainPageLayout>
     );
