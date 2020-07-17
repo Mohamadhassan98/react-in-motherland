@@ -16,6 +16,7 @@ export interface Palette {
     textSecondary: string;
     setPrimary: (value: string) => void;
     setSecondary: (value: string) => void;
+    Disabled: string;
 }
 
 export interface Localize {
@@ -89,6 +90,7 @@ const ThemeContext = React.createContext<ThemeContextShape>({
         setSecondary: () => {},
         textPrimary: "#000000",
         textSecondary: "#FFFFFF",
+        Disabled: "#FFFFFF",
     },
     font: {
         Body: fontTypes("fa").Normal,
@@ -195,6 +197,7 @@ export function ThemeProvider({children}: {children: React.ReactElement}) {
         setSecondary: setSecond,
         textPrimary: "#000000",
         textSecondary: "#FFFFFF",
+        Disabled: "#0000001E",
     };
     const font = {
         Body: fontTypes(language ? language : Localization.isRTL ? "fa" : "en").Normal,

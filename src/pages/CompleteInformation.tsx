@@ -1,11 +1,13 @@
 import React, {useState} from "react";
-import {ActionSheet, Button, Card, Container, Content, Root, Text} from "native-base";
+import {ActionSheet, Button, Container, Content, Root, Text} from "native-base";
 import makeStyles from "../utils/makeStyles";
 import {Col, Grid, Row} from "react-native-easy-grid";
 import InputBoxEditProfile from "../components/InputBoxEditProfile";
 import DatePicker from "../components/DatePicker";
 import Avatar from "../components/Avatar";
 import useMediaPicker from "../utils/useMediaPicker";
+import {t} from "i18n-js";
+import useTheme from "../values/theme";
 
 const useStyles = makeStyles((theme) => ({
     avatarStyle: {
@@ -49,19 +51,31 @@ const useStyles = makeStyles((theme) => ({
         padding: "5%",
     },
     saveButtonTextStyle: {
-        alignSelf: "center",
-        color: "#FFFFFF",
-        justifyContent: "center",
+        color: theme.palette.textSecondary,
+        textAlign: "center",
         fontFamily: theme.font.Body,
         fontSize: 20,
+        flex: 1,
+    },
+    saveButtonStyle: {
+        borderRadius: 15,
+        height: 60,
+    },
+    saveButtonValid: {
+        backgroundColor: theme.palette.Primary,
+    },
+    saveButtonInvalid: {
+        backgroundColor: theme.palette.Disabled,
     },
 }));
 
 export default function CompleteInformation() {
     const styles = useStyles();
+    const [name, setName] = React.useState("");
     const [profileImage, setProfileImage] = useState<string | undefined>();
     const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
     const {result, select} = useMediaPicker(cameraOrGallery || "gallery");
+    const theme = useTheme();
     React.useEffect(() => {
         setProfileImage(result);
     }, [result]);
@@ -80,7 +94,7 @@ export default function CompleteInformation() {
                         <Row>
                             <Col style={styles.avatarStyle}>
                                 <Avatar
-                                    visibleName='Mohammad hassan Ebrahimi'
+                                    visibleName={name}
                                     size={100}
                                     profileImage={profileImage}
                                     showAccessory
@@ -92,7 +106,6 @@ export default function CompleteInformation() {
                                                     : ["Camera", "Gallery"],
                                             },
                                             (index) => {
-                                                console.log(index);
                                                 switch (index) {
                                                     case 0: {
                                                         setCameraOrGallery("camera");
@@ -117,7 +130,7 @@ export default function CompleteInformation() {
                         </Row>
                         <Row>
                             <Col style={styles.inputBoxEditProfileStyle}>
-                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                                <InputBoxEditProfile placeHolderMsg={t("insertName")} value={name} setValue={setName} />
                             </Col>
                         </Row>
                         <Row>
@@ -127,20 +140,27 @@ export default function CompleteInformation() {
                         </Row>
                         <Row>
                             <Col style={styles.inputBoxEditProfileStyle}>
-                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                                <InputBoxEditProfile placeHolderMsg={t("insertBio")} />
                             </Col>
                         </Row>
                         <Row>
                             <Col style={styles.inputBoxEditProfileStyle}>
-                                <InputBoxEditProfile placeHolderMsg='helllloooo' />
+                                <InputBoxEditProfile placeHolderMsg={t("insertUsername")} />
                             </Col>
                         </Row>
                         <Row>
                             <Col style={styles.saveButtonStyleCol}>
-                                <Card style={styles.saveButtonStyleCard}>
-                                    <Text style={styles.saveButtonTextStyle}>Save</Text>
-                                    <Button transparent />
-                                </Card>
+                                <Button
+                                    style={[
+                                        styles.saveButtonStyle,
+                                        name.length === 0 ? styles.saveButtonInvalid : styles.saveButtonValid,
+                                    ]}
+                                    transparent
+                                    disabled={name.length === 0}
+                                    onPress={() => theme.auth.login()}
+                                >
+                                    <Text style={styles.saveButtonTextStyle}>{t("Save")}</Text>
+                                </Button>
                             </Col>
                         </Row>
                     </Grid>

@@ -30,6 +30,7 @@ import NewChannelAddPeople from "./src/pages/NewChannelAddPeople";
 import NewGroupName from "./src/pages/NewGroupName";
 import NewChannelName from "./src/pages/NewChannelName";
 import AddCommentChannel from "./src/pages/AddCommentChannel";
+import CompleteInformation from "./src/pages/CompleteInformation";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -102,6 +103,7 @@ export default function App() {
                                     <>
                                         <Stack.Screen name='Login' component={Login} />
                                         <Stack.Screen name='ConfirmCodeField' component={ConfirmCodeField} />
+                                        <Stack.Screen name='CompleteInformation' component={CompleteInformation} />
                                     </>
                                 )}
                             </Stack.Navigator>

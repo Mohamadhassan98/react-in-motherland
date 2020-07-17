@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React from "react";
 import {Card, Content, Input} from "native-base";
 import makeStyles from "../utils/makeStyles";
 import {InputBoxEditProfileProps} from "./types/InputBoxEditProfileProps";
@@ -16,15 +16,12 @@ const useStyles = makeStyles((theme) => ({
         height: 60,
     },
 }));
-export default function ({placeHolderMsg}: InputBoxEditProfileProps) {
+export default function ({placeHolderMsg, setValue, value}: InputBoxEditProfileProps) {
     const styles = useStyles();
-    const [input,setInput]= useState("");
     return (
         <Content>
             <Card style={styles.cardStyle}>
-                <Input placeholder={placeHolderMsg} style={styles.textStyle} onChangeText={(input) => console.log(input)}
-                       defaultValue={input} />
-                {/*</CardItem>*/}
+                <Input placeholder={placeHolderMsg} style={styles.textStyle} onChangeText={setValue} value={value} />
             </Card>
         </Content>
     );

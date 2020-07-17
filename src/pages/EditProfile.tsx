@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {ActionSheet, Body, Button, Card, Container, Content, Left, Right, Root, Text} from "native-base";
+import {ActionSheet, Body, Button, Container, Content, Left, Right, Root, Text} from "native-base";
 import makeStyles from "../utils/makeStyles";
 import {Col, Grid, Row} from "react-native-easy-grid";
 import InputBoxEditProfile from "../components/InputBoxEditProfile";
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.Primary,
     },
     saveButtonTextStyle: {
-        color: "#FFFFFF",
+        color: theme.palette.textSecondary,
         textAlign: "center",
         fontFamily: theme.font.Body,
         fontSize: 20,
@@ -160,7 +160,6 @@ export default function ({navigation, route}: StackNavigator<"EditProfile">) {
                         </Row>
                         <Row>
                             <Col style={styles.saveButtonStyleCol}>
-                                {/*<Card style={styles.saveButtonStyleCard}>*/}
                                 <Button
                                     style={styles.saveButtonStyle}
                                     onPress={() => {
@@ -169,7 +168,6 @@ export default function ({navigation, route}: StackNavigator<"EditProfile">) {
                                 >
                                     <Text style={styles.saveButtonTextStyle}>{t("Save")}</Text>
                                 </Button>
-                                {/*</Card>*/}
                             </Col>
                         </Row>
                     </Grid>

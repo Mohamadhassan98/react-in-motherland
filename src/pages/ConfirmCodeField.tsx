@@ -47,10 +47,18 @@ const useStyles = makeStyles((theme) => ({
     button: {
         marginTop: 100,
         borderRadius: 10,
-        color: theme.palette.Primary,
         width: "50%",
         alignSelf: "center",
         justifyContent: "center",
+        paddingTop: 0,
+        paddingBottom: 0,
+        borderColor: "transparent",
+    },
+    buttonValid: {
+        backgroundColor: theme.palette.Primary,
+    },
+    buttonInvalid: {
+        backgroundColor: theme.palette.Disabled,
     },
     text: {
         color: theme.palette.textSecondary,
@@ -71,14 +79,12 @@ const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField"
     const theme = useTheme();
     const code = "1234";
     const [value, setValue] = useState("");
-    const [errorText, setErrorText] = useState("");
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
         value,
         setValue,
     });
     const handleContinuePress = () => {
-        setErrorText("");
         if (!value) {
             Alert.alert(t("error"), t("emptyCode"), [
                 {
@@ -87,7 +93,11 @@ const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField"
             ]);
         } else {
             if (value === code) {
-                theme.auth.login();
+                if (Number(route.params.number.slice(10)) % 2) {
+                    theme.auth.login();
+                } else {
+                    navigation.navigate("CompleteInformation");
+                }
             } else {
                 Alert.alert(t("error"), t("wrongCode"), [
                     {
@@ -129,7 +139,12 @@ const ConfirmCodeField = ({navigation, route}: StackNavigator<"ConfirmCodeField"
                     </View>
                 )}
             />
-            <Button onPress={handleContinuePress} style={styles.button}>
+            <Button
+                disabled={value.length !== 4}
+                transparent
+                onPress={handleContinuePress}
+                style={[styles.button, value.length === 4 ? styles.buttonValid : styles.buttonInvalid]}
+            >
                 <Text style={styles.text}>{t("continue")}</Text>
             </Button>
             <View style={styles.wrongNumber}>

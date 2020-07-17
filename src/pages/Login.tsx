@@ -25,8 +25,13 @@ const useStyles = makeStyles((theme) => ({
     saveButtonStyleCard: {
         borderRadius: 15,
         height: 60,
-        backgroundColor: theme.palette.Primary,
         alignItems: "center",
+    },
+    saveButtonValid: {
+        backgroundColor: theme.palette.Primary,
+    },
+    saveButtonInvalid: {
+        backgroundColor: theme.palette.Disabled,
     },
     saveButtonTextStyle: {
         color: theme.palette.textSecondary,
@@ -95,7 +100,10 @@ export default function Login({navigation, route}: StackNavigator<"Login">) {
                         <Row style={styles.saveButtonStyleCol}>
                             <Col>
                                 <Button
-                                    style={styles.saveButtonStyleCard}
+                                    style={[
+                                        styles.saveButtonStyleCard,
+                                        phone.length === 13 ? styles.saveButtonValid : styles.saveButtonInvalid,
+                                    ]}
                                     transparent
                                     onPress={() =>
                                         navigation.navigate("ConfirmCodeField", {number: `0${phone.slice(3)}`})
