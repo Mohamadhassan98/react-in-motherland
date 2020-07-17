@@ -278,12 +278,13 @@ export default function NewMessage({navigation, route}: StackNavigator<"NewMessa
                     >
                         <Icon name='add' />
                         <Button style={styles.FAB2} onPress={()=>{
-                            navigation.navigate("NewGroupAddPeople", {} as any);
+                            navigation.navigate("NewChannelAddPeople", {} as any);
+
                         }}>
                             <Icons8CommercialIcon />
                         </Button>
                         <Button style={styles.FAB2} onPress={()=>{
-                            navigation.navigate("NewChannelAddPeople", {} as any);
+                            navigation.navigate("NewGroupAddPeople", {} as any);
                         }}>
                             <Icons8GroupIcon />
                         </Button>

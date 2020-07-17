@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {ScrollView, StyleSheet} from "react-native";
+import {Alert, ScrollView, StyleSheet} from "react-native";
 import SearchInMessengerHeader from "../components/SearchInMessengerHeader";
 import {
     Badge,
@@ -20,9 +20,9 @@ import {
 } from "native-base";
 import {t} from "i18n-js";
 import {Recent, peopleList} from "../values/strings";
-import SimpleHeader from "../components/SimpleHeader";
 import {StackNavigator} from "../values/Routing";
 import makeStyles from "../utils/makeStyles";
+import {Restart} from "fiction-expo-restart";
 
 
 
@@ -68,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
     notif1: {
         fontSize: 1,
         height: 25,
-        //minWidth: 20,
         position: "absolute",
         top: ".01%",
         end: "5%",
@@ -77,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
     notif2: {
         fontSize: 1,
         height: 25,
-        //minWidth: 20,
         position: "absolute",
         top: ".01%",
         end: "5%",
@@ -217,9 +215,22 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                                 name='md-trash'
                                 style={styles.trash}
                                 onPress={() => {
-                                    let List = RecentList.filter((Item) => Item.id < 0);
-                                    setRecentList(List);
-                                    List.length > 0 ? setEmpty(false) : setEmpty(true);
+
+                                    Alert.alert(t("ClearSearchHistory"), t("ClearSearchHistoryMessage"), [
+                                        {
+                                            text: t("cancel"),
+                                            style: "cancel",
+                                            onPress: () => {},
+                                        },
+                                        {
+                                            text: t("Clear"),
+                                            onPress: () => {
+                                                let List = RecentList.filter((Item) => Item.id < 0);
+                                                setRecentList(List);
+                                                List.length > 0 ? setEmpty(false) : setEmpty(true);},
+
+                                        },
+                                    ]);
                                 }}
                             />
                         </View>

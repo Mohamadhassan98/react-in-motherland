@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     FAB: {
         backgroundColor: theme.palette.Primary,
     },
+    disableFAB:{
+        backgroundColor:"#eae6e6"
+    },
     container: {
         alignItems: "center",
         display: "flex",
@@ -47,6 +50,7 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
     const [profileImage, setProfileImage] = useState<string | undefined>();
     const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
     const {result, select} = useMediaPicker(cameraOrGallery || "gallery");
+    const [disable,setDisable] = useState(true);
     const styles = useStyles();
     return (
         <MainPageLayout active={3} navigation={navigation}>
@@ -95,6 +99,7 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                         <Input
                             onChangeText={(event) => {
                                 setFirstName(event);
+                                event.length>0?setDisable(false):setDisable(true);
                             }}
                         />
                     </Item>
@@ -108,16 +113,31 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                     </Item>
                 </Form>
 
-                <Fab
+                {
+                    disable ?
+                    <Fab
                     active={false}
                     direction='up'
                     containerStyle={{}}
-                    style={styles.FAB}
+                    style={styles.disableFAB}
                     position='bottomRight'
-                    onPress={() => {}}
+                    onPress={() => {
+                    }}
                 >
-                    <Icon name='md-checkmark' />
-                </Fab>
+                    <Icon name='md-checkmark'/>
+                </Fab>:
+                        <Fab
+                            active={false}
+                            direction='up'
+                            containerStyle={{}}
+                            style={styles.FAB}
+                            position='bottomRight'
+                            onPress={() => {
+                            }}
+                        >
+                            <Icon name='md-checkmark'/>
+                        </Fab>
+                }
             </Container>
         </MainPageLayout>
     );
