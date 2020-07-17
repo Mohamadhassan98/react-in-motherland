@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     },
     remove: {
         alignItems: "center",
-        backgroundColor: "#3aba07",
+        backgroundColor: "#ba0707",
         borderColor: "white",
         borderRadius: 25,
         borderWidth: 1,
