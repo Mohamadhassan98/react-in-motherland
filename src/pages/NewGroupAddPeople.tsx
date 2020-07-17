@@ -72,22 +72,21 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: "2%",
         marginStart: "5%",
         marginTop: "2%",
+        fontFamily:theme.font.Body,
     },
     listItem: {
         alignItems: "flex-end",
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        //marginBottom: "3%",
         width: "100%",
         marginTop: "2%",
     },
     people: {
         alignItems: "center",
-        // backgroundColor: "red",
         display: "flex",
         width: 80,
-        // marginBottom: "10%",
+
     },
     remove: {
         alignItems: "center",
@@ -111,17 +110,24 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         width: "100%",
         height: 450,
-        //backgroundColor: "red",
         justifyContent: "center",
         alignItems: "center",
     },
     text: {
         textAlign: "left",
+        fontFamily:theme.font.Body,
     },
     textLastSeen: {
         marginBottom: "5%",
         textAlign: "left",
+        fontFamily:theme.font.Body,
     },
+    FLName:{
+        marginTop: "5%",
+        fontSize: 13,
+        marginBottom: "10%",
+        fontFamily:theme.font.Body,
+    }
 }));
 
 export default function NewGroupAddPeople({navigation, route}: StackNavigator<"NewGroupAddPeople">) {
@@ -140,6 +146,7 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
             id: 0,
             choose: false,
         },
+
     ]);
     return (
         <MainPageLayout active={3} navigation={navigation}>
@@ -164,7 +171,7 @@ export default function NewGroupAddPeople({navigation, route}: StackNavigator<"N
                                         item.choose === true && (
                                             <View style={styles.people}>
                                                 <Thumbnail source={item.img} />
-                                                <Text style={{marginTop: "5%", fontSize: 13, marginBottom: "10%"}}>
+                                                <Text style={styles.FLName}>
                                                     {`${item.FirstName} ${item.LastName}`}
                                                 </Text>
                                                 <View style={styles.remove}>

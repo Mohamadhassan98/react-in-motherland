@@ -22,8 +22,11 @@ import {t} from "i18n-js";
 import {Recent, peopleList} from "../values/strings";
 import SimpleHeader from "../components/SimpleHeader";
 import {StackNavigator} from "../values/Routing";
+import makeStyles from "../utils/makeStyles";
 
-const styles = StyleSheet.create({
+
+
+const useStyles = makeStyles((theme) => ({
     Info: {
         borderBottomWidth: 1,
         borderColor: "#eeeeee",
@@ -32,10 +35,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginLeft: "2%",
         width: "65%",
+        fontFamily:theme.font.Body,
     },
     InfoEnd: {
-        //borderBottomWidth: 1,
-        //borderColor: "#eeeeee",
+
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
     },
     end: {
         alignSelf: "flex-end",
-        //height:'100%'
+
     },
     listItem: {
         alignItems: "flex-end",
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#67c074",
     },
     notification: {
-        //backgroundColor: "#67c074",
+
         borderBottomWidth: 1,
         borderColor: "#eeeeee",
         justifyContent: "center",
@@ -112,9 +115,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#f9f9f9",
         display: "flex",
         flexDirection: "row",
-        // height: 30,
-        //marginBottom: "2%",
-        //marginTop: "2%",
+
         width: "100%",
     },
 
@@ -122,39 +123,36 @@ const styles = StyleSheet.create({
         marginBottom: "2%",
         marginStart: "5%",
         marginTop: "2%",
+        fontFamily:theme.font.Body,
     },
     right_end: {
-        //backgroundColor: "red",
-        // borderWidth: 0,
-        // bottom: 0,
-        // end: 0,
-        //height: 80,
-        //position: "absolute",
+
         alignSelf: "flex-end",
         height: "100%",
     },
     text: {
         textAlign: "left",
+        fontFamily:theme.font.Body,
     },
     textLastSeen: {
         marginBottom: "5%",
         textAlign: "left",
+        fontFamily:theme.font.Body,
     },
     time: {
-        // backgroundColor: "gray",
         borderBottomWidth: 1,
         borderColor: "#eeeeee",
         height: "90%",
         paddingBottom: "4%",
         width: "10%",
+        fontFamily:theme.font.Body,
     },
     timeEnd: {
-        // backgroundColor: "gray",
-        //borderBottomWidth: 1,
-        //borderColor: "#eeeeee",
+
         height: "90%",
         paddingBottom: "4%",
         width: "10%",
+        fontFamily:theme.font.Body,
     },
     trash: {
         color: "#5f5e5e",
@@ -162,12 +160,25 @@ const styles = StyleSheet.create({
         marginTop: "1%",
         position: "absolute",
     },
-});
+    FirstNameText:{
+        marginTop: "5%",
+        fontSize: 13,
+        fontFamily:theme.font.Body,
+    },
+    textMessageNumber:{
+        fontSize: 13,
+        fontFamily:theme.font.Body,
+    },
+    notificationText:{
+        fontFamily:theme.font.Body,
+    }
+}));
 
 export default function SearchInMessenger({navigation, route}: StackNavigator<"SearchInMessenger">) {
     const [Empty, setEmpty] = useState(false);
     const [RecentList, setRecentList] = useState(Recent);
     const [SearchText, setSearchText] = useState("");
+    const styles = useStyles();
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
@@ -179,7 +190,7 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                 {SearchText.length === 0 ? (
                     <>
                         <View style={styles.recent}>
-                            <Text style={styles.recentText}>{t("suggestions")}</Text>
+                            <Text style={styles.recentText}>{t("People")}</Text>
                         </View>
                         <View style={{width: "100%", height: 10}} />
 
@@ -187,10 +198,10 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             {peopleList.map((item) => (
                                 <View style={styles.people} key={item.id}>
                                     <Thumbnail source={item.img} />
-                                    <Text style={{marginTop: "5%", fontSize: 13}}>{item.firstName}</Text>
+                                    <Text style={styles.FirstNameText}>{item.firstName}</Text>
                                     {item.messageNumber !== 0 && (
                                         <Badge style={item.mute ? styles.notif1 : styles.notif2}>
-                                            <Text style={{fontSize: 13}}>{item.messageNumber}</Text>
+                                            <Text style={styles.textMessageNumber}>{item.messageNumber}</Text>
                                         </Badge>
                                     )}
                                     {item.online === true && <View style={styles.online} />}
@@ -246,7 +257,7 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                                                 item.mute ? {backgroundColor: "#b4b4b4"} : {backgroundColor: "#67c074"}
                                             }
                                         >
-                                            <Text>{item.notification}</Text>
+                                            <Text style={styles.notificationText}>{item.notification}</Text>
                                         </Badge>
                                     )}
                                 </View>
