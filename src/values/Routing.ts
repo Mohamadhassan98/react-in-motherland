@@ -17,6 +17,7 @@ import {NewMessageProps} from "../pages/types/NewMessageProps";
 import {ConfirmCodeFieldProps} from "../pages/types/ConfirmCodeFieldProps";
 import {MessengerPageProps} from "../pages/types/MessengerPageProps";
 import {ChatroomProps} from "../pages/types/ChatroomProps";
+import {AddCommentChannelProps} from "../pages/types/AddCommentChannelProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -37,6 +38,7 @@ export type RootStackParamList = {
     ConfirmCodeField: ConfirmCodeFieldProps;
     MessengerPage: MessengerPageProps;
     ChatRoom: ChatroomProps;
+    AddCommentChannel: AddCommentChannelProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;

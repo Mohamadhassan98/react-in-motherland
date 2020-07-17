@@ -99,10 +99,11 @@ export default function initStrings(locale: string) {
             personalPageTour: `Look for fresh content?\nCheck for your followers' latest posts or post a new content for your followers.`,
             explorePageTour: `Everything from A to Z!\nSearch for anything and find useful content.`,
             settingsPageTour: `How ever you want!\nConfigure and customize app behaviour here.`,
-            logout: "logout",
+            logout: "Logout",
             ok: "ok",
             error: "error",
             notificationHeader: "notifications",
+            Comments: "Comments",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -202,6 +203,7 @@ export default function initStrings(locale: string) {
             ok: "باشه",
             error: "خطا",
             notificationHeader: "اعلانات",
+            Comments: "نظرات",
         },
     };
 

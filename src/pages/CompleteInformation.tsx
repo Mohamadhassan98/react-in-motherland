@@ -1,16 +1,11 @@
 import React, {useState} from "react";
-import {ActionSheet, Body, Button, Card, Container, Content, Header, Left, Right, Root, Text} from "native-base";
+import {ActionSheet, Button, Card, Container, Content, Root, Text} from "native-base";
 import makeStyles from "../utils/makeStyles";
 import {Col, Grid, Row} from "react-native-easy-grid";
 import InputBoxEditProfile from "../components/InputBoxEditProfile";
-import Icons8BackIcon from "../../assets/icons/BackIcon";
-import * as Localization from "expo-localization";
-import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
-import {t} from "i18n-js";
 import DatePicker from "../components/DatePicker";
 import Avatar from "../components/Avatar";
 import useMediaPicker from "../utils/useMediaPicker";
-import MainHeader from "../components/MainHeader";
 
 const useStyles = makeStyles((theme) => ({
     avatarStyle: {
@@ -19,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
     },
     inputBoxEditProfileStyle: {
-        // flex: 1,
         marginBottom: 10,
         marginTop: 10,
         marginStart: 40,
@@ -35,9 +29,6 @@ const useStyles = makeStyles((theme) => ({
         marginEnd: 40,
     },
     forwardBackIconStyle: {
-        // borderWidth: 0,
-        // borderBottomWidth: 0,
-        // flex: 1,
         backgroundColor: "#FFFFFF",
     },
     headerTextStyle: {
@@ -65,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 20,
     },
 }));
-export default function CompleteInformation () {
+
+export default function CompleteInformation() {
     const styles = useStyles();
     const [profileImage, setProfileImage] = useState<string | undefined>();
     const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
@@ -82,7 +74,7 @@ export default function CompleteInformation () {
 
     return (
         <Root>
-            <Container style={{backgroundColor: "#FFFFFF"}}>
+            <Container style={styles.forwardBackIconStyle}>
                 <Content>
                     <Grid>
                         <Row>

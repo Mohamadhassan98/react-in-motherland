@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Messenger({navigation, route, start, copilotEvents}: StackNavigator<"MessengerPage"> & CopilotTypes) {
     const styles = useStyles();
+    const [active, setActive] = React.useState(false);
     return (
         <MainPageLayout active={3} navigation={navigation} start={start} copilotEvents={copilotEvents}>
             <MainHeader size='collapsed'>
@@ -98,14 +99,13 @@ function Messenger({navigation, route, start, copilotEvents}: StackNavigator<"Me
                         ))}
                     </List>
                 </Content>
-
                 <Fab
-                    active={false}
+                    active={active}
                     direction='up'
                     containerStyle={{}}
                     style={styles.FAB}
                     position='bottomRight'
-                    onPress={() => {}}
+                    onPress={() => setActive(true)}
                 >
                     <Icon name='create' />
                 </Fab>

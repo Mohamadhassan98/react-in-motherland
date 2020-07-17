@@ -22,6 +22,8 @@ import NewMessage from "./src/pages/NewMessage";
 import MessengerPage from "./src/pages/MessengerPage";
 import ConfirmCodeField from "./src/pages/ConfirmCodeField";
 import ChatRoom from "./src/pages/ChatRoom";
+import NewPost from "./src/pages/NewPost";
+import AddCommentChannel from "./src/pages/AddCommentChannel";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -45,6 +47,8 @@ export default function App() {
                                         <Stack.Screen name='AddContact' component={addContact} />
                                         <Stack.Screen name='NewMessage' component={NewMessage} />
                                         <Stack.Screen name='ChatRoom' component={ChatRoom} />
+                                        <Stack.Screen name='NewPost' component={NewPost} />
+                                        <Stack.Screen name='AddCommentChannel' component={AddCommentChannel} />
                                         <Stack.Screen
                                             name='PostPage'
                                             component={PostPage}
