@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
+        fontFamily:theme.font.Header,
     },
     titleTextAlign: {
         textAlign: "center",
@@ -56,7 +57,7 @@ export default function ({
     return (
         <View style={{display: "flex", flexDirection: "row"}}>
             <Col style={styles.backIcon}>
-                <Thumbnail square style={{width: 40, height: 40}} source={require("../../assets/logo.png")} />
+                <Thumbnail square style={{width:30, height:30}} source={require("../../assets/logo.png")} />
             </Col>
             <Col style={styles.titleColumn}>
                 <Text style={styles.titleTextAlign}>{t("chats")}</Text>

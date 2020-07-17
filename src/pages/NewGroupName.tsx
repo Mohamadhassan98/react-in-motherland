@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     flagStyle: {
         marginEnd: "10%",
     },
+    text:{
+        fontFamily:theme.font.Body
+    }
 }));
 
 
@@ -88,15 +91,15 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                 </View>
                 <Form style={{width: "80%", alignSelf: "center"}}>
                     <Item stackedLabel>
-                        <Label>{t("groupName")}</Label>
+                        <Label style={styles.text}>{t("groupName")}</Label>
                         <Input
                             onChangeText={(event) => {
                                 setFirstName(event);
                             }}
                         />
                     </Item>
-                    <Item stackedLabel>
-                        <Label>{t("description")}</Label>
+                    <Item stackedLabel >
+                        <Label style={styles.text}>{t("description")}</Label>
                         <Input
                             onChangeText={(event) => {
                                 setLastName(event);
