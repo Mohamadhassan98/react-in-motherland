@@ -3,7 +3,7 @@
 import color from "color";
 import {Dimensions, PixelRatio, Platform} from "react-native";
 
-import {PLATFORM} from "./commonColor";
+import CommonColor, {PLATFORM} from "./commonColor";
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -129,7 +129,7 @@ export default (locale) => ({
 
     // Color
     // brandPrimary: platform === PLATFORM.IOS ? "#007aff" : "#3F51B5",
-    brandPrimary: "#E9446A",
+    brandPrimary: CommonColor.brandPrimary,
     brandSecondary: "#FF6265",
     brandInfo: "#62B1F6",
     brandSuccess: "#5cb85c",
