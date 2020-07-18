@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         color: commonColor.textColor,
     },
 });
-export default function ({profileImage, profileUsername, status, navigation}: ChatRoomHeadersProps) {
+export default function ({profileImage, profileUsername, status, navigation, local}: ChatRoomHeadersProps) {
     const theme = useTheme();
     return (
         <Grid style={styles.padding}>
@@ -39,7 +39,13 @@ export default function ({profileImage, profileUsername, status, navigation}: Ch
                     >
                         {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
                     </Button>
-                    <Avatar profileImage={profileImage} visibleName={profileUsername} size={38} />
+                    <Avatar
+                        profileImage={profileImage}
+                        visibleName={profileUsername}
+                        size={38}
+                        navigation={navigation}
+                        local={local}
+                    />
                     <View style={{paddingStart: 5}}>
                         <Text style={[styles.username, styles.align]}>{profileUsername}</Text>
                         <Text note style={styles.align}>

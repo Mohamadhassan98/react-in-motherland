@@ -206,7 +206,7 @@ export default function initStrings(locale: string) {
             lastName: "نام خانوادگی",
             description: "توضیحات",
             groupName: "نام گروه",
-            channelName: "نام گروه",
+            channelName: "نام کانال",
             next: "بعدی",
             skip: "رد شدن",
             previous: "قبلی",

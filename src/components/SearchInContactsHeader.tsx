@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Col, Icon, Input} from "native-base";
 import {t} from "i18n-js";
-import {StyleSheet} from "react-native";
+import makeStyles from "../utils/makeStyles";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
     backIcon: {
         flex: 2,
     },
@@ -16,10 +16,14 @@ const styles = StyleSheet.create({
     searchColumn: {
         flexGrow: 8,
     },
-});
+    inputText: {
+        fontFamily: theme.font.Body,
+    },
+}));
 
 export default function (props: {setSearchText: (text: string) => void}) {
     const [Stext, setStext] = useState("");
+    const styles = useStyles();
 
     return (
         <>
@@ -34,6 +38,7 @@ export default function (props: {setSearchText: (text: string) => void}) {
                         setStext(event);
                         props.setSearchText(event);
                     }}
+                    style={styles.inputText}
                 />
             </Col>
             <Col style={styles.closeColumn}>

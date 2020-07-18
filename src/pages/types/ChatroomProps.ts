@@ -1,3 +1,5 @@
 import {SimpleUser} from "../../components/types/AvatarProps";
 
-export type ChatroomProps = SimpleUser;
+export type ChatroomProps = {
+    local?: boolean;
+} & SimpleUser;

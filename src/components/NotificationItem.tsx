@@ -1,14 +1,11 @@
 import React from "react";
-import {View, Text, Image, Dimensions} from "react-native";
+import {Image, Text, View} from "react-native";
 import {materialColors} from "../values/materialColors";
-import Dots from "../../assets/icons/Dots";
 import {t} from "i18n-js";
 import Menu, {MenuItem} from "react-native-material-menu";
 import {Button} from "native-base";
 import MenuVerticalIcon from "../../assets/icons/MenuVerticalIcon";
-import commonColor from "../../native-base-theme/variables/commonColor";
 import makeStyles from "../utils/makeStyles";
-// const {width} = Dimensions.get("window");
 
 const useStyles = makeStyles((theme) => ({
     userNameStyle: {

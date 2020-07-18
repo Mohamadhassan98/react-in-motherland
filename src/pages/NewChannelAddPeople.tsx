@@ -129,23 +129,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NewChannelAddPeople({navigation, route}: StackNavigator<"NewChannelAddPeople">) {
-    const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
     const [List, setList] = useState(contactList);
     const [disable, setDisable] = useState(true);
     const theme = useTheme();
     const styles = useStyles();
 
-    const [members, setMembers] = useState([
-        {
-            FirstName: "test",
-            LastName: "",
-            LastSeen: "lastSeenRecently",
-            img: require("../../assets/img_avatar2.png"),
-            id: 0,
-            choose: false,
-        },
-    ]);
+    // const [members, setMembers] = useState([
+    //     {
+    //         FirstName: "test",
+    //         LastName: "",
+    //         LastSeen: "lastSeenRecently",
+    //         img: require("../../assets/img_avatar2.png"),
+    //         id: 0,
+    //         choose: false,
+    //     },
+    // ]);
     return (
         <MainPageLayout active={3} navigation={navigation}>
             <MainHeader size='collapsed'>
@@ -154,11 +153,6 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
             {/* Rest of code here */}
             <Container>
                 <Content>
-                    {/*<View style={styles.chooseM}>
-                        <Text style={styles.chooseText}>{t("Members")}
-
-                    </View>
-                    </Text><View style={{width: "100%", height: 10}} />*/}
                     {SearchText.length === 0 ? (
                         <>
                             <ScrollView horizontal={true}>
@@ -189,11 +183,9 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                                         )
                                 )}
                             </ScrollView>
-
                             <View style={styles.chooseM}>
                                 <Text style={styles.chooseText}>{t("chooseMembers")}</Text>
                             </View>
-
                             {List.map((item, index) => (
                                 <TouchableWithoutFeedback
                                     key={item.id}
@@ -209,14 +201,12 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                                     <View style={styles.listItem} key={item.id}>
                                         <View style={styles.avatar}>
                                             <Thumbnail source={item.img} />
-
                                             {item.choose && (
                                                 <View style={styles.choose}>
                                                     <Icon name='md-checkmark' style={styles.chooseIcone} />
                                                 </View>
                                             )}
                                         </View>
-
                                         <View style={styles.Info}>
                                             <Text style={styles.text}>{`${item.FirstName} ${item.LastName}`}</Text>
                                             <Text note style={styles.textLastSeen}>
@@ -246,14 +236,12 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                                             <View style={styles.listItem} key={item.id}>
                                                 <View style={styles.avatar}>
                                                     <Thumbnail source={item.img} />
-
                                                     {item.choose && (
                                                         <View style={styles.choose}>
                                                             <Icon name='md-checkmark' style={styles.chooseIcone} />
                                                         </View>
                                                     )}
                                                 </View>
-
                                                 <View style={styles.Info}>
                                                     <Text style={styles.text}>
                                                         {`${item.FirstName} ${item.LastName}`}
@@ -290,9 +278,7 @@ export default function NewChannelAddPeople({navigation, route}: StackNavigator<
                         direction='up'
                         style={styles.FAB}
                         position='bottomRight'
-                        onPress={() => {
-                            navigation.navigate("NewChannelName", {} as any);
-                        }}
+                        onPress={() => navigation.navigate("NewChannelName", {} as any)}
                     >
                         {theme.localize.language === "fa" ? (
                             <Icons8BackIcon fill='white' />

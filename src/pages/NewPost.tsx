@@ -1,10 +1,9 @@
 import React from "react";
-import {View, Image, TouchableOpacity} from "react-native";
+import {Image, TouchableOpacity, View} from "react-native";
 
 import Header from "../components/NewPostHeader";
 import Content from "../components/NewPost";
 import {materialColors} from "../values/materialColors";
-import {StackNavigationProp} from "@react-navigation/stack";
 import {StackNavigator} from "../values/Routing";
 
 const data = {

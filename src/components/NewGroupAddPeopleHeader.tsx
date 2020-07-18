@@ -9,7 +9,7 @@ import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../values/Routing";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     backColumn: {},
     backIcon: {
         flex: 2,
@@ -42,6 +42,9 @@ const useStyles = makeStyles(() => ({
     },
     titleTextAlign: {
         textAlign: "center",
+    },
+    input: {
+        fontFamily: theme.font.Body,
     },
 }));
 
@@ -97,6 +100,7 @@ export default function ({
                                 setStext(event);
                                 setSearchText(event);
                             }}
+                            style={styles.input}
                         />
                     </Col>
                     <Col style={styles.closeColumn}>

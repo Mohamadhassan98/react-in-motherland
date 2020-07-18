@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {Alert, ScrollView} from "react-native";
+import {Alert, ScrollView, TouchableOpacity} from "react-native";
 import SearchInMessengerHeader from "../components/SearchInMessengerHeader";
 import {Badge, Content, Icon, Text, Thumbnail, View} from "native-base";
 import {t} from "i18n-js";
@@ -83,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
     },
     people: {
         alignItems: "center",
-        //backgroundColor: "red",
         display: "flex",
         width: 80,
     },
@@ -165,25 +164,43 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
             </MainHeader>
             {/* Rest of code here */}
             <Content>
-                {!!SearchText ? (
+                {!SearchText ? (
                     <>
                         <View style={styles.recent}>
                             <Text style={styles.recentText}>{t("People")}</Text>
                         </View>
                         <View style={{width: "100%", height: 10}} />
                         <ScrollView horizontal={true}>
-                            {peopleList.map((item) => (
-                                <View style={styles.people} key={item.id}>
-                                    <Thumbnail source={item.img} />
-                                    <Text style={styles.FirstNameText}>{item.firstName}</Text>
-                                    {item.messageNumber !== 0 && (
-                                        <Badge style={item.mute ? styles.notif1 : styles.notif2}>
-                                            <Text style={styles.textMessageNumber}>{item.messageNumber}</Text>
-                                        </Badge>
-                                    )}
-                                    {item.online && <View style={styles.online} />}
-                                </View>
-                            ))}
+                            {peopleList.map(
+                                ({firstName, id, img: profileImage, lastName, messageNumber, mute, online}) => (
+                                    <TouchableOpacity
+                                        onPress={() =>
+                                            navigation.navigate("ChatRoom", {
+                                                profileImage,
+                                                visibleName: `${firstName} ${lastName}`,
+                                                local: !!profileImage,
+                                            })
+                                        }
+                                        style={styles.people}
+                                        key={id}
+                                    >
+                                        {/*<Thumbnail source={item.img} />*/}
+                                        <Avatar
+                                            profileImage={profileImage}
+                                            local
+                                            visibleName={`${firstName} ${lastName}`}
+                                            size={56}
+                                        />
+                                        <Text style={styles.FirstNameText}>{firstName}</Text>
+                                        {messageNumber !== 0 && (
+                                            <Badge style={mute ? styles.notif1 : styles.notif2}>
+                                                <Text style={styles.textMessageNumber}>{messageNumber}</Text>
+                                            </Badge>
+                                        )}
+                                        {online && <View style={styles.online} />}
+                                    </TouchableOpacity>
+                                )
+                            )}
                         </ScrollView>
                         {RecentList.length !== 0 && (
                             <View>
@@ -208,52 +225,108 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                                     />
                                 </View>
                                 <View style={{width: "100%", height: 10}} />
-                                {RecentList.map((item) => (
-                                    <View style={styles.listItem} key={item.id}>
-                                        <View style={styles.close}>
-                                            <Icon
-                                                style={{fontSize: 15, color: "#a39f9f"}}
-                                                name='md-close'
-                                                onPress={() => {
-                                                    setRecentList((prevState) =>
-                                                        prevState.filter((Item) => Item.id !== item.id)
-                                                    );
-                                                }}
-                                            />
-                                        </View>
-                                        <View style={styles.avatar}>
-                                            <Thumbnail source={item.img} />
-                                        </View>
-                                        <View style={styles.Info}>
-                                            <Text style={styles.text}>{`${item.FirstName} ${item.LastName}`}</Text>
-                                            <Text note style={styles.textLastSeen}>
-                                                {item.numberOfMembers
-                                                    ? item.numberOfMembers + t(item.Description)
-                                                    : t(item.Description)}
-                                            </Text>
-                                        </View>
-                                        <View style={styles.notification}>
-                                            {item.notification !== "" && (
-                                                <Badge
-                                                    style={
-                                                        item.mute
-                                                            ? {backgroundColor: "#b4b4b4"}
-                                                            : {backgroundColor: "#67c074"}
-                                                    }
-                                                >
-                                                    <Text style={styles.notificationText}>{item.notification}</Text>
-                                                </Badge>
-                                            )}
-                                        </View>
-                                    </View>
-                                ))}
+                                {RecentList.map(
+                                    ({
+                                        Description,
+                                        FirstName,
+                                        LastName,
+                                        id,
+                                        img: profileImage,
+                                        mute,
+                                        notification,
+                                        numberOfMembers,
+                                    }) => (
+                                        <TouchableOpacity
+                                            onPress={() => {
+                                                switch (Description) {
+                                                    case "publicChannel":
+                                                    case "privateChannel":
+                                                        navigation.navigate("ChannelRoom", {
+                                                            onlineMembers: 0,
+                                                            members: 12,
+                                                            groupName: `${FirstName} ${LastName}`,
+                                                            groupImage: profileImage,
+                                                            local: !!profileImage,
+                                                        });
+                                                        break;
+                                                    case "members":
+                                                        navigation.navigate("GroupChatRoom", {
+                                                            onlineMembers: 1,
+                                                            members: Number(numberOfMembers),
+                                                            groupName: `${FirstName} ${LastName}`,
+                                                            groupImage: profileImage,
+                                                            local: !!profileImage,
+                                                        });
+                                                        break;
+                                                    case "lastSeenRecently":
+                                                        navigation.navigate("ChatRoom", {
+                                                            visibleName: `${FirstName} ${LastName}`,
+                                                            profileImage,
+                                                            local: !!profileImage,
+                                                        });
+                                                        break;
+                                                }
+                                            }}
+                                            style={styles.listItem}
+                                            key={id}
+                                        >
+                                            <View style={styles.close}>
+                                                <Icon
+                                                    style={{fontSize: 15, color: "#a39f9f"}}
+                                                    name='md-close'
+                                                    onPress={() => {
+                                                        setRecentList((prevState) =>
+                                                            prevState.filter((Item) => Item.id !== id)
+                                                        );
+                                                    }}
+                                                />
+                                            </View>
+                                            <View style={styles.avatar}>
+                                                <Thumbnail source={profileImage} />
+                                            </View>
+                                            <View style={styles.Info}>
+                                                <Text style={styles.text}>{`${FirstName} ${LastName}`}</Text>
+                                                <Text note style={styles.textLastSeen}>
+                                                    {numberOfMembers
+                                                        ? numberOfMembers + t(Description)
+                                                        : t(Description)}
+                                                </Text>
+                                            </View>
+                                            <View style={styles.notification}>
+                                                {notification !== "" && (
+                                                    <Badge
+                                                        style={
+                                                            mute
+                                                                ? {backgroundColor: "#b4b4b4"}
+                                                                : {backgroundColor: "#67c074"}
+                                                        }
+                                                    >
+                                                        <Text style={styles.notificationText}>{notification}</Text>
+                                                    </Badge>
+                                                )}
+                                            </View>
+                                        </TouchableOpacity>
+                                    )
+                                )}
                             </View>
                         )}
                     </>
                 ) : (
                     <>
                         {/*نتیجه ی سرچ*/}
-                        <View style={styles.listItem}>
+                        <View style={styles.recent}>
+                            <Text style={styles.recentText}>{t("People")}</Text>
+                        </View>
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("ChatRoom", {
+                                    profileImage: require("../../assets/img_avatar2.png"),
+                                    visibleName: "zahra kml",
+                                    local: true,
+                                })
+                            }
+                            style={styles.listItem}
+                        >
                             <View style={styles.avatar}>
                                 <Avatar
                                     size={56}
@@ -271,8 +344,15 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
-                        </View>
-                        <View style={styles.listItem}>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("ChatRoom", {
+                                    visibleName: "zahra",
+                                })
+                            }
+                            style={styles.listItem}
+                        >
                             <View style={styles.avatar}>
                                 <Avatar size={56} visibleName='zahra' local />
                             </View>
@@ -285,8 +365,17 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
-                        </View>
-                        <View style={styles.listItem}>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("ChatRoom", {
+                                    profileImage: require("../../assets/img_avatar2.png"),
+                                    visibleName: "zahra a",
+                                    local: true,
+                                })
+                            }
+                            style={styles.listItem}
+                        >
                             <View style={styles.avatar}>
                                 <Avatar
                                     size={56}
@@ -304,8 +393,15 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
-                        </View>
-                        <View style={styles.listItem}>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("ChatRoom", {
+                                    visibleName: "zahra gh",
+                                })
+                            }
+                            style={styles.listItem}
+                        >
                             <View style={styles.avatar}>
                                 <Avatar size={56} visibleName='zahra gh' local />
                             </View>
@@ -318,15 +414,22 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <View style={styles.timeEnd}>
                                 <Text note>3:54</Text>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                         <View style={{width: "100%", height: 10}} />
                         <View style={styles.recent}>
                             <Text style={styles.recentText}>{t("messages")}</Text>
                         </View>
                         <View style={{width: "100%", height: 10}} />
-                        <View style={styles.listItem}>
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("ChatRoom", {
+                                    visibleName: "faezeh",
+                                })
+                            }
+                            style={styles.listItem}
+                        >
                             <View style={styles.avatar}>
-                                <Avatar size={56} visibleName='faezeh' local />
+                                <Avatar size={56} visibleName='faezeh' />
                             </View>
                             <View style={styles.Info}>
                                 <Text style={styles.text}>faezeh</Text>
@@ -337,8 +440,15 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
-                        </View>
-                        <View style={styles.listItem}>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() =>
+                                navigation.navigate("ChatRoom", {
+                                    visibleName: "zahra gh",
+                                })
+                            }
+                            style={styles.listItem}
+                        >
                             <View style={styles.avatar}>
                                 <Avatar size={56} visibleName='zahra gh' local />
                             </View>
@@ -351,7 +461,7 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                             <View style={styles.time}>
                                 <Text note>3:54</Text>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     </>
                 )}
             </Content>

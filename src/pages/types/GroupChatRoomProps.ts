@@ -1,1 +1,7 @@
-export type GroupChatRoomProps = undefined;
+export interface GroupChatRoomProps {
+    groupImage?: string;
+    groupName: string;
+    members: number;
+    onlineMembers: number;
+    local?: boolean;
+}

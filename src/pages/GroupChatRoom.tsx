@@ -28,13 +28,7 @@ export default function ({navigation, route}: StackNavigator<"GroupChatRoom">) {
     return (
         <Container>
             <MainHeader size='collapsed'>
-                <GroupChatRoomHeader
-                    groupImage='https://static.independent.co.uk/s3fs-public/thumbnails/image/2020/06/15/20/donald-trump-cabinet-room-white-house.jpg'
-                    groupName='Us mad presidents'
-                    members={12}
-                    onlineMembers={3}
-                    navigation={navigation}
-                />
+                <GroupChatRoomHeader {...route.params} navigation={navigation} />
             </MainHeader>
             <Content>
                 {messages.map((value, index) => {

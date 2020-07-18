@@ -1,10 +1,11 @@
 import React from "react";
-import {TouchableOpacity, Image, Text, Dimensions} from "react-native";
+import {Dimensions, Text, TouchableOpacity} from "react-native";
 import {View} from "native-base";
 import {materialColors} from "../values/materialColors";
 import BackIcon from "../../assets/icons/BackIcon";
 import useTheme from "../values/theme";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
+
 const {width} = Dimensions.get("window");
 
 export default (props: {

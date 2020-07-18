@@ -62,32 +62,48 @@ function MessengerPage({navigation, route, start, copilotEvents}: StackNavigator
             <Container>
                 <Content>
                     <List>
-                        {chatList.map((item) => (
+                        {chatList.map(({FirstName, LastName, id, img, message, mute, notification, time}) => (
                             <ListItem
                                 avatar
-                                key={item.id}
+                                key={id}
                                 onPress={() => {
-                                    if (item.id % 3 === 0) {
-                                        navigation.navigate("ChatRoom", {} as any);
-                                    } else if (item.id % 3 === 1) {
-                                        navigation.navigate("GroupChatRoom");
+                                    if (id % 3 === 0) {
+                                        navigation.navigate("ChatRoom", {
+                                            visibleName: `${FirstName} ${LastName}`,
+                                            profileImage: img,
+                                            local: !!img,
+                                        });
+                                    } else if (id % 3 === 1) {
+                                        navigation.navigate("GroupChatRoom", {
+                                            members: 12,
+                                            groupImage: img,
+                                            local: !!img,
+                                            groupName: `${FirstName} ${LastName}`,
+                                            onlineMembers: 5,
+                                        });
                                     } else {
-                                        navigation.navigate("ChannelRoom");
+                                        navigation.navigate("ChannelRoom", {
+                                            onlineMembers: 0,
+                                            groupName: `${FirstName} ${LastName}`,
+                                            local: !!img,
+                                            groupImage: img,
+                                            members: 12,
+                                        });
                                     }
                                 }}
                             >
                                 <Left>
                                     <Avatar
                                         size={56}
-                                        visibleName={`${item.FirstName} ${item.LastName}`}
-                                        profileImage={item.img}
+                                        visibleName={`${FirstName} ${LastName}`}
+                                        profileImage={img}
                                         local
                                     />
                                 </Left>
                                 <Body style={styles.end}>
-                                    <Text style={styles.text}>{`${item.FirstName} ${item.LastName}`}</Text>
+                                    <Text style={styles.text}>{`${FirstName} ${LastName}`}</Text>
                                     <Text note style={styles.text}>
-                                        {_.truncate(item.message, {
+                                        {_.truncate(message, {
                                             length: 34,
                                             separator: " ",
                                         })}
@@ -95,16 +111,16 @@ function MessengerPage({navigation, route, start, copilotEvents}: StackNavigator
                                 </Body>
                                 <Right style={styles.right_end}>
                                     <Text note style={styles.time}>
-                                        {item.time}
+                                        {time}
                                     </Text>
-                                    {item.notification !== "" ? (
+                                    {notification !== "" ? (
                                         <Badge
                                             style={[
                                                 styles.notification,
-                                                item.mute ? {backgroundColor: "#b4b4b4"} : {backgroundColor: "#67c074"},
+                                                mute ? {backgroundColor: "#b4b4b4"} : {backgroundColor: "#67c074"},
                                             ]}
                                         >
-                                            <Text style={styles.notifText}>{item.notification}</Text>
+                                            <Text style={styles.notifText}>{notification}</Text>
                                         </Badge>
                                     ) : (
                                         <></>

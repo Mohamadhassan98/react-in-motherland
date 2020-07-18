@@ -1,7 +1,5 @@
 import React from "react";
 import {View} from "react-native";
-
-import Header from "../components/NewPostHeader";
 import UserItemList from "../components/NotificationItem";
 import {t} from "i18n-js";
 import {materialColors} from "../values/materialColors";

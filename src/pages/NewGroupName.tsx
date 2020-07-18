@@ -110,14 +110,9 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                         </Item>
                         <Item stackedLabel>
                             <Label style={styles.text}>{t("description")}</Label>
-                            <Input
-                                onChangeText={(event) => {
-                                    setLastName(event);
-                                }}
-                            />
+                            <Input onChangeText={(event) => setLastName(event)} />
                         </Item>
                     </Form>
-
                     {disable ? (
                         <Fab
                             active={false}
@@ -125,7 +120,6 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                             containerStyle={{}}
                             style={styles.disableFAB}
                             position='bottomRight'
-                            onPress={() => {}}
                         >
                             <Icon name='md-checkmark' />
                         </Fab>
@@ -133,10 +127,9 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                         <Fab
                             active={false}
                             direction='up'
-                            containerStyle={{}}
                             style={styles.FAB}
                             position='bottomRight'
-                            onPress={() => {}}
+                            onPress={() => navigation.popToTop()}
                         >
                             <Icon name='md-checkmark' />
                         </Fab>

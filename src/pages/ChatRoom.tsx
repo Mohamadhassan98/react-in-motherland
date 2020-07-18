@@ -17,14 +17,16 @@ export default function Chatroom({navigation, route}: StackNavigator<"ChatRoom">
         showDate: true,
     });
     const [messages, setMessages] = React.useState(initMessages);
+    const {params} = route;
     return (
         <Container>
             <MainHeader size='collapsed'>
                 <ChatRoomHeader
-                    profileImage='https://static.independent.co.uk/s3fs-public/thumbnails/image/2020/06/15/20/donald-trump-cabinet-room-white-house.jpg'
-                    profileUsername='donald trump'
+                    profileImage={params.profileImage}
+                    profileUsername={params.visibleName}
                     status='online'
                     navigation={navigation}
+                    local={params.local}
                 />
             </MainHeader>
             <Content>

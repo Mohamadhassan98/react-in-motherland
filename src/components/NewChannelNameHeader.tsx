@@ -1,15 +1,12 @@
-import React, {useState} from "react";
-import {Button, Col, Icon, Input, Text} from "native-base";
+import React from "react";
+import {Button, Col, Text} from "native-base";
 import {t} from "i18n-js";
-import {StyleSheet} from "react-native";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 import Icons8BackIcon from "../../assets/icons/BackIcon";
 import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../values/Routing";
-
-
 
 const useStyles = makeStyles((theme) => ({
     backIcon: {
@@ -41,38 +38,28 @@ const useStyles = makeStyles((theme) => ({
     },
     titleTextAlign: {
         textAlign: "center",
-        fontFamily:theme.font.Header,
+        fontFamily: theme.font.Header,
     },
 }));
 
-export default function ({navigation}:{navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;} ) {
-    const [search, setSearch] = useState(false);
-    const [Stext, setStext] = useState("");
+export default function ({
+    navigation,
+}: {
+    navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
+}) {
     const theme = useTheme();
     const styles = useStyles();
     return (
         <>
             <Col style={styles.backIcon}>
-                {
-
-                    theme.localize.language === "fa" ? <Button
-                        small
-                        transparent
-                        onPress={() => {
-                            navigation.canGoBack() && navigation.goBack();
-                        }}
-                    ><Icons8ForwardIcon /> </Button> : <Button
-                        small
-                        transparent
-                        onPress={() => {
-                            navigation.canGoBack() && navigation.goBack();
-                        }}
-                    ><Icons8BackIcon /></Button> }
+                <Button small transparent onPress={() => navigation.canGoBack() && navigation.goBack()}>
+                    {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+                </Button>
             </Col>
             <Col style={styles.titleColumn}>
                 <Text style={styles.titleTextAlign}>{t("newChannel")}</Text>
             </Col>
-            <Col style={styles.iconColumn}></Col>
+            <Col style={styles.iconColumn} />
         </>
     );
 }

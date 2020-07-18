@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function ({groupImage, groupName, members, navigation, onlineMembers}: GroupChatRoomHeaderProps) {
+export default function ({groupImage, groupName, members, navigation, onlineMembers, local}: GroupChatRoomHeaderProps) {
     const theme = useTheme();
     return (
         <Grid style={styles.padding}>
@@ -40,7 +40,7 @@ export default function ({groupImage, groupName, members, navigation, onlineMemb
                     >
                         {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
                     </Button>
-                    <Avatar profileImage={groupImage} visibleName={groupName} size={38} />
+                    <Avatar profileImage={groupImage} visibleName={groupName} size={38} local={local} />
                     <View style={{paddingStart: 5}}>
                         <Text style={[styles.username, styles.align]}>{groupName}</Text>
                         <Text note style={styles.align}>
