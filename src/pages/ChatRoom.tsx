@@ -7,12 +7,13 @@ import MainHeader from "../components/MainHeader";
 import {MessageProps} from "../components/types/MessageProps";
 import {StackNavigator} from "../values/Routing";
 import {t} from "i18n-js";
+import {i17n} from "../values/strings";
 
 export default function Chatroom({navigation, route}: StackNavigator<"ChatRoom">) {
     const initMessages: MessageProps[] = new Array(5).fill({
         message: "سلام به روی ماهت",
         type: "receive",
-        date: `10 : 32 ${t("am")}`,
+        date: `10:32 ${i17n.am}`,
         showDate: true,
     });
     const [messages, setMessages] = React.useState(initMessages);

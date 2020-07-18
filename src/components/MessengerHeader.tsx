@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import {Button, Col, Text, Thumbnail, View} from "native-base";
 import {t} from "i18n-js";
-import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
 import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import {StackNavigationProp} from "@react-navigation/stack";
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
-        fontFamily:theme.font.Header,
+        fontFamily: theme.font.Header,
     },
     titleTextAlign: {
         textAlign: "center",
@@ -50,14 +49,11 @@ export default function ({
 }: {
     navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
 }) {
-    const [search, setSearch] = useState(false);
-    const [Stext, setStext] = useState("");
-    const theme = useTheme();
     const styles = useStyles();
     return (
         <View style={{display: "flex", flexDirection: "row"}}>
             <Col style={styles.backIcon}>
-                <Thumbnail square style={{width:30, height:30}} source={require("../../assets/logo.png")} />
+                <Thumbnail square style={{width: 30, height: 30}} source={require("../../assets/logo.png")} />
             </Col>
             <Col style={styles.titleColumn}>
                 <Text style={styles.titleTextAlign}>{t("chats")}</Text>
@@ -67,7 +63,6 @@ export default function ({
                     small
                     transparent
                     onPress={() => {
-                        setSearch(true);
                         navigation.navigate("SearchInMessenger", {} as any);
                     }}
                 >

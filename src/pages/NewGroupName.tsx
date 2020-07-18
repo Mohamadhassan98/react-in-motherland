@@ -1,23 +1,21 @@
 import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {StyleSheet} from "react-native";
-import {Container, Fab, Icon, View, Form, Item, Input, Label, ActionSheet} from "native-base";
-import IntlPhoneInput, {ChangeTextInput, CustomModalInput} from "react-native-intl-phone-input";
+import {ActionSheet, Container, Fab, Form, Icon, Input, Item, Label, Root, View} from "native-base";
 import Avatar from "../components/Avatar";
 import NewGroupNameHeader from "../components/NewGroupNameHeader";
 import {t} from "i18n-js";
 import useMediaPicker from "../utils/useMediaPicker";
 import {StackNavigator} from "../values/Routing";
 import makeStyles from "../utils/makeStyles";
-
+import {i17n} from "../values/strings";
 
 const useStyles = makeStyles((theme) => ({
     FAB: {
         backgroundColor: theme.palette.Primary,
     },
-    disableFAB:{
-        backgroundColor:"#eae6e6"
+    disableFAB: {
+        backgroundColor: "#eae6e6",
     },
     container: {
         alignItems: "center",
@@ -33,112 +31,118 @@ const useStyles = makeStyles((theme) => ({
     flagStyle: {
         marginEnd: "10%",
     },
-    text:{
-        fontFamily:theme.font.Body
-    }
+    text: {
+        fontFamily: theme.font.Body,
+    },
 }));
 
-
 export default function NewGroupName({navigation, route}: StackNavigator<"NewGroupName">) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [FirstName, setFirstName] = useState("");
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [LastName, setLastName] = useState("");
-    const onChangeText = ({dialCode, unmaskedPhoneNumber, phoneNumber, isVerified}: ChangeTextInput) => {
-        console.log(dialCode, unmaskedPhoneNumber, phoneNumber, isVerified);
-    };
     const [profileImage, setProfileImage] = useState<string | undefined>();
     const [cameraOrGallery, setCameraOrGallery] = useState<"camera" | "gallery" | undefined>();
     const {result, select} = useMediaPicker(cameraOrGallery || "gallery");
-    const [disable,setDisable] = useState(true);
+    const [disable, setDisable] = useState(true);
     const styles = useStyles();
-    return (
-        <MainPageLayout active={3} navigation={navigation}>
-            <MainHeader size='collapsed'>
-                <NewGroupNameHeader navigation={navigation}/>
-            </MainHeader>
-            {/* Rest of code here */}
-            <Container>
-                <View style={styles.container}>
-                    <Avatar
-                        visibleName={FirstName}
-                        size={100}
-                        profileImage={profileImage}
-                        showAccessory
-                        onAccessoryPress={() => {
-                            ActionSheet.show(
-                                {
-                                    options: profileImage ? ["Camera", "Gallery", "delete"] : ["Camera", "Gallery"],
-                                },
-                                (index) => {
-                                    console.log(index);
-                                    switch (index) {
-                                        case 0: {
-                                            setCameraOrGallery("camera");
-                                            break;
-                                        }
-                                        case 1: {
-                                            setCameraOrGallery("gallery");
-                                            break;
-                                        }
-                                        case 2: {
-                                            setProfileImage(undefined);
-                                            break;
-                                        }
-                                        default:
-                                            break;
-                                    }
-                                }
-                            );
-                        }}
-                    />
-                </View>
-                <Form style={{width: "80%", alignSelf: "center"}}>
-                    <Item stackedLabel>
-                        <Label style={styles.text}>{t("groupName")}</Label>
-                        <Input
-                            onChangeText={(event) => {
-                                setFirstName(event);
-                                event.length>0?setDisable(false):setDisable(true);
-                            }}
-                        />
-                    </Item>
-                    <Item stackedLabel >
-                        <Label style={styles.text}>{t("description")}</Label>
-                        <Input
-                            onChangeText={(event) => {
-                                setLastName(event);
-                            }}
-                        />
-                    </Item>
-                </Form>
 
-                {
-                    disable ?
-                    <Fab
-                    active={false}
-                    direction='up'
-                    containerStyle={{}}
-                    style={styles.disableFAB}
-                    position='bottomRight'
-                    onPress={() => {
-                    }}
-                >
-                    <Icon name='md-checkmark'/>
-                </Fab>:
+    React.useEffect(() => {
+        setProfileImage(result);
+    }, [result]);
+
+    React.useEffect(() => {
+        if (cameraOrGallery) {
+            select().then(() => setCameraOrGallery(undefined));
+        }
+    }, [cameraOrGallery, select]);
+
+    return (
+        <Root>
+            <MainPageLayout active={3} navigation={navigation}>
+                <MainHeader size='collapsed'>
+                    <NewGroupNameHeader navigation={navigation} />
+                </MainHeader>
+                {/* Rest of code here */}
+                <Container>
+                    <View style={styles.container}>
+                        <Avatar
+                            visibleName={FirstName}
+                            size={100}
+                            profileImage={profileImage}
+                            showAccessory
+                            onAccessoryPress={() => {
+                                ActionSheet.show(
+                                    {
+                                        options: profileImage
+                                            ? [i17n.camera, i17n.gallery, i17n.delete]
+                                            : [i17n.camera, i17n.gallery],
+                                    },
+                                    (index) => {
+                                        switch (index) {
+                                            case 0: {
+                                                setCameraOrGallery("camera");
+                                                break;
+                                            }
+                                            case 1: {
+                                                setCameraOrGallery("gallery");
+                                                break;
+                                            }
+                                            case 2: {
+                                                setProfileImage(undefined);
+                                                break;
+                                            }
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                );
+                            }}
+                        />
+                    </View>
+                    <Form style={{width: "80%", alignSelf: "center"}}>
+                        <Item stackedLabel>
+                            <Label style={styles.text}>{t("groupName")}</Label>
+                            <Input
+                                onChangeText={(event) => {
+                                    setFirstName(event);
+                                    event.length > 0 ? setDisable(false) : setDisable(true);
+                                }}
+                            />
+                        </Item>
+                        <Item stackedLabel>
+                            <Label style={styles.text}>{t("description")}</Label>
+                            <Input
+                                onChangeText={(event) => {
+                                    setLastName(event);
+                                }}
+                            />
+                        </Item>
+                    </Form>
+
+                    {disable ? (
+                        <Fab
+                            active={false}
+                            direction='up'
+                            containerStyle={{}}
+                            style={styles.disableFAB}
+                            position='bottomRight'
+                            onPress={() => {}}
+                        >
+                            <Icon name='md-checkmark' />
+                        </Fab>
+                    ) : (
                         <Fab
                             active={false}
                             direction='up'
                             containerStyle={{}}
                             style={styles.FAB}
                             position='bottomRight'
-                            onPress={() => {
-                            }}
+                            onPress={() => {}}
                         >
-                            <Icon name='md-checkmark'/>
+                            <Icon name='md-checkmark' />
                         </Fab>
-                }
-            </Container>
-        </MainPageLayout>
+                    )}
+                </Container>
+            </MainPageLayout>
+        </Root>
     );
 }

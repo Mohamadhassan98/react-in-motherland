@@ -24,6 +24,8 @@ import {NewGroupNameProps} from "../pages/types/NewGroupNameProps";
 import {NewChannelNameProps} from "../pages/types/NewChannelNameProps";
 import {NewGroupAddPeopleProps} from "../pages/types/NewGroupAddPeopleProps";
 import {CompleteInformationProps} from "../pages/types/CompleteInformationProps";
+import {GroupChatRoomProps} from "../pages/types/GroupChatRoomProps";
+import {ChannelRoomProps} from "../pages/types/ChannelRoomProps";
 
 export type RootStackParamList = {
     ChangeColorSettings: ChangeColorSettingsProps;
@@ -51,6 +53,8 @@ export type RootStackParamList = {
     NewChannelName: NewChannelNameProps;
     NewGroupAddPeople: NewGroupAddPeopleProps;
     CompleteInformation: CompleteInformationProps;
+    GroupChatRoom: GroupChatRoomProps;
+    ChannelRoom: ChannelRoomProps;
 };
 
 export type StackNavigator<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;

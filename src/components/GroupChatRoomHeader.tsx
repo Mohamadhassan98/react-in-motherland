@@ -1,13 +1,13 @@
 import React from "react";
-import {StyleSheet} from "react-native";
+import useTheme from "../values/theme";
 import {Button, Grid, Row, Text, View} from "native-base";
-import {ChatRoomHeadersProps} from "./types/ChatRoomHeadersProps";
-import commonColor from "../../native-base-theme/variables/commonColor";
-import {t} from "i18n-js";
-import Avatar from "./Avatar";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 import Icons8BackIcon from "../../assets/icons/BackIcon";
-import useTheme from "../values/theme";
+import Avatar from "./Avatar";
+import {t} from "i18n-js";
+import {StyleSheet} from "react-native";
+import commonColor from "../../native-base-theme/variables/commonColor";
+import {GroupChatRoomHeaderProps} from "./types/GroupChatRoomHeaderProps";
 
 const styles = StyleSheet.create({
     align: {
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
         color: commonColor.textColor,
     },
 });
-export default function ({profileImage, profileUsername, status, navigation}: ChatRoomHeadersProps) {
+
+export default function ({groupImage, groupName, members, navigation, onlineMembers}: GroupChatRoomHeaderProps) {
     const theme = useTheme();
     return (
         <Grid style={styles.padding}>
@@ -39,11 +40,13 @@ export default function ({profileImage, profileUsername, status, navigation}: Ch
                     >
                         {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
                     </Button>
-                    <Avatar profileImage={profileImage} visibleName={profileUsername} size={38} />
+                    <Avatar profileImage={groupImage} visibleName={groupName} size={38} />
                     <View style={{paddingStart: 5}}>
-                        <Text style={[styles.username, styles.align]}>{profileUsername}</Text>
+                        <Text style={[styles.username, styles.align]}>{groupName}</Text>
                         <Text note style={styles.align}>
-                            {t(status)}
+                            {`${members} ${t("members")}${
+                                onlineMembers === 0 ? "" : `, ${onlineMembers} ${t("online")}`
+                            }`}
                         </Text>
                     </View>
                 </View>

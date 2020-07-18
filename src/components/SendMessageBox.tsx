@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({onSubmit}: {onSubmit: (comment: string) => void}) {
+export default function ({onSubmit, placeHolderText}: {onSubmit: (comment: string) => void; placeHolderText?: string}) {
     const styles = useStyles();
     const [message, setMessage] = useState("");
     return (
@@ -74,7 +74,7 @@ export default function ({onSubmit}: {onSubmit: (comment: string) => void}) {
                     <Input
                         value={message}
                         onChangeText={(text) => setMessage(text)}
-                        placeholder={t("messageBoxPlaceHolder")}
+                        placeholder={placeHolderText || t("messageBoxPlaceHolder")}
                         style={styles.inputFont}
                     />
                 </Item>

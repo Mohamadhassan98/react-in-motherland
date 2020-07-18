@@ -1,23 +1,40 @@
 import React from "react";
-import {Content, DatePicker, Text, Button, View, Card} from "native-base";
+import {Button, Card, Content, DatePicker, Text, View} from "native-base";
 import Icons8CalendarIcon from "../../assets/icons/CalendarIcon";
+import {t} from "i18n-js";
+import makeStyles from "../utils/makeStyles";
+
+const useStyles = makeStyles((theme) => ({
+    datePickerText: {
+        fontFamily: theme.font.Body,
+        color: "green",
+        width: 0,
+        height: 0,
+    },
+    none: {
+        width: 0,
+        height: 0,
+    },
+}));
+
 export default function () {
-    const [chosenDate, setChosenDate] = React.useState<Date>(new Date());
+    const [chosenDate, setChosenDate] = React.useState<Date>();
     const datePicker = React.useRef<DatePicker | null>(null);
+    const styles = useStyles();
     return (
         <Content>
-            <View style={{width: 0, height: 0}}>
+            <View style={styles.none}>
                 <DatePicker
-                    defaultDate={new Date(2018, 4, 4)}
-                    minimumDate={new Date(2018, 1, 1)}
-                    maximumDate={new Date(2018, 12, 31)}
+                    defaultDate={new Date()}
+                    minimumDate={new Date(1990, 1, 1)}
+                    maximumDate={new Date()}
                     locale='fa'
                     timeZoneOffsetInMinutes={undefined}
                     modalTransparent={true}
                     animationType='fade'
                     androidMode='default'
                     // placeHolderText='Select date'
-                    textStyle={{color: "green", width: 0, height: 0}}
+                    textStyle={styles.datePickerText}
                     placeHolderTextStyle={{
                         color: "transparent",
                         // width: 0, height: 0
@@ -36,7 +53,7 @@ export default function () {
                 >
                     <View style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                         <Text style={{flexGrow: 1, display: "flex", opacity: 0.3, textAlign: "left"}}>
-                            {chosenDate.toString().substr(4, 12)}
+                            {chosenDate ? chosenDate.toString().substr(4, 12) : t("selectBirthDate")}
                         </Text>
                         <Icons8CalendarIcon style={{height: 48, width: 48, display: "flex"}} />
                     </View>

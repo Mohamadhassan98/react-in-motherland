@@ -1,12 +1,10 @@
 import React, {useState} from "react";
-import {Button, Col, Icon, Input, Text} from "native-base";
+import {Button, Col, Input} from "native-base";
 import {t} from "i18n-js";
-import {StyleSheet} from "react-native";
 import Icons8ForwardIcon from "../../assets/icons/ForwardIcon";
 import Icons8BackIcon from "../../assets/icons/BackIcon";
 import useTheme from "../values/theme";
 import makeStyles from "../utils/makeStyles";
-import Icons8SearchIcon from "../../assets/icons/SearchIcon";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../values/Routing";
@@ -51,57 +49,62 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         fontFamily: theme.font.Header,
     },
+    inputText: {
+        fontFamily: theme.font.Body,
+    },
 }));
 
-export default function ({setSearchText,navigation}:{setSearchText:(text: string) => void ;navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;} ) {
+export default function ({
+    setSearchText,
+    navigation,
+}: {
+    setSearchText: (text: string) => void;
+    navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
+}) {
     const [search, setSearch] = useState(false);
     const [Stext, setStext] = useState("");
     const theme = useTheme();
     const styles = useStyles();
     return (
         <>
-
-                    <Col style={styles.backIcon}>
-                        <Button
-                            small
-                            transparent
-                            onPress={() => {
-                                setSearch(false);
-                                setStext("");
-                                setSearchText("");
-                                navigation.canGoBack() && navigation.goBack();
-                                {/*
-                                    navigation.canGoBack() && navigation.goBack();
-                                    */
-                                }
-                            }}
-                        >
-                            {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
-                        </Button>
-                    </Col>
-                    <Col style={styles.searchColumn}>
-                        <Input
-                            value={Stext}
-                            placeholder={t("search")}
-                            onChangeText={(event) => {
-                                setStext(event);
-                                setSearchText(event);
-                            }}
-                        />
-                    </Col>
-                    <Col style={styles.iconColumn}>
-                        {Stext.length > 0 && (
-                            <Button
-                                transparent
-                                onPress={() => {
-                                    setStext("");
-                                    setSearchText("");
-                                }}
-                            >
-                                <DeleteIcon fill='#939191' />
-                            </Button>
-                        )}
-                    </Col>
-                </>
+            <Col style={styles.backIcon}>
+                <Button
+                    small
+                    transparent
+                    onPress={() => {
+                        setSearch(false);
+                        setStext("");
+                        setSearchText("");
+                        navigation.canGoBack() && navigation.goBack();
+                    }}
+                >
+                    {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}
+                </Button>
+            </Col>
+            <Col style={styles.searchColumn}>
+                <Input
+                    value={Stext}
+                    placeholder={t("search")}
+                    onChangeText={(event) => {
+                        setStext(event);
+                        setSearchText(event);
+                    }}
+                    style={styles.inputText}
+                />
+            </Col>
+            <Col style={styles.iconColumn}>
+                {Stext.length > 0 && (
+                    <Button
+                        transparent
+                        onPress={() => {
+                            setStext("");
+                            setSearchText("");
+                        }}
+                    >
+                        <DeleteIcon fill='#939191' />
+                    </Button>
+                )}
+            </Col>
+        </>
     );
 }

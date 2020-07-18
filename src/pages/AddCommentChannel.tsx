@@ -36,7 +36,7 @@ export default function ({navigation, route}: StackNavigator<"AddCommentChannel"
             </Content>
             <Footer style={styles.bgTransparent}>
                 <SendMessageBox
-                    onSubmit={(body) => {
+                    onSubmit={(body) =>
                         setComments((prevState) => [
                             ...prevState,
                             {
@@ -45,8 +45,9 @@ export default function ({navigation, route}: StackNavigator<"AddCommentChannel"
                                 visibleName: "Donald trump",
                                 profileImage: undefined,
                             },
-                        ]);
-                    }}
+                        ])
+                    }
+                    placeHolderText={t("enterYourComment")}
                 />
             </Footer>
         </Container>

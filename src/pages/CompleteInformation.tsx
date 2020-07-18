@@ -8,6 +8,12 @@ import Avatar from "../components/Avatar";
 import useMediaPicker from "../utils/useMediaPicker";
 import {t} from "i18n-js";
 import useTheme from "../values/theme";
+import SimpleHeader from "../components/SimpleHeader";
+import MainHeader from "../components/MainHeader";
+import {StackNavigator} from "../values/Routing";
+import {useBackHandler} from "@react-native-community/hooks";
+import {BackHandler} from "react-native";
+import {i17n} from "../values/strings";
 
 const useStyles = makeStyles((theme) => ({
     avatarStyle: {
@@ -69,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function CompleteInformation() {
+export default function CompleteInformation({navigation, route}: StackNavigator<"CompleteInformation">) {
     const styles = useStyles();
     const [name, setName] = React.useState("");
     const [profileImage, setProfileImage] = useState<string | undefined>();
@@ -79,6 +85,14 @@ export default function CompleteInformation() {
     React.useEffect(() => {
         setProfileImage(result);
     }, [result]);
+    useBackHandler(() => {
+        if (navigation) {
+            navigation.popToTop();
+            BackHandler.exitApp();
+            return true;
+        }
+        return false;
+    });
 
     React.useEffect(() => {
         if (cameraOrGallery) {
@@ -89,6 +103,23 @@ export default function CompleteInformation() {
     return (
         <Root>
             <Container style={styles.forwardBackIconStyle}>
+                <MainHeader noShadow={true} size='collapsed'>
+                    {/*<Left style={{flex: 1, alignItems: "flex-start"}}>*/}
+                    {/*    <Button*/}
+                    {/*        style={styles.forwardBackIconStyle}*/}
+                    {/*        icon*/}
+                    {/*        transparent*/}
+                    {/*        onPress={() => navigation.canGoBack() && navigation.goBack()}*/}
+                    {/*    >*/}
+                    {/*        {theme.localize.language === "fa" ? <Icons8ForwardIcon /> : <Icons8BackIcon />}*/}
+                    {/*    </Button>*/}
+                    {/*</Left>*/}
+                    {/*<Body style={{flex: 1, alignItems: "center"}}>*/}
+                    {/*    <Text style={styles.headerTextStyle}>{t("editProfile")} </Text>*/}
+                    {/*</Body>*/}
+                    {/*<Right style={{flex: 1}} />*/}
+                    <SimpleHeader navigation={navigation} title='completeInformation' leftAdornment='none' />
+                </MainHeader>
                 <Content>
                     <Grid>
                         <Row>
@@ -102,8 +133,8 @@ export default function CompleteInformation() {
                                         ActionSheet.show(
                                             {
                                                 options: profileImage
-                                                    ? ["Camera", "Gallery", "delete"]
-                                                    : ["Camera", "Gallery"],
+                                                    ? [i17n.camera, i17n.gallery, i17n.delete]
+                                                    : [i17n.camera, i17n.gallery],
                                             },
                                             (index) => {
                                                 switch (index) {

@@ -31,6 +31,8 @@ import NewGroupName from "./src/pages/NewGroupName";
 import NewChannelName from "./src/pages/NewChannelName";
 import AddCommentChannel from "./src/pages/AddCommentChannel";
 import CompleteInformation from "./src/pages/CompleteInformation";
+import GroupChatRoom from "./src/pages/GroupChatRoom";
+import ChannelRoom from "./src/pages/ChannelRoom";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -58,9 +60,15 @@ export default function App() {
                                         <Stack.Screen name='NewGroupName' component={NewGroupName} />
                                         <Stack.Screen name='NewChannelName' component={NewChannelName} />
                                         <Stack.Screen name='NewGroupAddPeople' component={NewGroupAddPeople} />
-                                        <Stack.Screen name='ChatRoom' component={ChatRoom} />
+                                        <Stack.Screen
+                                            name='ChatRoom'
+                                            component={ChatRoom}
+                                            initialParams={{visibleName: "Donald Trump"}}
+                                        />
+                                        <Stack.Screen name='ChannelRoom' component={ChannelRoom} />
                                         <Stack.Screen name='NewPost' component={NewPost} />
                                         <Stack.Screen name='AddCommentChannel' component={AddCommentChannel} />
+                                        <Stack.Screen name='GroupChatRoom' component={GroupChatRoom} />
                                         <Stack.Screen
                                             name='PostPage'
                                             component={PostPage}

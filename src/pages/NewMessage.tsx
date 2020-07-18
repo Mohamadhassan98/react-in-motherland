@@ -1,16 +1,15 @@
 import React, {useState} from "react";
 import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
-import {StyleSheet} from "react-native";
 import NewMessageHeader from "../components/NewMessageHeader";
-import {Container, Content, Button, Thumbnail, Text, View, Fab, Icon} from "native-base";
+import {Button, Container, Content, Fab, Icon, Text, Thumbnail, View} from "native-base";
 import {
     contactListA,
     contactListB,
     contactListF,
-    contactListH,
     contactListFaAlef,
     contactListFaBe,
+    contactListH,
 } from "../values/strings";
 import {t} from "i18n-js";
 import {StackNavigator} from "../values/Routing";
@@ -18,7 +17,6 @@ import makeStyles from "../utils/makeStyles";
 import Icons8GroupIcon from "../../assets/icons/GroupIcon";
 import Icons8CommercialIcon from "../../assets/icons/CommercialIcon";
 import Icons8AddUserGroupIcon from "../../assets/icons/AddUserGroupIcon";
-import AddContactHeader from "../components/addContactHeader";
 
 const useStyles = makeStyles((theme) => ({
     Alphabet: {
@@ -277,20 +275,28 @@ export default function NewMessage({navigation, route}: StackNavigator<"NewMessa
                         }}
                     >
                         <Icon name='add' />
-                        <Button style={styles.FAB2} onPress={()=>{
-                            navigation.navigate("NewChannelAddPeople", {} as any);
-
-                        }}>
+                        <Button
+                            style={styles.FAB2}
+                            onPress={() => {
+                                navigation.navigate("NewChannelAddPeople", {} as any);
+                            }}
+                        >
                             <Icons8CommercialIcon />
                         </Button>
-                        <Button style={styles.FAB2} onPress={()=>{
-                            navigation.navigate("NewGroupAddPeople", {} as any);
-                        }}>
+                        <Button
+                            style={styles.FAB2}
+                            onPress={() => {
+                                navigation.navigate("NewGroupAddPeople", {} as any);
+                            }}
+                        >
                             <Icons8GroupIcon />
                         </Button>
-                        <Button style={styles.FAB2} onPress={()=>{
-                            navigation.navigate("AddContact", {} as any);
-                        }}>
+                        <Button
+                            style={styles.FAB2}
+                            onPress={() => {
+                                navigation.navigate("AddContact", {} as any);
+                            }}
+                        >
                             <Icons8AddUserGroupIcon />
                         </Button>
                     </Fab>

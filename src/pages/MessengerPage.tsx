@@ -3,12 +3,13 @@ import MainPageLayout from "../components/MainPageLayout";
 import MainHeader from "../components/MainHeader";
 import MessengerHeader from "../components/MessengerHeader";
 import _ from "lodash";
-import {Badge, Body, Container, Content, Fab, Icon, Left, List, ListItem, Right, Text, Thumbnail} from "native-base";
+import {Badge, Body, Container, Content, Fab, Icon, Left, List, ListItem, Right, Text} from "native-base";
 import {chatList, i17n} from "../values/strings";
 import {StackNavigator} from "../values/Routing";
 import makeStyles from "../utils/makeStyles";
 import {copilot} from "react-native-copilot";
 import {CopilotTypes} from "../components/types/copilotTypes";
+import Avatar from "../components/Avatar";
 
 const useStyles = makeStyles((theme) => ({
     FAB: {
@@ -58,14 +59,30 @@ function MessengerPage({navigation, route, start, copilotEvents}: StackNavigator
                 <MessengerHeader navigation={navigation} />
             </MainHeader>
             {/* Rest of code here */}
-
             <Container>
                 <Content>
                     <List>
                         {chatList.map((item) => (
-                            <ListItem avatar key={item.id} onPress={() => navigation.navigate("ChatRoom")}>
+                            <ListItem
+                                avatar
+                                key={item.id}
+                                onPress={() => {
+                                    if (item.id % 3 === 0) {
+                                        navigation.navigate("ChatRoom", {} as any);
+                                    } else if (item.id % 3 === 1) {
+                                        navigation.navigate("GroupChatRoom");
+                                    } else {
+                                        navigation.navigate("ChannelRoom");
+                                    }
+                                }}
+                            >
                                 <Left>
-                                    <Thumbnail source={item.img} />
+                                    <Avatar
+                                        size={56}
+                                        visibleName={`${item.FirstName} ${item.LastName}`}
+                                        profileImage={item.img}
+                                        local
+                                    />
                                 </Left>
                                 <Body style={styles.end}>
                                     <Text style={styles.text}>{`${item.FirstName} ${item.LastName}`}</Text>

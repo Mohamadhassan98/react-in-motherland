@@ -1,12 +1,10 @@
 import React from "react";
-import {Text, View} from "native-base";
+import {Text} from "native-base";
 import {MessageProps} from "./types/MessageProps";
 import {Col, Grid, Row} from "react-native-easy-grid";
 import makeStyles from "../utils/makeStyles";
 import Icons8DoubleTickIcon from "../../assets/icons/DoubleTickIcon";
-import Icons8SentIcon from "../../assets/icons/SentIcon";
 import Icons8CheckmarkIcon from "../../assets/icons/CheckmarkIcon";
-import useTheme from "../values/theme";
 
 const useStyles = makeStyles((theme) => ({
     sentMessage: {
@@ -53,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
         marginStart: 7,
     },
 }));
+
 export default function ({message, type, seen, date, showDate}: MessageProps) {
     const styles = useStyles();
     return (

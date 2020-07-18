@@ -9,7 +9,7 @@ import makeStyles from "../utils/makeStyles";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
 import {StackNavigationProp} from "@react-navigation/stack";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     backIcon: {
         flex: 2,
         display: "flex",
@@ -30,6 +30,9 @@ const useStyles = makeStyles(() => ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-end",
+    },
+    inputText: {
+        fontFamily: theme.font.Body,
     },
 }));
 
@@ -61,9 +64,8 @@ export default function ({
                 <Input
                     value={searchText}
                     placeholder={t("search")}
-                    onChangeText={(event) => {
-                        setSearchText(event);
-                    }}
+                    onChangeText={(event) => setSearchText(event)}
+                    style={styles.inputText}
                 />
             </Col>
             <Col style={styles.iconColumn}>

@@ -9,7 +9,6 @@ import LoveOutline from "../../assets/icons/LoveOutline";
 
 const useStyles = makeStyles(() => ({
     body: {
-        paddingBottom: 10,
         textAlign: "left",
     },
     bodyGrid: {
@@ -18,10 +17,6 @@ const useStyles = makeStyles(() => ({
     bottomIcons: {
         height: 40,
         width: 40,
-    },
-    icon: {
-        paddingLeft: 17,
-        paddingRight: 17,
     },
     mediaImage: {
         borderRadius: 5,
@@ -35,6 +30,12 @@ const useStyles = makeStyles(() => ({
     username: {
         color: commonColor.brandLight,
         textAlign: "left",
+    },
+    media: {
+        borderRadius: 5,
+        flex: 1,
+        height: 130,
+        paddingTop: 10,
     },
 }));
 
@@ -66,15 +67,17 @@ export default function ({
                     <Row>
                         <Text style={styles.body}>{message}</Text>
                     </Row>
-                    <Row>
-                        <Thumbnail square source={{uri: media}} style={{flex: 1, height: 130}} />
-                    </Row>
+                    {!!media && (
+                        <Row>
+                            <Thumbnail square source={{uri: media}} style={styles.media} />
+                        </Row>
+                    )}
                 </Grid>
             </CardItem>
-            <CardItem style={styles.icon}>
+            <CardItem style={styles.padding}>
                 <Grid>
                     <Row>
-                        <Button transparent onPress={() => setLiked(!liked)}>
+                        <Button transparent onPress={() => setLiked(!liked)} style={{marginEnd: 10}}>
                             {liked ? (
                                 <FilledIcons8LoveIcon style={styles.bottomIcons} />
                             ) : (
