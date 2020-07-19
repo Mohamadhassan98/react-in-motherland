@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
         flex: 1,
         height: 300,
     },
+    title: {
+        fontFamily: theme.font.Body,
+    },
 }));
 
 export default function ({navigation, route}: StackNavigator<"ChangeColorSimple">) {
@@ -43,6 +46,7 @@ export default function ({navigation, route}: StackNavigator<"ChangeColorSimple"
                                         theme.palette.setSecondary(selectedColor);
                                     }
                                 }
+                                navigation.canGoBack() && navigation.goBack();
                             }}
                         >
                             <Text style={styles.buttonText}>{t("save")}</Text>
@@ -57,6 +61,7 @@ export default function ({navigation, route}: StackNavigator<"ChangeColorSimple"
                     colors={materialColorsForUser}
                     title={t("chooseOneOfThese")}
                     icon={materialColorsForUser.includes(selectedColor) && <Icons8CheckmarkIcon />}
+                    titleStyles={styles.title}
                 />
                 <Text>{t("orCustomizeIt")}</Text>
                 <TriangleColorPicker

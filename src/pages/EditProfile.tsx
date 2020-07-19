@@ -50,7 +50,12 @@ const useStyles = makeStyles((theme) => ({
     saveButtonStyle: {
         borderRadius: 15,
         height: 60,
+    },
+    saveButtonValid: {
         backgroundColor: theme.palette.Primary,
+    },
+    saveButtonInvalid: {
+        backgroundColor: theme.palette.Disabled,
     },
     saveButtonTextStyle: {
         color: theme.palette.textSecondary,
@@ -76,6 +81,8 @@ export default function ({navigation, route}: StackNavigator<"EditProfile">) {
         }
     }, [cameraOrGallery, select]);
 
+    const [name, setName] = React.useState("Mohamad Ebrahimi");
+
     return (
         <Root>
             <Container style={{backgroundColor: "#FFFFFF"}}>
@@ -87,11 +94,11 @@ export default function ({navigation, route}: StackNavigator<"EditProfile">) {
                         <Row>
                             <Col style={styles.avatarStyle}>
                                 <Avatar
-                                    visibleName='Mohammad hassan Ebrahimi'
+                                    visibleName={name}
                                     size={100}
                                     profileImage={profileImage}
                                     showAccessory
-                                    onAccessoryPress={() => {
+                                    onAccessoryPress={() =>
                                         ActionSheet.show(
                                             {
                                                 options: profileImage
@@ -116,14 +123,14 @@ export default function ({navigation, route}: StackNavigator<"EditProfile">) {
                                                         break;
                                                 }
                                             }
-                                        );
-                                    }}
+                                        )
+                                    }
                                 />
                             </Col>
                         </Row>
                         <Row>
                             <Col style={styles.inputBoxEditProfileStyle}>
-                                <InputBoxEditProfile placeHolderMsg={t("insertName")} />
+                                <InputBoxEditProfile placeHolderMsg={t("insertName")} value={name} setValue={setName} />
                             </Col>
                         </Row>
                         <Row>
@@ -143,7 +150,15 @@ export default function ({navigation, route}: StackNavigator<"EditProfile">) {
                         </Row>
                         <Row>
                             <Col style={styles.saveButtonStyleCol}>
-                                <Button style={styles.saveButtonStyle} onPress={() => navigation.goBack()}>
+                                <Button
+                                    transparent
+                                    style={[
+                                        styles.saveButtonStyle,
+                                        name.length === 0 ? styles.saveButtonInvalid : styles.saveButtonValid,
+                                    ]}
+                                    disabled={name.length === 0}
+                                    onPress={() => navigation.goBack()}
+                                >
                                     <Text style={styles.saveButtonTextStyle}>{t("Save")}</Text>
                                 </Button>
                             </Col>

@@ -127,6 +127,11 @@ export default function initStrings(locale: string) {
             mute: "mute",
             unmute: "unmute",
             enterYourComment: "Enter your comment here.",
+            myPosts: "my posts",
+            feed: "feed",
+            showMore: "show more",
+            follow: " follow ",
+            unfollow: "unfollow",
         },
         fa: {
             messenger: `پیام${zwnj}رسان`,
@@ -248,6 +253,11 @@ export default function initStrings(locale: string) {
             mute: `بی${zwnj}صدا`,
             unmute: "باصدا",
             enterYourComment: "نظر خود را وارد کنید.",
+            myPosts: `پست${zwnj}های من`,
+            feed: "خوراک",
+            showMore: "مشاهده بیشتر",
+            follow: "  پیروی  ",
+            unfollow: "لغو پیروی",
         },
     };
 

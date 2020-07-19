@@ -10,16 +10,23 @@ import ExplorePosts from "../components/ExplorePosts";
 import ExploreChannels from "../components/ExploreChannels";
 import makeStyles from "../utils/makeStyles";
 import {StackNavigator} from "../values/Routing";
+import useTheme from "../values/theme";
 
 const useStyles = makeStyles((theme) => ({
     activeTab: {
         backgroundColor: theme.palette.Primary,
     },
+    activeTabText: {
+        color: theme.palette.textSecondary,
+    },
     tabs: {
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.textSecondary,
+    },
+    tabsText: {
+        color: theme.palette.textPrimary,
     },
     underline: {
-        backgroundColor: theme.palette.textSecondary,
+        backgroundColor: theme.palette.Secondary,
     },
     search: {
         width: "100%",
@@ -36,8 +43,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({navigation}: StackNavigator<"ExploreSearch">) {
+export default function ({navigation, route}: StackNavigator<"ExploreSearch">) {
     const styles = useStyles();
+    const theme = useTheme();
     return (
         <MainPageLayout active={1} navigation={navigation}>
             <MainHeader size='collapsed' hasTabs style={styles.header}>
@@ -58,14 +66,34 @@ export default function ({navigation}: StackNavigator<"ExploreSearch">) {
                 tabBarUnderlineStyle={styles.underline}
                 tabBarActiveTextColor={CommonColors.inverseTextColor}
             >
-                <Tab heading={t("channelPosts")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
+                <Tab
+                    heading={t("channelPosts")}
+                    tabStyle={styles.tabs}
+                    activeTabStyle={styles.activeTab}
+                    textStyle={styles.tabsText}
+                    activeTextStyle={styles.activeTabText}
+                >
                     <Content>
-                        <ExploreChannels navigation={navigation} />
+                        {theme.localize.language === "fa" ? (
+                            <ExplorePosts navigation={navigation} />
+                        ) : (
+                            <ExploreChannels navigation={navigation} route={route} />
+                        )}
                     </Content>
                 </Tab>
-                <Tab heading={t("pages")} tabStyle={styles.tabs} activeTabStyle={styles.activeTab}>
+                <Tab
+                    heading={t("pages")}
+                    tabStyle={styles.tabs}
+                    activeTabStyle={styles.activeTab}
+                    textStyle={styles.tabsText}
+                    activeTextStyle={styles.activeTabText}
+                >
                     <Content>
-                        <ExplorePosts navigation={navigation} />
+                        {theme.localize.language !== "fa" ? (
+                            <ExplorePosts navigation={navigation} />
+                        ) : (
+                            <ExploreChannels navigation={navigation} route={route} />
+                        )}
                     </Content>
                 </Tab>
             </Tabs>

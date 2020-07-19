@@ -8,7 +8,7 @@ import GroupChatRoomHeader from "../components/GroupChatRoomHeader";
 import {StackNavigator} from "../values/Routing";
 
 export default function ({navigation, route}: StackNavigator<"ChannelRoom">) {
-    const messages = new Array<Omit<ChannelMessageProps, "navigation">>(5).fill({
+    const messages = new Array<Omit<ChannelMessageProps, "navigation" | "route">>(5).fill({
         date: t("_todayChannelPost"),
         message:
             "What is the loop of Creation? How is there something from nothing? In spite of the fact that it is impossible to prove that anythin….",
@@ -33,6 +33,7 @@ export default function ({navigation, route}: StackNavigator<"ChannelRoom">) {
                         navigation={navigation}
                         media={index % 2 === 0 ? undefined : value.media}
                         key={index}
+                        route={route}
                     />
                 ))}
             </Content>

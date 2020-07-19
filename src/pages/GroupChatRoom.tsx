@@ -16,6 +16,7 @@ export default function ({navigation, route}: StackNavigator<"GroupChatRoom">) {
         visibleName: "Donald the ass",
         date: `10:32 ${i17n.am}`,
         message: "I'm much dumber...",
+        navigation: navigation,
     });
     const initMessages = new Array<MessageProps>(5).fill({
         message: "سلام به روی ماهت",

@@ -106,10 +106,10 @@ export default function NewChannelName({navigation, route}: StackNavigator<"NewC
                                 }}
                             />
                         </Item>
-                        <Item stackedLabel>
-                            <Label style={styles.text}>{t("description")}</Label>
-                            <Input onChangeText={(event) => setLastName(event)} />
-                        </Item>
+                        {/*<Item stackedLabel>*/}
+                        {/*    <Label style={styles.text}>{t("description")}</Label>*/}
+                        {/*    <Input onChangeText={(event) => setLastName(event)} />*/}
+                        {/*</Item>*/}
                     </Form>
                     {disable ? (
                         <Fab active={false} direction='up' style={styles.disableFAB} position='bottomRight'>

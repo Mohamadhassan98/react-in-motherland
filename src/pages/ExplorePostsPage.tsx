@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({navigation}: StackNavigator<"ExplorePostsPage">) {
+export default function ({navigation, route}: StackNavigator<"ExplorePostsPage">) {
     const styles = useStyles();
     return (
         <MainPageLayout active={1} navigation={navigation}>
@@ -77,7 +77,7 @@ export default function ({navigation}: StackNavigator<"ExplorePostsPage">) {
                     activeTextStyle={styles.activeTabText}
                 >
                     <Content>
-                        <ExploreChannels navigation={navigation} />
+                        <ExploreChannels navigation={navigation} route={route} />
                     </Content>
                 </Tab>
                 <Tab

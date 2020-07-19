@@ -10,6 +10,11 @@ const styles = StyleSheet.create({
         marginRight: 8,
         marginTop: 16,
     },
+    root: {
+        borderTopColor: "#F1F1F1",
+        borderTopWidth: 1,
+        marginTop: 8,
+    },
     row: {
         borderBottomColor: "#F1F1F1",
         borderBottomWidth: 1,
@@ -23,7 +28,7 @@ const styles = StyleSheet.create({
 
 export default function ({images}: {images: string[]}) {
     return (
-        <View>
+        <View style={styles.root}>
             <Text style={styles.text}>{t("suggestions")}</Text>
             <Row style={styles.row}>
                 {images.map((uri, index) => (

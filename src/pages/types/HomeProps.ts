@@ -6,4 +6,5 @@ export type HomeProps = {
     followings: number;
     followers: number;
     you?: boolean;
+    local?: boolean;
 } & SimpleUser;

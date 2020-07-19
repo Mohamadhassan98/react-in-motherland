@@ -41,11 +41,13 @@ export default function ({navigation}: StackNavigator<"LanguageSettings">) {
                                             },
                                             {
                                                 text: t("later"),
-                                                onPress: () => navigation.popToTop(),
+                                                onPress: () => navigation.navigate("MessengerPage"),
                                                 style: "cancel",
                                             },
                                         ]);
                                     });
+                                } else {
+                                    navigation.navigate("MessengerPage");
                                 }
                             }}
                         >

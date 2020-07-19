@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 });
 
 export default function ({navigation}: ExplorePostsProps) {
-    const fakeData = new Array<string>(15).fill(
+    const fakeData = new Array<string>(35).fill(
         "https://www.animalfactsencyclopedia.com/images/animalextremeclose-up-groundhog.jpg"
     );
     return (

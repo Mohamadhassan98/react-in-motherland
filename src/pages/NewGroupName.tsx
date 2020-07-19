@@ -108,10 +108,10 @@ export default function NewGroupName({navigation, route}: StackNavigator<"NewGro
                                 }}
                             />
                         </Item>
-                        <Item stackedLabel>
-                            <Label style={styles.text}>{t("description")}</Label>
-                            <Input onChangeText={(event) => setLastName(event)} />
-                        </Item>
+                        {/*<Item stackedLabel>*/}
+                        {/*    <Label style={styles.text}>{t("description")}</Label>*/}
+                        {/*    <Input onChangeText={(event) => setLastName(event)} />*/}
+                        {/*</Item>*/}
                     </Form>
                     {disable ? (
                         <Fab

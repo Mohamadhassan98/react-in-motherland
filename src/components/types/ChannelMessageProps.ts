@@ -9,4 +9,5 @@ export interface ChannelMessageProps {
     profileUsername: string;
     isLiked: boolean;
     navigation: StackNavigationProp<RootStackParamList, keyof RootStackParamList>;
+    route: {name: string};
 }

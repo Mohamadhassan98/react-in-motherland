@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     Alphabet: {
         alignContent: "center",
         alignItems: "center",
-        //backgroundColor: "red",
         display: "flex",
         fontSize: 30,
         fontFamily: theme.font.Body,
@@ -67,7 +66,6 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
-        //marginBottom: "3%",
         width: "100%",
         marginTop: "2%",
     },
@@ -75,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         width: "100%",
         height: 450,
-        //backgroundColor: "red",
         justifyContent: "center",
         alignItems: "center",
     },
@@ -90,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function NewMessage({navigation, route}: StackNavigator<"NewMessage">) {
+export default function NewMessage({navigation}: StackNavigator<"NewMessage">) {
     const [Active, setActive] = useState(false);
     const [SearchText, setSearchText] = useState("");
     const styles = useStyles();
@@ -355,6 +352,7 @@ export default function NewMessage({navigation, route}: StackNavigator<"NewMessa
                                                 profileImage={require("../../assets/img_avatar2.png")}
                                                 size={56}
                                                 visibleName='zahra l'
+                                                local
                                             />
                                         </View>
                                         <View style={styles.InfoR}>
@@ -384,16 +382,13 @@ export default function NewMessage({navigation, route}: StackNavigator<"NewMessa
                         onPress={() => setActive(!Active)}
                     >
                         <Icon name='add' />
-                        <Button
-                            style={styles.FAB2}
-                            onPress={() => navigation.navigate("NewChannelAddPeople", {} as any)}
-                        >
+                        <Button style={styles.FAB2} onPress={() => navigation.navigate("NewChannelAddPeople")}>
                             <Icons8CommercialIcon />
                         </Button>
-                        <Button style={styles.FAB2} onPress={() => navigation.navigate("NewGroupAddPeople", {} as any)}>
+                        <Button style={styles.FAB2} onPress={() => navigation.navigate("NewGroupAddPeople")}>
                             <Icons8GroupIcon />
                         </Button>
-                        <Button style={styles.FAB2} onPress={() => navigation.navigate("AddContact", {} as any)}>
+                        <Button style={styles.FAB2} onPress={() => navigation.navigate("AddContact")}>
                             <AddUserMaleIcon />
                         </Button>
                     </Fab>

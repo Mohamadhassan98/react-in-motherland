@@ -77,12 +77,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ({date, message, showDate, profileImage, visibleName}: GroupMessageProps) {
+export default function ({date, message, showDate, profileImage, visibleName, navigation}: GroupMessageProps) {
     const styles = useStyles();
     return (
         <Grid style={styles.root}>
             <Col style={[styles.avatarCol, showDate ? styles.avatarColDate : styles.avatarColNoDate]}>
-                <Avatar visibleName={visibleName} size={40} profileImage={profileImage} />
+                <Avatar visibleName={visibleName} size={40} profileImage={profileImage} navigation={navigation} />
             </Col>
             <Col style={styles.restCol}>
                 <Row style={[styles.receivedMessage, styles.padding]}>

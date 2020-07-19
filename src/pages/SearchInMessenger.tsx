@@ -219,6 +219,7 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                                                 {
                                                     text: t("Clear"),
                                                     onPress: () => setRecentList([]),
+                                                    style: "destructive",
                                                 },
                                             ]);
                                         }}
@@ -264,6 +265,8 @@ export default function SearchInMessenger({navigation, route}: StackNavigator<"S
                                                             profileImage,
                                                             local: !!profileImage,
                                                         });
+                                                        break;
+                                                    default:
                                                         break;
                                                 }
                                             }}

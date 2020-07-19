@@ -10,22 +10,24 @@ import makeStyles from "../utils/makeStyles";
 const useStyles = makeStyles((theme) => ({
     userNameStyle: {
         fontFamily: theme.font.body.Bold,
-        fontWeight: "bold",
+        fontWeight: theme.localize.language === "fa" ? undefined : "bold",
         fontSize: 16,
         color: materialColors[24],
     },
     timeOfNotificationStyle: {
         fontFamily: theme.font.Body,
-        // width: width,
         paddingLeft: 20,
         color: materialColors[24],
         fontSize: 18,
     },
     userStatusNotificationStyle: {
         fontFamily: theme.font.Body,
-        fontWeight: "bold",
+        fontWeight: theme.localize.language === "fa" ? undefined : "bold",
         fontSize: 16,
         color: materialColors[24],
+    },
+    deleteNotification: {
+        fontFamily: theme.font.Body,
     },
 }));
 const Content = (props: {
@@ -114,7 +116,7 @@ const Content = (props: {
                                     menu.current?.hide();
                                 }}
                             >
-                                <Text>{t("DeleteNotification")}</Text>
+                                <Text style={styles.deleteNotification}>{t("DeleteNotification")}</Text>
                             </MenuItem>
                         </Menu>
                     </View>
